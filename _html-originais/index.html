@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Casa Rofer — Espaço de eventos e casamentos | Brooklin, São Paulo</title>
+<meta name="description" content="Mais do que um casamento, uma celebração impecável em cada detalhe. Dois salões exclusivos para até 400 convidados no coração do Brooklin, São Paulo.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Casa Rofer — Espaço de eventos e casamentos | Brooklin, São Paulo">
+<meta property="og:description" content="Mais do que um casamento, uma celebração impecável em cada detalhe. Dois salões exclusivos para até 400 convidados no coração do Brooklin, São Paulo.">
+<meta property="og:image" content="https://media.dmove.com.br/clients/casa-rofer/photos/hero-casamento.webp">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<!-- GTM Head -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Casa Rofer — Espaço de eventos e casamentos | Brooklin, São Paulo",
+  "description": "Mais do que um casamento, uma celebração impecável em cada detalhe. Dois salões exclusivos para até 400 convidados no coração do Brooklin, São Paulo."
+}
+</script>
+
+<style>
+/* ===== FONTS — Identidade visual Casa Rofer ===== */
+@font-face{
+  font-family:'Aktiv Grotesk';
+  src:url('assets/fonts/AktivGrotesk-Regular.woff2') format('woff2'),
+      url('assets/fonts/AktivGrotesk-Regular.otf') format('opentype');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'PP Editorial New';
+  src:url('assets/fonts/PPEditorialNew-Italic.woff2') format('woff2'),
+      url('assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf') format('opentype');
+  font-weight:400;font-style:italic;font-display:swap;
+}
+.alt-font{font-family:'Aktiv Grotesk',sans-serif}
+.accent{font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;letter-spacing:0}
+
+/* ===== TOKENS (Casa Rofer) ===== */
+:root{
+  --bg:#ffffff;          /* fundo claro */
+  --bg-soft:#f3f0ea;     /* seções alternadas (neutro quente) */
+  --ink:#1a1714;         /* texto do corpo (quase preto) */
+  --ink-soft:#6b6259;    /* texto secundário (taupe suave) */
+  --line:#e7e2d9;        /* divisores */
+  --sand:#ada28f;        /* accent = secondary Casa Rofer (areia) */
+  --sand-deep:#023d2d;   /* primary Casa Rofer */
+  --sea:#023d2d;         /* blocos escuros -> primary */
+  --title:#023d2d;       /* títulos -> primary */
+  --white:#ffffff;
+  --maxw:1280px;
+  --gut:clamp(20px,5vw,72px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Aktiv Grotesk',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== TYPE ===== */
+h1,h2,h3,.serif{font-family:'Aktiv Grotesk',sans-serif;font-style:normal;font-weight:400;letter-spacing:.01em}
+.eyebrow{
+  font-family:'Aktiv Grotesk',sans-serif;
+  font-size:.74rem;font-weight:400;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--sand);
+  margin-bottom:.6rem;
+}
+.section-title{
+  font-size:clamp(1.9rem,4vw,3.1rem);
+  line-height:1.2;color:var(--title);
+  max-width:22ch;
+}
+.block-head h3,.infra-cell h3,.form-success .serif{color:var(--title)}
+.section-title.center{margin-inline:auto;text-align:center}
+.lead{
+  font-family:'Aktiv Grotesk',sans-serif;
+  font-size:clamp(1rem,1.4vw,1.12rem);
+  color:var(--ink-soft);font-weight:400;
+  max-width:64ch;
+}
+.lead.center{margin-inline:auto;text-align:center}
+
+/* ===== LAYOUT ===== */
+section{position:relative;z-index:1;background:var(--bg)}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+.pad{padding-block:clamp(72px,11vw,150px)}
+.center{text-align:center}
+
+/* buttons */
+.btn{
+  display:inline-block;background:var(--sand-deep);color:#fff;border:0;cursor:pointer;
+  padding:16px 46px;border-radius:40px;
+  font-family:'Aktiv Grotesk';font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+  transition:.4s;
+}
+.btn:hover{background:var(--sand);transform:translateY(-2px);box-shadow:0 12px 30px rgba(2,61,45,.3)}
+.btn.outline{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff}
+.btn.outline:hover{background:#fff;border-color:#fff;color:var(--sand-deep);box-shadow:none}
+.btn.ghost{background:transparent;border:1px solid var(--sand);color:var(--sand-deep);padding:13px 34px}
+.btn.ghost:hover{background:var(--sand-deep);border-color:var(--sand-deep);color:#fff}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}
+.reveal.d2{transition-delay:.24s}
+.reveal.d3{transition-delay:.36s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ===== HERO ===== */
+.hero{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;contain:paint}
+.hero-logo{position:absolute;top:34px;left:50%;transform:translateX(-50%);z-index:4;width:clamp(120px,13vw,190px);height:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.35))}
+.hero-bg img{width:100%;height:120%;object-fit:cover;will-change:transform}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,14,.66)0%,rgba(20,17,14,.42)40%,rgba(20,17,14,.75)100%)}
+.hero-inner{position:relative;z-index:2;color:#fff;padding-inline:var(--gut);max-width:1100px;transform:translateY(-20px)}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3.6rem);line-height:1.08;font-weight:400;letter-spacing:.01em;text-shadow:0 2px 30px rgba(0,0,0,.35);max-width:22ch;margin-inline:auto}
+.hero-sub{font-family:'Aktiv Grotesk',sans-serif;margin:0 0 4px;font-size:clamp(.74rem,calc(.75vw + 5px),.86rem);letter-spacing:.34em;text-transform:uppercase;font-weight:400;opacity:.95}
+.hero-divider{width:64px;height:1px;background:rgba(255,255,255,.6);margin:22px auto}
+.hero-cta{margin-top:34px}
+.scroll-ind{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.8;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-ind .line{width:1px;height:44px;background:linear-gradient(#fff,transparent);animation:scrollpulse 2.4s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ===== AUTORIDADE (stats bar) ===== */
+.authority{background:var(--sand-deep);color:#fff}
+.authority .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(20px,5vw,70px);padding-block:30px;flex-wrap:wrap;text-align:center}
+.authority .stat{font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;font-size:clamp(1.15rem,2vw,1.55rem);letter-spacing:.02em;color:#fff}
+.authority .stat b{font-weight:400}
+.authority .sep{width:1px;height:34px;background:rgba(255,255,255,.3)}
+@media(max-width:640px){.authority .sep{display:none}}
+
+/* ===== SOBRE / VIDEO ===== */
+.video-frame{margin-top:52px;border-radius:3px;overflow:hidden;position:relative;background:#000}
+.video-wrap { position: relative; background: #000; overflow: hidden; border-radius: inherit; aspect-ratio: 16 / 9; }
+.video-wrap__player { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-wrap__play { position: absolute; inset: 0; margin: auto; width: 72px; height: 72px; background: none; border: none; cursor: pointer; transition: transform .15s, opacity .15s; z-index: 2; }
+.video-wrap__play:hover { transform: scale(1.1); opacity: .9; }
+
+/* generic media band */
+.band{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(30px,5vw,80px)}
+.band-media{order:1}
+.band-text{order:2}
+.band.rev .band-media{order:2}
+.band.rev .band-text{order:1}
+.band-media{position:relative}
+.band-media img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.band-text .btn{margin-top:30px}
+
+/* ===== ESPAÇOS ===== */
+.spaces-stack{display:flex;flex-direction:column;gap:clamp(56px,7vw,110px)}
+.space-card{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(30px,5vw,70px)}
+.space-card .space-figure{order:1}
+.space-card .space-body{order:2}
+.space-card.rev .space-figure{order:2}
+.space-card.rev .space-body{order:1}
+.space-figure{overflow:hidden;border-radius:3px;aspect-ratio:4/5}
+.space-figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.space-card:hover .space-figure img{transform:scale(1.05)}
+.space-body{padding-top:0}
+.space-tag{font-family:'Aktiv Grotesk',sans-serif;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sand);margin-bottom:6px}
+.space-body h3{font-size:clamp(1.5rem,2.6vw,2.2rem);color:var(--title);margin-bottom:16px}
+.space-body .btn{margin-top:26px}
+@media(max-width:760px){
+  .space-card{grid-template-columns:1fr;gap:32px}
+  .space-card .space-figure,.space-card.rev .space-figure{order:1}
+  .space-card .space-body,.space-card.rev .space-body{order:2}
+}
+
+/* ===== CARROSSEL ===== */
+.carousel{position:relative;margin-top:8px}
+.car-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:none}
+.car-track::-webkit-scrollbar{display:none}
+.car-track .slide{flex:0 0 auto;scroll-snap-align:center;border-radius:2px;overflow:hidden}
+.car-track.portrait .slide{width:clamp(240px,28vw,360px);aspect-ratio:2/3}
+.car-track.land .slide{width:clamp(300px,46vw,620px);aspect-ratio:3/2}
+.car-track .slide img{width:100%;height:100%;object-fit:cover}
+.car-track .slide img.gp-40{object-position:center 40%}
+.car-track .slide img.gp-55{object-position:center 55%}
+.car-track .slide img.gp-70{object-position:center 70%}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid var(--line);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.3s;color:var(--ink)}
+.car-btn:hover{background:var(--sand);color:#fff;border-color:var(--sand)}
+.car-btn.prev{left:-10px}
+.car-btn.next{right:-10px}
+.car-btn svg{width:18px;height:18px}
+
+/* ===== DIFERENCIAIS (image cards) ===== */
+.dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px}
+.dif-card{position:relative;overflow:hidden;border-radius:3px;aspect-ratio:3/4}
+.dif-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.dif-card .dc-gastronomia{object-position:38% 58%}
+.dif-card .dc-tecnologia{object-position:46% 64%}
+.dif-card:hover img{transform:scale(1.06)}
+.dif-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,20,0)40%,rgba(26,23,20,.72)100%)}
+.dif-card span{position:absolute;left:0;right:0;bottom:22px;z-index:2;text-align:center;color:#fff;font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;font-size:1.4rem;letter-spacing:.01em}
+@media(max-width:760px){.dif-grid{grid-template-columns:1fr 1fr}}
+
+/* ===== FEEDBACKS / DEPOIMENTOS ===== */
+.feedbacks{position:relative;color:#fff;overflow:hidden;background:var(--sand-deep)}
+.feedbacks .fb-bg{position:absolute;inset:0;z-index:0;overflow:hidden;contain:paint}
+.feedbacks .fb-bg img{width:100%;height:100%;object-fit:cover}
+.feedbacks .fb-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,61,45,.78),rgba(1,43,32,.87))}
+.fb-inner{position:relative;z-index:2;text-align:center}
+.fb-mark{font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;font-size:4rem;line-height:.4;color:var(--sand);margin:10px auto 22px}
+.fb-text{font-family:'Aktiv Grotesk',sans-serif;font-style:normal;font-weight:400;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.6;max-width:820px;margin-inline:auto}
+.fb-cta{margin-top:40px}
+.fb-cta a{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.5);border-radius:40px;padding:14px 30px;font-family:'Aktiv Grotesk';font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;transition:.4s}
+.fb-cta a:hover{background:#fff;color:var(--sand-deep);border-color:#fff}
+.stars{color:#f4c96b;letter-spacing:.15em;font-size:1.2rem;margin-bottom:20px}
+
+/* ===== GALERIA ===== */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px;margin-top:60px}
+.gal .figure{overflow:hidden;cursor:pointer;position:relative;border-radius:2px}
+.gal .figure img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.16,1,.3,1)}
+.gal .figure:hover img{transform:scale(1.06)}
+.gal .figure::after{content:"+";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;font-family:'Aktiv Grotesk';font-weight:400;background:rgba(26,23,20,.0);opacity:0;transition:.4s;pointer-events:none}
+.gal .figure:hover::after{background:rgba(26,23,20,.32);opacity:1}
+/* crop anchors: mantêm os rostos centrais visíveis */
+.gal .g1 img{object-position:48% 40%}
+.gal .g2 img{object-position:50% 30%}
+.gal .g3 img{object-position:50% 44%}
+.gal .g4 img{object-position:62% 24%}
+.gal .g5 img{object-position:50% 50%}
+.gal .g6 img{object-position:52% 38%}
+.gal .g7 img{object-position:45% 34%}
+.gal .g8 img{object-position:50% 0%}
+.gal .g9 img{object-position:50% 42%}
+.gal .g10 img{object-position:56% 30%}
+.gal .g11 img{object-position:62% 44%}
+.gal .g12 img{object-position:64% 40%}
+.gal .g13 img{object-position:46% 24%}
+.gal .g14 img{object-position:50% 36%}
+.gal .g15 img{object-position:52% 28%}
+.gal .g16 img{object-position:48% 40%}
+.gal .g17 img{object-position:55% 32%}
+.gal .g18 img{object-position:50% 38%}
+.gal .g19 img{object-position:48% 22%}
+.gal .g20 img{object-position:50% 0%}
+@media(min-width:761px){
+  .gal .g1{grid-column:1/3;grid-row:1/3}
+  .gal .g2{grid-column:3;grid-row:1/3}
+  .gal .g3{grid-column:4;grid-row:1}
+  .gal .g4{grid-column:4;grid-row:2}
+  .gal .g5{grid-column:1/3;grid-row:3}
+  .gal .g6{grid-column:3;grid-row:3/5}
+  .gal .g7{grid-column:4;grid-row:3}
+  .gal .g8{grid-column:1/3;grid-row:4}
+  .gal .g9{grid-column:4;grid-row:4}
+  .gal .g10{grid-column:1;grid-row:5}
+  .gal .g11{grid-column:2;grid-row:5}
+  .gal .g12{grid-column:3;grid-row:5}
+  .gal .g13{grid-column:4;grid-row:5}
+  .gal .g14{grid-column:1/3;grid-row:6/8}
+  .gal .g15{grid-column:3;grid-row:6}
+  .gal .g16{grid-column:4;grid-row:6}
+  .gal .g17{grid-column:3;grid-row:7}
+  .gal .g18{grid-column:4;grid-row:7}
+  .gal .g19{grid-column:1/3;grid-row:8}
+  .gal .g20{grid-column:3/5;grid-row:8}
+}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(20,18,15,.94);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:2px}
+.lb-close,.lb-nav{position:absolute;background:none;border:0;color:#fff;cursor:pointer;font-size:2rem;opacity:.8;transition:.3s}
+.lb-close{top:24px;right:32px}
+.lb-nav{top:50%;transform:translateY(-50%);font-size:3rem;padding:20px}
+.lb-nav.prev{left:10px}.lb-nav.next{right:10px}
+.lb-close:hover,.lb-nav:hover{opacity:1}
+
+/* ===== FORM ===== */
+.form-sec{background:var(--bg-soft)}
+.form-card{max-width:780px;margin-inline:auto}
+form{margin-top:46px;display:grid;gap:22px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-family:'Aktiv Grotesk',sans-serif;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.field input,.field textarea,.field select{
+  border:0;border-bottom:1px solid var(--line);background:transparent;
+  padding:11px 2px;font-family:'Aktiv Grotesk';font-size:1rem;color:var(--ink);font-weight:400;
+  transition:border-color .4s;
+  width: 100%;
+}
+.field select { appearance: auto; }
+.field select option { background: var(--bg); color: var(--ink); }
+.field textarea{resize:vertical;min-height:90px}
+.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--sand)}
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-soft); opacity: 0.5; }
+form .btn{justify-self:center;margin-top:14px;cursor:pointer}
+form .btn:disabled{opacity:.7;cursor:not-allowed}
+.btn-loading{display:inline-flex;align-items:center;gap:8px}
+.spinner{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-error{color:#ef4444;font-size:.875rem;margin-top:4px;display:none;text-align:center}
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+.form-success{display:none;text-align:center;padding:40px;color:var(--sand-deep)}
+.form-success.show{display:block;animation:fade .6s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.form-success .serif{font-size:1.6rem;margin-bottom:10px;color:var(--ink)}
+
+/* ===== LOCALIZAÇÃO ===== */
+.loc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,70px);align-items:center;margin-top:52px}
+.loc-info .addr{font-family:'Aktiv Grotesk',sans-serif;font-weight:400;font-size:1.1rem;color:var(--title);line-height:1.7;margin-bottom:24px}
+.loc-map{border-radius:3px;overflow:hidden;box-shadow:0 24px 60px rgba(2,61,45,.18);min-height:360px}
+.loc-map iframe{width:100%;height:100%;min-height:360px;border:0;display:block;pointer-events:none}
+@media(max-width:760px){.loc-grid{grid-template-columns:1fr}}
+
+/* ===== FOOTER ===== */
+footer{background:var(--sea);color:#e7e2d9;padding-block:80px 36px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:50px}
+.foot-logo{width:150px;height:auto;display:block;margin-bottom:22px}
+footer p{font-family:'Aktiv Grotesk';font-size:.92rem;font-weight:400;opacity:.82;max-width:40ch}
+.foot-col h4{font-family:'Aktiv Grotesk',sans-serif;font-size:1rem;letter-spacing:.1em;color:#fff;margin-bottom:18px}
+.foot-col a,.foot-col span{display:block;font-size:.9rem;opacity:.8;margin-bottom:10px;transition:.3s}
+.foot-col a:hover{opacity:1;color:var(--sand)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:56px;padding-top:24px;display:flex;justify-content:space-between;font-size:.78rem;opacity:.65;flex-wrap:wrap;gap:12px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .band{grid-template-columns:1fr;gap:36px}
+  .band.rev .band-media,.band .band-media{order:1}
+  .band.rev .band-text,.band .band-text{order:2}
+  .fgrid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:34px}
+}
+@media(max-width:760px){
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:40vw}
+  .gal .g1{grid-column:1/3}
+}
+
+/* ===== WHATSAPP WIDGET ===== */
+.wa-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45), 0 2px 8px rgba(0,0,0,.25);
+  transition: transform .2s, box-shadow .2s;
+}
+.wa-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.55), 0 4px 12px rgba(0,0,0,.28); }
+.wa-fab:active { transform: scale(.96); }
+.wa-fab::before {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  background: rgba(37,211,102,.3); animation: wa-pulse 2.4s ease-out infinite;
+}
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: .6; }
+  70% { transform: scale(1.45); opacity: 0; }
+  100% { opacity: 0; }
+}
+.wa-fab__badge {
+  position: absolute; top: 2px; right: 2px; background: #FF3B30; color: #fff;
+  font-size: .65rem; font-weight: 700; font-family: sans-serif;
+  width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
+}
+.wa-popup {
+  position: fixed; bottom: 100px; right: 28px; z-index: 999;
+  width: 360px; max-width: calc(100vw - 32px); background: #ECE5DD; border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12); overflow: hidden;
+  transform: translateY(16px) scale(.96); opacity: 0;
+  transition: transform .28s cubic-bezier(.16,1,.3,1), opacity .25s ease; pointer-events: none;
+}
+.wa-popup--open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.wa-header { background: #075E54; padding: 12px 16px; display: flex; align-items: center; gap: 12px; color: #fff; }
+.wa-header__avatar { position: relative; flex-shrink: 0; }
+.wa-header__status { position: absolute; bottom: 1px; right: 1px; width: 10px; height: 10px; background: #25D366; border-radius: 50%; border: 2px solid #075E54; }
+.wa-header__info { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.wa-header__info strong { font-size: .95rem; font-family: sans-serif; font-weight: 600; }
+.wa-header__info span { font-size: .72rem; opacity: .85; font-family: sans-serif; }
+.wa-header__close { background: none; border: none; color: rgba(255,255,255,.8); cursor: pointer; padding: 4px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.wa-header__close:hover { background: rgba(255,255,255,.15); color: #fff; }
+.wa-body { padding: 16px 12px 12px; display: flex; flex-direction: column; gap: 10px; max-height: 420px; overflow-y: auto; }
+.wa-bubble { background: #FFFFFF; border-radius: 0 10px 10px 10px; padding: 10px 12px 6px; max-width: 88%; align-self: flex-start; box-shadow: 0 1px 2px rgba(0,0,0,.12); position: relative; }
+.wa-bubble::before { content: ''; position: absolute; top: 0; left: -7px; border: 7px solid transparent; border-top-color: #FFFFFF; border-left: 0; }
+.wa-bubble p { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: .875rem; color: #111B21; line-height: 1.5; margin: 0 0 4px; }
+.wa-bubble__time { display: block; text-align: right; font-size: .68rem; color: #667781; margin-top: 4px; }
+.wa-form-wrap { display: flex; flex-direction: column; gap: 10px; }
+.wa-step { background: #FFFFFF; border-radius: 10px; padding: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.12); display: flex; flex-direction: column; gap: 12px; }
+.wa-field { display: flex; flex-direction: column; gap: 4px; }
+.wa-field label { font-family: -apple-system, 'Segoe UI', sans-serif; font-size: .72rem; font-weight: 600; color: #128C7E; text-transform: uppercase; letter-spacing: .08em; }
+.wa-field input, .wa-field select { border: none; border-bottom: 1.5px solid #ccc; background: transparent; padding: 8px 2px; font-family: -apple-system, 'Segoe UI', sans-serif; font-size: .9rem; color: #111B21; width: 100%; appearance: auto; }
+.wa-field input:focus, .wa-field select:focus { outline: none; border-color: #128C7E; }
+.wa-error { font-size: .72rem; color: #e53935; display: none; font-family: sans-serif; }
+.wa-error.visible { display: block; }
+.wa-btn { background: #25D366; color: #fff; border: none; border-radius: 24px; padding: 10px 20px; font-family: -apple-system, 'Segoe UI', sans-serif; font-size: .875rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; align-self: flex-end; }
+.wa-btn:hover { background: #128C7E; }
+.wa-btn--back { background: none; color: #667781; padding: 10px 12px; font-size: .8rem; align-self: flex-start; }
+.wa-btn--submit { flex: 1; }
+.wa-step2-actions { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+.wa-btn--wa { background: #25D366; align-self: center; margin-top: 8px; padding: 11px 22px; }
+.wa-spinner { animation: wa-spin 1s linear infinite; }
+@keyframes wa-spin { to { transform: rotate(360deg); } }
+.wa-success { display: flex; flex-direction: column; align-items: flex-start; }
+.wa-footer { background: #f0f0f0; border-top: 1px solid #e0e0e0; padding: 10px 16px; font-family: -apple-system, 'Segoe UI', sans-serif; font-size: .72rem; color: #667781; text-align: center; }
+@media (max-width: 480px) { .wa-fab { bottom: 20px; right: 16px; } .wa-popup { right: 12px; bottom: 90px; width: calc(100vw - 24px); } }
+</style>
+</head>
+<body>
+
+<!-- GTM Body noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- UTM Capture Script -->
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  const clickIdKeys = ['gclid', 'fbclid', 'sck', 'ttclid', 'msclkid'];
+  const trackingData = {};
+  utmKeys.forEach(key => { const value = params.get(key); if (value) trackingData[key] = value; });
+  clickIdKeys.forEach(key => { const value = params.get(key); if (value) trackingData[key] = value; });
+  if (document.referrer && !document.referrer.includes(window.location.hostname)) {
+    trackingData['referrer'] = document.referrer;
+  }
+  trackingData['landing_page'] = window.location.pathname;
+  trackingData['landing_url'] = window.location.href.split('?')[0];
+  if (!sessionStorage.getItem('dmove_first_visit')) {
+    sessionStorage.setItem('dmove_first_visit', new Date().toISOString());
+  }
+  const hasNewParams = utmKeys.some(k => trackingData[k]) || clickIdKeys.some(k => trackingData[k]);
+  if (hasNewParams) {
+    sessionStorage.setItem('dmove_tracking', JSON.stringify(trackingData));
+  }
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'page_meta',
+    page_path: window.location.pathname,
+    ...trackingData
+  });
+})();
+</script>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-bg" data-parallax="0.25"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-casamento.webp" alt="Celebração na Casa Rofer, Brooklin — São Paulo"></div>
+  <img class="hero-logo" src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer">
+  <div class="hero-inner">
+    <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
+    <div class="hero-divider reveal in d1"></div>
+    <h1 class="reveal in d2">Mais do que <span class="accent">um casamento</span>,<br>uma celebração impecável<br>em&nbsp;cada&nbsp;detalhe</h1>
+    <div class="hero-cta reveal in d3">
+      <a href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer." class="btn outline" target="_blank" rel="noopener">Solicite orçamento</a>
+    </div>
+  </div>
+  <div class="scroll-ind"><span>Explore</span><span class="line"></span></div>
+</header>
+
+<!-- ===== AUTORIDADE ===== -->
+<section class="authority">
+  <div class="wrap">
+    <div class="stat reveal"><b>2 espaços exclusivos</b></div>
+    <div class="sep"></div>
+    <div class="stat reveal d1"><b>Até 400 convidados</b></div>
+    <div class="sep"></div>
+    <div class="stat reveal d2"><b>Localização estratégica</b></div>
+  </div>
+</section>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre" class="pad">
+  <div class="wrap center">
+    <p class="eyebrow reveal">A Casa Rofer</p>
+    <h2 class="section-title center reveal d1" style="max-width:33ch">Um espaço onde arquitetura,<br>hospitalidade e excelência<br><span class="accent">se encontram</span></h2>
+    <div class="video-frame reveal d1">
+      <div class="video-wrap" id="video-sobre">
+        <video class="video-wrap__player" poster="https://media.dmove.com.br/clients/casa-rofer/photos/hero-casamento.webp" preload="none" playsinline controls data-src="https://media.dmove.com.br/clients/casa-rofer/videos/video-sobre-casamentos.webm" aria-label="Casa Rofer — Espaço de eventos e casamentos">
+          <source data-src="https://media.dmove.com.br/clients/casa-rofer/videos/video-sobre-casamentos.webm" type="video/webm">
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+        <button class="video-wrap__play" type="button" aria-label="Reproduzir Casa Rofer — Espaço de eventos e casamentos">
+          <svg viewBox="0 0 80 80" width="72" height="72" aria-hidden="true">
+            <circle cx="40" cy="40" r="40" fill="rgba(0,0,0,.55)"></circle>
+            <polygon points="32,22 62,40 32,58" fill="#fff"></polygon>
+          </svg>
+        </button>
+      </div>
+      <script>
+        (function() {
+          const wrap = document.getElementById('video-sobre');
+          if (!wrap) return;
+          const video = wrap.querySelector('video');
+          const btn = wrap.querySelector('.video-wrap__play');
+          const source = video.querySelector('source');
+          const load = () => {
+            if (!video.src) {
+              video.src = video.dataset.src;
+              source.src = source.dataset.src;
+              video.load();
+            }
+          };
+          const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) { load(); observer.disconnect(); }
+          }, { rootMargin: '200px' });
+          observer.observe(wrap);
+          btn.addEventListener('click', () => {
+            load();
+            video.play();
+            btn.style.display = 'none';
+          });
+          video.addEventListener('pause', () => { btn.style.display = ''; });
+          video.addEventListener('ended', () => { btn.style.display = ''; });
+        })();
+      </script>
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Casa Rofer — Espaço de eventos e casamentos",
+        "description": "Conheça a Casa Rofer, um espaço sofisticado para casamentos e eventos no Brooklin, São Paulo.",
+        "contentUrl": "https://media.dmove.com.br/clients/casa-rofer/videos/video-sobre-casamentos.webm",
+        "thumbnailUrl": "https://media.dmove.com.br/clients/casa-rofer/photos/hero-casamento.webp",
+        "uploadDate": "2026-01-01",
+        "duration": "PT2M"
+      }
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESPAÇOS ===== -->
+<section id="espacos" class="pad" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="center" style="max-width:1100px;margin-inline:auto">
+      <p class="eyebrow reveal">Os Espaços</p>
+      <h2 class="section-title center reveal d1" style="max-width:40ch"><span class="accent">Dois cenários exclusivos</span><br>para celebrar grandes histórias<br>com elegância</h2>
+    </div>
+
+    <div class="spaces-stack" style="margin-top:70px">
+      <div class="space-card reveal">
+        <div class="space-figure"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/salao_michelangelo.webp" alt="Salão Michelângelo — Casa Rofer"></div>
+        <div class="space-body">
+          <p class="space-tag">Salão 01</p>
+          <h3>Salão <span class="accent">Michelângelo</span></h3>
+          <p class="lead">Um ambiente sofisticado que combina arquitetura contemporânea, conforto e versatilidade para receber celebrações memoráveis com personalidade e exclusividade.</p>
+          <a class="btn ghost" href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Sal%C3%A3o%20Michel%C3%A2ngelo%20da%20Casa%20Rofer." target="_blank" rel="noopener">Agende uma visita</a>
+        </div>
+      </div>
+      <div class="space-card rev reveal d1">
+        <div class="space-figure"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/salao_da_vinci.webp" alt="Salão Leonardo da Vinci — Casa Rofer"></div>
+        <div class="space-body">
+          <p class="space-tag">Salão 02</p>
+          <h3>Salão <span class="accent">Leonardo da Vinci</span></h3>
+          <p class="lead">Cercado por luz natural e integrado a um jardim sofisticado, esse espaço proporciona uma atmosfera única, elegante e acolhedora para cerimônias e recepções inesquecíveis.</p>
+          <a class="btn ghost" href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20Sal%C3%A3o%20Leonardo%20da%20Vinci%20da%20Casa%20Rofer." target="_blank" rel="noopener">Agende uma visita</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIÊNCIA ===== -->
+<section id="experiencia" class="pad">
+  <div class="wrap">
+    <div class="center" style="max-width:820px;margin-inline:auto">
+      <p class="eyebrow reveal">A Experiência</p>
+      <h2 class="section-title center reveal d1" style="max-width:33ch">Uma solução completa<br>apenas para que vocês vivam<br><span class="accent">o melhor do grande dia</span></h2>
+      <p class="lead center reveal d2" style="margin-top:24px">Espaços, gastronomia, decoração, tecnologia e atendimento especializado integrados em um único lugar para que cada etapa da celebração aconteça com leveza, sofisticação e total tranquilidade.</p>
+    </div>
+
+    <div class="band" style="margin-top:70px">
+      <div class="band-media reveal"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/atendimento-consultivo.webp" alt="Atendimento consultivo na Casa Rofer"></div>
+      <div class="band-text">
+        <p class="space-tag reveal">Atendimento consultivo</p>
+        <h3 class="reveal d1" style="font-size:clamp(1.4rem,2.6vw,2rem);color:var(--title);margin-bottom:16px">Um planejamento feito para <span class="accent">vocês</span></h3>
+        <p class="lead reveal d2">Cada casamento recebe um planejamento personalizado, conduzido por uma equipe especializada que acompanha cada decisão com atenção, organização e cuidado, proporcionando segurança e tranquilidade durante toda a jornada.</p>
+      </div>
+    </div>
+
+    <div class="band rev" style="margin-top:clamp(48px,7vw,90px)">
+      <div class="band-media reveal"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/cerimonia-recepcao.webp" alt="Cerimônia e recepção no mesmo endereço"></div>
+      <div class="band-text">
+        <p class="space-tag reveal">Cerimônia e recepção no mesmo endereço</p>
+        <h3 class="reveal d1" style="font-size:clamp(1.4rem,2.6vw,2rem);color:var(--title);margin-bottom:16px">Do <span class="accent">primeiro voto</span> ao último brinde</h3>
+        <p class="lead reveal d2">Da cerimônia ao último brinde, cada momento acontece de forma fluida em um único espaço. Mais conforto para os convidados, menos deslocamentos e uma experiência elegante do início ao fim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIAIS ===== -->
+<section id="diferenciais" class="pad" style="background:var(--bg-soft)">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Diferenciais</p>
+    <h2 class="section-title center reveal d1" style="max-width:30ch">Excelência em cada detalhe da<br><span class="accent">sua celebração</span></h2>
+  </div>
+  <div class="wrap">
+    <div class="dif-grid reveal">
+      <div class="dif-card"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/solucao-360.webp" alt="Solução 360º"><span>Solução 360º</span></div>
+      <div class="dif-card"><img class="dc-gastronomia" src="https://media.dmove.com.br/clients/casa-rofer/photos/gastronomia.webp" alt="Gastronomia"><span>Gastronomia</span></div>
+      <div class="dif-card"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/decoracao.webp" alt="Decoração"><span>Decoração</span></div>
+      <div class="dif-card"><img class="dc-tecnologia" src="https://media.dmove.com.br/clients/casa-rofer/photos/tecnologia.webp" alt="Tecnologia"><span>Tecnologia</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GASTRONOMIA ===== -->
+<section id="gastronomia" class="pad">
+  <div class="wrap">
+    <div class="center" style="max-width:900px;margin-inline:auto">
+      <p class="eyebrow reveal">Buffet Rofer</p>
+      <h2 class="section-title center reveal d1" style="max-width:40ch;margin-bottom:26px"><span class="accent">Alta gastronomia</span><br>que transforma cada celebração<br>em uma experiência memorável.</h2>
+      <p class="lead center reveal d2">À frente da Gastronomia Rofer estão Ronaldo Akamine, chef executivo e sócio fundador, e João Akamine, chef e gestor, que unem mais de 30 anos de tradição, técnica e inovação para criar menus exclusivos, preparados para surpreender em cada detalhe.</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:52px">
+    <div class="carousel reveal">
+      <button class="car-btn prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="car-track land">
+        <div class="slide"><img class="gp-70" src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia01.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+        <div class="slide"><img class="gp-70" src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia02.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+        <div class="slide"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia03.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+        <div class="slide"><img class="gp-40" src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia04.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+        <div class="slide"><img class="gp-55" src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia05.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+        <div class="slide"><img class="gp-55" src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel_gastronomia06.webp" alt="Gastronomia Rofer" loading="lazy"></div>
+      </div>
+      <button class="car-btn next" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPOIMENTOS ===== -->
+<section class="feedbacks pad">
+  <div class="fb-bg" data-parallax="0.18"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento03.webp" alt="Celebração na Casa Rofer"></div>
+  <div class="wrap fb-inner">
+    <p class="eyebrow center reveal" style="color:var(--sand)">Depoimentos</p>
+    <h2 class="section-title center reveal d1" style="color:#fff;margin-inline:auto;max-width:30ch">Quem celebra na Casa&nbsp;Rofer<br><span class="accent">leva boas lembranças</span><br>para toda a vida</h2>
+    <div class="stars reveal d1" style="margin-top:26px">★★★★★</div>
+    <p class="fb-text reveal d2">Histórias reais de quem viveu momentos inesquecíveis conosco.<br>Leia as avaliações dos nossos clientes diretamente no Google.</p>
+    <div class="fb-cta reveal d2">
+      <a href="https://www.google.com/search?q=casa+rofer#lrd=0x94ce51a904bb89f3:0x9f1f75bc754a0175,1" target="_blank" rel="noopener">★ Ver avaliações no Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIA ===== -->
+<section id="galeria" class="pad">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Galeria</p>
+    <h2 class="section-title center reveal d1"><span class="accent">Inspire-se</span> em celebrações<br>que unem sofisticação,<br>beleza e emoção</h2>
+  </div>
+  <div class="wrap">
+    <div class="gal reveal" id="gal">
+      <div class="figure g1"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento01.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g2"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento02.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g3"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento03.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g4"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento04.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g5"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento05.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g6"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento06.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g7"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento07.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g8"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento08.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g9"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento09.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g10"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento10.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g11"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento11.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g12"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento12.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g13"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento13.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g14"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento14.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g15"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento15.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g16"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento16.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g17"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento17.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g18"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento18.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g19"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento19.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+      <div class="figure g20"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_casamento20.webp" alt="Celebração na Casa Rofer" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato" class="form-sec pad">
+  <div class="wrap form-card">
+    <div class="center">
+      <p class="eyebrow reveal">Contato</p>
+      <h2 class="section-title center reveal d1" style="max-width:40ch">Vamos criar uma<br>celebração única para <br><span class="accent">a sua história</span>?</h2>
+      <p class="lead center reveal d2" style="margin-top:20px">Preencha o formulário e receba um atendimento personalizado para conhecer nosso espaço, esclarecer dúvidas e solicitar um orçamento.</p>
+    </div>
+    <form id="leadForm" class="reveal" novalidate>
+      <div class="hp-field" aria-hidden="true">
+        <label for="leadForm_website">Deixe este campo em branco</label>
+        <input type="text" id="leadForm_website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="fgrid">
+        <div class="field"><label for="nome">Nome *</label><input id="nome" name="nome" type="text" required></div>
+        <div class="field"><label for="telefone">Telefone *</label><input id="telefone" name="telefone" type="text" required></div>
+      </div>
+      <div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" required></div>
+      <div class="fgrid">
+        <div class="field"><label for="data_evento">Data do evento</label><input id="data_evento" name="data_evento" type="text" placeholder="dd/mm/aaaa"></div>
+        <div class="field"><label for="convidados">Número de convidados</label><input id="convidados" name="convidados" type="number" min="1"></div>
+      </div>
+      <div class="field">
+        <label for="tipo_evento">Tipo de evento</label>
+        <select id="tipo_evento" name="tipo_evento">
+          <option value="" disabled selected>Selecione o tipo de evento</option>
+          <option value="Bodas">Bodas</option>
+          <option value="Casamentos">Casamentos</option>
+          <option value="Confraternizacao social">Confraternização social</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+      <button class="btn" type="submit" id="leadFormSubmitBtn">
+        <span class="btn-text">Solicitar Orçamento</span>
+        <span class="btn-loading" style="display:none;">
+          <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          Enviando...
+        </span>
+      </button>
+      <div class="form-error" id="formErrorMsg"></div>
+      <p class="form-footer" style="font-size:.75rem;color:var(--ink-soft);text-align:center;opacity:.6;margin-top:12px">Ao enviar, você concorda com nossa política de privacidade.</p>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <p class="serif">Recebemos <span class="accent">sua solicitação</span> ✦</p>
+      <p class="lead center">Obrigado pelo contato. Em breve nossa equipe retornará para começar a planejar a sua celebração na Casa Rofer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCALIZAÇÃO ===== -->
+<section id="localizacao" class="pad">
+  <div class="wrap">
+    <div class="center" style="max-width:760px;margin-inline:auto">
+      <p class="eyebrow reveal">Localização</p>
+      <h2 class="section-title center reveal d1"><span class="accent">Um endereço privilegiado</span> para celebrar momentos extraordinários</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info reveal">
+        <p class="addr">R. Baltazar Fernandes, 54<br>Brooklin, São Paulo — SP<br>04583-020</p>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=R.+Baltazar+Fernandes,+54+-+Brooklin,+São+Paulo+-+SP,+04583-020" target="_blank" rel="noopener">Ver no mapa</a>
+      </div>
+      <div class="loc-map reveal d1">
+        <iframe title="Mapa Casa Rofer" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=R.%20Baltazar%20Fernandes,%2054%20-%20Brooklin,%20S%C3%A3o%20Paulo%20-%20SP,%2004583-020&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="foot-logo" src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer">
+        <p>A arte de celebrar com excelência. Espaço de eventos e casamentos no coração do Brooklin, São Paulo.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Localização</h4>
+        <span>R. Baltazar Fernandes, 54</span>
+        <span>Brooklin — São Paulo, SP</span>
+        <span>04583-020</span>
+        <a href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20%C3%A0%20Casa%20Rofer." target="_blank" rel="noopener">Agende uma visita</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Casa Rofer · Brooklin, São Paulo. Todos os direitos reservados.</span>
+      <span style="display:inline-flex;align-items:center;gap:8px">Desenvolvido por <a href="https://www.dmove.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/Logotipo-dmove.webp" alt="Dmove" style="height:30px;width:auto;opacity:0.95" /></a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="Fechar">×</button>
+  <button class="lb-nav prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav next" id="lbNext" aria-label="Próximo">›</button>
+</div>
+
+<script>
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+/* parallax */
+const px=[...document.querySelectorAll('[data-parallax]')];
+let ticking=false;
+function parallax(){
+  px.forEach(el=>{
+    const r=el.getBoundingClientRect();
+    const speed=parseFloat(el.dataset.parallax);
+    const img=el.querySelector('img');
+    if(img){const off=(r.top+r.height/2-window.innerHeight/2)*-speed;img.style.transform=`translateY(${off}px) scale(1.12)`;}
+  });
+  ticking=false;
+}
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(parallax);ticking=true}},{passive:true});
+parallax();
+
+/* carousels */
+document.querySelectorAll('.carousel').forEach(c=>{
+  const track=c.querySelector('.car-track');
+  const step=()=>Math.min(track.clientWidth*.8, track.querySelector('.slide').offsetWidth+16);
+  c.querySelector('.prev').addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
+  c.querySelector('.next').addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
+});
+
+/* lightbox — galeria + gastronomia + espaços */
+const galImgs=[...document.querySelectorAll('#galeria img, #gastronomia .slide img, #espacos .space-figure img')];
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+let lbI=0;
+function openLb(i){lbI=(i+galImgs.length)%galImgs.length;lbImg.src=galImgs[lbI].src;lbImg.alt=galImgs[lbI].alt||'';lb.classList.add('open')}
+galImgs.forEach((img,i)=>{
+  img.style.cursor='zoom-in';
+  img.addEventListener('click',()=>openLb(i));
+  if (img.parentElement) {
+    img.parentElement.style.cursor='zoom-in';
+    img.parentElement.addEventListener('click',()=>openLb(i));
+  }
+});
+document.getElementById('lbClose').addEventListener('click',()=>lb.classList.remove('open'));
+document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();openLb(lbI-1)});
+document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();openLb(lbI+1)});
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')openLb(lbI+1);if(e.key==='ArrowLeft')openLb(lbI-1)});
+
+/* mascara de telefone */
+const telInput = document.getElementById('telefone');
+if (telInput) {
+  telInput.addEventListener('input', () => {
+    let v = telInput.value.replace(/\D/g, '');
+    if (v.length > 11) v = v.slice(0, 11);
+    if (v.length > 7)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if (v.length > 0) v = `(${v}`;
+    telInput.value = v;
+  });
+}
+
+/* form submission com webhook & tracking */
+document.getElementById('leadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const hp = f.querySelector('[name="website"]');
+  if (hp && hp.value) return;
+
+  const nome = document.getElementById('nome');
+  const tel = document.getElementById('telefone');
+  const email = document.getElementById('email');
+  const data = document.getElementById('data_evento');
+  const convidados = document.getElementById('convidados');
+  const tipo = document.getElementById('tipo_evento');
+  const btn = document.getElementById('leadFormSubmitBtn');
+  const btnText = btn?.querySelector('.btn-text');
+  const btnLoading = btn?.querySelector('.btn-loading');
+  const msgEl = document.getElementById('formErrorMsg');
+
+  let isValid = true;
+  [nome, tel, email].forEach(field => {
+    if (!field || !field.value.trim()) {
+      isValid = false;
+      field.style.borderColor = '#ef4444';
+      field.style.outline = '2px solid #ef4444';
+      const clear = () => {
+        field.style.removeProperty('border-color');
+        field.style.removeProperty('outline');
+        field.removeEventListener('input', clear);
+      };
+      field.addEventListener('input', clear);
+    }
+  });
+
+  if (email && email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
+    isValid = false;
+    email.style.borderColor = '#ef4444';
+    email.style.outline = '2px solid #ef4444';
+  }
+
+  if (tel && tel.value.trim() && tel.value.replace(/\D/g, '').length < 10) {
+    isValid = false;
+    tel.style.borderColor = '#ef4444';
+    tel.style.outline = '2px solid #ef4444';
+  }
+
+  if (!isValid) return;
+
+  if (btn) btn.disabled = true;
+  if (btnText && btnLoading) { btnText.style.display = 'none'; btnLoading.style.display = 'inline-flex'; }
+  if (msgEl) msgEl.style.display = 'none';
+
+  const trackingRaw = sessionStorage.getItem('dmove_tracking');
+  const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
+  const trackingParamKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id', 'gclid', 'fbclid', 'sck', 'ttclid', 'msclkid'];
+  const qs = new URLSearchParams();
+  trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
+  const fonte = qs.toString() ? `casa-rofer?${qs.toString()}` : 'casa-rofer';
+
+  const nowStr = new Date();
+  const payload = {
+    Nome: nome.value.trim(),
+    WhatsApp: tel.value.trim(),
+    'E-mail': email.value.trim(),
+    'Data do evento': data ? data.value.trim() : '',
+    Convidados: convidados ? convidados.value : '',
+    'Tipo de evento': tipo ? tipo.value : '',
+    Fonte: fonte,
+    Data: nowStr.toLocaleDateString('pt-BR'),
+    'Horário': nowStr.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+    'URL da página': window.location.href,
+    'Agente de usuário': navigator.userAgent,
+    'Desenvolvido por': 'Dmove',
+    form_id: 'lead-form',
+    form_name: 'lead-form'
+  };
+
+  try {
+    await fetch('https://server3n8n.dmove.com.br/webhook/eventos-casa-rofer', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (_) {}
+
+  f.style.display = 'none';
+  const success = document.getElementById('formSuccess');
+  if (success) {
+    success.classList.add('show');
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+</script>
+
+<!-- ===== WHATSAPP FLOATING WIDGET ===== -->
+<div id="wa-widget" aria-label="Fale pelo WhatsApp">
+  <button id="wa-toggle" class="wa-fab" aria-label="Abrir chat WhatsApp" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.428a.5.5 0 0 0 .614.614l5.576-1.475A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.49-5.178-1.348l-.372-.214-3.862 1.022 1.022-3.732-.228-.384A9.945 9.945 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+    <span class="wa-fab__badge" id="wa-badge">1</span>
+  </button>
+
+  <div id="wa-popup" class="wa-popup" role="dialog" aria-modal="true" aria-label="Chat WhatsApp Casa Rofer" hidden>
+    <div class="wa-header">
+      <div class="wa-header__avatar">
+        <svg viewBox="0 0 40 40" fill="none" width="40" height="40">
+          <circle cx="20" cy="20" r="20" fill="#128C7E"/>
+          <text x="20" y="26" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">R</text>
+        </svg>
+        <span class="wa-header__status"></span>
+      </div>
+      <div class="wa-header__info">
+        <strong>Casa Rofer</strong>
+        <span>Normalmente responde em minutos</span>
+      </div>
+      <button class="wa-header__close" id="wa-close" aria-label="Fechar chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="wa-body">
+      <div class="wa-bubble wa-bubble--in">
+        <p>Olá! 👋 Bem-vindo(a) à <strong>Casa Rofer</strong>.</p>
+        <p>Preencha o formulário abaixo e nossa equipe entrará em contato para criar uma celebração inesquecível para você! 🥂</p>
+        <span class="wa-bubble__time" id="wa-time"></span>
+      </div>
+
+      <div class="wa-form-wrap">
+        <form class="wa-step" id="wa-step1" novalidate>
+          <div class="wa-field">
+            <label for="wa-nome">Nome</label>
+            <input id="wa-nome" name="nome" type="text" placeholder="Seu nome completo" required autocomplete="name" />
+            <span class="wa-error" id="wa-nome-err">Por favor, informe seu nome.</span>
+          </div>
+          <div class="wa-field">
+            <label for="wa-tel">Telefone / WhatsApp</label>
+            <input id="wa-tel" name="tel" type="tel" placeholder="(11) 99999-9999" required autocomplete="tel" />
+            <span class="wa-error" id="wa-tel-err">Por favor, informe seu telefone.</span>
+          </div>
+          <div class="wa-field">
+            <label for="wa-email">E-mail</label>
+            <input id="wa-email" name="email" type="email" placeholder="seu@email.com" required autocomplete="email" />
+            <span class="wa-error" id="wa-email-err">Por favor, informe um e-mail válido.</span>
+          </div>
+          <button type="submit" class="wa-btn">
+            Próximo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <form class="wa-step" id="wa-step2" novalidate hidden>
+          <div class="wa-step2-bubble wa-bubble wa-bubble--in">
+            <p>Ótimo! Só mais alguns detalhes 😊</p>
+          </div>
+          <div class="wa-field">
+            <label for="wa-data">Data do evento</label>
+            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" />
+          </div>
+          <div class="wa-field">
+            <label for="wa-convidados">Número de convidados</label>
+            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" />
+          </div>
+          <div class="wa-field">
+            <label for="wa-tipo">Tipo de evento</label>
+            <select id="wa-tipo" name="tipo_evento">
+              <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Bodas">Bodas</option>
+              <option value="Casamentos">Casamentos</option>
+              <option value="Confraternizacao social">Confraternização social</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div class="wa-step2-actions">
+            <button type="button" class="wa-btn wa-btn--back" id="wa-back">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+              Voltar
+            </button>
+            <button type="submit" class="wa-btn wa-btn--submit" id="wa-submit">
+              <span class="wa-btn__text">Solicitar orçamento</span>
+              <span class="wa-btn__spinner" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" class="wa-spinner"><circle cx="12" cy="12" r="9" stroke-dasharray="42" stroke-dashoffset="14"/></svg>
+              </span>
+            </button>
+          </div>
+        </form>
+
+        <div class="wa-success" id="wa-success" hidden>
+          <div class="wa-bubble wa-bubble--in">
+            <p>✅ <strong>Recebemos sua solicitação!</strong></p>
+            <p>Nossa equipe entrará em contato em breve pelo WhatsApp ou e-mail. Até logo! 🎉</p>
+          </div>
+          <a class="wa-btn wa-btn--wa" href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.428a.5.5 0 0 0 .614.614l5.576-1.475A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.49-5.178-1.348l-.372-.214-3.862 1.022 1.022-3.732-.228-.384A9.945 9.945 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wa-footer">
+      <span>Casa Rofer · Brooklin, São Paulo</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const toggle   = document.getElementById('wa-toggle');
+  const popup    = document.getElementById('wa-popup');
+  const closeBtn = document.getElementById('wa-close');
+  const badge    = document.getElementById('wa-badge');
+  const step1    = document.getElementById('wa-step1');
+  const step2    = document.getElementById('wa-step2');
+  const backBtn  = document.getElementById('wa-back');
+  const success  = document.getElementById('wa-success');
+  const submitBtn= document.getElementById('wa-submit');
+
+  const now = new Date();
+  const t = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  const timeEl = document.getElementById('wa-time');
+  if(timeEl) timeEl.textContent = t;
+
+  let step1Data = {};
+
+  function openPopup() {
+    popup.hidden = false;
+    popup.classList.add('wa-popup--open');
+    toggle.setAttribute('aria-expanded', 'true');
+    if(badge) badge.style.display = 'none';
+    setTimeout(() => document.getElementById('wa-nome')?.focus(), 300);
+  }
+
+  function closePopup() {
+    popup.classList.remove('wa-popup--open');
+    toggle.setAttribute('aria-expanded', 'false');
+    setTimeout(() => { popup.hidden = true; }, 280);
+  }
+
+  if(toggle) toggle.addEventListener('click', () => { popup.hidden ? openPopup() : closePopup(); });
+  if(closeBtn) closeBtn.addEventListener('click', closePopup);
+
+  document.addEventListener('click', (e) => {
+    if (!popup.hidden && !popup.contains(e.target) && e.target !== toggle && !toggle?.contains(e.target)) {
+      closePopup();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !popup.hidden) closePopup();
+  });
+
+  if(step1) step1.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nome  = document.getElementById('wa-nome');
+    const tel   = document.getElementById('wa-tel');
+    const email = document.getElementById('wa-email');
+    let ok = true;
+
+    if (!nome.value.trim()) {
+      document.getElementById('wa-nome-err')?.classList.add('visible');
+      nome.focus(); ok = false;
+    } else {
+      document.getElementById('wa-nome-err')?.classList.remove('visible');
+    }
+
+    if (!tel.value.trim()) {
+      document.getElementById('wa-tel-err')?.classList.add('visible');
+      if (ok) { tel.focus(); ok = false; }
+    } else {
+      document.getElementById('wa-tel-err')?.classList.remove('visible');
+    }
+
+    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      document.getElementById('wa-email-err')?.classList.add('visible');
+      if (ok) { email.focus(); ok = false; }
+    } else {
+      document.getElementById('wa-email-err')?.classList.remove('visible');
+    }
+
+    if (!ok) return;
+
+    step1Data = { nome: nome.value.trim(), tel: tel.value.trim(), email: email.value.trim() };
+    step1.hidden = true;
+    step2.hidden = false;
+    document.getElementById('wa-tipo')?.focus();
+  });
+
+  if(backBtn) backBtn.addEventListener('click', () => {
+    step2.hidden = true;
+    step1.hidden = false;
+  });
+
+  if(step2) step2.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const tipo      = document.getElementById('wa-tipo');
+    const data      = document.getElementById('wa-data');
+    const convidados= document.getElementById('wa-convidados');
+
+    if(submitBtn) {
+      submitBtn.disabled = true;
+      const txt = submitBtn.querySelector('.wa-btn__text');
+      const sp  = submitBtn.querySelector('.wa-btn__spinner');
+      if(txt) txt.hidden = true;
+      if(sp) sp.hidden = false;
+    }
+
+    const trackingRaw = sessionStorage.getItem('dmove_tracking');
+    const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
+    const trackingParamKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id', 'gclid', 'fbclid', 'sck', 'ttclid', 'msclkid'];
+    const qs = new URLSearchParams();
+    trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
+    const fonte = qs.toString() ? `WhatsApp casa-rofer?${qs.toString()}` : 'WhatsApp casa-rofer';
+
+    const nowStr = new Date();
+    const payload = {
+      Nome: step1Data.nome || '',
+      WhatsApp: step1Data.tel || '',
+      'E-mail': step1Data.email || '',
+      'Data do evento': data?.value?.trim() || '',
+      Convidados: convidados?.value || '',
+      'Tipo de evento': tipo?.value || '',
+      Fonte: fonte,
+      Data: nowStr.toLocaleDateString('pt-BR'),
+      'Horário': nowStr.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      'URL da página': window.location.href,
+      'Agente de usuário': navigator.userAgent,
+      'Desenvolvido por': 'Dmove',
+      form_id: 'form_whatsapp',
+      form_name: 'form_whatsapp',
+    };
+
+    try {
+      await fetch('https://server3n8n.dmove.com.br/webhook/eventos-casa-rofer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+    } catch (_) {}
+
+    step2.hidden = true;
+    if(success) success.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

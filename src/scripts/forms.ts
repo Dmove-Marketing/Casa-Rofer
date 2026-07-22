@@ -23,7 +23,14 @@ export function initForms() {
     const formId  = form.dataset.formId!;
     const project = form.dataset.project || window.location.hostname;
 
-    form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach(applyPhoneMask);
+    const isPhoneField = (el: HTMLInputElement) => {
+      const n = (el.name || '').toLowerCase();
+      return n === 'telefone' || n === 'whatsapp' || el.type === 'tel';
+    };
+
+    form.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
+      if (isPhoneField(input)) applyPhoneMask(input);
+    });
 
     const submitUrl   = form.dataset.submitUrl;
     const redirectUrl = form.dataset.redirect;
@@ -73,6 +80,42 @@ export function initForms() {
         }
       });
 
+      // Validação de formato: email
+      form.querySelectorAll<HTMLInputElement>('input[type="email"]').forEach((field) => {
+        if (!field.value) return; // campo vazio já capturado pelo required acima
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value);
+        if (!ok) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
+      // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
+      form.querySelectorAll<HTMLInputElement>('input').forEach((field) => {
+        if (!isPhoneField(field) || !field.value) return;
+        const digits = field.value.replace(/\D/g, '');
+        if (digits.length < 10) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
       if (!isValid) {
         firstInvalid!.scrollIntoView({ behavior: 'smooth', block: 'center' });
         (firstInvalid as HTMLElement).focus();
@@ -111,12 +154,30 @@ export function initForms() {
       const dateStr = now.toLocaleDateString('pt-BR');
       const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
+      // Mapeamento normalizado para o padrão exato de chaves do n8n
+      const keyMap: Record<string, string> = {
+        nome: 'Nome',
+        email: 'E-mail',
+        'e-mail': 'E-mail',
+        telefone: 'WhatsApp',
+        whatsapp: 'WhatsApp',
+        data: 'Data do evento',
+        data_evento: 'Data do evento',
+        'data do evento': 'Data do evento',
+        tipo_evento: 'Tipo de evento',
+        'tipo de evento': 'Tipo de evento',
+        convidados: 'Convidados',
+        empresa: 'Empresa',
+        mensagem: 'Mensagem',
+      };
+
       const capitalizedFields: Record<string, string> = {};
       let fonteBase = rawData['fonte'] || project;
       Object.entries(rawData).forEach(([key, val]) => {
         if (key === 'fonte') return;
-        const capKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalizedFields[capKey] = val;
+        const normalizedKey = key.trim().toLowerCase();
+        const mappedKey = keyMap[normalizedKey] || (key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '));
+        capitalizedFields[mappedKey] = val;
       });
 
       const trackingParamKeys = [
@@ -143,7 +204,6 @@ export function initForms() {
         'Horário': timeStr,
         'URL da página': window.location.href,
         'Agente de usuário': navigator.userAgent,
-        'IP remoto': '',
         'Desenvolvido por': 'Dmove',
         form_id: formId,
         form_name: formId,
