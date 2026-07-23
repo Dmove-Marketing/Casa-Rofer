@@ -79,7 +79,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
             <input id="wa-email" name="email" type="email" placeholder="seu@email.com" required autocomplete="email" />
             <span class="wa-error" id="wa-email-err">Por favor, informe um e-mail válido.</span>
           </div>
-          <button type="submit" class="wa-btn">
+          <button type="button" id="wa-next" class="wa-btn">
             Próximo
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
@@ -113,7 +113,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
               Voltar
             </button>
-            <button type="submit" class="wa-btn wa-btn--submit" id="wa-submit">
+            <button type="button" class="wa-btn wa-btn--submit" id="wa-submit">
               <span class="wa-btn__text">Enviar</span>
               <span class="wa-btn__spinner" hidden>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" class="wa-spinner"><circle cx="12" cy="12" r="9" stroke-dasharray="42" stroke-dashoffset="14"/></svg>
@@ -216,8 +216,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   });
 
   /* ── Validação step 1 ───────────────────────── */
-  step1.addEventListener('submit', (e) => {
-    e.preventDefault();
+  const handleStep1 = () => {
     const nome  = document.getElementById('wa-nome');
     const tel   = document.getElementById('wa-tel');
     const email = document.getElementById('wa-email');
@@ -250,6 +249,24 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     step1.hidden = true;
     step2.hidden = false;
     document.getElementById('wa-tipo')?.focus();
+  };
+
+  const waNextBtn = document.getElementById('wa-next');
+  if (waNextBtn) {
+    waNextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleStep1();
+    });
+  }
+
+  step1.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.target instanceof HTMLElement) {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag !== 'textarea' && tag !== 'button') {
+        e.preventDefault();
+        handleStep1();
+      }
+    }
   });
 
   /* ── Voltar ─────────────────────────────────── */
@@ -259,8 +276,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   });
 
   /* ── Envio step 2 ───────────────────────────── */
-  step2.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  const handleStep2 = async () => {
     const tipo      = document.getElementById('wa-tipo');
     const data      = document.getElementById('wa-data');
     const convidados= document.getElementById('wa-convidados');
@@ -318,6 +334,23 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 
     step2.hidden = true;
     success.hidden = false;
+  };
+
+  if (submitBtn) {
+    submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleStep2();
+    });
+  }
+
+  step2.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.target instanceof HTMLElement) {
+      const tag = e.target.tagName.toLowerCase();
+      if (tag !== 'textarea' && tag !== 'button') {
+        e.preventDefault();
+        handleStep2();
+      }
+    }
   });
 </script>
 

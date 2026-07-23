@@ -49,9 +49,9 @@ export function initForms() {
       }
     });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    const submitBtn = form.querySelector<HTMLButtonElement>('.form-submit, [type="button"], [type="submit"]');
 
+    const handleSubmit = async () => {
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
 
@@ -122,7 +122,6 @@ export function initForms() {
         return;
       }
 
-      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit, [type="submit"]');
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');
 
@@ -262,6 +261,23 @@ export function initForms() {
           } else if (submitBtn.dataset.originalText) {
             submitBtn.innerHTML = submitBtn.dataset.originalText;
           }
+        }
+      }
+    };
+
+    if (submitBtn) {
+      submitBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        handleSubmit();
+      });
+    }
+
+    form.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && e.target instanceof HTMLElement) {
+        const tag = e.target.tagName.toLowerCase();
+        if (tag !== 'textarea' && tag !== 'button') {
+          e.preventDefault();
+          handleSubmit();
         }
       }
     });

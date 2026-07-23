@@ -5,8 +5,8 @@
   "client": "Casa Rofer",
   "environment": "production",
   "tracking": {
-    "gtm_id": "GTM-XXXXXXX",
-    "enabled": false
+    "gtm_id": "GTM-M4DP3XP3",
+    "enabled": true
   },
   "whatsapp": {
     "phone": "5511941874576",
