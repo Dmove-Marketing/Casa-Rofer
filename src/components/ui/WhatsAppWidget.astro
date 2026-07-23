@@ -1,16 +1,18 @@
 ---
+import config from '../../../config.json';
+
 interface Props {
-  phone: string;
+  phone?: string;
   displayName?: string;
   submitUrl?: string;
   project?: string;
 }
 
 const {
-  phone,
-  displayName = 'Casa Rofer',
-  submitUrl = '',
-  project = '',
+  phone = config.whatsapp?.phone || '5511941874576',
+  displayName = config.whatsapp?.display_name || 'Casa Rofer',
+  submitUrl = config.forms['lead-form']?.webhooks[0] || '',
+  project = config.project_slug || 'casa-rofer',
 } = Astro.props;
 
 const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer.`;
@@ -102,9 +104,19 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
             <label for="wa-tipo">Tipo de evento</label>
             <select id="wa-tipo" name="tipo_evento">
               <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Aniversario">Aniversário</option>
+              <option value="Aniversario debutante">Aniversário debutante</option>
               <option value="Bodas">Bodas</option>
-              <option value="Casamentos">Casamentos</option>
+              <option value="Casamento">Casamento</option>
+              <option value="Confraternizacao corporativa">Confraternização corporativa</option>
               <option value="Confraternizacao social">Confraternização social</option>
+              <option value="Corporativo">Corporativo</option>
+              <option value="Feiras e Exposicoes">Feiras e Exposições</option>
+              <option value="Masterclass e Palestras">Masterclass e Palestras</option>
+              <option value="Mentorias e Treinamentos">Mentorias e Treinamentos</option>
+              <option value="Offsite corporativo">Offsite corporativo</option>
+              <option value="Reunioes de Networking">Reuniões de Networking</option>
+              <option value="Workshops, Conferencias e Seminarios">Workshops, Conferências e Seminários</option>
               <option value="Outros">Outros</option>
             </select>
           </div>
@@ -331,6 +343,9 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
         });
       }
     } catch (_) { /* falha silenciosa */ }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'form_submit', project: project, ...payload });
 
     step2.hidden = true;
     success.hidden = false;

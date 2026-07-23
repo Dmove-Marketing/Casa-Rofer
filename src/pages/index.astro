@@ -5,7 +5,6 @@ import config from '../../config.json';
 import Img from '../components/ui/Img.astro';
 import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
-import WhatsAppWidget from '../components/ui/WhatsAppWidget.astro';
 import '../styles/index.css';
 ---
 
@@ -292,13 +291,6 @@ import '../styles/index.css';
 
 
 </Base>
-
-<WhatsAppWidget
-  phone={config.whatsapp.phone}
-  displayName={config.whatsapp.display_name}
-  submitUrl={config.forms['lead-form'].webhooks[0]}
-  project={config.project_slug}
-/>
 
 <script>
   import '../scripts/index.js';

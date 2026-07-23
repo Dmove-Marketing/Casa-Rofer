@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
-import WhatsAppWidget from '../components/ui/WhatsAppWidget.astro';
 
 const bioFields = [
   { type: 'row', fields: [
@@ -66,12 +65,6 @@ const bioFields = [
       </footer>
     </div>
   </main>
-  <WhatsAppWidget
-    phone={config.whatsapp.phone}
-    displayName={config.whatsapp.display_name}
-    submitUrl={config.forms['lead-form'].webhooks[0]}
-    project={config.project_slug}
-  />
 </Base>
 
 <style>
