@@ -10,7 +10,7 @@ const bioFields = [
   ]},
   { name: 'email', type: 'email', label: 'E-mail', required: true },
   { type: 'row', fields: [
-    { name: 'data',       type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa' },
+    { name: 'data',       type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true },
     { name: 'convidados', type: 'number', label: 'Número de convidados' },
   ]},
   { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', options: [
@@ -50,6 +50,7 @@ const bioFields = [
         <LeadForm
           formId="bio-form"
           project={config.project_slug}
+          fonte="Landing page/bio"
           submitUrl={config.forms['lead-form'].webhooks[0]}
           redirectUrl={config.forms['lead-form'].redirect_on_success}
           submitText="Solicitar Orçamento"
@@ -206,5 +207,178 @@ const bioFields = [
 
   .bio-card :global(.form-success-icon svg) {
     stroke: #023d2d !important;
+  }
+
+  /* ===== FLATPICKR — tema Casa Rofer (verde + areia) ===== */
+  :global(.flatpickr-calendar) {
+    background: linear-gradient(180deg, rgba(6, 71, 53, 0.98), rgba(2, 61, 45, 0.98));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    padding: 18px;
+    width: auto !important;
+    margin-top: 12px !important;
+    animation: fp-fade-in .22s ease-out;
+  }
+
+  @keyframes fp-fade-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  :global(.flatpickr-calendar.arrowTop:before),
+  :global(.flatpickr-calendar.arrowTop:after),
+  :global(.flatpickr-calendar.arrowBottom:before),
+  :global(.flatpickr-calendar.arrowBottom:after) {
+    display: none;
+  }
+
+  :global(.flatpickr-months) {
+    display: flex;
+    align-items: center;
+    padding-bottom: 14px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.flatpickr-month) {
+    color: #ffffff;
+    fill: #ffffff;
+    height: auto;
+  }
+
+  :global(.flatpickr-current-month) {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+  }
+
+  :global(.flatpickr-current-month .cur-month) {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+  }
+
+  :global(.flatpickr-current-month input.cur-year) {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-style: normal;
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+
+  :global(.flatpickr-current-month .flatpickr-monthDropdown-months) {
+    background: transparent;
+    color: #ffffff;
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    appearance: none;
+    border: none;
+  }
+
+  :global(.flatpickr-current-month .flatpickr-monthDropdown-months option) {
+    background: #023d2d;
+    color: #ffffff;
+    font-style: normal;
+  }
+
+  :global(.numInputWrapper span.arrowUp),
+  :global(.numInputWrapper span.arrowDown) {
+    display: none;
+  }
+
+  :global(.flatpickr-prev-month),
+  :global(.flatpickr-next-month) {
+    fill: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.55);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .25s, fill .25s, color .25s;
+  }
+
+  :global(.flatpickr-prev-month svg),
+  :global(.flatpickr-next-month svg) {
+    width: 14px;
+    height: 14px;
+  }
+
+  :global(.flatpickr-prev-month:hover),
+  :global(.flatpickr-next-month:hover) {
+    background: rgba(255, 255, 255, 0.08);
+    fill: var(--sand);
+    color: var(--sand);
+  }
+
+  :global(.flatpickr-weekdays) {
+    background: transparent;
+    margin-bottom: 6px;
+  }
+
+  :global(span.flatpickr-weekday) {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+
+  :global(.flatpickr-day) {
+    color: rgba(255, 255, 255, 0.82);
+    border-radius: 50%;
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: 0.86rem;
+    height: 36px;
+    line-height: 36px;
+    max-width: 36px;
+    margin: 1px 0;
+  }
+
+  :global(.flatpickr-day.today) {
+    border-color: var(--sand);
+    color: #ffffff;
+  }
+
+  :global(.flatpickr-day.today:hover) {
+    border-color: var(--sand);
+  }
+
+  :global(.flatpickr-day:hover) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+    color: #ffffff;
+  }
+
+  :global(.flatpickr-day.selected),
+  :global(.flatpickr-day.selected:hover) {
+    background: var(--sand);
+    border-color: var(--sand);
+    color: #023d2d;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(173, 162, 143, 0.4);
+  }
+
+  :global(.flatpickr-day.flatpickr-disabled),
+  :global(.flatpickr-day.flatpickr-disabled:hover) {
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+  }
+
+  :global(.flatpickr-day.prevMonthDay),
+  :global(.flatpickr-day.nextMonthDay) {
+    color: rgba(255, 255, 255, 0.25);
   }
 </style>

@@ -59,10 +59,12 @@ h1,h2,h3,.serif{font-family:'Aktiv Grotesk',sans-serif;font-style:normal;font-we
   margin-bottom:.6rem;
 }
 .section-title{
-  font-size:clamp(1.9rem,4vw,3.1rem);
+  font-size:clamp(1.7rem,4vw,3.1rem);
   line-height:1.2;color:var(--title);
   max-width:22ch;
 }
+br.br-desktop{display:inline}
+br.br-mobile{display:none}
 .block-head h3,.infra-cell h3,.form-success .serif{color:var(--title)}
 .section-title.center{margin-inline:auto;text-align:center}
 .lead{
@@ -382,6 +384,28 @@ form .btn{justify-self:center;margin-top:14px}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .form-success .serif{font-size:1.6rem;margin-bottom:10px;color:var(--ink)}
 
+/* ===== FLATPICKR (Data do evento) ===== */
+.flatpickr-calendar{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 60px rgba(2,61,45,.16);padding:18px;width:auto!important;margin-top:10px!important;animation:fp-fade .2s ease-out}
+@keyframes fp-fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.flatpickr-calendar.arrowTop:before,.flatpickr-calendar.arrowTop:after,.flatpickr-calendar.arrowBottom:before,.flatpickr-calendar.arrowBottom:after{display:none}
+.flatpickr-months{display:flex;align-items:center;padding-bottom:14px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+.flatpickr-month{color:var(--title);fill:var(--title);height:auto}
+.flatpickr-current-month{font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;font-size:1.15rem;color:var(--title);display:flex;align-items:center;justify-content:center;gap:6px;padding:0}
+.flatpickr-current-month .cur-month{font-family:'PP Editorial New',serif;font-style:italic}
+.flatpickr-current-month input.cur-year{color:var(--ink-soft);font-family:'Aktiv Grotesk',sans-serif;font-style:normal;font-size:.95rem;font-weight:400}
+.numInputWrapper span.arrowUp,.numInputWrapper span.arrowDown{display:none}
+.flatpickr-prev-month,.flatpickr-next-month{fill:var(--ink-soft);color:var(--ink-soft);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);transition:.3s}
+.flatpickr-prev-month svg,.flatpickr-next-month svg{width:14px;height:14px}
+.flatpickr-prev-month:hover,.flatpickr-next-month:hover{background:var(--sand);fill:#fff;color:#fff;border-color:var(--sand)}
+.flatpickr-weekdays{background:transparent;margin-bottom:6px}
+span.flatpickr-weekday{background:transparent;color:var(--sand);font-family:'Aktiv Grotesk',sans-serif;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;font-weight:500}
+.flatpickr-day{color:var(--ink);border-radius:50%;font-family:'Aktiv Grotesk',sans-serif;font-size:.86rem;height:36px;line-height:36px;max-width:36px;margin:1px 0}
+.flatpickr-day.today{border-color:var(--sand-deep);color:var(--ink)}
+.flatpickr-day:hover{background:var(--bg-soft);border-color:transparent;color:var(--ink)}
+.flatpickr-day.selected,.flatpickr-day.selected:hover{background:var(--sand-deep);border-color:var(--sand-deep);color:#fff;font-weight:600;box-shadow:0 6px 18px rgba(2,61,45,.3)}
+.flatpickr-day.flatpickr-disabled,.flatpickr-day.flatpickr-disabled:hover{color:rgba(26,23,20,.6);cursor:not-allowed}
+.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:rgba(26,23,20,.28)}
+
 /* ===== LOCALIZAÇÃO ===== */
 .loc-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,70px);align-items:center;margin-top:52px}
 .loc-info .addr{font-family:'Aktiv Grotesk',sans-serif;font-weight:400;font-size:1.1rem;color:var(--title);line-height:1.7;margin-bottom:24px}
@@ -408,6 +432,11 @@ footer p{font-family:'Aktiv Grotesk';font-size:.92rem;font-weight:400;opacity:.8
   .foot-grid{grid-template-columns:1fr;gap:34px}
 }
 @media(max-width:760px){
-  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:40vw}
-  .gal .g1{grid-column:1/3}
+  br.br-desktop{display:none}
+  br.br-mobile{display:inline}
+  .section-title-gastronomia{max-width:100%!important}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:40vw;gap:8px}
+  .gal .figure{grid-column:auto!important;grid-row:auto!important}
+  .authority .wrap{display:grid;grid-template-columns:1fr;gap:16px}
+  .authority .sep{display:none}
 }

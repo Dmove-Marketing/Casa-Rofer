@@ -26,6 +26,7 @@ interface Field {
   rows?: number;
   options?: FieldOption[];
   value?: string;
+  datepicker?: boolean;
 }
 
 interface FieldRow {
@@ -38,6 +39,7 @@ type AnyField = Field | FieldRow;
 interface Props {
   formId: string;
   project: string;
+  fonte?: string;
   submitUrl?: string;
   redirectUrl?: string;
   submitText?: string;
@@ -54,6 +56,7 @@ interface Props {
 const {
   formId,
   project,
+  fonte,
   submitUrl,
   redirectUrl,
   submitText = 'Enviar',
@@ -106,12 +109,14 @@ const groupCls  = (full?: boolean) => {
   class:list={[!prefix && 'lead-form', className]}
   data-form-id={formId}
   data-project={project}
+  data-fonte={fonte}
   data-submit-url={submitUrl}
   data-redirect={redirectUrl}
   data-grid-id={theGridId}
   data-success-id={theSuccessId}
   novalidate
 >
+  {fonte && <input type="hidden" name="fonte" value={fonte} />}
   {honeypot && (
     <div class="hp-field" aria-hidden="true">
       <label for={`${formId}_website`}>Deixe este campo em branco</label>
@@ -146,6 +151,26 @@ const groupCls  = (full?: boolean) => {
                         <span>{opt.label}</span>
                       </label>
                     ))}
+                  </div>
+                ) : f.datepicker ? (
+                  <div class="form-datepicker-wrap">
+                    <input
+                      class={cxInput}
+                      type={f.type}
+                      name={f.name}
+                      id={f.id ?? f.name}
+                      placeholder={f.placeholder}
+                      required={f.required}
+                      autocomplete="off"
+                      readonly={f.readonly}
+                      data-flatpickr="true"
+                    />
+                    <svg class="form-datepicker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6"></line>
+                      <line x1="8" y1="2" x2="8" y2="6"></line>
+                      <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
                   </div>
                 ) : (
                   <input
@@ -197,6 +222,26 @@ const groupCls  = (full?: boolean) => {
                 </label>
               ))}
             </div>
+          ) : f.datepicker ? (
+            <div class="form-datepicker-wrap">
+              <input
+                class={cxInput}
+                type={f.type}
+                name={f.name}
+                id={f.id ?? f.name}
+                placeholder={f.placeholder}
+                required={f.required}
+                autocomplete="off"
+                readonly={f.readonly}
+                data-flatpickr="true"
+              />
+              <svg class="form-datepicker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
           ) : (
             <input
               class={cxInput}
@@ -246,11 +291,57 @@ const groupCls  = (full?: boolean) => {
 
 <script>
   import { initForms } from '../../scripts/forms.ts';
+  import flatpickr from 'flatpickr';
+  import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+  import 'flatpickr/dist/flatpickr.min.css';
+
+  function applyDateMask(el) {
+    el.addEventListener('input', () => {
+      let v = el.value.replace(/\D/g, '');
+      if (v.length > 8) v = v.slice(0, 8);
+      if (v.length > 4) {
+        v = `${v.slice(0, 2)}/${v.slice(2, 4)}/${v.slice(4)}`;
+      } else if (v.length > 2) {
+        v = `${v.slice(0, 2)}/${v.slice(2)}`;
+      }
+      el.value = v;
+    });
+  }
+
+  function initDatepickers() {
+    document.querySelectorAll('[data-flatpickr]').forEach((el) => {
+      if (el.dataset.flatpickrReady) return;
+      el.dataset.flatpickrReady = 'true';
+
+      // captura o ícone antes de inicializar: o modo `static` do Flatpickr
+      // move o input para dentro de um novo wrapper próprio, então depois
+      // disso `el.parentElement` deixa de ser o `.form-datepicker-wrap`
+      const icon = el.parentElement?.querySelector('.form-datepicker-icon');
+
+      applyDateMask(el);
+
+      const fp = flatpickr(el, {
+        locale: Portuguese,
+        dateFormat: 'd/m/Y',
+        minDate: 'today',
+        disableMobile: true,
+        allowInput: true,
+        static: true,
+      });
+
+      icon?.addEventListener('click', () => fp.open());
+    });
+  }
+
+  function init() {
+    initForms();
+    initDatepickers();
+  }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initForms);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    initForms();
+    init();
   }
 </script>
 
@@ -324,6 +415,44 @@ const groupCls  = (full?: boolean) => {
   .form-textarea:focus {
     outline: 0;
     border-color: var(--sand);
+  }
+
+  /* ── Campo com Flatpickr (ícone de calendário) ───────── */
+  .form-datepicker-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  /* o Flatpickr (modo static) embrulha o input num .flatpickr-wrapper
+     com display:inline-block, o que o encolhe para a largura do texto;
+     forçamos ele a ocupar 100% para o ícone alinhar com o fim do campo */
+  .form-datepicker-wrap :global(.flatpickr-wrapper) {
+    display: block;
+    width: 100%;
+  }
+
+  .form-datepicker-wrap .form-input {
+    padding-right: 26px;
+    cursor: pointer;
+  }
+
+  .form-datepicker-icon {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-soft);
+    opacity: .6;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: color .3s, opacity .3s;
+  }
+
+  .form-datepicker-wrap:focus-within .form-datepicker-icon,
+  .form-datepicker-icon:hover {
+    color: var(--sand);
+    opacity: 1;
   }
 
   .form-input::placeholder,

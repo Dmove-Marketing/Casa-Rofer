@@ -1,3 +1,5 @@
+import { keyMap, trackingParamKeys } from './lead-payload';
+
 function applyPhoneMask(input: HTMLInputElement) {
   input.addEventListener('input', () => {
     let v = input.value.replace(/\D/g, '');
@@ -153,25 +155,11 @@ export function initForms() {
       const dateStr = now.toLocaleDateString('pt-BR');
       const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-      // Mapeamento normalizado para o padrão exato de chaves do n8n
-      const keyMap: Record<string, string> = {
-        nome: 'Nome',
-        email: 'E-mail',
-        'e-mail': 'E-mail',
-        telefone: 'WhatsApp',
-        whatsapp: 'WhatsApp',
-        data: 'Data do evento',
-        data_evento: 'Data do evento',
-        'data do evento': 'Data do evento',
-        tipo_evento: 'Tipo de evento',
-        'tipo de evento': 'Tipo de evento',
-        convidados: 'Convidados',
-        empresa: 'Empresa',
-        mensagem: 'Mensagem',
-      };
-
       const capitalizedFields: Record<string, string> = {};
-      let fonteBase = rawData['fonte'] || project;
+      const defaultFonte = window.location.pathname.replace(/\/$/, '').endsWith('/bio')
+        ? 'Landing page/bio'
+        : 'Landing page/casamentos';
+      let fonteBase = rawData['fonte'] || form.dataset.fonte || defaultFonte;
       Object.entries(rawData).forEach(([key, val]) => {
         if (key === 'fonte') return;
         const normalizedKey = key.trim().toLowerCase();
@@ -179,12 +167,6 @@ export function initForms() {
         capitalizedFields[mappedKey] = val;
       });
 
-      const trackingParamKeys = [
-        'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
-        'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',
-        'fbclid', 'ttclid', 'msclkid', 'sck',
-        'fbc', 'fbp', 'external_id', 'event_id',
-      ];
       const qs = new URLSearchParams();
       trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
       const fonte = qs.toString() ? `${fonteBase}?${qs.toString()}` : fonteBase;

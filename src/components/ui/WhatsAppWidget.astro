@@ -1,5 +1,6 @@
 ---
 import config from '../../../config.json';
+import { trackingParamKeys } from '../../scripts/lead-payload';
 
 interface Props {
   phone?: string;
@@ -155,7 +156,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   </div>
 </div>
 
-<script define:vars={{ submitUrl, project }}>
+<script define:vars={{ submitUrl, project, trackingParamKeys }}>
   /* ── State ─────────────────────────────────── */
   const toggle   = document.getElementById('wa-toggle');
   const popup    = document.getElementById('wa-popup');
@@ -300,17 +301,14 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 
     const trackingRaw = sessionStorage.getItem('dmove_tracking');
     const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
-    const trackingParamKeys = [
-      'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
-      'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',
-      'fbclid', 'ttclid', 'msclkid', 'sck',
-      'fbc', 'fbp', 'external_id', 'event_id',
-    ];
     const qs = new URLSearchParams();
     trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
+    const pageSource = window.location.pathname.replace(/\/$/, '').endsWith('/bio')
+      ? 'Landing page/bio'
+      : 'Landing page/casamentos';
     const fonte = qs.toString()
-      ? `WhatsApp ${window.location.pathname}?${qs.toString()}`
-      : `WhatsApp ${window.location.pathname}`;
+      ? `${pageSource}?${qs.toString()}`
+      : pageSource;
 
     const nowStr = new Date();
     const payload = {

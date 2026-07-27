@@ -6,6 +6,7 @@
 // Número, avatar e nome do atendente vêm de config.json > whatsapp
 
 import config from '../../../config.json';
+import { keyMap as baseKeyMap, trackingParamKeys } from '../../scripts/lead-payload';
 
 interface FieldOption {
   value: string;
@@ -236,7 +237,7 @@ step1Fields.forEach(f => {
 </div>
 )}
 
-<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels }}>
+<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels, keyMap: baseKeyMap, trackingParamKeys }}>
   document.addEventListener('DOMContentLoaded', () => {
     const floatBtn  = document.getElementById('wa-floating-btn');
     const overlay   = document.getElementById('wa-modal-overlay');
@@ -363,22 +364,22 @@ step1Fields.forEach(f => {
 
       const capitalized = {};
       Object.entries(data).forEach(([key, val]) => {
-        capitalized[key.charAt(0).toUpperCase() + key.slice(1)] = val;
+        const normalizedKey = key.trim().toLowerCase();
+        const mappedKey = keyMap[normalizedKey] || (key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '));
+        capitalized[mappedKey] = val;
       });
 
       const trackingRaw = sessionStorage.getItem('dmove_tracking');
       const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
 
-      const trackingKeys = [
-        'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
-        'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',
-        'fbclid', 'fbc', 'fbp', 'external_id', 'event_id',
-      ];
       const qs = new URLSearchParams();
-      trackingKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
+      trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
+      const pageSource = window.location.pathname.replace(/\/$/, '').endsWith('/bio')
+        ? 'Landing page/bio'
+        : 'Landing page/casamentos';
       const fonte = qs.toString()
-        ? `WhatsApp ${window.location.pathname}?${qs.toString()}`
-        : `WhatsApp ${window.location.pathname}`;
+        ? `${pageSource}?${qs.toString()}`
+        : pageSource;
 
       const now = new Date();
       const payload = {
