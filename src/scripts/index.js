@@ -20,7 +20,7 @@ function parallax(){
     const r=el.getBoundingClientRect();
     const speed=parseFloat(el.dataset.parallax);
     const img=el.querySelector('img');
-    if(img){const off=(r.top+r.height/2-window.innerHeight/2)*-speed;img.style.transform=`translateY(${off}px) scale(1.12)`;}
+    if(img){const off=(r.top+r.height/2-window.innerHeight/2)*-speed;img.style.transform=`translateY(${off}px)`;}
   });
   ticking=false;
 }
