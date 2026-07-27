@@ -105,8 +105,8 @@ section{position:relative;z-index:1;background:var(--bg)}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* ===== HERO ===== */
-.hero{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;contain:paint}
+.hero{min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;isolation:isolate;background-color:#0a0806;margin-bottom:-1px}
+.hero-bg{position:absolute;top:0;right:0;left:0;bottom:-2px;z-index:0;overflow:hidden}
 .hero-logo{position:absolute;top:34px;left:50%;transform:translateX(-50%);z-index:4;width:clamp(120px,13vw,190px);height:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.35))}
 .hero-bg img{width:100%;height:120%;object-fit:cover;will-change:transform;filter:brightness(0.65) contrast(1.05)}
 @media(max-width:768px){.hero-bg img{height:100%!important;transform:none!important;will-change:auto}}
