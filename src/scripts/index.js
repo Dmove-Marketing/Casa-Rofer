@@ -8,6 +8,14 @@ document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
 const px=[...document.querySelectorAll('[data-parallax]')];
 let ticking=false;
 function parallax(){
+  if(window.innerWidth <= 768){
+    px.forEach(el=>{
+      const img=el.querySelector('img');
+      if(img && img.style.transform) img.style.transform='';
+    });
+    ticking=false;
+    return;
+  }
   px.forEach(el=>{
     const r=el.getBoundingClientRect();
     const speed=parseFloat(el.dataset.parallax);
@@ -17,6 +25,7 @@ function parallax(){
   ticking=false;
 }
 window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(parallax);ticking=true}},{passive:true});
+window.addEventListener('resize', parallax);
 parallax();
 
 /* carousels */
@@ -47,7 +56,6 @@ document.querySelectorAll('.m-carousel').forEach(mCarousel => {
   const counter = mCarousel.querySelector('.m-carousel-counter');
   let currentIdx = 0;
   const total = slides.length;
-  let timer = null;
 
   function showSlide(index) {
     currentIdx = (index + total) % total;
@@ -66,39 +74,18 @@ document.querySelectorAll('.m-carousel').forEach(mCarousel => {
     }
   }
 
-  function startAutoPlay() {
-    stopAutoPlay();
-    timer = setInterval(() => {
-      showSlide(currentIdx + 1);
-    }, 3500);
-  }
-
-  function stopAutoPlay() {
-    if (timer) {
-      clearInterval(timer);
-      timer = null;
-    }
-  }
-
   prevBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     showSlide(currentIdx - 1);
-    startAutoPlay();
   });
 
   nextBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     showSlide(currentIdx + 1);
-    startAutoPlay();
   });
 
   // Initialize
   showSlide(0);
-  startAutoPlay();
-
-  // Pause on hover
-  mCarousel.addEventListener('mouseenter', stopAutoPlay);
-  mCarousel.addEventListener('mouseleave', startAutoPlay);
 });
 
 /* Testimonials Infinite Carousel */

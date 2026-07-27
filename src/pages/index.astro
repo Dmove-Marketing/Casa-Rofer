@@ -150,7 +150,7 @@ import '../styles/index.css';
       <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/solucao-360.webp" alt="Solução 360º" /><span>Solução 360º</span></div>
       <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/gastronomia.webp" alt="Gastronomia" class="dc-gastronomia" /><span>Gastronomia</span></div>
       <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/doces-finos_resultado.webp" alt="Doces finos" /><span>Doces finos</span></div>
-      <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/coquetelaria_resultado.webp" alt="Coquetelaria" /><span>Coquetelaria</span></div>
+      <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/coquetelaria_resultado.webp" alt="Coquetelaria" class="dc-coquetelaria" /><span>Coquetelaria</span></div>
       <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/decoracao.webp" alt="Decoração" /><span>Decoração</span></div>
       <div class="dif-card"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/tecnologia.webp" alt="Tecnologia" class="dc-tecnologia" /><span>Tecnologia</span></div>
     </div>
@@ -332,15 +332,9 @@ import '../styles/index.css';
       <p class="eyebrow reveal">Localização</p>
       <h2 class="section-title center reveal d1"><span class="accent">Um endereço privilegiado</span> para celebrar momentos extraordinários</h2>
     </div>
-    <div class="loc-grid">
-      <div class="loc-info reveal">
-        <p class="addr">R. Baltazar Fernandes, 54<br>Brooklin, São Paulo — SP<br>04583-020</p>
-        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=R.+Baltazar+Fernandes,+54+-+Brooklin,+São+Paulo+-+SP,+04583-020" target="_blank" rel="noopener">Ver no mapa</a>
-      </div>
-      <div class="loc-map reveal d1">
-        <iframe title="Mapa Casa Rofer" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps?q=R.%20Baltazar%20Fernandes,%2054%20-%20Brooklin,%20S%C3%A3o%20Paulo%20-%20SP,%2004583-020&output=embed"></iframe>
-      </div>
+    <div class="loc-map reveal d1" style="max-width:1000px;margin:52px auto 0">
+      <iframe title="Mapa Casa Rofer" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=R.%20Baltazar%20Fernandes,%2054%20-%20Brooklin,%20S%C3%A3o%20Paulo%20-%20SP,%2004583-020&output=embed"></iframe>
     </div>
   </div>
 </section>
@@ -348,22 +342,10 @@ import '../styles/index.css';
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" class="foot-logo" />
-        <p>A arte de celebrar com excelência. Espaço de eventos e casamentos no coração do Brooklin, São Paulo.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Localização</h4>
-        <span>R. Baltazar Fernandes, 54</span>
-        <span>Brooklin — São Paulo, SP</span>
-        <span>04583-020</span>
-        <a href="https://api.whatsapp.com/send/?phone=5511941874576&text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20%C3%A0%20Casa%20Rofer." target="_blank" rel="noopener">Agende uma visita</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
+    <div class="foot-bar">
       <span>© 2026 Casa Rofer · Brooklin, São Paulo. Todos os direitos reservados.</span>
-      <span style="display:inline-flex;align-items:center;gap:8px">Desenvolvido por <a href="https://www.dmove.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/Logotipo-dmove.webp" alt="Dmove" style="height:30px;width:auto;opacity:0.95" /></a></span>
+      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" class="foot-logo" />
+      <span style="display:inline-flex;align-items:center;gap:4px">Desenvolvido por <a href="https://www.dmove.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center"><img src="https://media.dmove.com.br/clients/casa-rofer/photos/Logotipo-dmove.webp" alt="Dmove" style="height:26px;width:auto;opacity:0.95" /></a></span>
     </div>
   </div>
 </footer>
