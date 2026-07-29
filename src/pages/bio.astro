@@ -84,7 +84,7 @@ const bioFields = [
     align-items: center;
     justify-content: center;
     padding: clamp(20px, 5vw, 60px) 16px;
-    background: linear-gradient(rgba(2, 61, 45, 0.48), rgba(2, 61, 45, 0.8)), 
+    background: linear-gradient(rgba(26, 23, 20, 0.6), rgba(26, 23, 20, 0.85)), 
                 url('https://media.dmove.com.br/clients/casa-rofer/photos/bio-casa-rofer.webp') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
@@ -188,22 +188,22 @@ const bioFields = [
   }
 
   .bio-card :global(.form-select option) {
-    background: #023d2d;
+    background: #1a1714;
     color: #ffffff;
   }
 
   .bio-card :global(.form-success-icon) {
     background: var(--sand) !important;
-    color: #023d2d !important;
+    color: #1a1714 !important;
   }
 
   .bio-card :global(.form-success-icon svg) {
-    stroke: #023d2d !important;
+    stroke: #1a1714 !important;
   }
 
-  /* ===== FLATPICKR — tema Casa Rofer (verde + areia) ===== */
-  :global(.flatpickr-calendar) {
-    background: linear-gradient(180deg, rgba(6, 71, 53, 0.98), rgba(2, 61, 45, 0.98));
+  /* ===== FLATPICKR — tema Casa Rofer (neutro + areia) ===== */
+  :global(.bio-container) :global(.flatpickr-calendar) {
+    background: linear-gradient(180deg, rgba(38, 35, 31, 0.98), rgba(26, 23, 20, 0.98));
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -220,14 +220,14 @@ const bioFields = [
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  :global(.flatpickr-calendar.arrowTop:before),
-  :global(.flatpickr-calendar.arrowTop:after),
-  :global(.flatpickr-calendar.arrowBottom:before),
-  :global(.flatpickr-calendar.arrowBottom:after) {
+  :global(.bio-container) :global(.flatpickr-calendar.arrowTop:before),
+  :global(.bio-container) :global(.flatpickr-calendar.arrowTop:after),
+  :global(.bio-container) :global(.flatpickr-calendar.arrowBottom:before),
+  :global(.bio-container) :global(.flatpickr-calendar.arrowBottom:after) {
     display: none;
   }
 
-  :global(.flatpickr-months) {
+  :global(.bio-container) :global(.flatpickr-months) {
     display: flex;
     align-items: center;
     padding-bottom: 14px;
@@ -235,13 +235,13 @@ const bioFields = [
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  :global(.flatpickr-month) {
+  :global(.bio-container) :global(.flatpickr-month) {
     color: #ffffff;
     fill: #ffffff;
     height: auto;
   }
 
-  :global(.flatpickr-current-month) {
+  :global(.bio-container) :global(.flatpickr-current-month) {
     font-family: 'PP Editorial New', serif;
     font-style: italic;
     font-weight: 400;
@@ -254,12 +254,12 @@ const bioFields = [
     padding: 0;
   }
 
-  :global(.flatpickr-current-month .cur-month) {
+  :global(.bio-container) :global(.flatpickr-current-month .cur-month) {
     font-family: 'PP Editorial New', serif;
     font-style: italic;
   }
 
-  :global(.flatpickr-current-month input.cur-year) {
+  :global(.bio-container) :global(.flatpickr-current-month input.cur-year) {
     color: rgba(255, 255, 255, 0.75);
     font-family: 'Aktiv Grotesk', sans-serif;
     font-style: normal;
@@ -267,7 +267,7 @@ const bioFields = [
     font-weight: 400;
   }
 
-  :global(.flatpickr-current-month .flatpickr-monthDropdown-months) {
+  :global(.bio-container) :global(.flatpickr-current-month .flatpickr-monthDropdown-months) {
     background: transparent;
     color: #ffffff;
     font-family: 'PP Editorial New', serif;
@@ -276,19 +276,19 @@ const bioFields = [
     border: none;
   }
 
-  :global(.flatpickr-current-month .flatpickr-monthDropdown-months option) {
-    background: #023d2d;
+  :global(.bio-container) :global(.flatpickr-current-month .flatpickr-monthDropdown-months option) {
+    background: #1a1714;
     color: #ffffff;
     font-style: normal;
   }
 
-  :global(.numInputWrapper span.arrowUp),
-  :global(.numInputWrapper span.arrowDown) {
+  :global(.bio-container) :global(.numInputWrapper span.arrowUp),
+  :global(.bio-container) :global(.numInputWrapper span.arrowDown) {
     display: none;
   }
 
-  :global(.flatpickr-prev-month),
-  :global(.flatpickr-next-month) {
+  :global(.bio-container) :global(.flatpickr-prev-month),
+  :global(.bio-container) :global(.flatpickr-next-month) {
     fill: rgba(255, 255, 255, 0.55);
     color: rgba(255, 255, 255, 0.55);
     width: 30px;
@@ -300,25 +300,25 @@ const bioFields = [
     transition: background-color .25s, fill .25s, color .25s;
   }
 
-  :global(.flatpickr-prev-month svg),
-  :global(.flatpickr-next-month svg) {
+  :global(.bio-container) :global(.flatpickr-prev-month svg),
+  :global(.bio-container) :global(.flatpickr-next-month svg) {
     width: 14px;
     height: 14px;
   }
 
-  :global(.flatpickr-prev-month:hover),
-  :global(.flatpickr-next-month:hover) {
+  :global(.bio-container) :global(.flatpickr-prev-month:hover),
+  :global(.bio-container) :global(.flatpickr-next-month:hover) {
     background: rgba(255, 255, 255, 0.08);
     fill: var(--sand);
     color: var(--sand);
   }
 
-  :global(.flatpickr-weekdays) {
+  :global(.bio-container) :global(.flatpickr-weekdays) {
     background: transparent;
     margin-bottom: 6px;
   }
 
-  :global(span.flatpickr-weekday) {
+  :global(.bio-container) :global(span.flatpickr-weekday) {
     background: transparent;
     color: rgba(255, 255, 255, 0.4);
     font-family: 'Aktiv Grotesk', sans-serif;
@@ -328,7 +328,7 @@ const bioFields = [
     font-weight: 500;
   }
 
-  :global(.flatpickr-day) {
+  :global(.bio-container) :global(.flatpickr-day) {
     color: rgba(255, 255, 255, 0.82);
     border-radius: 50%;
     font-family: 'Aktiv Grotesk', sans-serif;
@@ -339,38 +339,38 @@ const bioFields = [
     margin: 1px 0;
   }
 
-  :global(.flatpickr-day.today) {
+  :global(.bio-container) :global(.flatpickr-day.today) {
     border-color: var(--sand);
     color: #ffffff;
   }
 
-  :global(.flatpickr-day.today:hover) {
+  :global(.bio-container) :global(.flatpickr-day.today:hover) {
     border-color: var(--sand);
   }
 
-  :global(.flatpickr-day:hover) {
+  :global(.bio-container) :global(.flatpickr-day:hover) {
     background: rgba(255, 255, 255, 0.1);
     border-color: transparent;
     color: #ffffff;
   }
 
-  :global(.flatpickr-day.selected),
-  :global(.flatpickr-day.selected:hover) {
+  :global(.bio-container) :global(.flatpickr-day.selected),
+  :global(.bio-container) :global(.flatpickr-day.selected:hover) {
     background: var(--sand);
     border-color: var(--sand);
-    color: #023d2d;
+    color: #1a1714;
     font-weight: 600;
     box-shadow: 0 6px 18px rgba(173, 162, 143, 0.4);
   }
 
-  :global(.flatpickr-day.flatpickr-disabled),
-  :global(.flatpickr-day.flatpickr-disabled:hover) {
+  :global(.bio-container) :global(.flatpickr-day.flatpickr-disabled),
+  :global(.bio-container) :global(.flatpickr-day.flatpickr-disabled:hover) {
     color: rgba(255, 255, 255, 0.6);
     cursor: not-allowed;
   }
 
-  :global(.flatpickr-day.prevMonthDay),
-  :global(.flatpickr-day.nextMonthDay) {
+  :global(.bio-container) :global(.flatpickr-day.prevMonthDay),
+  :global(.bio-container) :global(.flatpickr-day.nextMonthDay) {
     color: rgba(255, 255, 255, 0.25);
   }
 </style>
