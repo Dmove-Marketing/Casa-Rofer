@@ -620,13 +620,14 @@ const testimonials = [
     100% { transform: translateX(calc(-200px * 14)); }
   }
 
-  /* ── Grid Customizado da Galeria Corporativa ── */
+  /* ── Grid Customizado da Galeria Corporativa (Mosaico) ── */
   .gal-corp {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-auto-rows: 210px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
     gap: 12px;
     margin-top: 60px;
+    grid-auto-flow: dense;
   }
   .gal-corp .figure {
     overflow: hidden;
@@ -634,6 +635,25 @@ const testimonials = [
     position: relative;
     border-radius: 2px;
   }
+
+  /* Padrão dinâmico do Mosaico (repeating patterns) */
+  .gal-corp .figure:nth-child(9n + 1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .gal-corp .figure:nth-child(9n + 3) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  .gal-corp .figure:nth-child(9n + 5) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .gal-corp .figure:nth-child(9n + 8) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
   .gal-corp .figure img {
     width: 100%;
     height: 100%;
@@ -664,10 +684,17 @@ const testimonials = [
     opacity: 1;
   }
 
+  @media (max-width: 1024px) {
+    .gal-corp {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 180px;
+    }
+  }
+
   @media (max-width: 760px) {
     .gal-corp {
       grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 40vw;
+      grid-auto-rows: 32vw;
       gap: 8px;
     }
     .partners-logo {
