@@ -4,18 +4,15 @@ import config from '../../config.json';
 import Img from '../components/ui/Img.astro';
 import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
-import '../styles/index.css';
+import '../styles/eventos-corporativos.css';
 
 const michelangeloImages = [
   'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo09_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo08_resultado.webp',
   'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo07_resultado.webp',
   'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo06_resultado.webp',
   'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo05_resultado.webp',
   'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo04_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo03_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo02_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo01_resultado.webp'
+  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo02_resultado.webp'
 ];
 
 const davinciImages = [
@@ -133,7 +130,7 @@ const testimonials = [
   <div class="hero-inner">
     <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
     <div class="hero-divider reveal in d1"></div>
-    <h1 class="reveal in d2">Solução 360º para<br>empresas que<br><span class="accent">valorizam excelência</span></h1>
+    <h1 class="reveal in d2">Solução 360º para <br class="br-mobile">empresas que<br><span class="accent">valorizam excelência</span></h1>
     <div class="hero-cta reveal in d3">
       <a href="#contato" class="btn white">Solicite orçamento</a>
     </div>
@@ -143,7 +140,7 @@ const testimonials = [
 <!-- ===== AUTORIDADE ===== -->
 <section class="authority">
   <div class="wrap">
-    <div class="stat reveal"><b>2 ambientes exclusivos</b></div>
+    <div class="stat reveal"><b>2 ambientes integrados</b></div>
     <div class="sep"></div>
     <div class="stat reveal d1"><b>Até 250 convidados</b></div>
     <div class="sep"></div>
@@ -227,7 +224,7 @@ const testimonials = [
             ))}
           </div>
           <button class="m-carousel-btn next" aria-label="Próximo" type="button">›</button>
-          <div class="m-carousel-counter">01 / 09</div>
+          <div class="m-carousel-counter">01 / 06</div>
         </div>
         <div class="space-body">
           <p class="space-tag">Salão 01</p>
@@ -424,12 +421,20 @@ const testimonials = [
     <h2 class="section-title center reveal d1">Projetos que <br><span class="accent">refletem excelência</span><br>em cada detalhe</h2>
   </div>
   <div class="wrap" style="max-width: 1600px;">
-    <div class="gal-grid reveal" id="gal">
-      {galleryImages.map((src) => (
-        <div class="figure">
-          <Img src={src} alt="Evento Corporativo na Casa Rofer" />
-        </div>
-      ))}
+    <div class="gal-carousel-wrapper">
+      <button class="car-btn prev gal-car-btn" aria-label="Anterior" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="gal-grid reveal" id="gal">
+        {galleryImages.map((src) => (
+          <div class="figure">
+            <Img src={src} alt="Evento Corporativo na Casa Rofer" />
+          </div>
+        ))}
+      </div>
+      <button class="car-btn next gal-car-btn" aria-label="Próximo" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -439,7 +444,7 @@ const testimonials = [
   <div class="wrap form-card">
     <div class="center">
       <p class="eyebrow reveal">Contato</p>
-      <h2 class="section-title center reveal d1" style="max-width:40ch">Vamos criar <br class="br-mobile">um evento<br class="br-desktop"> à altura <br class="br-mobile">da <span class="accent">sua marca</span>?</h2>
+      <h2 class="section-title center reveal d1" style="max-width:40ch">Vamos criar um <br class="br-mobile">evento<br class="br-desktop"> à altura da <br class="br-mobile"><span class="accent">sua marca</span>?</h2>
       <p class="lead center reveal d2" style="margin-top:20px">Preencha o formulário e receba um atendimento personalizado para conhecer nosso espaço, esclarecer dúvidas e solicitar um orçamento.</p>
     </div>
     <LeadForm
@@ -630,27 +635,35 @@ const testimonials = [
 
   @media (max-width: 760px) {
     .partners-track {
-      gap: 16px;
+      gap: 12px;
       animation-duration: 25s;
     }
     .partners-logo-item {
-      flex: 0 0 calc((100% - 16px) / 2);
-      padding: 16px;
+      flex: 0 0 calc((100% - 12px) / 2);
+      padding: 12px;
+      aspect-ratio: 3 / 2;
+    }
+    .partners-logo-item img {
+      object-fit: contain;
     }
     @keyframes scrollPartnerLogos {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-14 * (100% + 16px) / 2)); }
+      100% { transform: translateX(calc(-14 * (100% + 12px) / 2)); }
     }
   }
 
   @media (max-width: 480px) {
+    .partners-track {
+      gap: 8px;
+    }
     .partners-logo-item {
-      flex: 0 0 100%;
-      padding: 20px;
+      flex: 0 0 calc((100% - 8px) / 2);
+      padding: 8px;
+      aspect-ratio: 3 / 2;
     }
     @keyframes scrollPartnerLogos {
       0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-14 * (100% + 20px))); }
+      100% { transform: translateX(calc(-14 * (100% + 8px) / 2)); }
     }
   }
 
@@ -734,6 +747,30 @@ const testimonials = [
       scroll-snap-stop: always !important;
       aspect-ratio: 1 / 1 !important;
       border-radius: 4px;
+    }
+  }
+
+  /* ── Gallery Carousel on Mobile ── */
+  .gal-car-btn {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    .gal-carousel-wrapper {
+      position: relative;
+    }
+    .gal-car-btn {
+      display: flex;
+      width: 38px;
+      height: 38px;
+      opacity: 0.85;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .gal-car-btn.prev {
+      left: 8px;
+    }
+    .gal-car-btn.next {
+      right: 8px;
     }
   }
 </style>
@@ -826,7 +863,37 @@ const testimonials = [
     });
   }
 
-  document.addEventListener('DOMContentLoaded', initInfiniteGastroCarousel);
+  function initGalleryCarousel() {
+    const wrapper = document.querySelector('.gal-carousel-wrapper');
+    if (!wrapper) return;
+    const track = wrapper.querySelector('#gal');
+    const prevBtn = wrapper.querySelector('.gal-car-btn.prev');
+    const nextBtn = wrapper.querySelector('.gal-car-btn.next');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const getStepSize = () => {
+      const slide = track.querySelector('.figure');
+      return slide ? slide.offsetWidth + 16 : track.clientWidth * 0.8;
+    };
+
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      track.scrollBy({ left: -getStepSize(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      track.scrollBy({ left: getStepSize(), behavior: 'smooth' });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initInfiniteGastroCarousel();
+    initGalleryCarousel();
+  });
   initInfiniteGastroCarousel();
+  initGalleryCarousel();
 </script>
 
