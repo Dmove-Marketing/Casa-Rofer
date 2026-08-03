@@ -10,8 +10,8 @@ const bioFields = [
   ]},
   { name: 'email', type: 'email', label: 'E-mail', required: true },
   { type: 'row', fields: [
-    { name: 'data',       type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true },
-    { name: 'convidados', type: 'number', label: 'Número de convidados' },
+    { name: 'data',       type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
+    { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
   ]},
   { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', options: [
     { value: '', disabled: true, selected: true, label: 'Selecione o tipo de evento' },

@@ -312,8 +312,8 @@ import '../styles/index.css';
         ]},
         { name: 'email', type: 'email', label: 'E-mail', required: true },
         { type: 'row', fields: [
-          { name: 'data_evento', type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true },
-          { name: 'convidados', type: 'number', label: 'Número de convidados' },
+          { name: 'data_evento', type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
+          { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
         ]},
         { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', options: [
           { value: '',                        label: 'Selecione o tipo de evento', disabled: true, selected: true },

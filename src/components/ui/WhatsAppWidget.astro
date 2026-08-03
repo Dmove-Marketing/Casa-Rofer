@@ -95,11 +95,13 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
           </div>
           <div class="wa-field">
             <label for="wa-data">Data do evento</label>
-            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" />
+            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" required />
+            <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
           </div>
           <div class="wa-field">
             <label for="wa-convidados">Número de convidados</label>
-            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" />
+            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" required />
+            <span class="wa-error" id="wa-convidados-err">Por favor, informe o número de convidados.</span>
           </div>
           <div class="wa-field">
             <label for="wa-tipo">Tipo de evento</label>
@@ -293,6 +295,24 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     const tipo      = document.getElementById('wa-tipo');
     const data      = document.getElementById('wa-data');
     const convidados= document.getElementById('wa-convidados');
+
+    let ok = true;
+
+    if (!data.value.trim()) {
+      document.getElementById('wa-data-err').classList.add('visible');
+      data.focus(); ok = false;
+    } else {
+      document.getElementById('wa-data-err').classList.remove('visible');
+    }
+
+    if (!convidados.value.trim()) {
+      document.getElementById('wa-convidados-err').classList.add('visible');
+      if (ok) { convidados.focus(); ok = false; }
+    } else {
+      document.getElementById('wa-convidados-err').classList.remove('visible');
+    }
+
+    if (!ok) return;
 
     // Loading state
     submitBtn.disabled = true;
