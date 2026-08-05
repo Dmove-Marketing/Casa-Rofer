@@ -6,25 +6,7 @@ import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
 import '../styles/eventos-corporativos.css';
 
-const michelangeloImages = [
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo09_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo07_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo06_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo05_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo04_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_corporativo02_resultado.webp'
-];
 
-const davinciImages = [
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo08_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo07_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo04_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo03_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo02_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo01_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo06_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo05_resultado.webp'
-];
 
 const gastronomiaImages = [
   'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_corporativo06_resultado.webp',
@@ -53,34 +35,21 @@ const partnerLogos = [
 ];
 
 const galleryImages = [
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo27_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo26_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo25_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo24_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo23_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo21_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo19_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo18_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo16_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo15_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo14_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo13_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo12_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo05_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo04_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo03_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo02_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo01_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo22_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo20_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo17_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo11_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo10_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo09_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo08_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo07_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_corporativo06_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/hero_corporativo_resultado.webp'
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos15.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos14.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos13.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos12.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos11.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos10.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos09.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos08.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos07.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos06.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos05.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos04.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos03.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos02.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos01.webp'
 ];
 
 const eventTypes = [
@@ -144,7 +113,7 @@ const testimonials = [
     <div class="sep"></div>
     <div class="stat reveal d1"><b>Até 250 convidados</b></div>
     <div class="sep"></div>
-    <div class="stat reveal d2"><b>Localização estratégica</b></div>
+    <div class="stat reveal d2"><b>1.300m² de área útil</b></div>
   </div>
 </section>
 
@@ -152,7 +121,7 @@ const testimonials = [
 <section id="sobre" class="pad">
   <div class="wrap center">
     <p class="eyebrow reveal">Sobre a Casa Rofer</p>
-    <h2 class="section-title center reveal d1" style="max-width:40ch">Onde estratégia, <br class="br-mobile">hospitalidade <br class="br-desktop">e excelência operacional<br><span class="accent">se encontram</span></h2>
+    <h2 class="section-title center reveal d1" style="max-width:40ch">A arte de transformar <br class="br-mobile">o instante <br class="br-desktop"><span class="accent">em memórias</span></h2>
     <div class="video-frame reveal d1">
       <Video 
         src="https://media.dmove.com.br/clients/casa-rofer/videos/sobre-casa-rofer.webm" 
@@ -214,44 +183,26 @@ const testimonials = [
     <div class="spaces-stack" style="margin-top:70px">
       <!-- Michelangelo -->
       <div class="space-card reveal">
-        <div class="space-figure m-carousel" id="michelangelo-carousel">
-          <button class="m-carousel-btn prev" aria-label="Anterior" type="button">‹</button>
-          <div class="m-carousel-track">
-            {michelangeloImages.map((src, idx) => (
-              <div class:list={['m-slide', idx === 0 && 'active']}>
-                <Img src={src} alt="Salão Michelângelo — Evento Corporativo" />
-              </div>
-            ))}
-          </div>
-          <button class="m-carousel-btn next" aria-label="Próximo" type="button">›</button>
-          <div class="m-carousel-counter">01 / 06</div>
+        <div class="space-figure">
+          <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/salao_michelangelo.webp" alt="Salão Michelângelo — Evento Corporativo" />
         </div>
         <div class="space-body">
           <p class="space-tag">Salão 01</p>
           <h3>Salão <span class="accent">Michelângelo</span></h3>
-          <p class="lead">Um ambiente contemporâneo, elegante e altamente versátil para convenções, confraternizações, treinamentos, lançamentos, premiações e encontros corporativos que exigem uma estrutura impecável.</p>
+          <p class="lead">Digno da imponência de grandes eventos, surpreende com toda a flexibilidade, estrutura, conforto, elegância e inovação.</p>
           <a class="btn ghost" href="#contato">Agende uma visita</a>
         </div>
       </div>
 
       <!-- Da Vinci -->
       <div class="space-card rev reveal d1">
-        <div class="space-figure m-carousel" id="davinci-carousel">
-          <button class="m-carousel-btn prev" aria-label="Anterior" type="button">‹</button>
-          <div class="m-carousel-track">
-            {davinciImages.map((src, idx) => (
-              <div class:list={['m-slide', idx === 0 && 'active']}>
-                <Img src={src} alt="Salão Leonardo da Vinci — Evento Corporativo" />
-              </div>
-            ))}
-          </div>
-          <button class="m-carousel-btn next" aria-label="Próximo" type="button">›</button>
-          <div class="m-carousel-counter">01 / 08</div>
+        <div class="space-figure">
+          <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/salao-da-vinci_corporativo03_resultado.webp" alt="Salão Leonardo da Vinci — Evento Corporativo" />
         </div>
         <div class="space-body">
           <p class="space-tag">Salão 02</p>
           <h3>Salão <span class="accent">Leonardo da Vinci</span></h3>
-          <p class="lead">Integrado ao jardim e iluminado naturalmente, oferece uma atmosfera sofisticada para eventos que valorizam relacionamento, networking, experiências de marca e momentos de integração.</p>
+          <p class="lead">Completamente banhado em luz natural, se destaca pela capacidade de conexão com a natureza estando sempre à espera do raiar do sol ou do brilho das estrelas.</p>
           <a class="btn ghost" href="#contato">Agende uma visita</a>
         </div>
       </div>
@@ -307,6 +258,30 @@ const testimonials = [
         />
         <span>Tecnologia</span>
       </div>
+      <div class="dif-card">
+        <Img 
+          src="https://media.dmove.com.br/clients/casa-rofer/photos/mobiliario_corporativo_resultado.webp" 
+          alt="Mobiliário" 
+          class="dc-mobiliario"
+        />
+        <span>Mobiliário</span>
+      </div>
+      <div class="dif-card">
+        <Img 
+          src="https://media.dmove.com.br/clients/casa-rofer/photos/decoracao_corporativo_resultado.webp" 
+          alt="Decoração" 
+          class="dc-decoracao"
+        />
+        <span>Decoração</span>
+      </div>
+      <div class="dif-card">
+        <Img 
+          src="https://media.dmove.com.br/clients/casa-rofer/photos/sonorizacao_corporativo_resultado.webp" 
+          alt="Sonorização/DJ" 
+          class="dc-sonorizacao"
+        />
+        <span>Sonorização/DJ</span>
+      </div>
     </div>
   </div>
 </section>
@@ -341,14 +316,35 @@ const testimonials = [
   <div class="wrap">
     <div class="center" style="max-width:1200px;margin-inline:auto">
       <p class="eyebrow reveal">Buffet Rofer</p>
-      <h2 class="section-title center reveal d1 section-title-gastronomia" style="max-width:100%;margin-bottom:26px"><span class="accent">Alta gastronomia</span><br>que valoriza encontros, <br class="br-mobile">relacionamentos <br class="br-desktop">e <br class="br-mobile">grandes negócios.</h2>
-      <p class="lead center reveal d2">À frente da Gastronomia Rofer estão <b>Ronaldo Akamine</b>, chef executivo e sócio fundador, e <b>João Akamine</b>, chef e gestor. Com mais de 30 anos de tradição, desenvolvem menus personalizados que unem técnica, criatividade e uma execução impecável para cada ocasião.</p>
+      <h2 class="section-title center reveal d1 section-title-gastronomia" style="max-width:100%;margin-bottom:26px">Três décadas de tradição e <br><span class="accent">experiências gastronômicas inesquecíveis</span></h2>
+    </div>
+
+    <!-- Chefs Grid -->
+    <div class="chefs-grid reveal">
+      <div class="chef-card">
+        <div class="chef-img">
+          <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/ronaldo-akamine_corporativo.webp" alt="Ronaldo Akamine — Chef Executivo e Sócio Fundador" />
+        </div>
+        <div class="chef-info">
+          <h3>Ronaldo Akamine</h3>
+          <p>O Rofer Gastronomia está sob o comando de Ronaldo Akamine, chef executivo e sócio fundador. Empreendedor e gestor de negócios na área de alimentação, Ronaldo dedicou os últimos 35 anos de sua vida à arte de encantar com a gastronomia.</p>
+        </div>
+      </div>
+      <div class="chef-card">
+        <div class="chef-img">
+          <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/joao-akamine_corporativo.webp" alt="João Akamine — Chef" />
+        </div>
+        <div class="chef-info">
+          <h3>João Akamine</h3>
+          <p>João Akamine cresceu entre os bastidores da alta gastronomia, acompanhando de perto o trabalho do pai, Ronaldo Akamine. Desde pequeno, desenvolveu um olhar apurado para cada detalhe e uma paixão genuína pela arte de servir. Formado em gastronomia, João une tradição e inovação, sempre com foco em resultados e excelência. Seu compromisso vai além da cozinha – é sobre transformar eventos em experiências memoráveis.</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="wrap" style="margin-top:52px">
+  <div class="wrap" style="margin-top:clamp(48px, 6vw, 80px)">
     <div class="carousel reveal gastro-carousel" id="gastronomy-carousel">
       <button class="car-btn prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <div class="car-track portrait gastro-track">
+      <div class="car-track gastro-track">
         {gastronomiaImages.map((src) => (
           <div class="slide"><Img src={src} alt="Gastronomia Corporativa Rofer" /></div>
         ))}
@@ -468,6 +464,7 @@ const testimonials = [
           { name: 'data_evento', type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
           { name: 'convidados',  type: 'number', label: 'Número de convidados', required: true },
         ]},
+        { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', required: false, full: true },
       ]}
     />
     <div class="form-success" id="formSuccess">
@@ -508,10 +505,94 @@ const testimonials = [
 </script>
 
 <style>
-  /* ── Grid Customizado de Diferenciais (5 colunas no desktop) ── */
+  /* ── Grid Customizado de Diferenciais (4 colunas no desktop) ── */
   @media(min-width: 1025px) {
     .dif-grid-corp {
-      grid-template-columns: repeat(5, 1fr) !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+  }
+
+  /* ── Custom Gastronomia Carousel 4x3 (3 no desktop, 1 no mobile) ── */
+  .gastro-track {
+    gap: 16px;
+  }
+  .gastro-track .slide {
+    flex: 0 0 calc((100% - 32px) / 3);
+    width: calc((100% - 32px) / 3);
+    min-width: 0;
+    aspect-ratio: 4/3;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  @media (max-width: 1024px) {
+    .gastro-track .slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+      width: calc((100% - 16px) / 2);
+    }
+  }
+  @media (max-width: 760px) {
+    .gastro-track .slide {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+  }
+
+  /* ── Chefs Grid ── */
+  .chefs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 4vw, 40px);
+    max-width: 1000px;
+    margin: 54px auto 0;
+  }
+  .chef-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(24px, 4vw, 36px);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1), border-color 0.4s;
+  }
+  .chef-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--sand);
+  }
+  .chef-img {
+    overflow: hidden;
+    border-radius: 3px;
+    aspect-ratio: 4/3;
+    background: var(--bg-soft);
+  }
+  .chef-img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(.16,1,.3,1);
+  }
+  .chef-card:hover .chef-img :global(img) {
+    transform: scale(1.04);
+  }
+  .chef-info h3 {
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+    font-weight: 600;
+    color: var(--title);
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+  .chef-info p {
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: 0.90rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (max-width: 760px) {
+    .chefs-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
   }
 
@@ -667,10 +748,10 @@ const testimonials = [
     }
   }
 
-  /* ── Grid Customizado da Galeria Corporativa (Mosaico) ── */
+  /* ── Grid Customizado da Galeria Corporativa (3 Colunas) ── */
   .gal-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-top: 60px;
   }
@@ -679,7 +760,7 @@ const testimonials = [
     cursor: pointer;
     position: relative;
     border-radius: 2px;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 3;
   }
   .gal-grid .figure :global(img) {
     width: 100%;
@@ -745,7 +826,7 @@ const testimonials = [
       width: 100% !important;
       scroll-snap-align: center !important;
       scroll-snap-stop: always !important;
-      aspect-ratio: 1 / 1 !important;
+      aspect-ratio: 4 / 3 !important;
       border-radius: 4px;
     }
   }
@@ -783,12 +864,14 @@ const testimonials = [
     const track = carousel.querySelector('.gastro-track');
     if (!track) return;
 
+    if (track.querySelector('.clone')) return;
+
     const prevBtn = carousel.querySelector('.prev');
     const nextBtn = carousel.querySelector('.next');
-    const slides = [...track.querySelectorAll('.slide:not(.clone)')];
+    const slides = [...track.querySelectorAll('.slide')];
     if (slides.length === 0) return;
 
-    const numVisible = 2;
+    const numVisible = 3;
     const clonesBefore = slides.slice(-numVisible).map(s => s.cloneNode(true));
     const clonesAfter = slides.slice(0, numVisible).map(s => s.cloneNode(true));
 
@@ -831,14 +914,14 @@ const testimonials = [
       if (!stepSize) return;
 
       const totalSlidesCount = track.querySelectorAll('.slide').length;
+      const currentScrollIndex = Math.round(track.scrollLeft / stepSize);
 
-      if (track.scrollLeft >= stepSize * (totalSlidesCount - numVisible)) {
+      if (currentScrollIndex >= totalSlidesCount - numVisible) {
         isAdjusting = true;
         currentIndex = numVisible;
         track.scrollTo({ left: stepSize * currentIndex, behavior: 'auto' });
         setTimeout(() => { isAdjusting = false; }, 60);
-      }
-      else if (track.scrollLeft <= 5) {
+      } else if (currentScrollIndex <= 0) {
         isAdjusting = true;
         currentIndex = totalSlidesCount - numVisible * 2;
         track.scrollTo({ left: stepSize * currentIndex, behavior: 'auto' });
@@ -846,20 +929,47 @@ const testimonials = [
       }
     });
 
+    function advanceNext() {
+      const stepSize = getStepSize();
+      if (!stepSize) return;
+      const currentScrollIndex = Math.round(track.scrollLeft / stepSize);
+      scrollToSlide(currentScrollIndex + 1, true);
+    }
+
+    function advancePrev() {
+      const stepSize = getStepSize();
+      if (!stepSize) return;
+      const currentScrollIndex = Math.round(track.scrollLeft / stepSize);
+      scrollToSlide(currentScrollIndex - 1, true);
+    }
+
+    let autoPlayTimer = null;
+    function startAutoplay() {
+      stopAutoplay();
+      autoPlayTimer = setInterval(advanceNext, 3500);
+    }
+    function stopAutoplay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    startAutoplay();
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
+
     nextBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const stepSize = getStepSize();
-      const currentScrollIndex = Math.round(track.scrollLeft / stepSize);
-      scrollToSlide(currentScrollIndex + 1, true);
+      advanceNext();
+      startAutoplay();
     });
 
     prevBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const stepSize = getStepSize();
-      const currentScrollIndex = Math.round(track.scrollLeft / stepSize);
-      scrollToSlide(currentScrollIndex - 1, true);
+      advancePrev();
+      startAutoplay();
     });
   }
 
