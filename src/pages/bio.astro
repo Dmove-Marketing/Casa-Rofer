@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
+import Img from '../components/ui/Img.astro';
 
 const bioFields = [
   { type: 'row', fields: [
@@ -34,7 +35,7 @@ const bioFields = [
   <main class="bio-container">
     <div class="bio-content">
       <div class="bio-header">
-        <img class="bio-logo" src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" />
+        <Img class="bio-logo" src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" width={180} sizes="180px" priority />
         <h1 class="bio-title">A arte de transformar<br><span class="accent">o instante em memórias</span></h1>
       </div>
 
@@ -84,12 +85,19 @@ const bioFields = [
     align-items: center;
     justify-content: center;
     padding: clamp(20px, 5vw, 60px) 16px;
-    background: linear-gradient(rgba(26, 23, 20, 0.6), rgba(26, 23, 20, 0.85)), 
-                url('https://media.dmove.com.br/clients/casa-rofer/photos/bio-casa-rofer.webp') no-repeat center center;
+    background: linear-gradient(rgba(26, 23, 20, 0.6), rgba(26, 23, 20, 0.85)),
+                url('https://media.dmove.com.br/api/public/resize/900/clients/casa-rofer/photos/bio-casa-rofer.webp') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     position: relative;
     overflow-y: auto;
+  }
+
+  @media (min-width: 900px) {
+    .bio-container {
+      background-image: linear-gradient(rgba(26, 23, 20, 0.6), rgba(26, 23, 20, 0.85)),
+                         url('https://media.dmove.com.br/api/public/resize/1600/clients/casa-rofer/photos/bio-casa-rofer.webp');
+    }
   }
 
   /* ===== WRAPPER/CONTENT ===== */

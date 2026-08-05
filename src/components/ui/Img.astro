@@ -11,6 +11,11 @@ interface Props {
   quality?: number;
   class?: string;
   style?: string;
+  /**
+   * Atributo `sizes` do srcset responsivo (só se aplica a imagens do CDN media.dmove.com.br).
+   * Padrão: "100vw" — ajuste para imagens que não ocupam a largura toda (ex: logos, thumbnails).
+   */
+  sizes?: string;
 }
 
 const {
@@ -22,10 +27,31 @@ const {
   quality = 80,
   class: className,
   style,
+  sizes,
 } = Astro.props;
 
 // Se a URL for externa (CDN), renderiza <img> diretamente sem processamento local
 const isExternal = src.startsWith('http://') || src.startsWith('https://');
+
+// CDN próprio (media.dmove.com.br) suporta redimensionamento sob demanda via
+// /api/public/resize/:width/clients/... — gera srcset responsivo real a partir dele.
+const MEDIA_CDN_PREFIX = 'https://media.dmove.com.br/clients/';
+const isMediaCdn = src.startsWith(MEDIA_CDN_PREFIX);
+const RESIZE_WIDTHS = [400, 600, 800, 1000, 1200, 1600, 2048];
+
+function buildResizeUrl(url: string, w: number) {
+  return url.replace('/clients/', `/api/public/resize/${w}/clients/`);
+}
+
+function buildSrcset(url: string, maxWidth: number) {
+  const cap = Math.min(maxWidth * 2, 2048); // até 2x para telas retina
+  const chosen = new Set(RESIZE_WIDTHS.filter((w) => w <= cap));
+  chosen.add(Math.min(maxWidth, 2048));
+  return [...chosen]
+    .sort((a, b) => a - b)
+    .map((w) => `${buildResizeUrl(url, w)} ${w}w`)
+    .join(', ');
+}
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/**/*.{jpg,jpeg,png,webp,avif,gif}',
@@ -40,7 +66,21 @@ if (!isExternal && !mod) {
 }
 ---
 
-{isExternal ? (
+{isMediaCdn ? (
+  <img
+    src={src}
+    srcset={buildSrcset(src, width)}
+    sizes={sizes ?? '100vw'}
+    alt={alt}
+    width={width}
+    height={height ?? undefined}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : undefined}
+    class={className}
+    style={style}
+    decoding="async"
+  />
+) : isExternal ? (
   <img
     src={src}
     alt={alt}
