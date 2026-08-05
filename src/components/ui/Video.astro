@@ -33,6 +33,13 @@ const videoId = `video-${Math.random().toString(36).slice(2, 8)}`;
 // Detecta o MIME type pelo extensão da URL
 const mimeType = src.endsWith('.webm') ? 'video/webm' : 'video/mp4';
 
+// Poster exibido no <video> usa versão redimensionada do CDN (mais leve);
+// o JSON-LD (thumbnailUrl) mantém a imagem original — Google recomenda ≥1200px.
+const MEDIA_CDN_PREFIX = 'https://media.dmove.com.br/clients/';
+const displayPoster = poster.startsWith(MEDIA_CDN_PREFIX)
+  ? poster.replace('/clients/', '/api/public/resize/800/clients/')
+  : poster;
+
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -48,7 +55,7 @@ const schema = {
 <div class:list={['video-wrap', className]} id={videoId}>
   <video
     class="video-wrap__player"
-    poster={poster}
+    poster={displayPoster}
     preload="none"
     playsinline
     controls={controls}
