@@ -7,6 +7,8 @@ interface Props {
   displayName?: string;
   submitUrl?: string;
   project?: string;
+  /** Exibe o campo "Empresa" como primeiro campo da etapa 1 (usado na página de eventos corporativos) */
+  showEmpresaField?: boolean;
 }
 
 const {
@@ -14,6 +16,7 @@ const {
   displayName = config.whatsapp?.display_name || 'Casa Rofer',
   submitUrl = config.forms['lead-form']?.webhooks[0] || '',
   project = config.project_slug || 'casa-rofer',
+  showEmpresaField = false,
 } = Astro.props;
 
 const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer.`;
@@ -67,6 +70,13 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       <div class="wa-form-wrap">
         <!-- Step 1 -->
         <form class="wa-step" id="wa-step1" novalidate>
+          {showEmpresaField && (
+            <div class="wa-field">
+              <label for="wa-empresa">Empresa</label>
+              <input id="wa-empresa" name="empresa" type="text" placeholder="Nome da empresa" required autocomplete="organization" />
+              <span class="wa-error" id="wa-empresa-err">Por favor, informe o nome da empresa.</span>
+            </div>
+          )}
           <div class="wa-field">
             <label for="wa-nome">Nome</label>
             <input id="wa-nome" name="nome" type="text" placeholder="Seu nome completo" required autocomplete="name" />
@@ -203,8 +213,8 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     step2.hidden = true;
     success.hidden = true;
 
-    // foca o primeiro campo
-    setTimeout(() => document.getElementById('wa-nome')?.focus(), 300);
+    // foca o primeiro campo (Empresa, se existir; senão Nome)
+    setTimeout(() => (document.getElementById('wa-empresa') || document.getElementById('wa-nome'))?.focus(), 300);
   }
 
   function closePopup() {
@@ -232,14 +242,24 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 
   /* ── Validação step 1 ───────────────────────── */
   const handleStep1 = () => {
+    const empresa = document.getElementById('wa-empresa');
     const nome  = document.getElementById('wa-nome');
     const tel   = document.getElementById('wa-tel');
     const email = document.getElementById('wa-email');
     let ok = true;
 
+    if (empresa) {
+      if (!empresa.value.trim()) {
+        document.getElementById('wa-empresa-err').classList.add('visible');
+        empresa.focus(); ok = false;
+      } else {
+        document.getElementById('wa-empresa-err').classList.remove('visible');
+      }
+    }
+
     if (!nome.value.trim()) {
       document.getElementById('wa-nome-err').classList.add('visible');
-      nome.focus(); ok = false;
+      if (ok) { nome.focus(); ok = false; } else { ok = false; }
     } else {
       document.getElementById('wa-nome-err').classList.remove('visible');
     }
@@ -260,7 +280,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 
     if (!ok) return;
 
-    step1Data = { nome: nome.value.trim(), tel: tel.value.trim(), email: email.value.trim() };
+    step1Data = { empresa: empresa ? empresa.value.trim() : '', nome: nome.value.trim(), tel: tel.value.trim(), email: email.value.trim() };
     step1.hidden = true;
     step2.hidden = false;
     document.getElementById('wa-tipo')?.focus();
@@ -332,6 +352,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 
     const nowStr = new Date();
     const payload = {
+      ...(step1Data.empresa ? { Empresa: step1Data.empresa } : {}),
       Nome: step1Data.nome || '',
       WhatsApp: step1Data.tel || '',
       'E-mail': step1Data.email || '',

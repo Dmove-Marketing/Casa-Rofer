@@ -37,6 +37,8 @@ interface Props {
   whatsAppStep1Fields?: WhatsAppStep1Field[];
   /** Mensagem de boas-vindas do popup WhatsApp (use \n para quebrar linha) */
   whatsAppMessage?: string;
+  /** Exibe o campo "Empresa" como primeiro campo da etapa 1 do popup WhatsApp */
+  whatsAppShowEmpresaField?: boolean;
 }
 
 const {
@@ -49,6 +51,7 @@ const {
   jsonLd,
   whatsAppStep1Fields,
   whatsAppMessage,
+  whatsAppShowEmpresaField = false,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -108,7 +111,7 @@ const defaultJsonLd = {
     <slot />
 
     <!-- WhatsApp Flutuante — configurar em config.json > whatsapp -->
-    <WhatsAppWidget />
+    <WhatsAppWidget showEmpresaField={whatsAppShowEmpresaField} />
 
     <!-- Scripts adicionais -->
     <slot name="scripts" />
