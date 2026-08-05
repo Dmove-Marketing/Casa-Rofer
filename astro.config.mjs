@@ -5,7 +5,7 @@ export default defineConfig({
   output: 'static',
   prefetch: true,
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   server: {
     port: 4323,
