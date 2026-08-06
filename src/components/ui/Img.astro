@@ -37,7 +37,7 @@ const isExternal = src.startsWith('http://') || src.startsWith('https://');
 // /api/public/resize/:width/clients/... — gera srcset responsivo real a partir dele.
 const MEDIA_CDN_PREFIX = 'https://media.dmove.com.br/clients/';
 const isMediaCdn = src.startsWith(MEDIA_CDN_PREFIX);
-const RESIZE_WIDTHS = [400, 600, 800, 1000, 1200, 1600, 2048];
+const RESIZE_WIDTHS = [400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1600, 2048];
 
 function buildResizeUrl(url: string, w: number) {
   return url.replace('/clients/', `/api/public/resize/${w}/clients/`);

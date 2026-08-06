@@ -10,6 +10,7 @@ import '@fontsource/montserrat/800.css';
 import GTMHead from '../components/tracking/GTMHead.astro';
 import GTMBody from '../components/tracking/GTMBody.astro';
 import UTMCapture from '../components/tracking/UTMCapture.astro';
+import InteractionTrigger from '../components/tracking/InteractionTrigger.astro';
 import WhatsAppWidget from '../components/ui/WhatsAppWidget.astro';
 
 interface WhatsAppStep1Field {
@@ -110,6 +111,9 @@ const defaultJsonLd = {
 
     <!-- UTM Capture -->
     {trackingEnabled && <UTMCapture />}
+
+    <!-- Gatilho de interação: dispara 'user_interaction' no dataLayer para gatilhar Pixel/CAPI no GTM sob demanda -->
+    {trackingEnabled && gtmId && <InteractionTrigger />}
 
     <!-- Conteúdo da página -->
     <slot />
