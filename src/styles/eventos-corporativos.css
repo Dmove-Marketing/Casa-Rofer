@@ -132,15 +132,40 @@ section{position:relative;z-index:1;background:var(--bg)}
 .video-frame{margin-top:52px;border-radius:3px;overflow:hidden;position:relative;background:#000}
 .video-frame video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
 
-/* generic media band */
-.band{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(30px,5vw,80px)}
-.band-media{order:1}
-.band-text{order:2}
-.band.rev .band-media{order:2}
-.band.rev .band-text{order:1}
-.band-media{position:relative}
-.band-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px}
-.band-text .btn{margin-top:30px}
+/* ===== SOLUÇÃO 360° (carrossel de cards + vídeo) ===== */
+.solucao-wrap{width:70%;margin-inline:auto}
+.solucao-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(30px,5vw,80px)}
+
+.solucao-carousel{position:relative;min-width:0}
+.solucao-carousel .car-btn.prev{left:-24px}
+.solucao-carousel .car-btn.next{right:-24px}
+.solucao-track{position:relative;min-height:220px}
+.solucao-slide{
+  position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .6s ease;
+  background:var(--bg);border:1px solid var(--line);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(28px,3vw,40px);
+}
+.solucao-slide.is-active{opacity:1;pointer-events:auto}
+.solucao-slide p{
+  font-family:'Aktiv Grotesk',sans-serif;
+  font-size:clamp(1rem,1.3vw,1.12rem);
+  line-height:1.65;color:var(--ink-soft);font-weight:400;margin:0;
+}
+.solucao-slide b{color:var(--title);font-weight:600}
+
+.video-frame.solucao-video{margin-top:0;min-width:0;width:100%}
+
+@media(max-width:900px){
+  .solucao-wrap{width:92%}
+  .solucao-split{grid-template-columns:1fr;gap:36px}
+  .solucao-slide{padding:24px}
+}
+@media(max-width:480px){
+  .solucao-track{min-height:520px}
+}
 
 /* ===== ESPAÇOS ===== */
 .spaces-stack{display:flex;flex-direction:column;gap:clamp(56px,7vw,110px)}
@@ -434,9 +459,6 @@ footer .wrap{max-width:1600px}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
-  .band{grid-template-columns:1fr;gap:36px}
-  .band.rev .band-media,.band .band-media{order:1}
-  .band.rev .band-text,.band .band-text{order:2}
   .fgrid{grid-template-columns:1fr}
   .foot-bar{grid-template-columns:1fr;justify-items:center;text-align:center;gap:22px}
   .foot-bar > *{text-align:center!important;justify-self:center!important;margin:0!important}
