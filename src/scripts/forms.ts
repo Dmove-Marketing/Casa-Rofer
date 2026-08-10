@@ -3,6 +3,9 @@ import { keyMap, trackingParamKeys } from './lead-payload';
 function applyPhoneMask(input: HTMLInputElement) {
   input.addEventListener('input', () => {
     let v = input.value.replace(/\D/g, '');
+    if (v.startsWith('55') && v.length > 11) {
+      v = v.slice(2);
+    }
     if (v.length > 11) v = v.slice(0, 11);
     if (v.length > 7) {
       v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
@@ -100,18 +103,42 @@ export function initForms() {
         }
       });
 
-      // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
+      // Validação de formato: telefone (mínimo 10 dígitos — DDD + número, sem DDI 55)
       form.querySelectorAll<HTMLInputElement>('input').forEach((field) => {
         if (!isPhoneField(field) || !field.value) return;
         const digits = field.value.replace(/\D/g, '');
-        if (digits.length < 10) {
+        const startsWith55 = digits.startsWith('55');
+        if (digits.length < 10 || startsWith55) {
           isValid = false;
           (field as HTMLElement).style.borderColor = '#ef4444';
           (field as HTMLElement).style.outline = '2px solid #ef4444';
           if (!firstInvalid) firstInvalid = field;
+
+          let errorEl = field.parentElement?.querySelector('.field-error, .lead-form-field-error') as HTMLElement | null;
+          if (!errorEl && field.parentElement) {
+            errorEl = document.createElement('span');
+            errorEl.className = 'field-error';
+            errorEl.style.color = '#ef4444';
+            errorEl.style.fontSize = '0.78rem';
+            errorEl.style.marginTop = '4px';
+            field.parentElement.appendChild(errorEl);
+          }
+
+          if (errorEl) {
+            errorEl.textContent = startsWith55
+              ? 'Não inclua o DDI 55. Digite apenas DDD + telefone (ex: 11 99999-9999).'
+              : 'Por favor, informe um telefone válido com DDD (mínimo 10 dígitos).';
+            errorEl.style.display = 'block';
+            errorEl.classList.add('visible');
+          }
+
           const clear = () => {
             (field as HTMLElement).style.removeProperty('border-color');
             (field as HTMLElement).style.removeProperty('outline');
+            if (errorEl) {
+              errorEl.style.display = 'none';
+              errorEl.classList.remove('visible');
+            }
             field.removeEventListener('input', clear);
           };
           field.addEventListener('input', clear);

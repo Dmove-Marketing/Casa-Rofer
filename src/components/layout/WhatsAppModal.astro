@@ -283,6 +283,7 @@ step1Fields.forEach(f => {
     if (phoneInput) {
       phoneInput.addEventListener('input', () => {
         let v = phoneInput.value.replace(/\D/g, '');
+        if (v.startsWith('55') && v.length > 11) v = v.slice(2);
         if (v.length > 11) v = v.slice(0, 11);
         if (v.length > 7)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
         else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
@@ -342,11 +343,15 @@ step1Fields.forEach(f => {
       if (!validateStep(step2)) return;
 
       const phoneDigits = phoneInput.value.replace(/\D/g, '');
-      if (phoneDigits.length !== 11 || phoneDigits.charAt(2) !== '9') {
+      if (phoneDigits.length !== 11 || phoneDigits.charAt(2) !== '9' || phoneDigits.startsWith('55')) {
         phoneInput.style.borderColor = '#ef4444';
         phoneInput.style.outline = '2px solid rgba(239,68,68,0.4)';
         phoneInput.focus();
-        alert('Por favor, insira um WhatsApp celular válido com 11 dígitos (DDD + 9...).');
+        if (phoneDigits.startsWith('55')) {
+          alert('Não inclua o DDI 55. Digite apenas o DDD e o celular (ex: 11 99999-9999).');
+        } else {
+          alert('Por favor, insira um WhatsApp celular válido com 11 dígitos (DDD + 9...).');
+        }
         return;
       }
 

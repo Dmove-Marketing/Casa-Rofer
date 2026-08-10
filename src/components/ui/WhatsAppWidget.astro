@@ -190,6 +190,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   if (telInput) {
     telInput.addEventListener('input', () => {
       let v = telInput.value.replace(/\D/g, '');
+      if (v.startsWith('55') && v.length > 11) v = v.slice(2);
       if (v.length > 11) v = v.slice(0, 11);
       if (v.length > 7)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
       else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
@@ -264,8 +265,15 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       document.getElementById('wa-nome-err').classList.remove('visible');
     }
 
-    if (!tel.value.trim() || tel.value.replace(/\D/g, '').length < 10) {
-      document.getElementById('wa-tel-err').classList.add('visible');
+    const telDigits = tel.value.replace(/\D/g, '');
+    if (!tel.value.trim() || telDigits.length < 10 || telDigits.startsWith('55')) {
+      const errEl = document.getElementById('wa-tel-err');
+      if (errEl) {
+        errEl.textContent = telDigits.startsWith('55')
+          ? 'Não coloque o DDI 55. Informe apenas DDD + número.'
+          : 'Por favor, informe seu telefone.';
+        errEl.classList.add('visible');
+      }
       if (ok) { tel.focus(); ok = false; }
     } else {
       document.getElementById('wa-tel-err').classList.remove('visible');
