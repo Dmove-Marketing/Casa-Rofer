@@ -101,7 +101,7 @@ const {
           </div>
           <div class="wa-field">
             <label for="wa-data">Data do evento</label>
-            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" required />
+            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required />
             <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
           </div>
           <div class="wa-field">
@@ -188,6 +188,18 @@ const {
       else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
       else if (v.length > 0) v = `(${v}`;
       telInput.value = v;
+    });
+  }
+
+  /* máscara de data (dd/mm/aaaa) */
+  const dataInput = document.getElementById('wa-data');
+  if (dataInput) {
+    dataInput.addEventListener('input', () => {
+      let v = dataInput.value.replace(/\D/g, '');
+      if (v.length > 8) v = v.slice(0, 8);
+      if (v.length > 4)      v = `${v.slice(0,2)}/${v.slice(2,4)}/${v.slice(4)}`;
+      else if (v.length > 2) v = `${v.slice(0,2)}/${v.slice(2)}`;
+      dataInput.value = v;
     });
   }
 
