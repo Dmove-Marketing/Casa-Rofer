@@ -1,5 +1,5 @@
 // Mapeamento normalizado para o padrão exato de chaves do n8n.
-// Compartilhado entre forms.ts (LeadForm) e WhatsAppModal para que
+// Compartilhado entre forms.ts (LeadForm) e WhatsAppWidget para que
 // todo formulário do site envie os mesmos nomes de campo ao webhook.
 export const keyMap: Record<string, string> = {
   nome: 'Nome',
