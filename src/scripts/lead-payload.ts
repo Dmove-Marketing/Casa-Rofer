@@ -23,3 +23,10 @@ export const trackingParamKeys = [
   'fbclid', 'ttclid', 'msclkid', 'sck',
   'fbc', 'fbp', 'external_id', 'event_id',
 ];
+
+// Deriva "Landing page/<slug>" a partir da URL atual, sem precisar configurar
+// nada manualmente por página. A home (slug vazio) é a landing de casamentos.
+export function getPageSource(pathname: string): string {
+  const slug = pathname.replace(/\/$/, '').split('/').filter(Boolean)[0];
+  return `Landing page/${slug || 'casamentos'}`;
+}

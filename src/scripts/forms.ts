@@ -1,4 +1,4 @@
-import { keyMap, trackingParamKeys } from './lead-payload';
+import { keyMap, trackingParamKeys, getPageSource } from './lead-payload';
 
 function applyPhoneMask(input: HTMLInputElement) {
   input.addEventListener('input', () => {
@@ -183,10 +183,7 @@ export function initForms() {
       const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
       const capitalizedFields: Record<string, string> = {};
-      const defaultFonte = window.location.pathname.replace(/\/$/, '').endsWith('/bio')
-        ? 'Landing page/bio'
-        : 'Landing page/casamentos';
-      let fonteBase = rawData['fonte'] || form.dataset.fonte || defaultFonte;
+      let fonteBase = rawData['fonte'] || form.dataset.fonte || getPageSource(window.location.pathname);
       Object.entries(rawData).forEach(([key, val]) => {
         if (key === 'fonte') return;
         const normalizedKey = key.trim().toLowerCase();
