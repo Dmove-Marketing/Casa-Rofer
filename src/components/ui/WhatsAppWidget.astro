@@ -1,6 +1,6 @@
 ---
 import config from '../../../config.json';
-import { trackingParamKeys } from '../../scripts/lead-payload';
+import { trackingParamKeys, tipoEventoOptions } from '../../scripts/lead-payload';
 
 interface Props {
   phone?: string;
@@ -72,7 +72,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
         <form class="wa-step" id="wa-step1" novalidate>
           {showEmpresaField && (
             <div class="wa-field">
-              <label for="wa-empresa">Empresa</label>
+              <label for="wa-empresa">Nome da empresa</label>
               <input id="wa-empresa" name="empresa" type="text" placeholder="Nome da empresa" required autocomplete="organization" />
               <span class="wa-error" id="wa-empresa-err">Por favor, informe o nome da empresa.</span>
             </div>
@@ -83,7 +83,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
             <span class="wa-error" id="wa-nome-err">Por favor, informe seu nome.</span>
           </div>
           <div class="wa-field">
-            <label for="wa-tel">Telefone / WhatsApp</label>
+            <label for="wa-tel">Telefone</label>
             <input id="wa-tel" name="tel" type="tel" placeholder="(11) 99999-9999" required autocomplete="tel" />
             <span class="wa-error" id="wa-tel-err">Por favor, informe seu telefone.</span>
           </div>
@@ -107,26 +107,21 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
             <label for="wa-tipo">Tipo de evento</label>
             <select id="wa-tipo" name="tipo_evento" required>
               <option value="" disabled selected>Selecione o tipo de evento</option>
-              <option value="Aniversario">Aniversário</option>
-              <option value="Aniversario debutante">Aniversário debutante</option>
-              <option value="Bodas">Bodas</option>
-              <option value="Casamento">Casamento</option>
-              <option value="Confraternizacao corporativa">Confraternização corporativa</option>
-              <option value="Confraternizacao social">Confraternização social</option>
-              <option value="Corporativo">Corporativo</option>
-              <option value="Feiras e Exposicoes">Feiras e Exposições</option>
-              <option value="Masterclass e Palestras">Masterclass e Palestras</option>
-              <option value="Mentorias e Treinamentos">Mentorias e Treinamentos</option>
-              <option value="Offsite corporativo">Offsite corporativo</option>
-              <option value="Reunioes de Networking">Reuniões de Networking</option>
-              <option value="Workshops, Conferencias e Seminarios">Workshops, Conferências e Seminários</option>
-              <option value="Outros">Outros</option>
+              {tipoEventoOptions.map((o) => <option value={o.value}>{o.label}</option>)}
             </select>
             <span class="wa-error" id="wa-tipo-err">Por favor, selecione o tipo de evento.</span>
           </div>
           <div class="wa-field">
             <label for="wa-data">Data do evento</label>
-            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required />
+            <div class="wa-datepicker-wrap">
+              <input id="wa-data" name="data_evento" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required data-wa-flatpickr="true" />
+              <svg class="wa-datepicker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
             <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
           </div>
           <div class="wa-field">
@@ -238,16 +233,36 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   });
   closeBtn.addEventListener('click', closePopup);
 
+  // O calendário (flatpickr) é anexado ao <body>, FORA do popup. Nem o clique de
+  // seleção nem o mousedown dentro dele podem contar como "clique fora".
+  const isInsideCalendar = (el) => !!(el && el.closest && el.closest('.flatpickr-calendar'));
+  const isCalendarOpen = () => !!document.querySelector('.flatpickr-calendar.open');
+
+  // Registra a interação (mousedown) dentro do calendário ANTES de o flatpickr
+  // re-renderizar/fechar. Assim o clique seguinte é reconhecido mesmo que o alvo
+  // mude, e o popup não fecha ao escolher a data. Fase de captura para vir primeiro.
+  let lastCalendarTouch = 0;
+  document.addEventListener('mousedown', (e) => {
+    if (isInsideCalendar(e.target)) lastCalendarTouch = Date.now();
+  }, true);
+
   // Fecha ao clicar fora
   document.addEventListener('click', (e) => {
-    if (!popup.hidden && !popup.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+    if (
+      !popup.hidden &&
+      !popup.contains(e.target) &&
+      e.target !== toggle &&
+      !toggle.contains(e.target) &&
+      !isInsideCalendar(e.target) &&
+      Date.now() - lastCalendarTouch > 400
+    ) {
       closePopup();
     }
   });
 
-  // ESC
+  // ESC: se o calendário estiver aberto, deixa o flatpickr fechar só o calendário
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !popup.hidden) closePopup();
+    if (e.key === 'Escape' && !popup.hidden && !isCalendarOpen()) closePopup();
   });
 
   /* ── Validação step 1 ───────────────────────── */
@@ -436,6 +451,39 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       }
     }
   });
+</script>
+
+<!-- Calendário (flatpickr) do campo Data — mesmo do formulário normal -->
+<script>
+  import flatpickr from 'flatpickr';
+  import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+  import 'flatpickr/dist/flatpickr.min.css';
+
+  function initWaDatepicker() {
+    const el = document.querySelector('[data-wa-flatpickr]');
+    if (!el || el.dataset.flatpickrReady) return;
+    el.dataset.flatpickrReady = 'true';
+
+    const icon = el.parentElement?.querySelector('.wa-datepicker-icon');
+
+    // não-static: o calendário é anexado ao body e flutua acima do popup,
+    // evitando ser cortado pelo overflow da janela de chat (altura limitada)
+    const fp = flatpickr(el, {
+      locale: Portuguese,
+      dateFormat: 'd/m/Y',
+      minDate: 'today',
+      disableMobile: true,
+      allowInput: true,
+    });
+
+    icon?.addEventListener('click', () => fp.open());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWaDatepicker);
+  } else {
+    initWaDatepicker();
+  }
 </script>
 
 <style>
@@ -704,6 +752,34 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     border-color: var(--wa-green-dark);
   }
   .wa-field input::placeholder { color: #aaa; }
+
+  /* Campo de data com calendário (flatpickr) */
+  .wa-datepicker-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .wa-datepicker-wrap :global(.flatpickr-wrapper) {
+    display: block;
+    width: 100%;
+  }
+  .wa-datepicker-wrap input {
+    padding-right: 24px;
+    cursor: pointer;
+  }
+  .wa-datepicker-icon {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--wa-green-dark);
+    opacity: .7;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .wa-datepicker-wrap:focus-within .wa-datepicker-icon,
+  .wa-datepicker-icon:hover { opacity: 1; }
 
   /* Erro */
   .wa-error {

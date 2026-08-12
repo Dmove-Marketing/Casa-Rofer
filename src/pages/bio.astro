@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import LeadForm from '../components/forms/LeadForm.astro';
+import { tipoEventoOptions } from '../scripts/lead-payload';
 import Img from '../components/ui/Img.astro';
 
 const bioFields = [
@@ -13,19 +14,14 @@ const bioFields = [
     { name: 'email', type: 'email', label: 'E-mail', required: true },
     { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', required: true, options: [
       { value: '', disabled: true, selected: true, label: 'Selecione o tipo de evento' },
-      { value: 'Eventos corporativos', label: 'Eventos corporativos' },
-      { value: 'Casamento', label: 'Casamento' },
-      { value: 'Bodas', label: 'Bodas' },
-      { value: 'Aniversario', label: 'Aniversário' },
-      { value: 'Debutante', label: 'Debutante' },
-      { value: 'Outros', label: 'Outros' }
+      ...tipoEventoOptions,
     ]},
   ]},
   { type: 'row', fields: [
     { name: 'data_evento', type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
     { name: 'convidados',  type: 'number', label: 'Número de convidados', required: true },
   ]},
-  { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', rows: 3 }
+  { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', hint: 'não obrigatório', rows: 3 }
 ];
 ---
 

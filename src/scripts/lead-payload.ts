@@ -17,6 +17,26 @@ export const keyMap: Record<string, string> = {
   mensagem: 'Mensagem',
 };
 
+// Opções de "Tipo de evento" — fonte única compartilhada entre os formulários
+// normais (LeadForm) e o popup de WhatsApp, para que todos ofereçam
+// exatamente a mesma lista. Não inclui o placeholder "Selecione...".
+export const tipoEventoOptions: { value: string; label: string }[] = [
+  { value: 'Aniversario',                          label: 'Aniversário' },
+  { value: 'Aniversario debutante',                label: 'Aniversário debutante' },
+  { value: 'Bodas',                                label: 'Bodas' },
+  { value: 'Casamento',                            label: 'Casamento' },
+  { value: 'Confraternizacao corporativa',         label: 'Confraternização corporativa' },
+  { value: 'Confraternizacao social',              label: 'Confraternização social' },
+  { value: 'Corporativo',                          label: 'Corporativo' },
+  { value: 'Feiras e Exposicoes',                  label: 'Feiras e Exposições' },
+  { value: 'Masterclass e Palestras',              label: 'Masterclass e Palestras' },
+  { value: 'Mentorias e Treinamentos',             label: 'Mentorias e Treinamentos' },
+  { value: 'Offsite corporativo',                  label: 'Offsite corporativo' },
+  { value: 'Reunioes de Networking',               label: 'Reuniões de Networking' },
+  { value: 'Workshops, Conferencias e Seminarios', label: 'Workshops, Conferências e Seminários' },
+  { value: 'Outros',                               label: 'Outros' },
+];
+
 export const trackingParamKeys = [
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
   'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',

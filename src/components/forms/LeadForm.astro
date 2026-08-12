@@ -27,6 +27,8 @@ interface Field {
   options?: FieldOption[];
   value?: string;
   datepicker?: boolean;
+  /** Texto de apoio exibido logo após o campo (ex.: "Não obrigatório") */
+  hint?: string;
 }
 
 interface FieldRow {
@@ -88,6 +90,7 @@ const cxInput   = p ? `${p}-input`        : 'form-input';
 const cxSelect  = p ? `${p}-select`       : 'form-select';
 const cxArea    = p ? `${p}-textarea`     : 'form-textarea';
 const cxError   = p ? `${p}-field-error`  : 'field-error';
+const cxHint    = p ? `${p}-form-hint`     : 'form-hint';
 const cxMsg     = p ? `${p}-form-msg`     : 'form-error';
 const cxFooter  = p ? `${p}-form-footer`  : 'form-footer';
 const cxSuccess      = p ? `${p}-success-state`  : 'form-success-state';
@@ -132,7 +135,7 @@ const groupCls  = (full?: boolean) => {
           <div class={cxRow}>
             {row.fields.map((f) => (
               <div class={groupCls(f.full)}>
-                {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}</label>}
+                {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}{f.hint && <span class={cxHint}> (*{f.hint})</span>}</label>}
                 {f.type === 'select' ? (
                   <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required}>
                     {f.options?.map((opt) => (
@@ -204,7 +207,7 @@ const groupCls  = (full?: boolean) => {
 
       return (
         <div class={groupCls(f.full)}>
-          {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}</label>}
+          {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}{f.hint && <span class={cxHint}> (*{f.hint})</span>}</label>}
           {f.type === 'select' ? (
             <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required}>
               {f.options?.map((opt) => (
@@ -459,6 +462,17 @@ const groupCls  = (full?: boolean) => {
   .form-textarea::placeholder {
     color: var(--ink-soft);
     opacity: .5;
+  }
+
+  /* aviso de apoio inline no label (ex.: "(*não obrigatório)") */
+  .form-hint {
+    font-family: 'Aktiv Grotesk', sans-serif;
+    text-transform: none;   /* mantém minúsculo mesmo com o label em uppercase */
+    letter-spacing: 0;
+    font-weight: 400;
+    font-size: .72rem;
+    color: var(--ink-soft);
+    opacity: .7;
   }
 
   /* erro de campo */
