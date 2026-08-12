@@ -59,15 +59,8 @@ const bioFields = [
 </Base>
 
 <style>
-  /* ===== FONTS IMPORT (Para itálicos PP Editorial New) ===== */
-  @font-face {
-    font-family: 'PP Editorial New';
-    src: url('/src/assets/fonts/PPEditorialNew-Italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-
+  /* PP Editorial New: @font-face removido (arquivo nunca existiu → 404).
+     .accent cai no fallback serif itálico, igual ao comportamento atual. */
   .accent {
     font-family: 'PP Editorial New', serif;
     font-style: italic;

@@ -4,19 +4,11 @@
    Aktiv Grotesk Regular (400) -> base dos títulos (h1/h2/h3) e texto corrido, sem itálico
    PP Editorial New Regular Italic (400) -> palavras/frases de impacto (.accent) dentro dos títulos, Diferenciais (.dif-card span) e barra de autoridade (.authority .stat)
    Aktiv Grotesk (400) -> textos acima dos títulos (eyebrows/tags) e botões
-   Obs.: Optima removida — a fonte não possui acentuação em português. */
-@font-face{
-  font-family:'Aktiv Grotesk';
-  src:url('assets/fonts/AktivGrotesk-Regular.woff2') format('woff2'),
-      url('assets/fonts/AktivGrotesk-Regular.otf') format('opentype');
-  font-weight:400;font-style:normal;font-display:swap;
-}
-@font-face{
-  font-family:'PP Editorial New';
-  src:url('assets/fonts/PPEditorialNew-Italic.woff2') format('woff2'),
-      url('assets/fonts/PPEditorialNew-Italic-BF644b214fb0c0a.otf') format('opentype');
-  font-weight:400;font-style:italic;font-display:swap;
-}
+   Obs.: Optima removida — a fonte não possui acentuação em português.
+   Aktiv Grotesk / PP Editorial New: @font-face removidos (os arquivos nunca
+   existiram → 404 em produção). Os font-family abaixo caem no fallback
+   sans-serif/serif. Para reativá-las, recolocar os @font-face apontando
+   para os arquivos reais — os font-family já estão prontos. */
 .alt-font{font-family:'Aktiv Grotesk',sans-serif}
 .accent{font-family:'PP Editorial New',serif;font-style:italic;font-weight:400;letter-spacing:0}
 
