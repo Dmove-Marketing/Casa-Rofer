@@ -233,37 +233,37 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   });
   closeBtn.addEventListener('click', closePopup);
 
-  // O calendário (flatpickr) é anexado ao <body>, FORA do popup. Nem o clique de
-  // seleção nem o mousedown dentro dele podem contar como "clique fora".
-  const isInsideCalendar = (el) => !!(el && el.closest && el.closest('.flatpickr-calendar'));
-  const isCalendarOpen = () => !!document.querySelector('.flatpickr-calendar.open');
+  // O calendário (flatpickr) é anexado ao <body>, FORA do popup. Enquanto ele
+  // estiver aberto, nenhum clique/ESC deve fechar o popup. O estado vem do
+  // próprio flatpickr (window.__waCalendarOpen, definido via onOpen/onClose no
+  // outro <script>) — não depende do alvo do clique, então é à prova de
+  // re-render do calendário.
+  const isCalendarEngaged = () => window.__waCalendarOpen === true;
 
-  // Registra a interação (mousedown) dentro do calendário ANTES de o flatpickr
-  // re-renderizar/fechar. Assim o clique seguinte é reconhecido mesmo que o alvo
-  // mude, e o popup não fecha ao escolher a data. Fase de captura para vir primeiro.
-  let lastCalendarTouch = 0;
-  document.addEventListener('mousedown', (e) => {
-    if (isInsideCalendar(e.target)) lastCalendarTouch = Date.now();
-  }, true);
-
-  // Fecha ao clicar fora
-  document.addEventListener('click', (e) => {
+  // Listeners de document idempotentes: removemos o anterior antes de registrar.
+  // Isso evita que o HMR (dev) empilhe múltiplos handlers antigos que fechavam
+  // o popup mesmo com a correção aplicada.
+  if (window.__waOutsideClick) document.removeEventListener('click', window.__waOutsideClick);
+  window.__waOutsideClick = (e) => {
+    if (isCalendarEngaged()) return;
     if (
       !popup.hidden &&
       !popup.contains(e.target) &&
       e.target !== toggle &&
-      !toggle.contains(e.target) &&
-      !isInsideCalendar(e.target) &&
-      Date.now() - lastCalendarTouch > 400
+      !toggle.contains(e.target)
     ) {
       closePopup();
     }
-  });
+  };
+  document.addEventListener('click', window.__waOutsideClick);
 
-  // ESC: se o calendário estiver aberto, deixa o flatpickr fechar só o calendário
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !popup.hidden && !isCalendarOpen()) closePopup();
-  });
+  // ESC: com o calendário aberto, o flatpickr fecha só o calendário; só fecha o
+  // popup quando o calendário já está fechado.
+  if (window.__waEscKey) document.removeEventListener('keydown', window.__waEscKey);
+  window.__waEscKey = (e) => {
+    if (e.key === 'Escape' && !popup.hidden && !isCalendarEngaged()) closePopup();
+  };
+  document.addEventListener('keydown', window.__waEscKey);
 
   /* ── Validação step 1 ───────────────────────── */
   const handleStep1 = () => {
@@ -474,6 +474,11 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       minDate: 'today',
       disableMobile: true,
       allowInput: true,
+      // Sinaliza ao popup que o calendário está engajado. O pequeno atraso no
+      // onClose garante que o clique que fechou o calendário (seleção da data
+      // ou clique fora) não seja interpretado como "fechar o popup".
+      onOpen: () => { window.__waCalendarOpen = true; },
+      onClose: () => { setTimeout(() => { window.__waCalendarOpen = false; }, 250); },
     });
 
     icon?.addEventListener('click', () => fp.open());
