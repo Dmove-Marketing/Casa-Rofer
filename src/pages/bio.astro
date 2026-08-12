@@ -9,21 +9,23 @@ const bioFields = [
     { name: 'nome',     type: 'text',   label: 'Nome',     required: true },
     { name: 'telefone', type: 'text',   label: 'Telefone', required: true },
   ]},
-  { name: 'email', type: 'email', label: 'E-mail', required: true },
   { type: 'row', fields: [
-    { name: 'data',       type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
-    { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
+    { name: 'email', type: 'email', label: 'E-mail', required: true },
+    { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', required: true, options: [
+      { value: '', disabled: true, selected: true, label: 'Selecione o tipo de evento' },
+      { value: 'Eventos corporativos', label: 'Eventos corporativos' },
+      { value: 'Casamento', label: 'Casamento' },
+      { value: 'Bodas', label: 'Bodas' },
+      { value: 'Aniversario', label: 'Aniversário' },
+      { value: 'Debutante', label: 'Debutante' },
+      { value: 'Outros', label: 'Outros' }
+    ]},
   ]},
-  { name: 'tipo_evento', type: 'select', label: 'Tipo de evento', options: [
-    { value: '', disabled: true, selected: true, label: 'Selecione o tipo de evento' },
-    { value: 'Eventos corporativos', label: 'Eventos corporativos' },
-    { value: 'Casamento', label: 'Casamento' },
-    { value: 'Bodas', label: 'Bodas' },
-    { value: 'Aniversario', label: 'Aniversário' },
-    { value: 'Debutante', label: 'Debutante' },
-    { value: 'Outros', label: 'Outros' }
+  { type: 'row', fields: [
+    { name: 'data_evento', type: 'text',   label: 'Data do evento', placeholder: 'dd/mm/aaaa', datepicker: true, required: true },
+    { name: 'convidados',  type: 'number', label: 'Número de convidados', required: true },
   ]},
-  { name: 'detalhes', type: 'textarea', label: 'Detalhes adicionais', rows: 3 }
+  { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', rows: 3 }
 ];
 ---
 

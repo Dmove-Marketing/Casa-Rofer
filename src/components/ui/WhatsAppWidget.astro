@@ -3,6 +3,7 @@ import config from '../../../config.json';
 import { trackingParamKeys } from '../../scripts/lead-payload';
 
 interface Props {
+  phone?: string;
   displayName?: string;
   submitUrl?: string;
   project?: string;
@@ -11,11 +12,14 @@ interface Props {
 }
 
 const {
+  phone = config.whatsapp?.phone || '5511917299858',
   displayName = config.whatsapp?.display_name || 'Casa Rofer',
   submitUrl = config.forms['lead-form']?.webhooks[0] || '',
   project = config.project_slug || 'casa-rofer',
   showEmpresaField = false,
 } = Astro.props;
+
+const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer.`;
 ---
 
 <!-- ===== WHATSAPP FLOATING WIDGET ===== -->
@@ -100,18 +104,8 @@ const {
             <p>Ótimo! Só mais alguns detalhes 😊</p>
           </div>
           <div class="wa-field">
-            <label for="wa-data">Data do evento</label>
-            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required />
-            <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
-          </div>
-          <div class="wa-field">
-            <label for="wa-convidados">Número de convidados</label>
-            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" required />
-            <span class="wa-error" id="wa-convidados-err">Por favor, informe o número de convidados.</span>
-          </div>
-          <div class="wa-field">
             <label for="wa-tipo">Tipo de evento</label>
-            <select id="wa-tipo" name="tipo_evento">
+            <select id="wa-tipo" name="tipo_evento" required>
               <option value="" disabled selected>Selecione o tipo de evento</option>
               <option value="Aniversario">Aniversário</option>
               <option value="Aniversario debutante">Aniversário debutante</option>
@@ -128,6 +122,17 @@ const {
               <option value="Workshops, Conferencias e Seminarios">Workshops, Conferências e Seminários</option>
               <option value="Outros">Outros</option>
             </select>
+            <span class="wa-error" id="wa-tipo-err">Por favor, selecione o tipo de evento.</span>
+          </div>
+          <div class="wa-field">
+            <label for="wa-data">Data do evento</label>
+            <input id="wa-data" name="data" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required />
+            <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
+          </div>
+          <div class="wa-field">
+            <label for="wa-convidados">Número de convidados</label>
+            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" required />
+            <span class="wa-error" id="wa-convidados-err">Por favor, informe o número de convidados.</span>
           </div>
           <div class="wa-step2-actions">
             <button type="button" class="wa-btn wa-btn--back" id="wa-back">
@@ -160,7 +165,7 @@ const {
   </div>
 </div>
 
-<script define:vars={{ submitUrl, project, trackingParamKeys }}>
+<script define:vars={{ submitUrl, project, trackingParamKeys, waLink }}>
   /* ── State ─────────────────────────────────── */
   const toggle   = document.getElementById('wa-toggle');
   const popup    = document.getElementById('wa-popup');
@@ -330,21 +335,35 @@ const {
 
     let ok = true;
 
+    if (!tipo.value) {
+      document.getElementById('wa-tipo-err').classList.add('visible');
+      if (ok) tipo.focus();
+      ok = false;
+    } else {
+      document.getElementById('wa-tipo-err').classList.remove('visible');
+    }
+
     if (!data.value.trim()) {
       document.getElementById('wa-data-err').classList.add('visible');
-      data.focus(); ok = false;
+      if (ok) data.focus();
+      ok = false;
     } else {
       document.getElementById('wa-data-err').classList.remove('visible');
     }
 
     if (!convidados.value.trim()) {
       document.getElementById('wa-convidados-err').classList.add('visible');
-      if (ok) { convidados.focus(); ok = false; }
+      if (ok) convidados.focus();
+      ok = false;
     } else {
       document.getElementById('wa-convidados-err').classList.remove('visible');
     }
 
     if (!ok) return;
+
+    // Abre o WhatsApp automaticamente em nova aba. Disparado ainda dentro do
+    // gesto de clique (antes do await do fetch) para não ser bloqueado por popup-blockers.
+    window.open(waLink, '_blank', 'noopener');
 
     // Loading state
     submitBtn.disabled = true;

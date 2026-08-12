@@ -38,16 +38,6 @@ document.querySelectorAll('.carousel:not(.fb-carousel)').forEach(c=>{
 
 /* lightbox — desativado */
 
-/* form (visual only) */
-document.getElementById('leadForm')?.addEventListener('submit',e=>{
-  e.preventDefault();
-  const f=e.target;
-  if(!f.nome.value||!f.email.value){f.reportValidity?.();return;}
-  f.style.display='none';
-  document.getElementById('formSuccess').classList.add('show');
-  document.getElementById('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
-});
-
 /* Salão Carousels */
 document.querySelectorAll('.m-carousel').forEach(mCarousel => {
   const slides = [...mCarousel.querySelectorAll('.m-slide')];
