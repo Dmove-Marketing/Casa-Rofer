@@ -82,6 +82,15 @@
   }
 }
 
+/* Escurecer os cards da seção diferenciais */
+.dif-card img {
+  filter: brightness(0.72);
+}
+
+.dif-card::after {
+  background: linear-gradient(180deg, rgba(26, 23, 20, 0.3) 0%, rgba(26, 23, 20, 0.88) 100%);
+}
+
 /* Section Chefs / Buffet Rofer */
 .chefs-grid {
   display: grid;
