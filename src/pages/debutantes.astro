@@ -1,0 +1,510 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import Img from '../components/ui/Img.astro';
+import Video from '../components/ui/Video.astro';
+import LeadForm from '../components/forms/LeadForm.astro';
+import '../styles/debutantes.css';
+
+const gastronomiaImages = [
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes06_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes05_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes04_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes03_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes02_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes01_resultado.webp',
+];
+
+const galeriaImages = [
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes06_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes05_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes04_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes03_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes09_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes08_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes07_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes02_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/galeria_debutantes01_resultado.webp',
+];
+
+const depoimentos = [
+  {
+    stars: '★★★★★',
+    quote: '"Comemorar meus 15 anos na Casa Rofer foi um sonho realizado! O salão ficou deslumbrante com a decoração, a pista de dança bombou a noite toda e a gastronomia encantou todos os meus convidados. Foi tudo impecável!"',
+    author: 'Isabella S.',
+    role: 'Debutante',
+  },
+  {
+    stars: '★★★★★',
+    quote: '"Organizar a festa de 15 anos da nossa filha com a equipe da Casa Rofer nos deu total tranquilidade. Do planejamento ao encerramento da festa, a atenção aos detalhes, a segurança e a gastronomia foram espetaculares."',
+    author: 'Patricia & Marcelo',
+    role: 'Pais da Debutante',
+  },
+  {
+    stars: '★★★★★',
+    quote: '"Tudo perfeito! O atendimento consultivo da Casa Rofer nos ajudou a personalizar cada momento, desde a recepção dos convidados até a valsa e a balada. Uma noite verdadeiramente inesquecível!"',
+    author: 'Sophia G.',
+    role: 'Debutante',
+  },
+  {
+    stars: '★★★★★',
+    quote: '"O espaço é maravilhoso, super moderno e acolhedor. Nossos convidados elogiaram demais a qualidade do serviço de gastronomia e coquetelaria. A Casa Rofer superou todas as nossas expectativas!"',
+    author: 'Renata V.',
+    role: 'Mãe da Debutante',
+  },
+  {
+    stars: '★★★★★',
+    quote: '"Foi a melhor noite da minha vida! Todos os meus amigos amaram a estrutura, a iluminação, o som e a comida. Muito obrigada a toda a equipe da Casa Rofer por cuidarem de cada detalhe!"',
+    author: 'Beatriz K.',
+    role: 'Debutante',
+  },
+  {
+    stars: '★★★★★',
+    quote: '"Localização privilegiada no Brooklin, infraestrutura impecável e um atendimento de altíssimo nível. A festa de 15 anos da minha filha foi um sucesso absoluto que ficará guardado para sempre."',
+    author: 'Eduardo M.',
+    role: 'Pai da Debutante',
+  },
+];
+---
+
+<Base
+  title="Casa Rofer — Festa de 15 Anos e Debutantes | Brooklin, São Paulo"
+  description="Uma noite única. Um espaço à altura dos seus 15 anos. Dois salões exclusivos para até 250 convidados no coração do Brooklin, São Paulo."
+  ogImage="/images/og-index.jpg"
+>
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="top">
+    <div class="hero-bg">
+      <Img
+        src="https://media.dmove.com.br/clients/casa-rofer/photos/hero_debutantes_resultado.webp"
+        alt="Festa de 15 Anos na Casa Rofer, Brooklin — São Paulo"
+        priority
+      />
+    </div>
+    <Img
+      src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp"
+      alt="Casa Rofer"
+      class="hero-logo"
+      width={190}
+      sizes="190px"
+    />
+    <div class="hero-inner">
+      <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
+      <div class="hero-divider reveal in d1"></div>
+      <h1 class="reveal in d2">
+        Uma noite única.<br />Um espaço à altura<br />dos seus <span class="accent">15 anos</span>
+      </h1>
+      <div class="hero-cta reveal in d3">
+        <a href="#contato" class="btn white">Solicite orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== AUTORIDADE ===== -->
+  <section class="authority">
+    <div class="wrap">
+      <div class="stat reveal"><b>2 ambientes integrados</b></div>
+      <div class="sep"></div>
+      <div class="stat reveal d1"><b>Até 250 convidados</b></div>
+      <div class="sep"></div>
+      <div class="stat reveal d2"><b>Localização estratégica</b></div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE / EXPERIÊNCIA 360° ===== -->
+  <section id="sobre" class="pad">
+    <div class="wrap">
+      <div class="center" style="max-width:820px;margin-inline:auto">
+        <p class="eyebrow reveal">A Casa Rofer</p>
+        <h2 class="section-title center reveal d1" style="max-width:34ch">
+          Cuidado que começa <br class="br-mobile" /><br class="br-desktop" />muito antes <br class="br-mobile" /><span class="accent">da celebração</span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="solucao-wrap" style="margin-top:70px">
+      <div class="solucao-split">
+        <div class="solucao-text reveal">
+          <p>
+            Uma festa inesquecível começa com um espaço que oferece estrutura, conforto e segurança para receber todos os convidados.
+          </p>
+          <p>
+            Na Casa Rofer, oferecemos uma <strong>solução 360°</strong>, que integra espaço, suporte e curadoria de fornecedores, garantindo uma celebração completa.
+          </p>
+        </div>
+
+        <div class="video-frame solucao-video reveal d1">
+          <Video
+            src="https://media.dmove.com.br/clients/casa-rofer/videos/sobre-casa-rofer.webm"
+            poster="https://media.dmove.com.br/clients/casa-rofer/photos/hero_debutantes_resultado.webp"
+            title="Casa Rofer — Festa de 15 Anos e Debutantes"
+            description="Conheça a Casa Rofer, um espaço sofisticado para festas de 15 anos e debutantes no Brooklin, São Paulo."
+            uploadDate="2026-01-01"
+            duration="PT2M"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ESPAÇOS ===== -->
+  <section id="espacos" class="pad" style="background:var(--bg-soft)">
+    <div class="wrap">
+      <div class="center" style="max-width:1100px;margin-inline:auto">
+        <p class="eyebrow reveal">Os Espaços</p>
+        <h2 class="section-title center reveal d1" style="max-width:40ch">
+          Dois cenários exclusivos.<br /><span class="accent">Infinitas possibilidades</span>
+        </h2>
+      </div>
+
+      <div class="spaces-stack" style="margin-top:70px">
+        <!-- Salão Michelângelo -->
+        <div class="space-card reveal">
+          <div class="space-figure">
+            <Img
+              src="https://media.dmove.com.br/clients/casa-rofer/photos/michelangelo_debutantes_resultado.webp"
+              alt="Salão Michelângelo — Casa Rofer"
+              sizes="(max-width:760px) calc(100vw - 48px), 600px"
+            />
+          </div>
+          <div class="space-body">
+            <p class="space-tag">Salão 01</p>
+            <h3>Salão <span class="accent">Michelângelo</span></h3>
+            <p class="lead">
+              Um ambiente sofisticado, confortável e versátil para receber os principais momentos da festa com elegância e exclusividade.
+            </p>
+            <a class="btn ghost" href="#contato">Agende uma visita</a>
+          </div>
+        </div>
+
+        <!-- Salão Leonardo da Vinci -->
+        <div class="space-card rev reveal d1">
+          <div class="space-figure">
+            <Img
+              src="https://media.dmove.com.br/clients/casa-rofer/photos/da-vinci_debutantes_resultado.webp"
+              alt="Salão Leonardo da Vinci — Casa Rofer"
+              sizes="(max-width:760px) calc(100vw - 48px), 600px"
+            />
+          </div>
+          <div class="space-body">
+            <p class="space-tag">Salão 02</p>
+            <h3>Salão <span class="accent">Leonardo da Vinci</span></h3>
+            <p class="lead">
+              Um ambiente integrado a um jardim sofisticado, que combina elegância e acolhimento para diferentes momentos da celebração.
+            </p>
+            <a class="btn ghost" href="#contato">Agende uma visita</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAIS ===== -->
+  <section id="diferenciais" class="pad">
+    <div class="wrap center">
+      <p class="eyebrow reveal">Diferenciais</p>
+      <h2 class="section-title center reveal d1" style="max-width:35ch">
+        Excelência em <br class="br-mobile" />cada detalhe <br class="br-desktop" />da <br class="br-mobile" /><span class="accent">sua celebração</span>
+      </h2>
+    </div>
+    <div class="wrap" style="max-width:1600px">
+      <div class="dif-grid-5 reveal">
+        <div class="dif-card">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/solucao-360_debutantes_resultado.webp"
+            alt="Solução 360º"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
+          />
+          <span>Solução 360º</span>
+        </div>
+        <div class="dif-card">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/gastronomia_debutantes_resultado.webp"
+            alt="Gastronomia"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
+          />
+          <span>Gastronomia</span>
+        </div>
+        <div class="dif-card">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/coquetelaria_debutantes_resultado.webp"
+            alt="Coquetelaria"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
+          />
+          <span>Coquetelaria</span>
+        </div>
+        <div class="dif-card">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/decoracao_debutantes_resultado.webp"
+            alt="Decoração"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
+          />
+          <span>Decoração</span>
+        </div>
+        <div class="dif-card">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/tecnologia_debutantes_resultado.webp"
+            alt="Tecnologia"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
+          />
+          <span>Tecnologia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUFFET ROFER / CHEFS ===== -->
+  <section id="buffet-rofer" class="pad" style="background:var(--bg-soft)">
+    <div class="wrap">
+      <div class="center" style="max-width:900px;margin-inline:auto">
+        <p class="eyebrow reveal">Buffet Rofer</p>
+        <h2 class="section-title center reveal d1" style="max-width:45ch">
+          Mais de três décadas de <br class="br-mobile" /><br class="br-desktop" /><span class="accent">excelência gastronômica em</span><br class="br-mobile" /><br class="br-desktop" />celebrações memoráveis
+        </h2>
+      </div>
+
+      <div class="chefs-grid">
+        <div class="chef-card reveal">
+          <div class="chef-figure">
+            <Img
+              src="https://media.dmove.com.br/clients/casa-rofer/photos/chef-ronaldo-akamine_debutantes_resultado.webp"
+              alt="Ronaldo Akamine — Chef Executivo e Sócio Fundador"
+              sizes="(max-width:800px) calc(100vw - 48px), 600px"
+            />
+          </div>
+          <div class="chef-info">
+            <p class="space-tag">Chef Executivo & Sócio Fundador</p>
+            <h3 style="font-size:clamp(1.4rem,2.2vw,1.8rem);color:var(--title);margin-bottom:12px">
+              Ronaldo <span class="accent">Akamine</span>
+            </h3>
+            <p class="lead">
+              O Rofer Gastronomia está sob o comando de Ronaldo Akamine, chef executivo e sócio fundador. Empreendedor e gestor de negócios na área de alimentação, Ronaldo dedicou os últimos 35 anos de sua vida à arte de encantar com a gastronomia.
+            </p>
+          </div>
+        </div>
+
+        <div class="chef-card reveal d1">
+          <div class="chef-figure">
+            <Img
+              src="https://media.dmove.com.br/clients/casa-rofer/photos/chef-joao-akamine_debutantes_resultado.webp"
+              alt="João Akamine — Chef e Gestor"
+              sizes="(max-width:800px) calc(100vw - 48px), 600px"
+            />
+          </div>
+          <div class="chef-info">
+            <p class="space-tag">Chef & Gestor</p>
+            <h3 style="font-size:clamp(1.4rem,2.2vw,1.8rem);color:var(--title);margin-bottom:12px">
+              João <span class="accent">Akamine</span>
+            </h3>
+            <p class="lead">
+              João Akamine cresceu entre os bastidores da alta gastronomia, acompanhando de perto o trabalho do pai, Ronaldo Akamine. Desde pequeno, desenvolveu um olhar apurado para cada detalhe e uma paixão genuína pela arte de servir. Formado em gastronomia, João une tradição e inovação, sempre com foco em resultados e excelência. Seu compromisso vai além da cozinha – é sobre transformar eventos em experiências memoráveis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GASTRONOMIA CARROSSEL ===== -->
+  <section id="gastronomia" class="pad">
+    <div class="wrap">
+      <div class="center" style="max-width:900px;margin-inline:auto">
+        <p class="eyebrow reveal">Gastronomia</p>
+        <h2 class="section-title center reveal d1" style="max-width:40ch">
+          Sabores e apresentações <br class="br-mobile" /><br class="br-desktop" /><span class="accent">que marcam a sua celebração</span>
+        </h2>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:52px">
+      <div class="carousel reveal">
+        <button class="car-btn prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
+        <div class="car-track portrait">
+          {gastronomiaImages.map((imgUrl) => (
+            <div class="slide">
+              <Img src={imgUrl} alt="Gastronomia Rofer — Debutantes" sizes="(max-width: 760px) 90vw, (max-width: 1200px) 50vw, 750px" />
+            </div>
+          ))}
+        </div>
+        <button class="car-btn next" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section id="depoimentos" class="feedbacks pad">
+    <div class="fb-bg" data-parallax="0.18">
+      <Img
+        src="https://media.dmove.com.br/clients/casa-rofer/photos/hero_debutantes_resultado.webp"
+        alt="Festa de 15 Anos na Casa Rofer"
+      />
+    </div>
+    <div class="wrap fb-inner">
+      <p class="eyebrow center reveal" style="color:var(--sand)">Depoimentos</p>
+      <h2 class="section-title center reveal d1" style="color:#fff;margin-inline:auto;max-width:32ch">
+        Grandes celebrações deixam histórias.<br />
+        <span class="accent">Conheça quem viveu as suas</span><br />na Casa Rofer
+      </h2>
+      <p class="fb-text reveal d2" style="margin-top:20px">Histórias reais de quem viveu momentos inesquecíveis conosco.</p>
+
+      <div class="fb-carousel-container reveal d2" style="margin-top:40px">
+        <div class="carousel fb-carousel" id="feedback-carousel">
+          <button class="car-btn prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </button>
+          <div class="car-track fb-track">
+            {depoimentos.map((fb) => (
+              <div class="fb-card slide">
+                <div class="fb-card-stars">{fb.stars}</div>
+                <p class="fb-card-quote">{fb.quote}</p>
+                <div class="fb-card-author">
+                  <strong>{fb.author}</strong>
+                  <span>{fb.role}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <button class="car-btn next" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section id="galeria" class="pad">
+    <div class="wrap center">
+      <p class="eyebrow reveal">Galeria</p>
+      <h2 class="section-title center reveal d1" style="max-width:40ch">
+        Veja como a <br class="br-mobile" />Casa Rofer pode ser <br class="br-mobile" /><br class="br-desktop" /><span class="accent">o cenário dos seus 15 anos</span>
+      </h2>
+    </div>
+    <div class="wrap">
+      <div class="gal-debutantes reveal">
+        {galeriaImages.map((imgUrl, i) => (
+          <div class="figure">
+            <Img
+              src={imgUrl}
+              alt={`Festa de 15 Anos na Casa Rofer — Foto ${i + 1}`}
+              sizes="(max-width:550px) 100vw, (max-width:900px) 50vw, 600px"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="form-sec pad">
+    <div class="wrap form-card">
+      <div class="center">
+        <p class="eyebrow reveal">Contato</p>
+        <h2 class="section-title center reveal d1" style="font-size:clamp(1.7rem,3.3vw,2.65rem);max-width:900px">
+          Pronta para começar <br class="br-mobile" />a planejar <br class="br-desktop" /><span class="accent-desktop">a noite </span><span class="accent">dos seus sonhos</span>?
+        </h2>
+        <p class="lead center reveal d2" style="margin-top:20px">
+          Preencha o formulário e receba um atendimento personalizado para conhecer nosso espaço, esclarecer dúvidas e solicitar um orçamento.
+        </p>
+      </div>
+
+      <LeadForm
+        formId="lead-form"
+        project={config.project_slug}
+        submitUrl={config.forms['lead-form'].webhooks[0]}
+        redirectUrl={config.forms['lead-form'].redirect_on_success}
+        submitText="Solicitar Orçamento"
+        honeypot
+        fields={[
+          {
+            type: 'row',
+            fields: [
+              { name: 'nome', type: 'text', label: 'Nome', required: true },
+              { name: 'telefone', type: 'text', label: 'Telefone', required: true },
+            ],
+          },
+          {
+            type: 'row',
+            fields: [
+              { name: 'email', type: 'email', label: 'E-mail', required: true },
+              {
+                name: 'data_evento',
+                type: 'text',
+                label: 'Data do evento',
+                placeholder: 'dd/mm/aaaa',
+                datepicker: true,
+                required: true,
+              },
+            ],
+          },
+          { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
+          { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', required: false, hint: 'não obrigatório', full: true },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- ===== LOCALIZAÇÃO ===== -->
+  <section id="localizacao" class="pad">
+    <div class="wrap">
+      <div class="center" style="max-width:760px;margin-inline:auto">
+        <p class="eyebrow reveal">Localização</p>
+        <h2 class="section-title center reveal d1">
+          <span class="accent">Um endereço privilegiado</span> para celebrar momentos extraordinários
+        </h2>
+      </div>
+      <div class="loc-map reveal d1" style="max-width:1000px;margin:52px auto 0">
+        <iframe
+          title="Mapa Casa Rofer"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=R.%20Baltazar%20Fernandes,%2054%20-%20Brooklin,%20S%C3%A3o%20Paulo%20-%20SP,%2004583-020&output=embed"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-bar">
+        <span>© 2026 Casa Rofer · Brooklin, São Paulo. Todos os direitos reservados.</span>
+        <Img
+          src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp"
+          alt="Casa Rofer"
+          class="foot-logo"
+          width={130}
+          sizes="130px"
+        />
+        <span style="display:inline-flex;align-items:center;gap:4px">
+          Desenvolvido por{' '}
+          <a href="https://www.dmove.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center">
+            <img
+              src="https://media.dmove.com.br/clients/casa-rofer/photos/Logotipo-dmove.webp"
+              alt="Dmove"
+              width="62"
+              height="26"
+              loading="lazy"
+              style="height:26px;width:auto;opacity:0.95"
+            />
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</Base>
+
+<script>
+  import '../scripts/index.js';
+</script>

@@ -1,0 +1,205 @@
+@import './index.css';
+
+/* ===== CUSTOM STYLES FOR DEBUTANTES LP ===== */
+
+/* Hero: subir o foco da imagem em 20% (mobile: 70% 30% foco +20% à direita) */
+.hero-bg img {
+  object-position: center 30%;
+}
+
+@media (max-width: 760px) {
+  .hero-bg img {
+    object-position: 70% 30%;
+  }
+}
+
+/* Seção Sobre / Solução 360° Split (idêntico à página eventos corporativos) */
+.solucao-wrap {
+  width: 88%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.solucao-split {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  align-items: center;
+  gap: clamp(30px, 4vw, 60px);
+}
+
+.solucao-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.solucao-text p {
+  font-family: 'Aktiv Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin: 0;
+}
+
+.video-frame.solucao-video {
+  margin-top: 0;
+  min-width: 0;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .solucao-wrap {
+    width: 92%;
+  }
+  .solucao-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+/* Espaços: proporção 4/3 nas figuras dos salões (igual eventos corporativos) */
+.space-figure {
+  aspect-ratio: 4/3;
+}
+
+/* Grid de Diferenciais com 5 itens */
+.dif-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+
+@media (max-width: 1024px) {
+  .dif-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dif-grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section Chefs / Buffet Rofer */
+.chefs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 60px);
+  margin-top: 56px;
+}
+
+.chef-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.chef-figure {
+  overflow: hidden;
+  border-radius: 3px;
+  aspect-ratio: 4/3;
+}
+
+.chef-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+
+.chef-card:hover .chef-figure img {
+  transform: scale(1.05);
+}
+
+.chef-info {
+  margin-top: 24px;
+}
+
+@media (max-width: 800px) {
+  .chefs-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* Galeria Grid Debutantes (9 imagens) */
+.gal-debutantes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+
+.gal-debutantes .figure {
+  overflow: hidden;
+  border-radius: 3px;
+  aspect-ratio: 4/3;
+  position: relative;
+}
+
+.gal-debutantes .figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(.16, 1, .3, 1);
+}
+
+.gal-debutantes .figure img[src*="galeria_debutantes07"] {
+  object-position: center 25%;
+}
+
+.gal-debutantes .figure:hover img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 900px) {
+  .gal-debutantes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .gal-debutantes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Posicionamento das setas por fora do carrossel de depoimentos */
+.fb-carousel-container {
+  padding-inline: 40px;
+}
+
+.fb-carousel .car-btn.prev {
+  left: -20px;
+}
+
+.fb-carousel .car-btn.next {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .fb-carousel-container {
+    padding-inline: 16px;
+  }
+  .fb-carousel .car-btn.prev {
+    left: -8px;
+  }
+  .fb-carousel .car-btn.next {
+    right: -8px;
+  }
+  .fb-track .fb-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+  }
+}
+
+/* Fonte editorial no desktop para a seção contato ("a noite dos seus sonhos") */
+@media (min-width: 761px) {
+  .accent-desktop {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+}
