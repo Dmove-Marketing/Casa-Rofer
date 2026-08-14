@@ -4,6 +4,7 @@ import config from '../../config.json';
 import Img from '../components/ui/Img.astro';
 import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
+import { tipoEventoOptions } from '../scripts/lead-payload';
 import '../styles/debutantes.css';
 
 const gastronomiaImages = [
@@ -92,7 +93,7 @@ const depoimentos = [
       <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
       <div class="hero-divider reveal in d1"></div>
       <h1 class="reveal in d2">
-        Uma noite única.<br />Um espaço à altura<br />dos seus <span class="accent">15 anos</span>
+        Uma noite única em<br class="br-mobile" /> um espaço<br class="br-desktop" /> à altura<br class="br-mobile" /> <span class="accent-mobile">dos </span><span class="accent">seus 15 anos</span>
       </h1>
       <div class="hero-cta reveal in d3">
         <a href="#contato" class="btn white">Solicite orçamento</a>
@@ -439,6 +440,21 @@ const depoimentos = [
             fields: [
               { name: 'email', type: 'email', label: 'E-mail', required: true },
               {
+                name: 'tipo_evento',
+                type: 'select',
+                label: 'Tipo de evento',
+                required: true,
+                options: [
+                  { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+                  ...tipoEventoOptions,
+                ],
+              },
+            ],
+          },
+          {
+            type: 'row',
+            fields: [
+              {
                 name: 'data_evento',
                 type: 'text',
                 label: 'Data do evento',
@@ -446,9 +462,9 @@ const depoimentos = [
                 datepicker: true,
                 required: true,
               },
+              { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
             ],
           },
-          { name: 'convidados', type: 'number', label: 'Número de convidados', required: true },
           { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', required: false, hint: 'não obrigatório', full: true },
         ]}
       />

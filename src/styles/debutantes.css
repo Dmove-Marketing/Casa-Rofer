@@ -3,6 +3,10 @@
 /* ===== CUSTOM STYLES FOR DEBUTANTES LP ===== */
 
 /* Hero: subir o foco da imagem em 20% (mobile: 70% 30% foco +20% à direita) */
+.hero h1 {
+  max-width: 32ch;
+}
+
 .hero-bg img {
   object-position: center 30%;
 }
@@ -10,6 +14,13 @@
 @media (max-width: 760px) {
   .hero-bg img {
     object-position: 70% 30%;
+  }
+
+  .accent-mobile {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 }
 
