@@ -1,12 +1,9 @@
 ---
 import '../styles/global.css';
-import '@fontsource/montserrat/300.css';
 import '@fontsource/montserrat/400.css';
-import '@fontsource/montserrat/400-italic.css';
 import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/600.css';
 import '@fontsource/montserrat/700.css';
-import '@fontsource/montserrat/800.css';
 import GTMHead from '../components/tracking/GTMHead.astro';
 import GTMBody from '../components/tracking/GTMBody.astro';
 import UTMCapture from '../components/tracking/UTMCapture.astro';
@@ -59,6 +56,9 @@ import config from '../../config.json';
 const gtmId = config.tracking?.gtm_id || '';
 const trackingEnabled = config.tracking?.enabled !== false;
 
+// og:image precisa de URL absoluta para redes sociais e crawlers
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : `https://${config.domain}${ogImage}`;
+
 const defaultJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -88,7 +88,7 @@ const defaultJsonLd = {
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbs} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
 

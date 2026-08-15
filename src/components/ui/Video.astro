@@ -90,10 +90,14 @@ const schema = {
     }
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) { load(); observer.disconnect(); }
-  }, { rootMargin: '200px' });
-  observer.observe(wrap);
+  // Pré-carrega ao aproximar da viewport apenas no desktop; no mobile o
+  // download só começa quando o usuário toca no play (economia de dados/velocidade)
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { load(); observer.disconnect(); }
+    }, { rootMargin: '200px' });
+    observer.observe(wrap);
+  }
 
   btn.addEventListener('click', () => {
     load();
