@@ -47,8 +47,22 @@ document.querySelectorAll('.m-carousel').forEach(mCarousel => {
   let currentIdx = 0;
   const total = slides.length;
 
+  /* slides ocultos ficam sobrepostos, então saem do HTML com data-src
+     (sem download); hidrata só o ativo e os vizinhos */
+  function hydrateSlide(idx) {
+    const img = slides[(idx + total) % total].querySelector('img[data-src]');
+    if (!img) return;
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.removeAttribute('data-srcset');
+  }
+
   function showSlide(index) {
     currentIdx = (index + total) % total;
+    hydrateSlide(currentIdx);
+    hydrateSlide(currentIdx - 1);
+    hydrateSlide(currentIdx + 1);
     slides.forEach((slide, idx) => {
       slide.classList.remove('active', 'prev-slide', 'next-slide');
       if (idx === currentIdx) {

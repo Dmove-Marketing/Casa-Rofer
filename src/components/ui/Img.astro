@@ -8,6 +8,12 @@ interface Props {
   height?: number;
   /** true = eager + fetchpriority high (use na imagem LCP/hero) */
   priority?: boolean;
+  /**
+   * true = não baixa a imagem no carregamento da página: src/srcset saem como
+   * data-src/data-srcset e o JS da página hidrata sob demanda (ex: slides
+   * ocultos de carrossel sobreposto, onde o loading="lazy" dispara para todos).
+   */
+  defer?: boolean;
   quality?: number;
   class?: string;
   style?: string;
@@ -24,6 +30,7 @@ const {
   width = 1200,
   height,
   priority = false,
+  defer = false,
   quality = 80,
   class: className,
   style,
@@ -68,8 +75,10 @@ if (!isExternal && !mod) {
 
 {isMediaCdn ? (
   <img
-    src={src}
-    srcset={buildSrcset(src, width)}
+    src={defer ? undefined : src}
+    srcset={defer ? undefined : buildSrcset(src, width)}
+    data-src={defer ? src : undefined}
+    data-srcset={defer ? buildSrcset(src, width) : undefined}
     sizes={sizes ?? '100vw'}
     alt={alt}
     width={width}
@@ -82,7 +91,8 @@ if (!isExternal && !mod) {
   />
 ) : isExternal ? (
   <img
-    src={src}
+    src={defer ? undefined : src}
+    data-src={defer ? src : undefined}
     alt={alt}
     width={width}
     height={height ?? undefined}
