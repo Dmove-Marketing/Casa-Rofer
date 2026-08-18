@@ -8,12 +8,23 @@ import { tipoEventoOptions } from '../scripts/lead-payload';
 import '../styles/debutantes.css';
 
 const gastronomiaImages = [
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes06_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes05_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes04_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes03_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes02_resultado.webp',
-  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia_debutantes01_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia01_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia02_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia03_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia05_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia06_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia07_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia08_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia09_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia10_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia11_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia12_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia13_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia14_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia15_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia16_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia17_debutantes_v2_resultado.webp',
+  'https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia18_debutantes_v2_resultado.webp',
 ];
 
 const galeriaImages = [
@@ -136,14 +147,37 @@ const depoimentos = [
 
         <div class="video-frame solucao-video reveal d1">
           <Video
-            src="https://media.dmove.com.br/clients/casa-rofer/videos/sobre-casa-rofer.webm"
-            poster="https://media.dmove.com.br/clients/casa-rofer/photos/hero_debutantes_resultado.webp"
+            src="https://media.dmove.com.br/clients/casa-rofer/videos/video-sobre_debutantes.webm"
+            poster="https://media.dmove.com.br/clients/casa-rofer/photos/capa-video_debutantes.webp"
             title="Casa Rofer — Festa de 15 Anos e Debutantes"
             description="Conheça a Casa Rofer, um espaço sofisticado para festas de 15 anos e debutantes no Brooklin, São Paulo."
             uploadDate="2026-01-01"
             duration="PT2M"
           />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERIA ===== -->
+  <section id="galeria" class="pad">
+    <div class="wrap center">
+      <p class="eyebrow reveal">Galeria</p>
+      <h2 class="section-title center reveal d1" style="max-width:48ch">
+        O cenário perfeito para <br class="br-mobile" />transformar <br class="br-desktop" /><span class="accent-desktop">seus 15 anos</span> <br class="br-mobile" /><span class="accent">em um grande espetáculo</span>
+      </h2>
+    </div>
+    <div class="wrap">
+      <div class="gal-debutantes reveal">
+        {galeriaImages.map((imgUrl, i) => (
+          <div class="figure">
+            <Img
+              src={imgUrl}
+              alt={`Festa de 15 Anos na Casa Rofer — Foto ${i + 1}`}
+              sizes="(max-width:550px) 100vw, (max-width:900px) 50vw, 600px"
+            />
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -220,7 +254,7 @@ const depoimentos = [
         </div>
         <div class="dif-card">
           <Img
-            src="https://media.dmove.com.br/clients/casa-rofer/photos/gastronomia_debutantes_resultado.webp"
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/carrossel-gastronomia05_debutantes_v2_resultado.webp"
             alt="Gastronomia"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 500px"
           />
@@ -316,25 +350,20 @@ const depoimentos = [
         </h2>
       </div>
     </div>
-    <div class="wrap" style="margin-top:52px">
-      <div class="carousel reveal">
-        <button class="car-btn prev" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M15 18l-6-6 6-6"></path>
-          </svg>
-        </button>
-        <div class="car-track portrait">
+    <div class="gastro-carousel-wrap" style="margin-top:52px">
+      <div class="gastro-carousel reveal">
+        <div class="car-track gastro-track">
           {gastronomiaImages.map((imgUrl) => (
             <div class="slide">
-              <Img src={imgUrl} alt="Gastronomia Rofer — Debutantes" sizes="(max-width: 760px) 90vw, (max-width: 1200px) 50vw, 750px" />
+              <Img src={imgUrl} alt="Gastronomia Rofer — Debutantes" sizes="(max-width: 760px) 80vw, (max-width: 1200px) 45vw, 32vw" />
+            </div>
+          ))}
+          {gastronomiaImages.map((imgUrl) => (
+            <div class="slide" aria-hidden="true">
+              <Img src={imgUrl} alt="" sizes="(max-width: 760px) 80vw, (max-width: 1200px) 45vw, 32vw" />
             </div>
           ))}
         </div>
-        <button class="car-btn next" aria-label="Próximo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M9 18l6-6-6-6"></path>
-          </svg>
-        </button>
       </div>
     </div>
   </section>
@@ -384,36 +413,13 @@ const depoimentos = [
     </div>
   </section>
 
-  <!-- ===== GALERIA ===== -->
-  <section id="galeria" class="pad">
-    <div class="wrap center">
-      <p class="eyebrow reveal">Galeria</p>
-      <h2 class="section-title center reveal d1" style="max-width:40ch">
-        Veja como a <br class="br-mobile" />Casa Rofer pode ser <br class="br-mobile" /><br class="br-desktop" /><span class="accent">o cenário dos seus 15 anos</span>
-      </h2>
-    </div>
-    <div class="wrap">
-      <div class="gal-debutantes reveal">
-        {galeriaImages.map((imgUrl, i) => (
-          <div class="figure">
-            <Img
-              src={imgUrl}
-              alt={`Festa de 15 Anos na Casa Rofer — Foto ${i + 1}`}
-              sizes="(max-width:550px) 100vw, (max-width:900px) 50vw, 600px"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ===== CONTATO ===== -->
   <section id="contato" class="form-sec pad">
     <div class="wrap form-card">
       <div class="center">
         <p class="eyebrow reveal">Contato</p>
         <h2 class="section-title center reveal d1" style="font-size:clamp(1.7rem,3.3vw,2.65rem);max-width:900px">
-          Pronta para começar <br class="br-mobile" />a planejar <br class="br-desktop" /><span class="accent-desktop">a noite </span><span class="accent">dos seus sonhos</span>?
+          Pronta para começar <br class="br-mobile" />a planejar <br class="br-desktop" /><span class="accent-desktop">a noite</span><br class="br-mobile" /> <span class="accent-mobile-editorial accent">dos seus sonhos</span>?
         </h2>
         <p class="lead center reveal d2" style="margin-top:20px">
           Preencha o formulário e receba um atendimento personalizado para conhecer nosso espaço, esclarecer dúvidas e solicitar um orçamento.
@@ -523,4 +529,5 @@ const depoimentos = [
 
 <script>
   import '../scripts/index.js';
+  import '../scripts/gastro-carousel.js';
 </script>

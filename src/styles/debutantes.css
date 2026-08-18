@@ -2,6 +2,14 @@
 
 /* ===== CUSTOM STYLES FOR DEBUTANTES LP ===== */
 
+/* Reduz o espaço entre Sobre e Galeria (seções adjacentes) */
+#sobre.pad {
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+#galeria.pad {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
 /* Hero: subir o foco da imagem em 20% (mobile: 70% 30% foco +20% à direita) */
 .hero h1 {
   max-width: 32ch;
@@ -22,6 +30,43 @@
     font-weight: 400;
     letter-spacing: 0;
   }
+
+  /* Stats bar: sep vira linha horizontal full-width no mobile */
+  .authority .sep {
+    display: block;
+    width: calc(100% + 2 * var(--gut));
+    margin-inline: calc(-1 * var(--gut));
+    height: 1px;
+  }
+
+  /* Última linha do título de Contato em fonte editorial somente no mobile */
+  .accent-mobile-editorial {
+    font-family: 'PP Editorial New', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+}
+
+/* ===== FORMULÁRIO — compactação mobile ===== */
+@media (max-width: 600px) {
+  /* Reduz espaço acima do grid de campos */
+  .lead-form-grid {
+    margin-top: 28px;
+    gap: 14px;
+  }
+
+  /* Reduz altura mínima do textarea */
+  .form-textarea {
+    min-height: 60px;
+  }
+
+  /* Reduz padding interno dos inputs/selects/textarea */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding-block: 8px;
+  }
 }
 
 /* Seção Sobre / Solução 360° Split (idêntico à página eventos corporativos) */
@@ -33,7 +78,7 @@
 
 .solucao-split {
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: clamp(30px, 4vw, 60px);
 }
@@ -57,6 +102,22 @@
   margin-top: 0;
   min-width: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  background: none;
+}
+.video-frame.solucao-video .video-wrap {
+  aspect-ratio: 9 / 16 !important;
+  width: 100% !important;
+  max-width: 460px !important;
+  height: auto !important;
+  margin-inline: auto;
+  border-radius: 3px;
+}
+.video-frame.solucao-video .video-wrap__player {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 @media (max-width: 900px) {
   .solucao-wrap {
@@ -66,11 +127,53 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
+  .video-frame.solucao-video .video-wrap {
+    max-width: 405px !important;
+  }
 }
 
 /* Espaços: proporção 4/3 nas figuras dos salões (igual eventos corporativos) */
 .space-figure {
   aspect-ratio: 4/3;
+}
+
+/* Carrossel de Gastronomia: largura total da tela, imagens 4/3, passagem
+   contínua e arrastável com mouse/touch (JS, ver gastro-carousel.js),
+   espaçamento maior, bordas arredondadas. Slides duplicados no markup =
+   loop infinito sem "salto" (ver setWidth em gastro-carousel.js).
+   No mobile, 1 imagem por vez (slide = 100vw). */
+.gastro-carousel-wrap {
+  width: 100%;
+}
+.gastro-carousel {
+  overflow: hidden;
+  cursor: grab;
+}
+.gastro-carousel.dragging {
+  cursor: grabbing;
+}
+.gastro-carousel .car-track.gastro-track {
+  width: max-content;
+  gap: 28px;
+  user-select: none;
+  will-change: transform;
+}
+.gastro-carousel .car-track.gastro-track .slide {
+  flex: 0 0 auto;
+  width: clamp(260px, 30vw, 460px);
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+}
+.gastro-carousel .car-track.gastro-track img {
+  -webkit-user-drag: none;
+}
+@media (max-width: 760px) {
+  .gastro-carousel .car-track.gastro-track {
+    gap: 16px;
+  }
+  .gastro-carousel .car-track.gastro-track .slide {
+    width: 100vw;
+  }
 }
 
 /* Grid de Diferenciais com 5 itens */
