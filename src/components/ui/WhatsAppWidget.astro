@@ -5,25 +5,57 @@ import { trackingParamKeys, tipoEventoOptions } from '../../scripts/lead-payload
 interface Props {
   phone?: string;
   displayName?: string;
+  avatar?: string;
   submitUrl?: string;
   project?: string;
-  /** Exibe o campo "Empresa" como primeiro campo da etapa 1 (usado na página de eventos corporativos) */
+  /** Pergunta o nome da empresa antes do nome (usado na página de eventos corporativos) */
   showEmpresaField?: boolean;
 }
 
 const {
   phone = config.whatsapp?.phone || '5511917299858',
   displayName = config.whatsapp?.display_name || 'Casa Rofer',
+  avatar = config.whatsapp?.avatar || '/images/whatsapp-avatar.jpg',
   submitUrl = config.forms['lead-form']?.webhooks[0] || '',
   project = config.project_slug || 'casa-rofer',
   showEmpresaField = false,
 } = Astro.props;
 
-const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20meu%20evento%20na%20Casa%20Rofer.`;
+// Roteiro da conversa: uma pergunta por campo (estilo Captura Web / Voe)
+const fields = [
+  ...(showEmpresaField
+    ? [{ key: 'empresa', type: 'text', label: 'Qual é o nome da sua empresa?', placeholder: 'Nome da empresa' }]
+    : []),
+  { key: 'nome', type: 'text', label: 'Pra começar, qual é o seu nome? 😊', placeholder: 'Seu nome' },
+  { key: 'tel', type: 'phone', label: 'Qual é o seu WhatsApp com DDD?', placeholder: '(11) 99999-9999' },
+  { key: 'email', type: 'email', label: 'E o seu e-mail?', placeholder: 'seu@email.com' },
+  { key: 'tipo_evento', type: 'select', label: 'Que tipo de evento você quer celebrar? 🥂', options: tipoEventoOptions },
+  { key: 'data_evento', type: 'date', label: 'Qual é a data prevista do evento? 📅', placeholder: 'dd/mm/aaaa' },
+  { key: 'convidados', type: 'number', label: 'E quantos convidados, aproximadamente?', placeholder: 'Ex: 150', chips: ['50', '100', '150', '200', '300'] },
+];
+
+const introMessages = [
+  `Olá! 👋 Bem-vindo(a) à ${displayName}.`,
+  'Vou te fazer algumas perguntas rápidas para preparar o seu orçamento, tudo bem?',
+];
 ---
 
-<!-- ===== WHATSAPP FLOATING WIDGET ===== -->
+<!-- ===== WHATSAPP FLOATING WIDGET (conversacional) ===== -->
 <div id="wa-widget" aria-label="Fale pelo WhatsApp">
+
+  <!-- Teaser (convite discreto que aparece após alguns segundos) -->
+  <div id="wa-teaser" class="wa-teaser" hidden>
+    <button class="wa-teaser__close" id="wa-teaser-close" aria-label="Dispensar mensagem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="wa-teaser__bubble" id="wa-teaser-open">
+      <img class="wa-teaser__avatar" src={avatar} alt="" width="36" height="36" loading="lazy" onerror="this.style.visibility='hidden'" />
+      <span class="wa-teaser__text">
+        <strong>{displayName}</strong>
+        Olá! 👋 Quer um orçamento para o seu evento?
+      </span>
+    </button>
+  </div>
 
   <!-- Botão flutuante -->
   <button id="wa-toggle" class="wa-fab" aria-label="Abrir chat WhatsApp" aria-expanded="false">
@@ -40,15 +72,19 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     <!-- Header -->
     <div class="wa-header">
       <div class="wa-header__avatar">
-        <svg viewBox="0 0 40 40" fill="none" width="40" height="40">
-          <circle cx="20" cy="20" r="20" fill="#128C7E"/>
-          <text x="20" y="26" text-anchor="middle" fill="white" font-size="18" font-family="sans-serif">R</text>
-        </svg>
-        <span class="wa-header__status"></span>
+        <span class="wa-header__avatar-fallback" aria-hidden="true">{displayName.charAt(0)}</span>
+        <img class="wa-header__avatar-img" src={avatar} alt="" width="40" height="40" loading="lazy" onerror="this.remove()" />
+        <span class="wa-header__status" aria-hidden="true"></span>
       </div>
       <div class="wa-header__info">
-        <strong>{displayName}</strong>
-        <span>Normalmente responde em minutos</span>
+        <strong>
+          {displayName}
+          <svg class="wa-header__verified" viewBox="0 0 24 24" width="14" height="14" aria-label="Conta verificada">
+            <path fill="#25D366" d="M12 1l2.6 2.2 3.4-.4 1.2 3.2 3 1.7-.8 3.3 2 2.7-2 2.7.8 3.3-3 1.7-1.2 3.2-3.4-.4L12 26l-2.6-2.2-3.4.4-1.2-3.2-3-1.7.8-3.3-2-2.7 2-2.7-.8-3.3 3-1.7L7.9 2.8l3.4.4z" transform="scale(.88) translate(1.5 -1)"/>
+            <path fill="#fff" d="M10.4 15.9l-3-3 1.3-1.3 1.7 1.7 4.9-4.9 1.3 1.3z"/>
+          </svg>
+        </strong>
+        <span class="wa-header__presence"><span class="wa-header__presence-dot"></span> Online</span>
       </div>
       <button class="wa-header__close" id="wa-close" aria-label="Fechar chat">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
@@ -57,181 +93,468 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       </button>
     </div>
 
-    <!-- Corpo do chat -->
-    <div class="wa-body">
-      <!-- Bubble de mensagem -->
-      <div class="wa-bubble wa-bubble--in">
-        <p>Olá! 👋 Bem-vindo(a) à <strong>Casa Rofer</strong>.</p>
-        <p>Preencha o formulário abaixo e nossa equipe entrará em contato para criar uma celebração inesquecível para você! 🥂</p>
-        <span class="wa-bubble__time" id="wa-time"></span>
-      </div>
+    <!-- Área de chat (os balões são criados via JS) -->
+    <div class="wa-chat" id="wa-chat" role="log" aria-live="polite"></div>
 
-      <!-- Formulário multistep -->
-      <div class="wa-form-wrap">
-        <!-- Step 1 -->
-        <form class="wa-step" id="wa-step1" novalidate>
-          {showEmpresaField && (
-            <div class="wa-field">
-              <label for="wa-empresa">Nome da empresa</label>
-              <input id="wa-empresa" name="empresa" type="text" placeholder="Nome da empresa" required autocomplete="organization" />
-              <span class="wa-error" id="wa-empresa-err">Por favor, informe o nome da empresa.</span>
-            </div>
-          )}
-          <div class="wa-field">
-            <label for="wa-nome">Nome</label>
-            <input id="wa-nome" name="nome" type="text" placeholder="Seu nome completo" required autocomplete="name" />
-            <span class="wa-error" id="wa-nome-err">Por favor, informe seu nome.</span>
-          </div>
-          <div class="wa-field">
-            <label for="wa-tel">Telefone</label>
-            <input id="wa-tel" name="tel" type="tel" placeholder="(11) 99999-9999" required autocomplete="tel" />
-            <span class="wa-error" id="wa-tel-err">Por favor, informe seu telefone.</span>
-          </div>
-          <div class="wa-field">
-            <label for="wa-email">E-mail</label>
-            <input id="wa-email" name="email" type="email" placeholder="seu@email.com" required autocomplete="email" />
-            <span class="wa-error" id="wa-email-err">Por favor, informe um e-mail válido.</span>
-          </div>
-          <button type="button" id="wa-next" class="wa-btn">
-            Próximo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </form>
+    <!-- Barra de input (só visível durante uma pergunta ativa) -->
+    <div class="wa-inputbar" id="wa-inputbar" hidden>
+      <label class="wa-inputbar__label" id="wa-inputbar-label" for="wa-input"></label>
 
-        <!-- Step 2 -->
-        <form class="wa-step" id="wa-step2" novalidate hidden>
-          <div class="wa-step2-bubble wa-bubble wa-bubble--in">
-            <p>Ótimo! Só mais alguns detalhes 😊</p>
-          </div>
-          <div class="wa-field">
-            <label for="wa-tipo">Tipo de evento</label>
-            <select id="wa-tipo" name="tipo_evento" required>
-              <option value="" disabled selected>Selecione o tipo de evento</option>
-              {tipoEventoOptions.map((o) => <option value={o.value}>{o.label}</option>)}
-            </select>
-            <span class="wa-error" id="wa-tipo-err">Por favor, selecione o tipo de evento.</span>
-          </div>
-          <div class="wa-field">
-            <label for="wa-data">Data do evento</label>
-            <div class="wa-datepicker-wrap">
-              <input id="wa-data" name="data_evento" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" required data-wa-flatpickr="true" />
-              <svg class="wa-datepicker-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="3"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <span class="wa-error" id="wa-data-err">Por favor, informe a data do evento.</span>
-          </div>
-          <div class="wa-field">
-            <label for="wa-convidados">Número de convidados</label>
-            <input id="wa-convidados" name="convidados" type="number" placeholder="Ex: 150" min="1" required />
-            <span class="wa-error" id="wa-convidados-err">Por favor, informe o número de convidados.</span>
-          </div>
-          <div class="wa-step2-actions">
-            <button type="button" class="wa-btn wa-btn--back" id="wa-back">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
-              Voltar
-            </button>
-            <button type="button" class="wa-btn wa-btn--submit" id="wa-submit">
-              <span class="wa-btn__text">Enviar</span>
-              <span class="wa-btn__spinner" hidden>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" class="wa-spinner"><circle cx="12" cy="12" r="9" stroke-dasharray="42" stroke-dashoffset="14"/></svg>
-              </span>
-            </button>
-          </div>
-        </form>
+      <!-- chips de seleção única / sugestões -->
+      <div class="wa-chips" id="wa-chips" hidden></div>
 
-        <!-- Sucesso -->
-        <div class="wa-success" id="wa-success" hidden>
-          <div class="wa-bubble wa-bubble--in">
-            <p>✅ <strong>Recebemos sua solicitação!</strong></p>
-            <p>Obrigado pelo contato. Em breve nossa equipe entrará em contato com você pelo WhatsApp ou e-mail. 🎉</p>
-          </div>
+      <div class="wa-inputbar__row" id="wa-inputbar-row">
+        <input id="wa-input" class="wa-input" type="text" autocomplete="off" />
+        <div class="wa-datefield" id="wa-datefield" hidden>
+          <input id="wa-input-date" class="wa-input" type="text" placeholder="dd/mm/aaaa" autocomplete="off" inputmode="numeric" maxlength="10" data-wa-flatpickr="true" />
+          <svg class="wa-datefield__icon" id="wa-date-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
         </div>
+        <button class="wa-send" id="wa-send" aria-label="Enviar resposta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
       </div>
-    </div>
-
-    <!-- Input area (decorativa) -->
-    <div class="wa-footer">
-      <span>Casa Rofer · Brooklin, São Paulo</span>
+      <p class="wa-inputbar__error" id="wa-error" role="alert" hidden></p>
     </div>
   </div>
 </div>
 
-<script define:vars={{ submitUrl, project, trackingParamKeys, waLink }}>
-  /* ── State ─────────────────────────────────── */
-  const toggle   = document.getElementById('wa-toggle');
-  const popup    = document.getElementById('wa-popup');
-  const closeBtn = document.getElementById('wa-close');
-  const badge    = document.getElementById('wa-badge');
-  const step1    = document.getElementById('wa-step1');
-  const step2    = document.getElementById('wa-step2');
-  const backBtn  = document.getElementById('wa-back');
-  const success  = document.getElementById('wa-success');
-  const submitBtn= document.getElementById('wa-submit');
+<script define:vars={{ submitUrl, project, trackingParamKeys, phone, fields, introMessages, avatar }}>
+  /* ── Elementos ─────────────────────────────── */
+  const toggle    = document.getElementById('wa-toggle');
+  const popup     = document.getElementById('wa-popup');
+  const closeBtn  = document.getElementById('wa-close');
+  const badge     = document.getElementById('wa-badge');
+  const chat      = document.getElementById('wa-chat');
+  const inputbar  = document.getElementById('wa-inputbar');
+  const inputLbl  = document.getElementById('wa-inputbar-label');
+  const inputRow  = document.getElementById('wa-inputbar-row');
+  const input     = document.getElementById('wa-input');
+  const dateField = document.getElementById('wa-datefield');
+  const dateInput = document.getElementById('wa-input-date');
+  const chipsBox  = document.getElementById('wa-chips');
+  const sendBtn   = document.getElementById('wa-send');
+  const errorEl   = document.getElementById('wa-error');
+  const teaser    = document.getElementById('wa-teaser');
 
-  /* horário na bubble */
-  const now = new Date();
-  const t = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-  document.getElementById('wa-time').textContent = t;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = (ms) => new Promise((r) => setTimeout(r, reduceMotion ? 0 : ms));
 
-  /* máscara de telefone */
-  const telInput = document.getElementById('wa-tel');
-  if (telInput) {
-    telInput.addEventListener('input', () => {
-      let v = telInput.value.replace(/\D/g, '');
-      if (v.startsWith('55') && v.length > 11) v = v.slice(2);
-      if (v.length > 11) v = v.slice(0, 11);
-      if (v.length > 7)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
-      else if (v.length > 0) v = `(${v}`;
-      telInput.value = v;
-    });
+  /* ── Estado da conversa (persistido na sessão) ── */
+  const STATE_KEY = 'wa_convo';
+  let state = { answers: {}, idx: 0, done: false };
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(STATE_KEY) || 'null');
+    if (saved && typeof saved.idx === 'number') state = saved;
+  } catch (_) {}
+  const saveState = () => { try { sessionStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch (_) {} };
+
+  /* ── Balões ─────────────────────────────────── */
+  function scrollChat() {
+    setTimeout(() => { chat.scrollTop = chat.scrollHeight; }, 50);
   }
 
-  /* máscara de data (dd/mm/aaaa) */
-  const dataInput = document.getElementById('wa-data');
-  if (dataInput) {
-    dataInput.addEventListener('input', () => {
-      let v = dataInput.value.replace(/\D/g, '');
-      if (v.length > 8) v = v.slice(0, 8);
-      if (v.length > 4)      v = `${v.slice(0,2)}/${v.slice(2,4)}/${v.slice(4)}`;
-      else if (v.length > 2) v = `${v.slice(0,2)}/${v.slice(2)}`;
-      dataInput.value = v;
-    });
+  function bubble(who, text, instant) {
+    const row = document.createElement('div');
+    row.className = `wa-row wa-row--${who}` + (instant ? ' wa-row--instant' : '');
+    if (who === 'agent') {
+      const img = document.createElement('img');
+      img.className = 'wa-row__avatar';
+      img.src = avatar;
+      img.alt = '';
+      img.width = 24; img.height = 24;
+      img.onerror = () => { img.style.visibility = 'hidden'; };
+      row.appendChild(img);
+    }
+    const b = document.createElement('div');
+    b.className = 'wa-msg';
+    b.textContent = text;
+    row.appendChild(b);
+    chat.appendChild(row);
+    scrollChat();
+    return row;
   }
 
-  /* dados coletados no step 1 */
-  let step1Data = {};
+  function bubbleHtml(who, node) {
+    const row = document.createElement('div');
+    row.className = `wa-row wa-row--${who}`;
+    const b = document.createElement('div');
+    b.className = 'wa-msg';
+    b.appendChild(node);
+    row.appendChild(b);
+    chat.appendChild(row);
+    scrollChat();
+    return row;
+  }
+
+  let typingRow = null;
+  function setTyping(on) {
+    if (on && !typingRow) {
+      typingRow = document.createElement('div');
+      typingRow.className = 'wa-row wa-row--agent';
+      typingRow.innerHTML = `<img class="wa-row__avatar" src="${avatar}" alt="" width="24" height="24">
+        <div class="wa-msg wa-typing"><span class="wa-dot"></span><span class="wa-dot"></span><span class="wa-dot"></span></div>`;
+      chat.appendChild(typingRow);
+      scrollChat();
+    } else if (!on && typingRow) {
+      typingRow.remove();
+      typingRow = null;
+    }
+  }
+
+  /* ── Máscaras ───────────────────────────────── */
+  function maskPhone(v) {
+    let d = v.replace(/\D/g, '');
+    if (d.startsWith('55') && d.length > 11) d = d.slice(2);
+    d = d.slice(0, 11);
+    if (d.length > 7) return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+    if (d.length > 2) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    return d.length ? `(${d}` : '';
+  }
+  function maskDate(v) {
+    let d = v.replace(/\D/g, '').slice(0, 8);
+    if (d.length > 4) return `${d.slice(0, 2)}/${d.slice(2, 4)}/${d.slice(4)}`;
+    if (d.length > 2) return `${d.slice(0, 2)}/${d.slice(2)}`;
+    return d;
+  }
+
+  /* ── Validação ──────────────────────────────── */
+  function validate(field, value) {
+    const v = value.trim();
+    if (!v) return 'Campo obrigatório';
+    if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Digite um e-mail válido';
+    if (field.type === 'phone') {
+      const d = v.replace(/\D/g, '');
+      if (d.startsWith('55') && d.length > 11) return 'Não coloque o DDI 55. Informe apenas DDD + número.';
+      if (d.length < 10) return 'Digite um telefone válido com DDD';
+    }
+    if (field.type === 'date' && !/^\d{2}\/\d{2}\/\d{4}$/.test(v)) return 'Digite a data no formato dd/mm/aaaa';
+    if (field.type === 'number' && !/^\d+\+?$/.test(v)) return 'Digite um número';
+    return null;
+  }
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+    inputRow.classList.add('wa-inputbar__row--error');
+  }
+  function clearError() {
+    errorEl.hidden = true;
+    inputRow.classList.remove('wa-inputbar__row--error');
+  }
+
+  /* ── Input ativo ────────────────────────────── */
+  let activeResolve = null;
+  let activeField = null;
+
+  function showInput(field) {
+    activeField = field;
+    inputbar.hidden = false;
+    inputLbl.textContent = field.label.replace(/\s*[😊🥂📅]\s*/g, '');
+    clearError();
+
+    const isDate = field.type === 'date';
+    const isSelect = field.type === 'select';
+
+    input.hidden = isDate || isSelect;
+    dateField.hidden = !isDate;
+    inputRow.hidden = isSelect;
+    sendBtn.hidden = isSelect;
+
+    // chips: opções de seleção única ou sugestões numéricas
+    chipsBox.innerHTML = '';
+    const chips = isSelect ? field.options : (field.chips || []).map((c) => ({ value: c, label: c === '300' ? '300+' : c }));
+    if (chips && chips.length) {
+      chipsBox.hidden = false;
+      chips.forEach((o) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'wa-chip';
+        btn.textContent = o.label;
+        btn.addEventListener('click', () => submitAnswer(o.value, o.label));
+        chipsBox.appendChild(btn);
+      });
+    } else {
+      chipsBox.hidden = true;
+    }
+
+    if (!isSelect) {
+      const el = isDate ? dateInput : input;
+      el.value = '';
+      el.placeholder = field.placeholder || '';
+      if (!isDate) {
+        input.type = 'text';
+        input.inputMode = field.type === 'phone' || field.type === 'number' ? 'numeric' : (field.type === 'email' ? 'email' : 'text');
+        input.autocomplete = { nome: 'name', tel: 'tel', email: 'email', empresa: 'organization' }[field.key] || 'off';
+      }
+      setTimeout(() => el.focus({ preventScroll: true }), 100);
+    }
+    scrollChat();
+  }
+
+  function hideInput() {
+    inputbar.hidden = true;
+    activeField = null;
+  }
+
+  function submitAnswer(value, display) {
+    if (!activeResolve) return;
+    const err = validate(activeField, String(value));
+    if (err) { showError(err); return; }
+    clearError();
+    const r = activeResolve;
+    activeResolve = null;
+    hideInput();
+    r({ value: String(value).trim(), display: (display || String(value)).trim() });
+  }
+
+  function currentInputEl() {
+    return activeField?.type === 'date' ? dateInput : input;
+  }
+
+  sendBtn.addEventListener('click', () => {
+    if (activeField) submitAnswer(currentInputEl().value);
+  });
+  [input, dateInput].forEach((el) => {
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && activeField) {
+        e.preventDefault();
+        submitAnswer(el.value);
+      }
+    });
+    el.addEventListener('input', clearError);
+  });
+  input.addEventListener('input', () => {
+    if (activeField?.type === 'phone') input.value = maskPhone(input.value);
+    if (activeField?.type === 'number') input.value = input.value.replace(/\D/g, '').slice(0, 5);
+  });
+  dateInput.addEventListener('input', () => { dateInput.value = maskDate(dateInput.value); });
+
+  /* ── Roteiro da conversa ────────────────────── */
+  function waMessage() {
+    const a = state.answers;
+    const tipo = a.tipo_evento?.display || 'meu evento';
+    const parts = [`Olá! Sou ${a.nome?.display || ''}`.trim()];
+    if (a.empresa) parts[0] += `, da empresa ${a.empresa.display}`;
+    parts.push(`Gostaria de um orçamento para ${tipo.toLowerCase()}`);
+    if (a.data_evento) parts[parts.length - 1] += ` no dia ${a.data_evento.display}`;
+    if (a.convidados) parts[parts.length - 1] += `, para aproximadamente ${a.convidados.display} convidados`;
+    return `${parts.join('. ')}. 🥂`;
+  }
+  const waUrl = () => `https://wa.me/${phone}?text=${encodeURIComponent(waMessage())}`;
+
+  function ctaBubble() {
+    const link = document.createElement('a');
+    link.className = 'wa-cta';
+    link.href = waUrl();
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.852L.057 23.428a.5.5 0 0 0 .614.614l5.576-1.475A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> Continuar no WhatsApp`;
+    bubbleHtml('agent', link);
+  }
+
+  async function agentSays(text, typingMs) {
+    setTyping(true);
+    await wait(typingMs || 700);
+    setTyping(false);
+    bubble('agent', text);
+    await wait(350);
+  }
+
+  async function submitLead() {
+    const a = state.answers;
+    const trackingRaw = sessionStorage.getItem('dmove_tracking');
+    const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
+    const qs = new URLSearchParams();
+    trackingParamKeys.forEach((k) => { if (tracking[k]) qs.set(k, tracking[k]); });
+    const slug = window.location.pathname.replace(/\/$/, '').split('/').filter(Boolean)[0];
+    const pageSource = `Landing page/${slug || 'casamentos'}`;
+    const fonte = qs.toString() ? `${pageSource}?${qs.toString()}` : pageSource;
+
+    const now = new Date();
+    const payload = {
+      ...(a.empresa ? { Empresa: a.empresa.value } : {}),
+      Nome: a.nome?.value || '',
+      WhatsApp: a.tel?.value || '',
+      'E-mail': a.email?.value || '',
+      'Data do evento': a.data_evento?.value || '',
+      Convidados: a.convidados?.value || '',
+      'Tipo de evento': a.tipo_evento?.value || '',
+      Fonte: fonte,
+      Data: now.toLocaleDateString('pt-BR'),
+      'Horário': now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+      'URL da página': window.location.href,
+      'Agente de usuário': navigator.userAgent,
+      'Desenvolvido por': 'Dmove',
+      form_id: 'form_whatsapp',
+      form_name: 'form_whatsapp',
+    };
+    ['fbc', 'fbp', 'external_id', 'event_id'].forEach((k) => { if (tracking[k]) payload[k] = tracking[k]; });
+
+    try {
+      if (submitUrl) {
+        await fetch(submitUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true,
+        });
+      }
+    } catch (_) { /* falha silenciosa */ }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'form_submit', project: project, ...payload });
+  }
+
+  let convoStarted = false;
+  async function runConversation() {
+    if (convoStarted) return;
+    convoStarted = true;
+
+    // Replay instantâneo do que já aconteceu nesta sessão (recarregou a página)
+    introMessages.forEach((m) => bubble('agent', m, true));
+    fields.slice(0, state.idx).forEach((f) => {
+      bubble('agent', f.label, true);
+      const ans = state.answers[f.key];
+      if (ans) bubble('user', ans.display, true);
+    });
+
+    if (state.done) {
+      bubble('agent', 'Recebemos sua solicitação! ✅', true);
+      ctaBubble();
+      return;
+    }
+
+    if (state.idx === 0) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'form_start', project: project, form_id: 'form_whatsapp', form_name: 'form_whatsapp' });
+      // repete a intro "ao vivo": remove o replay e digita de verdade
+      chat.innerHTML = '';
+      for (const m of introMessages) await agentSays(m);
+    }
+
+    while (state.idx < fields.length) {
+      const field = fields[state.idx];
+      await agentSays(field.label, 600);
+      showInput(field);
+      const answer = await new Promise((resolve) => { activeResolve = resolve; });
+      bubble('user', answer.display);
+      state.answers[field.key] = answer;
+      state.idx += 1;
+      saveState();
+      if (field.key === 'nome' && answer.display) {
+        await wait(350);
+        setTyping(true); await wait(500); setTyping(false);
+        bubble('agent', `Prazer, ${answer.display.split(/\s+/)[0]}! 😊`);
+      }
+      await wait(350);
+    }
+
+    // Encerramento
+    setTyping(true);
+    await Promise.all([submitLead(), wait(900)]);
+    setTyping(false);
+    state.done = true;
+    saveState();
+    bubble('agent', `Perfeito, ${state.answers.nome?.display.split(/\s+/)[0] || ''}! Já estou te chamando no WhatsApp 🚀`.replace(', !', '!'));
+    ctaBubble();
+    await wait(1200);
+    window.location.href = waUrl();
+  }
+
+  /* ── Mobile: trava o scroll da página atrás do chat ── */
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+  function lockScroll(on) {
+    const lock = on && isMobile();
+    document.documentElement.style.overflow = lock ? 'hidden' : '';
+    try { lock ? window.__lenis?.stop() : window.__lenis?.start(); } catch (_) {}
+  }
+
+  /* ── Mobile (iOS): o teclado sobrepõe elementos fixos sem redimensionar o
+     layout — acompanha o visualViewport para manter a barra de input visível ── */
+  const vvp = window.visualViewport;
+  function adjustForKeyboard() {
+    if (!vvp || popup.hidden || !isMobile()) {
+      popup.style.bottom = '';
+      popup.style.height = '';
+      return;
+    }
+    const kb = Math.max(0, window.innerHeight - vvp.height - vvp.offsetTop);
+    if (kb > 60) {
+      popup.style.bottom = `${kb + 10}px`;
+      popup.style.height = `${Math.min(vvp.height - 76, 560)}px`;
+    } else {
+      popup.style.bottom = '';
+      popup.style.height = '';
+    }
+    scrollChat();
+  }
+  if (vvp) {
+    if (window.__waVVResize) {
+      vvp.removeEventListener('resize', window.__waVVResize);
+      vvp.removeEventListener('scroll', window.__waVVResize);
+    }
+    window.__waVVResize = adjustForKeyboard;
+    vvp.addEventListener('resize', adjustForKeyboard);
+    vvp.addEventListener('scroll', adjustForKeyboard);
+  }
 
   /* ── Abrir / fechar ─────────────────────────── */
   function openPopup() {
+    hideTeaser(false);
     popup.hidden = false;
-    popup.classList.add('wa-popup--open');
+    requestAnimationFrame(() => requestAnimationFrame(() => popup.classList.add('wa-popup--open')));
     toggle.setAttribute('aria-expanded', 'true');
     badge.style.display = 'none';
-
-    // Garante que o popup sempre abra na Etapa 1 com a caixa de sucesso oculta
-    step1.hidden = false;
-    step2.hidden = true;
-    success.hidden = true;
-
-    // foca o primeiro campo (Empresa, se existir; senão Nome)
-    setTimeout(() => (document.getElementById('wa-empresa') || document.getElementById('wa-nome'))?.focus(), 300);
+    lockScroll(true);
+    runConversation();
+    if (activeField) setTimeout(() => currentInputEl().focus({ preventScroll: true }), 300);
+    scrollChat();
   }
 
   function closePopup() {
     popup.classList.remove('wa-popup--open');
     toggle.setAttribute('aria-expanded', 'false');
-    setTimeout(() => { popup.hidden = true; }, 280);
+    lockScroll(false);
+    setTimeout(() => {
+      popup.hidden = true;
+      popup.style.bottom = '';
+      popup.style.height = '';
+    }, 280);
   }
 
   toggle.addEventListener('click', () => {
     popup.hidden ? openPopup() : closePopup();
   });
   closeBtn.addEventListener('click', closePopup);
+
+  /* ── Teaser ─────────────────────────────────── */
+  function hideTeaser(persist) {
+    if (!teaser || teaser.hidden) return;
+    teaser.classList.remove('wa-teaser--in');
+    setTimeout(() => { teaser.hidden = true; }, 220);
+    if (persist) { try { sessionStorage.setItem('wa_teaser_off', '1'); } catch (_) {} }
+  }
+  if (teaser && !sessionStorage.getItem('wa_teaser_off') && state.idx === 0 && !state.done) {
+    setTimeout(() => {
+      if (popup.hidden) {
+        teaser.hidden = false;
+        requestAnimationFrame(() => teaser.classList.add('wa-teaser--in'));
+      }
+    }, 4500);
+  }
+  document.getElementById('wa-teaser-close')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    hideTeaser(true);
+  });
+  document.getElementById('wa-teaser-open')?.addEventListener('click', () => {
+    try { sessionStorage.setItem('wa_teaser_off', '1'); } catch (_) {}
+    openPopup();
+  });
 
   // O calendário (flatpickr) é anexado ao <body>, FORA do popup. Enquanto ele
   // estiver aberto, nenhum clique/ESC deve fechar o popup. O estado vem do
@@ -257,200 +580,11 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   };
   document.addEventListener('click', window.__waOutsideClick);
 
-  // ESC: com o calendário aberto, o flatpickr fecha só o calendário; só fecha o
-  // popup quando o calendário já está fechado.
   if (window.__waEscKey) document.removeEventListener('keydown', window.__waEscKey);
   window.__waEscKey = (e) => {
     if (e.key === 'Escape' && !popup.hidden && !isCalendarEngaged()) closePopup();
   };
   document.addEventListener('keydown', window.__waEscKey);
-
-  /* ── Validação step 1 ───────────────────────── */
-  const handleStep1 = () => {
-    const empresa = document.getElementById('wa-empresa');
-    const nome  = document.getElementById('wa-nome');
-    const tel   = document.getElementById('wa-tel');
-    const email = document.getElementById('wa-email');
-    let ok = true;
-
-    if (empresa) {
-      if (!empresa.value.trim()) {
-        document.getElementById('wa-empresa-err').classList.add('visible');
-        empresa.focus(); ok = false;
-      } else {
-        document.getElementById('wa-empresa-err').classList.remove('visible');
-      }
-    }
-
-    if (!nome.value.trim()) {
-      document.getElementById('wa-nome-err').classList.add('visible');
-      if (ok) { nome.focus(); ok = false; } else { ok = false; }
-    } else {
-      document.getElementById('wa-nome-err').classList.remove('visible');
-    }
-
-    const telDigits = tel.value.replace(/\D/g, '');
-    if (!tel.value.trim() || telDigits.length < 10 || telDigits.startsWith('55')) {
-      const errEl = document.getElementById('wa-tel-err');
-      if (errEl) {
-        errEl.textContent = telDigits.startsWith('55')
-          ? 'Não coloque o DDI 55. Informe apenas DDD + número.'
-          : 'Por favor, informe seu telefone.';
-        errEl.classList.add('visible');
-      }
-      if (ok) { tel.focus(); ok = false; }
-    } else {
-      document.getElementById('wa-tel-err').classList.remove('visible');
-    }
-
-    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
-      document.getElementById('wa-email-err').classList.add('visible');
-      if (ok) { email.focus(); ok = false; }
-    } else {
-      document.getElementById('wa-email-err').classList.remove('visible');
-    }
-
-    if (!ok) return;
-
-    step1Data = { empresa: empresa ? empresa.value.trim() : '', nome: nome.value.trim(), tel: tel.value.trim(), email: email.value.trim() };
-    step1.hidden = true;
-    step2.hidden = false;
-    document.getElementById('wa-tipo')?.focus();
-  };
-
-  const waNextBtn = document.getElementById('wa-next');
-  if (waNextBtn) {
-    waNextBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      handleStep1();
-    });
-  }
-
-  step1.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && e.target instanceof HTMLElement) {
-      const tag = e.target.tagName.toLowerCase();
-      if (tag !== 'textarea' && tag !== 'button') {
-        e.preventDefault();
-        handleStep1();
-      }
-    }
-  });
-
-  /* ── Voltar ─────────────────────────────────── */
-  backBtn.addEventListener('click', () => {
-    step2.hidden = true;
-    step1.hidden = false;
-  });
-
-  /* ── Envio step 2 ───────────────────────────── */
-  const handleStep2 = async () => {
-    const tipo      = document.getElementById('wa-tipo');
-    const data      = document.getElementById('wa-data');
-    const convidados= document.getElementById('wa-convidados');
-
-    let ok = true;
-
-    if (!tipo.value) {
-      document.getElementById('wa-tipo-err').classList.add('visible');
-      if (ok) tipo.focus();
-      ok = false;
-    } else {
-      document.getElementById('wa-tipo-err').classList.remove('visible');
-    }
-
-    if (!data.value.trim()) {
-      document.getElementById('wa-data-err').classList.add('visible');
-      if (ok) data.focus();
-      ok = false;
-    } else {
-      document.getElementById('wa-data-err').classList.remove('visible');
-    }
-
-    if (!convidados.value.trim()) {
-      document.getElementById('wa-convidados-err').classList.add('visible');
-      if (ok) convidados.focus();
-      ok = false;
-    } else {
-      document.getElementById('wa-convidados-err').classList.remove('visible');
-    }
-
-    if (!ok) return;
-
-    // Abre o WhatsApp automaticamente em nova aba. Disparado ainda dentro do
-    // gesto de clique (antes do await do fetch) para não ser bloqueado por popup-blockers.
-    window.open(waLink, '_blank', 'noopener');
-
-    // Loading state
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.wa-btn__text').hidden = true;
-    submitBtn.querySelector('.wa-btn__spinner').hidden = false;
-
-    const trackingRaw = sessionStorage.getItem('dmove_tracking');
-    const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
-    const qs = new URLSearchParams();
-    trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
-    const slug = window.location.pathname.replace(/\/$/, '').split('/').filter(Boolean)[0];
-    const pageSource = `Landing page/${slug || 'casamentos'}`;
-    const fonte = qs.toString()
-      ? `${pageSource}?${qs.toString()}`
-      : pageSource;
-
-    const nowStr = new Date();
-    const payload = {
-      ...(step1Data.empresa ? { Empresa: step1Data.empresa } : {}),
-      Nome: step1Data.nome || '',
-      WhatsApp: step1Data.tel || '',
-      'E-mail': step1Data.email || '',
-      'Data do evento': data?.value?.trim() || '',
-      Convidados: convidados?.value || '',
-      'Tipo de evento': tipo?.value || '',
-      Fonte: fonte,
-      Data: nowStr.toLocaleDateString('pt-BR'),
-      'Horário': nowStr.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-      'URL da página': window.location.href,
-      'Agente de usuário': navigator.userAgent,
-      'Desenvolvido por': 'Dmove',
-      form_id: 'form_whatsapp',
-      form_name: 'form_whatsapp',
-    };
-    if (tracking['fbc'])         payload['fbc']         = tracking['fbc'];
-    if (tracking['fbp'])         payload['fbp']         = tracking['fbp'];
-    if (tracking['external_id']) payload['external_id'] = tracking['external_id'];
-    if (tracking['event_id'])    payload['event_id']    = tracking['event_id'];
-
-    try {
-      if (submitUrl) {
-        await fetch(submitUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-      }
-    } catch (_) { /* falha silenciosa */ }
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'form_submit', project: project, ...payload });
-
-    step2.hidden = true;
-    success.hidden = false;
-  };
-
-  if (submitBtn) {
-    submitBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      handleStep2();
-    });
-  }
-
-  step2.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && e.target instanceof HTMLElement) {
-      const tag = e.target.tagName.toLowerCase();
-      if (tag !== 'textarea' && tag !== 'button') {
-        e.preventDefault();
-        handleStep2();
-      }
-    }
-  });
 </script>
 
 <!-- Calendário (flatpickr) do campo Data — mesmo do formulário normal -->
@@ -460,11 +594,11 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   import 'flatpickr/dist/flatpickr.min.css';
 
   function initWaDatepicker() {
-    const el = document.querySelector('[data-wa-flatpickr]');
+    const el = document.querySelector<HTMLInputElement>('[data-wa-flatpickr]');
     if (!el || el.dataset.flatpickrReady) return;
     el.dataset.flatpickrReady = 'true';
 
-    const icon = el.parentElement?.querySelector('.wa-datepicker-icon');
+    const icon = document.getElementById('wa-date-icon');
 
     // não-static: o calendário é anexado ao body e flutua acima do popup,
     // evitando ser cortado pelo overflow da janela de chat (altura limitada)
@@ -472,7 +606,9 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
       locale: Portuguese,
       dateFormat: 'd/m/Y',
       minDate: 'today',
-      disableMobile: true,
+      // No celular usa o seletor de data NATIVO do sistema (muito melhor no
+      // toque); o flatpickr mantém o input original sincronizado em d/m/Y
+      disableMobile: false,
       allowInput: true,
       // Sinaliza ao popup que o calendário está engajado. O pequeno atraso no
       // onClose garante que o clique que fechou o calendário (seleção da data
@@ -492,31 +628,33 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
 </script>
 
 <style>
-  /* ── Variáveis WhatsApp ─────────────────────── */
+  /* ── Variáveis ──────────────────────────────── */
   :root {
     --wa-green:      #25D366;
     --wa-green-dark: #128C7E;
-    --wa-header:     #075E54;
-    --wa-bg:         #ECE5DD;
-    --wa-bubble-in:  #FFFFFF;
-    --wa-bubble-out: #DCF8C6;
-    --wa-text:       #111B21;
+    --wa-primary:    #075E54;   /* cor primária: header e balão do usuário */
+    --wa-bg:         #ECE5DD;   /* fundo clássico do chat */
+    --wa-text:       #222;
     --wa-subtext:    #667781;
-    --wa-radius:     12px;
+    --wa-border:     #e5e7eb;
+    --wa-error:      #e53e3e;
   }
 
-  #wa-widget {
-    display: contents;
-  }
+  #wa-widget { display: contents; }
+  #wa-widget [hidden] { display: none !important; }
+
+  /* O calendário (flatpickr) é anexado ao <body> com z-index padrão (~99999),
+     que fica atrás do popup (2147482999) — precisa flutuar acima dele */
+  :global(.flatpickr-calendar) { z-index: 2147483001 !important; }
 
   /* ── Botão flutuante ────────────────────────── */
   .wa-fab {
     position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 1000;
-    width: 60px;
-    height: 60px;
+    bottom: 24px;
+    right: 20px;
+    z-index: 2147483000;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
     background: var(--wa-green);
     color: #fff;
@@ -526,7 +664,7 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 20px rgba(37,211,102,.45), 0 2px 8px rgba(0,0,0,.25);
-    transition: transform .2s, box-shadow .2s;
+    transition: transform .15s, box-shadow .2s;
   }
   .wa-fab:hover {
     transform: scale(1.08);
@@ -534,7 +672,6 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
   }
   .wa-fab:active { transform: scale(.96); }
 
-  /* Pulso de atenção */
   .wa-fab::before {
     content: '';
     position: absolute;
@@ -549,7 +686,6 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     100% { opacity: 0; }
   }
 
-  /* Badge */
   .wa-fab__badge {
     position: absolute;
     top: 2px;
@@ -568,18 +704,103 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     border: 2px solid #fff;
   }
 
+  /* ── Teaser ─────────────────────────────────── */
+  .wa-teaser {
+    position: fixed;
+    bottom: 94px;
+    right: 20px;
+    z-index: 2147482998;
+    max-width: 270px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .22s ease, transform .22s ease;
+  }
+  .wa-teaser--in { opacity: 1; transform: translateY(0); }
+  .wa-teaser__bubble {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    cursor: pointer;
+    text-align: left;
+    transition: transform .15s, box-shadow .15s;
+    position: relative;
+  }
+  .wa-teaser__bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    transform: rotate(45deg);
+    box-shadow: 2px 2px 4px rgba(0,0,0,.08);
+  }
+  .wa-teaser__bubble:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+  }
+  .wa-teaser__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+  }
+  .wa-teaser__text {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+  }
+  .wa-teaser__text strong {
+    display: block;
+    font-size: 12px;
+    color: var(--wa-primary);
+    margin-bottom: 1px;
+  }
+  .wa-teaser__close {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    color: var(--wa-subtext);
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: color .15s, transform .15s;
+  }
+  .wa-teaser__close:hover { color: var(--wa-text); transform: scale(1.1); }
+
   /* ── Popup ──────────────────────────────────── */
   .wa-popup {
     position: fixed;
-    bottom: 100px;
-    right: 28px;
-    z-index: 999;
-    width: 360px;
+    bottom: 94px;
+    right: 20px;
+    z-index: 2147482999;
+    width: 340px;
+    height: min(540px, calc(100dvh - 130px));
     max-width: calc(100vw - 32px);
-    background: var(--wa-bg);
+    background: #fff;
     border-radius: 16px;
-    box-shadow: 0 12px 48px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transform: translateY(16px) scale(.96);
     opacity: 0;
     transition: transform .28s cubic-bezier(.16,1,.3,1), opacity .25s ease;
@@ -591,33 +812,56 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     pointer-events: auto;
   }
 
-  /* Header WhatsApp */
+  /* Header */
   .wa-header {
-    background: var(--wa-header);
-    padding: 12px 16px;
+    background: var(--wa-primary);
+    padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 12px;
     color: #fff;
+    flex-shrink: 0;
   }
   .wa-header__avatar {
     position: relative;
     flex-shrink: 0;
+    width: 40px;
+    height: 40px;
   }
-  .wa-header__avatar img,
-  .wa-header__avatar svg {
+  .wa-header__avatar-fallback {
+    position: absolute;
+    inset: 0;
     border-radius: 50%;
+    background: var(--wa-green-dark);
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wa-header__avatar-img {
+    position: absolute;
+    inset: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
     display: block;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(255,255,255,.3);
   }
   .wa-header__status {
     position: absolute;
-    bottom: 1px;
-    right: 1px;
+    bottom: 0;
+    right: 0;
     width: 10px;
     height: 10px;
-    background: var(--wa-green);
+    background: #4ade80;
     border-radius: 50%;
-    border: 2px solid var(--wa-header);
+    border: 2px solid var(--wa-primary);
+    z-index: 1;
   }
   .wa-header__info {
     flex: 1;
@@ -627,252 +871,352 @@ const waLink = `https://api.whatsapp.com/send/?phone=${phone}&text=Ol%C3%A1!%20G
     min-width: 0;
   }
   .wa-header__info strong {
-    font-size: .95rem;
-    font-family: sans-serif;
-    font-weight: 600;
+    font-size: 14px;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
-  .wa-header__info span {
-    font-size: .72rem;
-    opacity: .85;
-    font-family: sans-serif;
+  .wa-header__verified {
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .wa-header__presence {
+    font-size: 11px;
+    color: #a7f3d0;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .wa-header__presence-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: wa-presence 2s ease-in-out infinite;
+  }
+  @keyframes wa-presence {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: .4; }
   }
   .wa-header__close {
     background: none;
     border: none;
-    color: rgba(255,255,255,.8);
+    color: #a7f3d0;
     cursor: pointer;
     padding: 4px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background .15s;
+    transition: color .15s, background .15s;
     flex-shrink: 0;
   }
-  .wa-header__close:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .wa-header__close:hover { background: rgba(255,255,255,.12); color: #fff; }
 
-  /* Corpo */
-  .wa-body {
-    padding: 16px 12px 12px;
+  /* ── Área de chat ───────────────────────────── */
+  .wa-chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-height: 420px;
-    overflow-y: auto;
-    /* Fundo com padrão WhatsApp */
+    gap: 8px;
+    background: var(--wa-bg);
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23ECE5DD'/%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='30' cy='10' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='50' cy='10' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='20' cy='30' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='40' cy='30' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='10' cy='50' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='30' cy='50' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3Ccircle cx='50' cy='50' r='1.5' fill='%23D5CCC4' opacity='.5'/%3E%3C/svg%3E");
   }
+  .wa-chat::-webkit-scrollbar { width: 4px; }
+  .wa-chat::-webkit-scrollbar-track { background: transparent; }
+  .wa-chat::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
 
-  /* Bubble */
-  .wa-bubble {
-    background: var(--wa-bubble-in);
-    border-radius: 0 10px 10px 10px;
-    padding: 10px 12px 6px;
-    max-width: 88%;
-    align-self: flex-start;
-    box-shadow: 0 1px 2px rgba(0,0,0,.12);
-    position: relative;
+  /* Linhas e balões (criados via JS — usar :global) */
+  .wa-chat :global(.wa-row) {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: wa-bubble-in .3s ease forwards;
   }
-  .wa-bubble::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -7px;
-    border: 7px solid transparent;
-    border-top-color: var(--wa-bubble-in);
-    border-left: 0;
+  .wa-chat :global(.wa-row--instant) { animation: none; }
+  .wa-chat :global(.wa-row--user) { justify-content: flex-end; }
+  @keyframes wa-bubble-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-  .wa-bubble p {
+
+  .wa-chat :global(.wa-row__avatar) {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    flex-shrink: 0;
+  }
+
+  .wa-chat :global(.wa-msg) {
     font-family: -apple-system, 'Segoe UI', sans-serif;
-    font-size: .875rem;
-    color: var(--wa-text);
+    font-size: 13px;
     line-height: 1.5;
-    margin: 0 0 4px;
+    padding: 9px 13px;
+    max-width: 230px;
+    word-wrap: break-word;
   }
-  .wa-bubble p:last-child { margin-bottom: 0; }
-  .wa-bubble__time {
-    display: block;
-    text-align: right;
-    font-size: .68rem;
-    color: var(--wa-subtext);
-    margin-top: 4px;
-  }
-
-  /* Formulário dentro do chat */
-  .wa-form-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .wa-step {
-    background: var(--wa-bubble-in);
-    border-radius: 10px;
-    padding: 14px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.12);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .wa-step[hidden] {
-    display: none !important;
-  }
-
-  .wa-step2-bubble {
-    background: var(--wa-bubble-in);
-  }
-
-  /* Campos */
-  .wa-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .wa-field label {
-    font-family: -apple-system, 'Segoe UI', sans-serif;
-    font-size: .72rem;
-    font-weight: 600;
-    color: var(--wa-green-dark);
-    text-transform: uppercase;
-    letter-spacing: .08em;
-  }
-  .wa-field input,
-  .wa-field select {
-    border: none;
-    border-bottom: 1.5px solid #ccc;
-    background: transparent;
-    padding: 8px 2px;
-    font-family: -apple-system, 'Segoe UI', sans-serif;
-    font-size: .9rem;
+  .wa-chat :global(.wa-row--agent .wa-msg) {
+    background: #fff;
     color: var(--wa-text);
-    transition: border-color .2s;
-    width: 100%;
-    appearance: auto;
+    border-radius: 12px 12px 12px 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
   }
-  .wa-field input:focus,
-  .wa-field select:focus {
-    outline: none;
-    border-color: var(--wa-green-dark);
+  .wa-chat :global(.wa-row--user .wa-msg) {
+    background: var(--wa-primary);
+    color: #fff;
+    border-radius: 12px 12px 2px 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.12);
   }
-  .wa-field input::placeholder { color: #aaa; }
 
-  /* Campo de data com calendário (flatpickr) */
-  .wa-datepicker-wrap {
-    position: relative;
+  /* Indicador "digitando" */
+  .wa-chat :global(.wa-typing) {
     display: flex;
     align-items: center;
+    gap: 4px;
+    padding: 12px 14px;
   }
-  .wa-datepicker-wrap :global(.flatpickr-wrapper) {
-    display: block;
-    width: 100%;
+  .wa-chat :global(.wa-dot) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #aaa;
+    animation: wa-dot-bounce 1s ease-in-out infinite;
   }
-  .wa-datepicker-wrap input {
-    padding-right: 24px;
-    cursor: pointer;
+  .wa-chat :global(.wa-dot:nth-child(2)) { animation-delay: .15s; }
+  .wa-chat :global(.wa-dot:nth-child(3)) { animation-delay: .3s; }
+  @keyframes wa-dot-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-5px); }
   }
-  .wa-datepicker-icon {
-    position: absolute;
-    right: 2px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--wa-green-dark);
-    opacity: .7;
-    pointer-events: auto;
-    cursor: pointer;
-    transition: opacity .2s;
-  }
-  .wa-datepicker-wrap:focus-within .wa-datepicker-icon,
-  .wa-datepicker-icon:hover { opacity: 1; }
 
-  /* Erro */
-  .wa-error {
-    font-size: .72rem;
-    color: #e53935;
-    display: none;
-    font-family: sans-serif;
-  }
-  .wa-error.visible { display: block; }
-
-  /* Botões */
-  .wa-btn {
-    background: var(--wa-green);
-    color: #fff;
-    border: none;
-    border-radius: 24px;
-    padding: 10px 20px;
-    font-family: -apple-system, 'Segoe UI', sans-serif;
-    font-size: .875rem;
-    font-weight: 600;
-    cursor: pointer;
+  /* CTA final dentro de balão */
+  .wa-chat :global(.wa-cta) {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: background .2s, transform .15s;
-    align-self: flex-end;
+    gap: 7px;
+    background: var(--wa-green);
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 9px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background .2s;
   }
-  .wa-btn:hover { background: var(--wa-green-dark); }
-  .wa-btn:active { transform: scale(.97); }
-  .wa-btn:disabled { opacity: .7; cursor: not-allowed; }
-
-  .wa-btn--back {
-    background: none;
-    color: var(--wa-subtext);
-    padding: 10px 12px;
-    font-size: .8rem;
-    font-weight: 500;
-    align-self: flex-start;
+  .wa-chat :global(.wa-cta:hover) { background: var(--wa-green-dark); }
+  .wa-chat :global(.wa-row .wa-msg:has(.wa-cta)) {
+    background: transparent;
+    box-shadow: none;
+    padding: 2px 0;
   }
-  .wa-btn--back:hover { background: #f0f0f0; color: var(--wa-text); }
 
-  .wa-btn--submit { flex: 1; }
-
-  .wa-step2-actions {
+  /* ── Barra de input ─────────────────────────── */
+  .wa-inputbar {
+    background: #fff;
+    border-top: .5px solid var(--wa-border);
+    padding: 10px 12px 12px;
+    flex-shrink: 0;
+    animation: wa-bubble-in .25s ease;
+  }
+  .wa-inputbar__label {
+    display: block;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .wa-inputbar__row {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 2px;
   }
-
-  .wa-btn--wa {
-    background: var(--wa-green);
-    align-self: center;
-    margin-top: 8px;
-    padding: 11px 22px;
-  }
-
-  /* Spinner */
-  .wa-spinner {
-    animation: wa-spin 1s linear infinite;
-  }
-  @keyframes wa-spin { to { transform: rotate(360deg); } }
-
-  /* Sucesso */
-  .wa-success {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .wa-success[hidden] {
-    display: none !important;
-  }
-
-  /* Footer decorativo */
-  .wa-footer {
-    background: #f0f0f0;
-    border-top: 1px solid #e0e0e0;
-    padding: 10px 16px;
+  .wa-input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--wa-border);
+    border-radius: 20px;
+    padding: 8px 14px;
     font-family: -apple-system, 'Segoe UI', sans-serif;
-    font-size: .72rem;
-    color: var(--wa-subtext);
-    text-align: center;
+    font-size: 13px;
+    color: var(--wa-text);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .wa-input:focus {
+    outline: none;
+    border-color: var(--wa-primary);
+    box-shadow: 0 0 0 3px rgba(7,94,84,.1);
+  }
+  .wa-input::placeholder { color: #aaa; }
+  .wa-inputbar__row--error .wa-input { border-color: var(--wa-error); }
+
+  .wa-datefield {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .wa-datefield :global(.flatpickr-wrapper) {
+    display: block;
+    width: 100%;
+  }
+  /* input nativo de data criado pelo flatpickr no mobile (sem escopo Astro) */
+  .wa-datefield :global(.flatpickr-mobile) {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--wa-border);
+    border-radius: 20px;
+    padding: 8px 34px 8px 14px;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: var(--wa-text);
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .wa-datefield :global(.flatpickr-mobile:focus) {
+    outline: none;
+    border-color: var(--wa-primary);
+    box-shadow: 0 0 0 3px rgba(7,94,84,.1);
+  }
+  /* o input nativo já tem o próprio indicador de calendário — esconde o nosso */
+  .wa-datefield:has(:global(.flatpickr-mobile)) .wa-datefield__icon { display: none; }
+  .wa-datefield .wa-input {
+    width: 100%;
+    padding-right: 34px;
+    cursor: pointer;
+  }
+  .wa-datefield__icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--wa-primary);
+    opacity: .6;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .wa-datefield:focus-within .wa-datefield__icon,
+  .wa-datefield__icon:hover { opacity: 1; }
+
+  .wa-send {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--wa-primary);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform .15s, background .2s;
+  }
+  .wa-send:hover { background: var(--wa-green-dark); transform: scale(1.06); }
+  .wa-send:active { transform: scale(.94); }
+
+  .wa-inputbar__error {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    color: var(--wa-error);
+    margin: 5px 2px 0;
+  }
+
+  /* Chips (seleção única / sugestões) — criados via JS, precisam de :global */
+  .wa-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+    max-height: 132px;
+    overflow-y: auto;
+    padding: 2px;
+  }
+  .wa-chips::-webkit-scrollbar { width: 4px; }
+  .wa-chips::-webkit-scrollbar-track { background: transparent; }
+  .wa-chips::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
+  .wa-chips :global(.wa-chip) {
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    border: 1px solid var(--wa-primary);
+    background: transparent;
+    color: var(--wa-primary);
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .wa-chips :global(.wa-chip:hover) {
+    background: var(--wa-primary);
+    color: #fff;
+  }
+
+  /* ── Acessibilidade: movimento reduzido ─────── */
+  @media (prefers-reduced-motion: reduce) {
+    .wa-fab::before,
+    .wa-header__presence-dot { animation: none; }
+    .wa-chat :global(.wa-row),
+    .wa-chat :global(.wa-dot),
+    .wa-inputbar { animation: none; }
+    .wa-popup,
+    .wa-teaser,
+    .wa-fab { transition-duration: .01s; }
   }
 
   /* ── Responsivo ─────────────────────────────── */
-  @media (max-width: 480px) {
-    .wa-fab { bottom: 20px; right: 16px; }
-    .wa-popup { right: 12px; bottom: 90px; width: calc(100vw - 24px); }
+  @media (max-width: 768px) {
+    .wa-fab {
+      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+      right: 14px;
+    }
+    .wa-popup {
+      left: 12px;
+      right: 12px;
+      width: auto;
+      max-width: none;
+      bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+      height: calc(100dvh - 110px);
+      max-height: 560px;
+      border-radius: 14px;
+    }
+    .wa-teaser {
+      bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+      right: 14px;
+      max-width: calc(100vw - 90px);
+    }
+    .wa-chat :global(.wa-msg) { max-width: 75%; }
+
+    /* fonte ≥16px evita o zoom automático do iOS ao focar o input */
+    .wa-input {
+      font-size: 16px;
+      padding: 10px 16px;
+    }
+    .wa-datefield .wa-input { padding-right: 38px; }
+    /* alvos de toque confortáveis (mínimo 44px recomendado) */
+    .wa-send {
+      width: 44px;
+      height: 44px;
+    }
+    .wa-chips :global(.wa-chip) {
+      padding: 9px 16px;
+      font-size: 14px;
+    }
+    .wa-inputbar { padding: 10px 12px calc(12px + env(safe-area-inset-bottom, 0px) / 2); }
+    .wa-header__close { padding: 10px; }
   }
 </style>
