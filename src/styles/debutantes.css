@@ -305,6 +305,26 @@
   position: relative;
 }
 
+/* Reveal centrado (fade + scale a partir do centro), sobrepõe o .reveal padrão */
+.gal-debutantes .figure.reveal {
+  opacity: 0;
+  transform: scale(.7);
+  transition: opacity 1s cubic-bezier(.16, 1, .3, 1), transform 1s cubic-bezier(.16, 1, .3, 1);
+}
+
+.gal-debutantes .figure.reveal.in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gal-debutantes .figure.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .gal-debutantes .figure img {
   width: 100%;
   height: 100%;
