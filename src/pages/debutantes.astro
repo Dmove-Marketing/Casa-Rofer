@@ -144,10 +144,13 @@ const depoimentos = [
       <div class="solucao-split">
         <div class="solucao-text reveal">
           <p>
-            Uma festa inesquecível começa com um espaço que oferece estrutura, conforto e segurança para receber todos os convidados.
+            A Casa Rofer é um espaço para celebrações em São Paulo, no coração do Brooklin, onde cada festa de debutante é construída de forma integrada, com uma <strong>solução 360°</strong>, reunindo estrutura, gastronomia, ambientação e operação em uma experiência pensada para cada família.
           </p>
           <p>
-            Na Casa Rofer, oferecemos uma <strong>solução 360°</strong>, que integra espaço, suporte e curadoria de fornecedores, garantindo uma celebração completa.
+            Mais do que oferecer diferentes serviços, atuamos em cocriação, transformando referências, desejos e personalidade em um projeto que traduz a essência de cada debutante. Uma equipe especializada acompanha todas as etapas, do planejamento à execução, conectando cada escolha à atmosfera que a celebração pede.
+          </p>
+          <p>
+            Uma estrutura completa para transformar ideias em uma festa que tenha identidade, ritmo e momentos à altura dos 15 anos.
           </p>
         </div>
 
@@ -174,9 +177,9 @@ const depoimentos = [
       </h2>
     </div>
     <div class="wrap">
-      <div class="gal-debutantes reveal">
+      <div class="gal-debutantes">
         {galeriaImages.map((imgUrl, i) => (
-          <div class="figure">
+          <div class={`figure reveal ${['', 'd1', 'd2'][i % 3]}`}>
             <Img
               src={imgUrl}
               alt={`Festa de 15 Anos na Casa Rofer — Foto ${i + 1}`}
@@ -503,7 +506,7 @@ const depoimentos = [
         </h2>
       </div>
       <div class="loc-map reveal d1" style="max-width:1000px;margin:52px auto 0">
-        <Img src="https://media.dmove.com.br/clients/espacofitcom/photos/localizacao_resultado.webp" alt="Mapa de localização da Casa Rofer" width={1000} />
+        <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/localizacao_resultado.webp" alt="Mapa de localização da Casa Rofer" width={1000} />
       </div>
     </div>
   </section>
