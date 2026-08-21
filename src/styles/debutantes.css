@@ -382,13 +382,6 @@
   }
 }
 
-/* Botão "Ver no Google Maps" com ícone de pin, abaixo do mapa */
-.loc-maps-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
 /* Fonte editorial no desktop para a seção contato ("a noite dos seus sonhos") */
 @media (min-width: 761px) {
   .accent-desktop {
