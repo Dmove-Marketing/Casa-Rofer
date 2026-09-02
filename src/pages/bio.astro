@@ -37,6 +37,15 @@ const bioFields = [
         <h1 class="bio-title">A arte de transformar<br><span class="accent">o instante em memórias</span></h1>
       </div>
 
+      <a class="bio-site-btn" href="https://casarofer.com.br/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18"></path>
+          <path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"></path>
+        </svg>
+        Visite nosso site
+      </a>
+
       <div class="bio-card">
         <LeadForm
           formId="bio-form"
@@ -148,6 +157,41 @@ const bioFields = [
     line-height: 0.85;
     color: #ffffff;
     letter-spacing: 0.02em;
+  }
+
+  /* ===== SITE BUTTON ===== */
+  .bio-site-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  }
+
+  .bio-site-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .bio-site-btn:hover {
+    background: #ada28f;
+    border-color: #ada28f;
+    transform: translateY(-2px);
   }
 
   /* ===== FOOTER ===== */
