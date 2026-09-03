@@ -275,21 +275,31 @@ const bioFields = [
     display: none;
   }
 
-  :global(.bio-container) :global(.flatpickr-months) {
+  /* Ancoradas em .flatpickr-calendar (não em .bio-container): garante que o
+     mês e as setas fiquem visíveis mesmo quando o Flatpickr monta o
+     calendário fora do <main class="bio-container"> (comportamento no ar). */
+  :global(.flatpickr-calendar .flatpickr-months) {
+    position: relative;
     display: flex;
     align-items: center;
+    min-height: 34px;
     padding-bottom: 14px;
     margin-bottom: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  :global(.bio-container) :global(.flatpickr-month) {
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-month) {
     color: #ffffff;
     fill: #ffffff;
-    height: auto;
+    height: 34px;
+    overflow: visible;
   }
 
-  :global(.bio-container) :global(.flatpickr-current-month) {
+  :global(.flatpickr-calendar .flatpickr-current-month) {
+    position: relative;
+    width: 100%;
+    left: 0;
+    height: 34px;
     font-family: 'PP Editorial New', serif;
     font-style: italic;
     font-weight: 400;
@@ -302,12 +312,12 @@ const bioFields = [
     padding: 0;
   }
 
-  :global(.bio-container) :global(.flatpickr-current-month .cur-month) {
+  :global(.flatpickr-calendar .flatpickr-current-month .cur-month) {
     font-family: 'PP Editorial New', serif;
     font-style: italic;
   }
 
-  :global(.bio-container) :global(.flatpickr-current-month input.cur-year) {
+  :global(.flatpickr-calendar .flatpickr-current-month input.cur-year) {
     color: rgba(255, 255, 255, 0.75);
     font-family: 'Aktiv Grotesk', sans-serif;
     font-style: normal;
@@ -315,32 +325,36 @@ const bioFields = [
     font-weight: 400;
   }
 
-  :global(.bio-container) :global(.flatpickr-current-month .flatpickr-monthDropdown-months) {
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-current-month .flatpickr-monthDropdown-months) {
     background: transparent;
     color: #ffffff;
     font-family: 'PP Editorial New', serif;
     font-style: italic;
+    -webkit-appearance: none;
     appearance: none;
     border: none;
   }
 
-  :global(.bio-container) :global(.flatpickr-current-month .flatpickr-monthDropdown-months option) {
+  :global(.flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months option) {
     background: #1a1714;
     color: #ffffff;
     font-style: normal;
   }
 
-  :global(.bio-container) :global(.numInputWrapper span.arrowUp),
-  :global(.bio-container) :global(.numInputWrapper span.arrowDown) {
+  :global(.flatpickr-calendar .numInputWrapper span.arrowUp),
+  :global(.flatpickr-calendar .numInputWrapper span.arrowDown) {
     display: none;
   }
 
-  :global(.bio-container) :global(.flatpickr-prev-month),
-  :global(.bio-container) :global(.flatpickr-next-month) {
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month) {
+    position: absolute;
+    top: 0;
+    height: 34px;
+    padding: 0;
     fill: rgba(255, 255, 255, 0.55);
     color: rgba(255, 255, 255, 0.55);
-    width: 30px;
-    height: 30px;
+    width: 34px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -348,17 +362,37 @@ const bioFields = [
     transition: background-color .25s, fill .25s, color .25s;
   }
 
-  :global(.bio-container) :global(.flatpickr-prev-month svg),
-  :global(.bio-container) :global(.flatpickr-next-month svg) {
-    width: 14px;
-    height: 14px;
+  /* Flatpickr esconde a seta anterior quando se está no mês mínimo (minDate).
+     Mantém ela visível, apenas apagada, para o cabeçalho não ficar torto. */
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month.flatpickr-disabled),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month.flatpickr-disabled) {
+    display: flex;
+    opacity: 0.25;
+    pointer-events: none;
   }
 
-  :global(.bio-container) :global(.flatpickr-prev-month:hover),
-  :global(.bio-container) :global(.flatpickr-next-month:hover) {
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month svg) {
+    width: 14px;
+    height: 14px;
+    fill: inherit;
+  }
+
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month svg path),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month svg path) {
+    fill: inherit;
+  }
+
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover) {
     background: rgba(255, 255, 255, 0.08);
-    fill: var(--sand);
-    color: var(--sand);
+    fill: var(--sand, #ada28f);
+    color: var(--sand, #ada28f);
+  }
+
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg),
+  :global(.flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg) {
+    fill: var(--sand, #ada28f);
   }
 
   :global(.bio-container) :global(.flatpickr-weekdays) {
