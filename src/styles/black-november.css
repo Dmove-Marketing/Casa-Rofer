@@ -4,7 +4,7 @@
  Optima, PP Editorial New e Aktiv Grotesk são fontes comerciais:  
  confirmar licença de uso web com a Rofer antes da publicação. */  
  /* Optima: usar SEMPRE o peso Medium (500) em todo o site. O OPTIMA.TTF (Regular)  
- recebido troca os acentos por caracteres cirílicos (é �?' й, ç �?' з). */  
+ recebido troca os acentos por caracteres cirílicos (é → й, ç → з). */  
  @font-face {  
  font-family: "Optima Rofer";  
  src: url("/fonts/Optima Medium.ttf") format("truetype");  
@@ -28,10 +28,10 @@
  }  
   
  :root {  
- /* Cores �?" paleta oficial Casa Rofer */  
+ /* Cores — paleta oficial Casa Rofer */  
  --cor-primaria: #023d2d; /* verde Rofer */  
  --cor-primaria-escura: #012a1f; /* rodapé */  
- --cor-oliva: #b6b56a; /* verde oliva oficial �?" único tom de oliva da LP */  
+ --cor-oliva: #b6b56a; /* verde oliva oficial — único tom de oliva da LP */  
  --cor-musgo: #3d451e;  
  --cor-marrom: #372619;  
  --cor-taupe: #6c6056;  
@@ -285,7 +285,7 @@
   
  @media (min-width: 960px) {  
  .hero {  
- grid-template-columns: minmax(400px, 9fr) 16fr; /* painel verde �?^ 36% da tela */  
+ grid-template-columns: minmax(400px, 9fr) 16fr; /* painel verde ≈ 36% da tela */  
  min-height: min(100svh, 920px);  
  }  
  .hero__imagem { order: 2; aspect-ratio: auto; }  
@@ -304,7 +304,7 @@
  }  
  /* Entrelinha do título: ~12px visíveis entre BLACK e NOVEMBER */  
  .hero__titulo-linha--menor { margin-top: -0.11em; }  
- /* Subtítulo (período) a 18px visíveis do título (o respiro interno das fontes �?^ 18px) */  
+ /* Subtítulo (período) a 18px visíveis do título (o respiro interno das fontes ≈ 18px) */  
  .hero__periodo { margin-top: 0; }  
  /* "25% off" na mesma linha, centralizado; "Até" acima, alinhado ao início do 25% */  
  .hero__oferta {  
@@ -321,8 +321,8 @@
  .hero__percentual { font-size: calc(var(--largura-painel) * 0.2134); }  
  .hero__off { font-size: calc(var(--largura-painel) * 0.1908); }  
  /* Centralização óptica no painel:  
- - o "f" itálico do "off" avança à direita da caixa �?' compensa ~2% do painel  
- - o espaçamento entre letras sobra após a última letra do período �?' compensa à esquerda */  
+ - o "f" itálico do "off" avança à direita da caixa → compensa ~2% do painel  
+ - o espaçamento entre letras sobra após a última letra do período → compensa à esquerda */  
  .hero__oferta { transform: translateX(calc(var(--largura-painel) * -0.02)); }  
  .hero__periodo { padding-left: 0.14em; }  
  /* Texto abaixo do 25% off todo em branco */  
@@ -335,7 +335,7 @@
  }  
  }  
   
- /* ============ SOBRE / CONDI�?�.ES ============ */  
+ /* ============ SOBRE / CONDIÇÕES ============ */  
  .sobre {  
  padding-block: var(--respiro);  
  text-align: center;  
@@ -611,7 +611,7 @@
  .cortesia__nome { font-size: 1.25rem; }  
  }  
   
- /* ============ GALERIA �?" MOSAICO ============ */  
+ /* ============ GALERIA — MOSAICO ============ */  
  .galeria {  
  padding-block: var(--respiro);  
  background: var(--cor-areia-clara); /* separa da seção de condições, que vem logo abaixo com fundo claro */  
@@ -749,6 +749,7 @@
  margin-top: 2rem;  
  font-size: 0.95rem;  
  color: var(--cor-areia);  
+ text-align: left;  
  text-underline-offset: 4px;  
  }  
  .contato__whatsapp svg { width: 20px; height: 20px; flex: none; }  
@@ -921,7 +922,7 @@
  .contato__intro { position: sticky; top: 3rem; }
  }  
   
- /* ============ RODAP�? ============ */  
+ /* ============ RODAPÉ ============ */  
  .rodape {  
  padding-block: 1.75rem;  
  background: var(--cor-primaria-escura);  
@@ -947,14 +948,12 @@
  align-items: center;  
  gap: 0.85rem;  
  margin-top: 0.75rem;  
- letter-spacing: 0.1em;  
- text-transform: uppercase;  
  }  
  .rodape__dmove { display: block; transition: opacity 0.25s ease; }  
  .rodape__dmove:hover { opacity: 0.8; }  
- .rodape__dmove img { width: 95px; height: auto; }  
+ .rodape__dmove img { width: 70px; height: auto; }  
   
- /* ============ BOT�fO WHATSAPP ============ */  
+ /* ============ BOTÃO WHATSAPP ============ */  
  .botao-whatsapp {  
  position: fixed;  
  right: clamp(1rem, 3vw, 1.75rem);  
@@ -1068,11 +1067,11 @@
  }  
   
   
- /* ============ ANIMA�?�fO DOS N�sMEROS DE DESCONTO (desktop) ============  
+ /* ============ ANIMAÇÃO DOS NÚMEROS DE DESCONTO (desktop) ============  
  Estados iniciais só valem com a classe .anima-numeros (posta pelo JS);  
  sem JS ou com "reduzir movimento", tudo aparece direto. */  
  @media (min-width: 960px) {  
- /* Hero: "Até" �?' "25%" sobe por trás da linha �?' "off" */  
+ /* Hero: "Até" → "25%" sobe por trás da linha → "off" */  
  .hero__percentual { display: inline-block; clip-path: inset(-30% -10% 0 -10%); }  
  .hero__percentual-interno { display: inline-block; }  
  .anima-numeros .hero__ate { animation: numero-surge 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) 0.15s both; }  
@@ -1092,7 +1091,7 @@
  @keyframes off-entra { from { opacity: 0; transform: translateY(0.18em); } to { opacity: 1; transform: none; } }  
  }  
   
- /* ============ HERO �?" MOBILE (abaixo de 960px) ============  
+ /* ============ HERO — MOBILE (abaixo de 960px) ============  
  Mesmo esquema do desktop, com medidas fluidas pela largura da tela (o painel ocupa 100% dela). */  
  @media (max-width: 959px) {  
  /* Foto inteira de fundo, ocupando a altura da tela, com camada verde de 82% por cima */  
@@ -1165,7 +1164,7 @@
  @keyframes off-entra { from { opacity: 0; transform: translateY(0.18em); } to { opacity: 1; transform: none; } }  
  }  
   
- /* ============ GALERIA �?" MOBILE (até 560px): carrossel com foto central e bolinhas ============  
+ /* ============ GALERIA — MOBILE (até 560px): carrossel com foto central e bolinhas ============  
  Mesmo comportamento da galeria de ambientes da referência; acima de 560px segue o mosaico em 2 colunas. */  
  .mosaico-pontos { display: none; }  
  @media (max-width: 560px) {  
@@ -1238,7 +1237,7 @@
  .mosaico-pontos button[aria-current="true"] { background: var(--cor-oliva); transform: scale(1.25); }  
  }  
   
- /* ============ TIPOGRAFIA �?" MOBILE (abaixo de 960px) ============  
+ /* ============ TIPOGRAFIA — MOBILE (abaixo de 960px) ============  
  Títulos um pouco menores e texto corrido em 16px (mínimo confortável), entrelinha 1.5. O hero não entra aqui. */  
  @media (max-width: 959px) {  
  body { font-size: 1rem; line-height: var(--entrelinha-texto); } /* 1.4, igual ao desktop */  
@@ -1259,7 +1258,7 @@
  .cortesias__nota { line-height: var(--entrelinha-texto); }  
  }  
   
- /* ============ CONDI�?�.ES �?" MOBILE: caixas compactas (seta no lugar de "Ver condição") ============ */  
+ /* ============ CONDIÇÕES — MOBILE: caixas compactas (seta no lugar de "Ver condição") ============ */  
  @media (max-width: 959px) {  
  /* Empilhadas também no tablet (a regra base põe 3 colunas a partir de 760px) */  
  .condicoes-lista { margin-top: 2rem; grid-template-columns: 1fr; }  
@@ -1286,13 +1285,13 @@
  font-size: 0; /* esconde o texto "Ver condição", fica só a seta */  
  }  
  .condicoes-lista__seta::after {  
- content: "�?'";  
+ content: "→";  
  font-size: 1.35rem;  
  color: var(--cor-oliva);  
  }  
  }  
   
- /* ============ ANIMA�?�fO DAS CAIXAS "A CONDI�?�fO INCLUI" �?" MOBILE (igual ao desktop) ============ */  
+ /* ============ ANIMAÇÃO DAS CAIXAS "A CONDIÇÃO INCLUI" — MOBILE (igual ao desktop) ============ */  
  @media (max-width: 959px) {  
  .contador { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }  
  .anima-caixas-mobile .inclui__principal .destaque-off { display: inline-block; opacity: 0; transform: translateY(0.25em); }  
@@ -1302,7 +1301,7 @@
  transition: opacity 0.7s ease 0.85s, transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 0.85s;  
  }  
  }  
- /* ============ CORTESIAS �?" MOBILE: abas curtas + carrossel com bolinhas (padrão da galeria) ============ */  
+ /* ============ CORTESIAS — MOBILE: abas curtas + carrossel com bolinhas (padrão da galeria) ============ */  
  .cortesias-pontos { display: none; }  
  @media (max-width: 959px) {  
  .cortesias-abas__topo {  
@@ -1376,10 +1375,10 @@
  .cortesias-pontos button[aria-current="true"] { background: var(--cor-oliva); transform: scale(1.25); }  
  }  
   
- /* ============ CONTATO �?" MOBILE ============ */  
+ /* ============ CONTATO — MOBILE ============ */  
  @media (max-width: 959px) {  
- /* Link do WhatsApp numa linha só */  
- .contato__whatsapp { font-size: clamp(0.72rem, 3.55vw, 0.95rem); white-space: nowrap; gap: 0.5rem; }  
+ /* Link do WhatsApp em duas linhas (quebra no HTML) */  
+ .contato__whatsapp { gap: 0.5rem; }  
  .contato__whatsapp svg { width: 18px; height: 18px; }  
  /* Endereço menor */  
  .contato__endereco { gap: 0.75rem; }  
@@ -1388,12 +1387,14 @@
  .contato__bairro { font-size: 0.78rem; }  
  }  
   
- /* ============ RODAP�? �?" MOBILE: crédito "Desenvolvido por Dmove" menor ============ */  
+ /* ============ RODAPÉ — MOBILE: crédito "Desenvolvido por Dmove" menor ============ */  
  @media (max-width: 959px) {  
+ /* Direitos reservados numa linha só */  
+ .rodape__direitos { font-size: clamp(0.62rem, 3.1vw, 0.8rem); white-space: nowrap; }  
  .rodape__credito { font-size: 0.7rem; gap: 0.6rem; }  
- .rodape__dmove img { width: 75px; }  
+ .rodape__dmove img { width: 58px; }  
  }  
- /* Formulário �?" mobile: "(não obrigatório)" menor, para o rótulo caber numa linha */  
+ /* Formulário — mobile: "(não obrigatório)" menor, para o rótulo caber numa linha */  
  @media (max-width: 959px) {  
  .campo__opcional {  
  font-family: var(--fonte-texto);  
@@ -1407,3 +1408,46 @@
  @media (max-width: 359px) {  
  .campo label[for="detalhes_adicionais"] { letter-spacing: 0.1em; }  
  }
+/* ============ BOTÃO "CONSULTE DATAS DISPONÍVEIS" — MOBILE: caixa e fonte menores, texto numa linha ============ */
+@media (max-width: 959px) {
+.beneficio__cta {
+min-height: 44px;
+padding: 0.75rem 1.1rem;
+font-size: clamp(0.64rem, 3.1vw, 0.78rem);
+letter-spacing: 0.12em;
+white-space: nowrap;
+}
+}
+
+/* ============ FORMULÁRIO — MOBILE: compacto, para caber inteiro na tela ============ */
+@media (max-width: 959px) {
+.contato__formulario { padding: 1.1rem; }
+.contato__formulario .lead-form-grid { gap: 0.65rem; }
+.contato__formulario .form-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.6rem; }
+.contato__formulario .form-group { gap: 0.25rem; }
+.contato__formulario .form-label { font-size: clamp(0.54rem, 2.75vw, 0.66rem); letter-spacing: 0.04em; white-space: nowrap; }
+/* fonte dos campos fica em 16px para o iPhone não dar zoom ao tocar */
+.contato__formulario .form-input,
+.contato__formulario .form-select,
+.contato__formulario .form-textarea { min-height: 42px; padding: 0.5rem 0.7rem; }
+.contato__formulario .form-select { padding-right: 2.2rem; }
+/* textos de exemplo menores; o texto digitado segue em 16px (abaixo disso o iPhone dá zoom no campo) */
+.contato__formulario .form-input::placeholder,
+.contato__formulario .form-textarea::placeholder { font-size: 0.85rem; }
+.contato__formulario .form-datepicker-wrap .form-input { padding-right: 2.2rem; }
+.contato__formulario .form-textarea { min-height: 64px; height: 64px; }
+.contato__formulario .form-submit { min-height: 46px; margin-top: 0.2rem; padding: 0.75rem 1rem; }
+.contato__formulario .form-footer { margin-top: 0.1rem; font-size: 0.7rem; }
+}
+
+/* ============ CONDIÇÕES (BENEFÍCIOS) — MOBILE: fotos na horizontal e ordem texto → caixa → foto → botão ============ */
+@media (max-width: 899px) {
+.beneficio__grade { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.beneficio__conteudo { display: contents; }
+.beneficio__imagem { order: 1; margin-top: 2rem; }
+.beneficio__cta { order: 2; }
+.beneficio__cta { align-self: flex-start; }
+.beneficio__imagem img { aspect-ratio: 3 / 2; max-height: none; }
+#beneficio-20-off .beneficio__imagem img,
+#beneficio-16-off .beneficio__imagem img { object-position: center 35%; }
+}

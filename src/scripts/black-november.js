@@ -181,7 +181,7 @@
  });  
  })();  
   
- /* Galeria no mobile (até 560px): carrossel �?" foto central ativa, bolinhas, toque na lateral centraliza */  
+ /* Galeria no mobile (até 560px): carrossel — foto central ativa, bolinhas, toque na lateral centraliza */  
  (function () {  
  var trilho = document.querySelector('.mosaico');  
  if (!trilho) return;  
