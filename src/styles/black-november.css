@@ -266,6 +266,7 @@
  font-weight: 500;  
  font-size: clamp(5.5rem, 17vw, 8.5rem);  
  letter-spacing: -0.01em;  
+ color: var(--cor-branco);  
  }  
  .hero__off {  
  font-family: var(--fonte-destaque);  
