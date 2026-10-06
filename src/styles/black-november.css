@@ -796,6 +796,7 @@
  }  
  .contato__endereco:hover .contato__rua { color: var(--cor-branco); }  
   
+ /* Card wrapper do formulário */
  .contato__formulario {
  background: var(--cor-fundo);
  padding: clamp(1.5rem, 4vw, 2.5rem);
@@ -803,64 +804,121 @@
  color: var(--cor-texto);
  }
 
- .formulario {
- display: grid;
+ /* Overrides do LeadForm.astro — aplica visual do HTML original */
+ .contato__formulario .lead-form-grid {
+ margin-top: 0;
  gap: 1.15rem;
- padding: clamp(1.5rem, 4vw, 2.5rem);
- background: var(--cor-fundo);
- color: var(--cor-texto);
+ }
+ .contato__formulario .form-row {
+ display: grid;
+ grid-template-columns: 1fr;
+ gap: 1.15rem;
+ }
+ .contato__formulario .form-group {
+ gap: 0.4rem;
+ }
+ .contato__formulario .form-label {
+ font-family: var(--fonte-titulo);
+ font-weight: 500;
+ font-size: 0.78rem;
+ letter-spacing: 0.16em;
+ text-transform: uppercase;
+ color: var(--cor-texto-suave);
+ }
+ .contato__formulario .form-input,
+ .contato__formulario .form-select,
+ .contato__formulario .form-textarea {
+ width: 100%;
+ min-height: 50px;
+ padding: 0.8rem 0.95rem;
+ border: 1px solid #cfc7bb;
+ border-bottom: 1px solid #cfc7bb;
  border-radius: var(--raio);
- }  
- .formulario__linha { display: grid; gap: 1.15rem; }  
- .campo { display: grid; gap: 0.4rem; }  
- .campo label {  
- font-family: var(--fonte-titulo);  
- font-weight: 500;  
- font-size: 0.78rem;  
- letter-spacing: 0.16em;  
- text-transform: uppercase;  
- color: var(--cor-texto-suave);  
- }  
- .campo input,  
- .campo select,  
- .campo textarea {  
- width: 100%;  
- min-height: 50px;  
- padding: 0.8rem 0.95rem;  
- border: 1px solid #cfc7bb;  
- border-radius: var(--raio);  
- background: #fff;  
- color: var(--cor-texto);  
- font-family: var(--fonte-texto);  
- font-size: 1rem;  
- line-height: 1.4;  
- transition: border-color 0.2s ease, box-shadow 0.2s ease;  
- }  
- .campo select {  
- appearance: none;  
- background-image:  
- linear-gradient(45deg, transparent 50%, var(--cor-primaria) 50%),  
- linear-gradient(135deg, var(--cor-primaria) 50%, transparent 50%);  
- background-position: right 1.35rem center, right 1rem center;  
- background-size: 6px 6px, 6px 6px;  
- background-repeat: no-repeat;  
- padding-right: 2.5rem;  
- }  
- .campo textarea { min-height: 110px; resize: vertical; }  
- .campo input:focus,  
- .campo select:focus,  
- .campo textarea:focus {  
- outline: none;  
- border-color: var(--cor-primaria);  
- box-shadow: 0 0 0 3px rgba(2, 61, 45, 0.12);  
- }  
- .formulario .botao { width: 100%; margin-top: 0.5rem; }  
- @media (min-width: 600px) {  
- .formulario__linha { grid-template-columns: 1fr 1fr; }  
- }  
- @media (min-width: 960px) {  
- .contato__grade { grid-template-columns: 5fr 6fr; gap: clamp(3rem, 7vw, 6rem); }  
- .contato__intro { position: sticky; top: 3rem; }  
+ background: #fff;
+ color: var(--cor-texto);
+ font-family: var(--fonte-texto);
+ font-size: 1rem;
+ line-height: 1.4;
+ transition: border-color 0.2s ease, box-shadow 0.2s ease;
+ }
+ .contato__formulario .form-select {
+ appearance: none;
+ background-image:
+ linear-gradient(45deg, transparent 50%, var(--cor-primaria) 50%),
+ linear-gradient(135deg, var(--cor-primaria) 50%, transparent 50%);
+ background-position: right 1.35rem center, right 1rem center;
+ background-size: 6px 6px, 6px 6px;
+ background-repeat: no-repeat;
+ padding-right: 2.5rem;
+ }
+ .contato__formulario .form-textarea {
+ min-height: 110px;
+ resize: vertical;
+ }
+ .contato__formulario .form-input:focus,
+ .contato__formulario .form-select:focus,
+ .contato__formulario .form-textarea:focus {
+ outline: none;
+ border-color: var(--cor-primaria);
+ box-shadow: 0 0 0 3px rgba(2, 61, 45, 0.12);
+ }
+ .contato__formulario .form-input::placeholder,
+ .contato__formulario .form-textarea::placeholder {
+ color: var(--cor-texto-suave);
+ opacity: 0.6;
+ }
+ /* datepicker: reposiciona ícone para input com borda completa */
+ .contato__formulario .form-datepicker-wrap .form-input {
+ padding-right: 2.5rem;
+ }
+ .contato__formulario .form-datepicker-icon {
+ right: 0.75rem;
+ color: var(--cor-texto-suave);
+ }
+ .contato__formulario .form-datepicker-wrap:focus-within .form-datepicker-icon,
+ .contato__formulario .form-datepicker-icon:hover {
+ color: var(--cor-primaria);
+ }
+ /* botão submit */
+ .contato__formulario .form-submit {
+ width: 100%;
+ justify-self: stretch;
+ margin-top: 0.5rem;
+ min-height: 52px;
+ padding: 0.95rem 2rem;
+ border: 1px solid transparent;
+ border-radius: var(--raio);
+ font-family: var(--fonte-titulo);
+ font-weight: 500;
+ font-size: 0.85rem;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ cursor: pointer;
+ background: var(--cor-primaria);
+ color: var(--cor-branco);
+ transition: background-color 0.25s ease;
+ }
+ .contato__formulario .form-submit:hover:not(:disabled) {
+ background: var(--cor-musgo);
+ }
+ /* textos secundários do formulário */
+ .contato__formulario .form-footer {
+ color: var(--cor-texto-suave);
+ opacity: 0.7;
+ }
+ .contato__formulario .form-success-state {
+ color: var(--cor-primaria);
+ }
+ .contato__formulario .form-success-icon {
+ background: var(--cor-primaria);
+ }
+
+ @media (min-width: 600px) {
+ .contato__formulario .form-row { grid-template-columns: 1fr 1fr; }
+ }
+ @media (min-width: 960px) {
+ .contato__grade { grid-template-columns: 5fr 6fr; gap: clamp(3rem, 7vw, 6rem); }
+ .contato__intro { position: sticky; top: 3rem; }
  }  
   
  /* ============ RODAP�? ============ */  
