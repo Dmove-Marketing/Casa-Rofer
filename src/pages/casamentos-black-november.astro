@@ -438,10 +438,14 @@ import '../styles/black-november.css';
    honeypot
    fields={[
      { name: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome', required: true },
-     { name: 'telefone', label: 'WhatsApp', type: 'tel', placeholder: '(11) 99999-9999', required: true },
-     { name: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com', required: true },
-     { name: 'data_evento', label: 'Data do evento', type: 'text', placeholder: 'DD/MM/AAAA', required: false, datepicker: true },
-     { name: 'convidados', label: 'Número de convidados', type: 'number', placeholder: 'Ex: 150', required: false },
+     { type: 'row', fields: [
+       { name: 'telefone', label: 'WhatsApp', type: 'tel', placeholder: '(11) 99999-9999', required: true },
+       { name: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com', required: true },
+     ]},
+     { type: 'row', fields: [
+       { name: 'data_evento', label: 'Data do evento', type: 'text', placeholder: 'DD/MM/AAAA', required: false, datepicker: true },
+       { name: 'convidados', label: 'Número de convidados', type: 'number', placeholder: 'Ex: 150', required: false },
+     ]},
      { name: 'tipo_evento', label: 'Tipo de evento', type: 'select', required: true, options: [
        { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
        { value: 'Casamento', label: 'Casamento' },
