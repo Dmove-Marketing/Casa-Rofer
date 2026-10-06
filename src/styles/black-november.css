@@ -796,13 +796,20 @@
  }  
  .contato__endereco:hover .contato__rua { color: var(--cor-branco); }  
   
- .formulario {  
- display: grid;  
- gap: 1.15rem;  
- padding: clamp(1.5rem, 4vw, 2.5rem);  
- background: var(--cor-fundo);  
- color: var(--cor-texto);  
- border-radius: var(--raio);  
+ .contato__formulario {
+ background: var(--cor-fundo);
+ padding: clamp(1.5rem, 4vw, 2.5rem);
+ border-radius: var(--raio);
+ color: var(--cor-texto);
+ }
+
+ .formulario {
+ display: grid;
+ gap: 1.15rem;
+ padding: clamp(1.5rem, 4vw, 2.5rem);
+ background: var(--cor-fundo);
+ color: var(--cor-texto);
+ border-radius: var(--raio);
  }  
  .formulario__linha { display: grid; gap: 1.15rem; }  
  .campo { display: grid; gap: 0.4rem; }  
