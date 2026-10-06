@@ -1,0 +1,2131 @@
+﻿<!DOCTYPE html>  
+<html lang="pt-BR">  
+<head>  
+ <meta charset="UTF-8">  
+ <meta name="viewport" content="width=device-width, initial-scale=1">  
+ <title>Black November Casa Rofer | Até 25% OFF para casamentos em 2027</title>  
+ <meta name="description" content="Black November Casa Rofer: de 01 a 30 de novembro, até 25% OFF ou cortesias em gastronomia, bar, audiovisual e decoração para casamentos em 2027 no Brooklin, São Paulo.">  
+ <meta name="theme-color" content="#023d2d">  
+  
+ <meta property="og:type" content="website">  
+ <meta property="og:locale" content="pt_BR">  
+ <meta property="og:title" content="Black November Casa Rofer | Até 25% OFF para casamentos em 2027">  
+ <meta property="og:description" content="De 01 a 30 de novembro. Escolha a condição ideal para a sua data: descontos de até 25% OFF ou cortesias exclusivas.">  
+ <!-- og:image: trocar pelo endereço absoluto do CDN na implementação -->  
+ <meta property="og:image" content="imagens/hero-cerimonia-jardim-de-inverno.webp">  
+  
+ <link rel="icon" type="image/png" href="imagens/favicon.png">  
+ <link rel="apple-touch-icon" href="imagens/apple-touch-icon.png">  
+  
+ <link rel="preload" href="fontes/optima-medium.woff2" as="font" type="font/woff2" crossorigin>  
+ <link rel="preload" href="imagens/hero-cerimonia-jardim-de-inverno.webp" as="image" fetchpriority="high">  
+  
+ <style>  
+ /* Fontes da marca Casa Rofer (arquivos em /fontes).  
+ Optima, PP Editorial New e Aktiv Grotesk são fontes comerciais:  
+ confirmar licença de uso web com a Rofer antes da publicação. */  
+ /* Optima: usar SEMPRE o peso Medium (500) em todo o site. O OPTIMA.TTF (Regular)  
+ recebido troca os acentos por caracteres cirílicos (é �?' й, ç �?' з). */  
+ @font-face {  
+ font-family: "Optima Rofer";  
+ src: url("fontes/optima-medium.woff2") format("woff2");  
+ font-weight: 500;  
+ font-style: normal;  
+ font-display: swap;  
+ }  
+ @font-face {  
+ font-family: "PP Editorial New";  
+ src: url("fontes/pp-editorial-new-italic.woff2") format("woff2");  
+ font-weight: 400;  
+ font-style: italic;  
+ font-display: swap;  
+ }  
+ @font-face {  
+ font-family: "Aktiv Grotesk";  
+ src: url("fontes/aktiv-grotesk-regular.woff2") format("woff2");  
+ font-weight: 400;  
+ font-style: normal;  
+ font-display: swap;  
+ }  
+  
+ :root {  
+ /* Cores �?" paleta oficial Casa Rofer */  
+ --cor-primaria: #023d2d; /* verde Rofer */  
+ --cor-primaria-escura: #012a1f; /* rodapé */  
+ --cor-oliva: #b6b56a; /* verde oliva oficial �?" único tom de oliva da LP */  
+ --cor-musgo: #3d451e;  
+ --cor-marrom: #372619;  
+ --cor-taupe: #6c6056;  
+ --cor-areia: #c7bba7;  
+ --cor-areia-clara: #f1ece4;  
+ --cor-fundo: #faf8f6; /* fundo da página */  
+ --cor-branco: #f6f6f6;  
+ --cor-texto: #2a2520;  
+ --cor-texto-suave: #5d544c;  
+ --cor-linha: rgba(2, 61, 45, 0.16);  
+ --cor-linha-clara: rgba(246, 246, 246, 0.2);  
+ --cor-whatsapp: #25d366;  
+  
+ /* Fontes */  
+ --fonte-titulo: "Optima Rofer", Optima, Candara, "Segoe UI", sans-serif;  
+ --fonte-destaque: "PP Editorial New", "Times New Roman", Georgia, serif;  
+ --fonte-texto: "Aktiv Grotesk", "Helvetica Neue", Arial, sans-serif;  
+  
+ /* Medidas */  
+ --largura-max: 1200px;  
+ --respiro: clamp(4.5rem, 9vw, 8rem);  
+ --margem: clamp(1rem, 4vw, 2.5rem);  
+ --raio: 2px;  
+ --entrelinha-texto: 1.4; /* entrelinha dos textos corridos no desktop */  
+ }  
+  
+ *, *::before, *::after { box-sizing: border-box; }  
+  
+ html {  
+ scroll-behavior: smooth;  
+ -webkit-text-size-adjust: 100%;  
+ color-scheme: light;  
+ }  
+  
+ body {  
+ margin: 0;  
+ background: var(--cor-fundo);  
+ color: var(--cor-texto);  
+ font-family: var(--fonte-texto);  
+ font-size: 1.0625rem;  
+ line-height: 1.65;  
+ -webkit-font-smoothing: antialiased;  
+ overflow-x: hidden;  
+ }  
+  
+ img { display: block; max-width: 100%; height: auto; }  
+  
+ h1, h2, h3 {  
+ margin: 0;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ line-height: 1.12;  
+ letter-spacing: 0.005em;  
+ text-wrap: balance;  
+ }  
+  
+ p { margin: 0; }  
+  
+ a { color: inherit; }  
+  
+ :focus-visible {  
+ outline: 2px solid var(--cor-oliva);  
+ outline-offset: 3px;  
+ }  
+  
+ /* Quebra de linha que só vale no desktop */  
+ .br-desktop { display: none; }  
+ .br-largo { display: none; }  
+ /* Só no mobile (abaixo de 960px) */  
+ .br-mobile { display: inline; }  
+ .so-mobile { display: block; }  
+ .so-mobile-inline { display: inline; }  
+ @media (min-width: 960px) {  
+ .br-mobile, .so-mobile, .so-mobile-inline { display: none; }  
+ }  
+ /* Quebra só em celulares a partir de 360px (em 320px o texto já quebra antes) */  
+ .br-mobile-360 { display: none; }  
+ @media (min-width: 360px) and (max-width: 959px) {  
+ .br-mobile-360 { display: inline; }  
+ }  
+ @media (max-width: 959px) {  
+ .oculto-mobile { display: none; }  
+ }  
+ @media (min-width: 960px) {  
+ .br-desktop { display: inline; }  
+ .oculto-desktop { display: none; }  
+ }  
+ /* Quebras em textos de cards estreitos: só quando o conteúdo já está na largura máxima */  
+ @media (min-width: 1200px) {  
+ .br-largo { display: inline; }  
+ }  
+  
+ .visualmente-oculto {  
+ position: absolute !important;  
+ width: 1px; height: 1px;  
+ overflow: hidden;  
+ clip: rect(0 0 0 0);  
+ white-space: nowrap;  
+ }  
+  
+ .container {  
+ width: 100%;  
+ max-width: var(--largura-max);  
+ margin-inline: auto;  
+ padding-inline: var(--margem);  
+ }  
+  
+ .rotulo {  
+ display: inline-block;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.78rem;  
+ letter-spacing: 0.24em;  
+ text-transform: uppercase;  
+ color: var(--cor-oliva);  
+ }  
+  
+ .destaque-off {  
+ font-family: var(--fonte-destaque);  
+ font-style: italic;  
+ text-transform: lowercase;  
+ color: var(--cor-oliva);  
+ }  
+  
+ /* Botões */  
+ .botao {  
+ display: inline-flex;  
+ align-items: center;  
+ justify-content: center;  
+ gap: 0.6em;  
+ min-height: 52px;  
+ padding: 0.95rem 2rem;  
+ border: 1px solid transparent;  
+ border-radius: var(--raio);  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.85rem;  
+ letter-spacing: 0.18em;  
+ text-transform: uppercase;  
+ text-decoration: none;  
+ text-align: center;  
+ cursor: pointer;  
+ transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;  
+ }  
+ .botao--primario {  
+ background: var(--cor-primaria);  
+ color: var(--cor-branco);  
+ }  
+ .botao--primario:hover { background: var(--cor-musgo); }  
+ .botao--claro {  
+ background: var(--cor-oliva);  
+ color: var(--cor-primaria);  
+ }  
+ .botao--claro:hover { background: var(--cor-branco); }  
+ .botao--contorno {  
+ border-color: var(--cor-primaria);  
+ color: var(--cor-primaria);  
+ background: transparent;  
+ }  
+ .botao--contorno:hover { background: var(--cor-primaria); color: var(--cor-branco); }  
+  
+ /* ============ HERO ============ */  
+ .hero {  
+ background: var(--cor-primaria);  
+ color: var(--cor-branco);  
+ display: grid;  
+ grid-template-columns: 1fr;  
+ }  
+ .hero__imagem {  
+ position: relative;  
+ aspect-ratio: 16 / 10;  
+ overflow: hidden;  
+ }  
+ .hero__imagem img {  
+ width: 100%;  
+ height: 100%;  
+ object-fit: cover;  
+ object-position: 50% 50%;  
+ }  
+ .hero__conteudo {  
+ display: flex;  
+ flex-direction: column;  
+ align-items: center;  
+ text-align: center;  
+ padding: 3rem var(--margem) 3.5rem;  
+ }  
+ .hero__logo {  
+ width: clamp(150px, 26vw, 190px);  
+ margin: 0 auto 2.25rem;  
+ }  
+ .hero__titulo {  
+ font-size: clamp(2.6rem, 8vw, 4.1rem);  
+ letter-spacing: 0.06em;  
+ text-transform: uppercase;  
+ line-height: 1;  
+ }  
+ .hero__titulo-linha { display: block; }  
+ .hero__titulo-linha--menor { font-size: 0.79em; letter-spacing: 0.05em; margin-top: 0.12em; }  
+ .hero__periodo {  
+ margin-top: 1.25rem;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: clamp(0.95rem, 2.4vw, 1.15rem);  
+ letter-spacing: 0.14em;  
+ text-transform: uppercase;  
+ color: var(--cor-areia);  
+ }  
+ .hero__oferta {  
+ margin: 2.25rem 0 0;  
+ display: grid;  
+ justify-items: start;  
+ line-height: 0.9;  
+ }  
+ .hero__ate {  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: clamp(1.2rem, 3vw, 1.6rem);  
+ letter-spacing: 0.08em;  
+ text-transform: uppercase;  
+ color: var(--cor-oliva);  
+ margin-left: 0.2em;  
+ }  
+ .hero__percentual {  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: clamp(5.5rem, 17vw, 8.5rem);  
+ letter-spacing: -0.01em;  
+ }  
+ .hero__off {  
+ font-family: var(--fonte-destaque);  
+ font-style: italic;  
+ font-size: clamp(5rem, 15vw, 7.6rem);  
+ text-transform: lowercase;  
+ color: var(--cor-oliva);  
+ margin: -0.38em 0 0 0.55em;  
+ }  
+ .hero__publico {  
+ margin-top: 1.75rem;  
+ font-size: 1.15rem;  
+ color: var(--cor-areia);  
+ }  
+ .hero__publico strong { font-weight: 400; color: var(--cor-branco); }  
+ .hero__cta { margin-top: 2.25rem; }  
+  
+ @media (min-width: 960px) {  
+ .hero {  
+ grid-template-columns: minmax(400px, 9fr) 16fr; /* painel verde �?^ 36% da tela */  
+ min-height: min(100svh, 920px);  
+ }  
+ .hero__imagem { order: 2; aspect-ratio: auto; }  
+ .hero__conteudo {  
+ order: 1;  
+ justify-content: flex-start;  
+ padding: 3.5rem clamp(2rem, 5vw, 4.5rem);  
+ /* Logo no topo do painel, como no criativo: 82px num painel de 529px (15,5%) */  
+ padding-top: 15.5%;  
+ }  
+ /* Logo no desktop: ~22% da largura do painel.  
+ margin-bottom 26px = 32px visíveis até o topo das letras do título. */  
+ .hero__logo {  
+ width: clamp(100px, 9vw, 150px);  
+ margin-bottom: 26px;  
+ }  
+ /* Entrelinha do título: ~12px visíveis entre BLACK e NOVEMBER */  
+ .hero__titulo-linha--menor { margin-top: -0.11em; }  
+ /* Subtítulo (período) a 18px visíveis do título (o respiro interno das fontes �?^ 18px) */  
+ .hero__periodo { margin-top: 0; }  
+ /* "25% off" na mesma linha, centralizado; "Até" acima, alinhado ao início do 25% */  
+ .hero__oferta {  
+ grid-template-columns: auto auto;  
+ justify-content: center;  
+ align-items: baseline;  
+ }  
+ .hero__ate { grid-column: 1 / -1; margin-bottom: 0.15em; }  
+ .hero__off { margin: 0 0 0 0.12em; }  
+ /* "Até 25% off" proporcional à largura do painel verde: ocupa sempre ~62% dele  
+ em qualquer tela de desktop. Painel = 9/25 da tela (mín. 400px). */  
+ .hero__conteudo { --largura-painel: max(400px, 35.5vw); }  
+ .hero__ate { font-size: calc(var(--largura-painel) * 0.0402); }  
+ .hero__percentual { font-size: calc(var(--largura-painel) * 0.2134); }  
+ .hero__off { font-size: calc(var(--largura-painel) * 0.1908); }  
+ /* Centralização óptica no painel:  
+ - o "f" itálico do "off" avança à direita da caixa �?' compensa ~2% do painel  
+ - o espaçamento entre letras sobra após a última letra do período �?' compensa à esquerda */  
+ .hero__oferta { transform: translateX(calc(var(--largura-painel) * -0.02)); }  
+ .hero__periodo { padding-left: 0.14em; }  
+ /* Texto abaixo do 25% off todo em branco */  
+ .hero__publico { color: var(--cor-branco); }  
+ /* Botão do hero mais compacto */  
+ .hero__cta {  
+ min-height: 44px;  
+ padding: 0.7rem 1.6rem;  
+ font-size: 0.78rem;  
+ }  
+ }  
+  
+ /* ============ SOBRE / CONDI�?�.ES ============ */  
+ .sobre {  
+ padding-block: var(--respiro);  
+ text-align: center;  
+ }  
+ .sobre__titulo {  
+ max-width: 17ch;  
+ margin: 1rem auto 0;  
+ font-size: clamp(2rem, 5vw, 3.1rem);  
+ color: var(--cor-primaria);  
+ }  
+ .sobre__texto {  
+ max-width: 44rem;  
+ margin: 1.75rem auto 0;  
+ color: var(--cor-texto-suave);  
+ font-size: 1.125rem;  
+ }  
+ .sobre__texto + .sobre__texto { margin-top: 1rem; }  
+ .condicoes-lista {  
+ list-style: none;  
+ margin: 3.5rem 0 0;  
+ padding: 0;  
+ display: grid;  
+ gap: 1px;  
+ background: var(--cor-linha);  
+ border: 1px solid var(--cor-linha);  
+ text-align: left;  
+ }  
+ .condicoes-lista__item a {  
+ display: flex;  
+ flex-direction: column;  
+ height: 100%;  
+ padding: 2rem 1.75rem;  
+ background: var(--cor-fundo);  
+ text-decoration: none;  
+ transition: background-color 0.25s ease;  
+ }  
+ .condicoes-lista__item a:hover { background: var(--cor-areia-clara); }  
+ .condicoes-lista__numero {  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.78rem;  
+ letter-spacing: 0.24em;  
+ text-transform: uppercase;  
+ color: var(--cor-oliva);  
+ }  
+ .condicoes-lista__nome {  
+ margin-top: 0.85rem;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 1.6rem;  
+ line-height: 1.2;  
+ color: var(--cor-primaria);  
+ }  
+ .condicoes-lista__seta {  
+ margin-top: auto;  
+ padding-top: 1.5rem;  
+ font-size: 0.82rem;  
+ letter-spacing: 0.14em;  
+ text-transform: uppercase;  
+ color: var(--cor-texto-suave);  
+ }  
+ @media (min-width: 760px) {  
+ .condicoes-lista { grid-template-columns: repeat(3, 1fr); }  
+ }  
+ @media (min-width: 960px) {  
+ /* Título em 2 linhas: "Escolha a condição" / "ideal para a sua data" (quebra via .br-desktop) */  
+ .sobre__titulo { max-width: none; }  
+ /* Primeira frase numa linha só, com "Black November" junto */  
+ .sobre__texto--abertura { max-width: none; white-space: nowrap; }  
+ /* Subtítulo como um bloco só: sem margem extra entre os parágrafos */  
+ .sobre__texto + .sobre__texto { margin-top: 0; }  
+ }  
+  
+ /* ============ BENEFÍCIOS ============ */  
+ .beneficio {  
+ padding-block: var(--respiro);  
+ background: var(--cor-fundo);  
+ }  
+ .beneficio--areia { background: var(--cor-areia-clara); }  
+ .beneficio__grade {  
+ display: grid;  
+ gap: 2.5rem;  
+ align-items: center;  
+ }  
+ .beneficio__imagem {  
+ overflow: hidden;  
+ border-radius: var(--raio);  
+ }  
+ .beneficio__imagem img {  
+ width: 100%;  
+ height: 100%;  
+ max-height: 680px;  
+ object-fit: cover;  
+ }  
+ .beneficio__titulo {  
+ margin-top: 1rem;  
+ font-size: clamp(2rem, 4.6vw, 3rem);  
+ color: var(--cor-primaria);  
+ }  
+ .beneficio__texto {  
+ margin-top: 1.25rem;  
+ color: var(--cor-texto-suave);  
+ font-size: 1.1rem;  
+ }  
+ .beneficio__texto + .beneficio__texto { margin-top: 0.85rem; }  
+ .inclui {  
+ margin-top: 2rem;  
+ padding: 1.75rem 1.75rem 1.5rem;  
+ border: 1px solid var(--cor-linha);  
+ border-radius: var(--raio);  
+ background: rgba(255, 255, 255, 0.55);  
+ }  
+ .inclui__titulo {  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.8rem;  
+ letter-spacing: 0.22em;  
+ text-transform: uppercase;  
+ color: var(--cor-texto-suave);  
+ }  
+ .inclui__principal {  
+ margin-top: 0.5rem;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: clamp(3rem, 8vw, 4.25rem);  
+ line-height: 1;  
+ color: var(--cor-primaria);  
+ }  
+ .inclui__principal .destaque-off { font-size: 1.05em; margin-left: 0.08em; }  
+ .inclui__lista {  
+ list-style: none;  
+ margin: 1.25rem 0 0;  
+ padding: 0;  
+ border-top: 1px solid var(--cor-linha);  
+ }  
+ .inclui__lista li {  
+ display: flex;  
+ flex-wrap: wrap;  
+ align-items: baseline;  
+ justify-content: space-between;  
+ gap: 0.25rem 1rem;  
+ padding: 0.85rem 0;  
+ border-bottom: 1px solid var(--cor-linha);  
+ font-size: 1.05rem;  
+ }  
+ .inclui__lista li:last-child { border-bottom: 0; padding-bottom: 0.25rem; }  
+ .inclui__mais {  
+ font-family: var(--fonte-destaque);  
+ font-style: italic;  
+ color: var(--cor-oliva);  
+ margin-right: 0.15em;  
+ }  
+ .inclui__link {  
+ font-size: 0.78rem;  
+ letter-spacing: 0.14em;  
+ text-transform: uppercase;  
+ color: var(--cor-oliva);  
+ text-underline-offset: 4px;  
+ }  
+ .inclui__link:hover { color: var(--cor-primaria); }  
+ .beneficio__nota {  
+ margin-top: 1rem;  
+ font-size: 0.85rem;  
+ line-height: 1.55;  
+ color: var(--cor-texto-suave);  
+ }  
+ .beneficio__cta { margin-top: 2rem; }  
+  
+ @media (min-width: 900px) {  
+ .beneficio__grade {  
+ grid-template-columns: 1fr 1fr;  
+ gap: clamp(3rem, 7vw, 6.5rem);  
+ }  
+ .beneficio--invertido .beneficio__imagem { order: 2; }  
+ .beneficio__imagem img { aspect-ratio: 4 / 5; }  
+ }  
+ @media (min-width: 960px) {  
+ /* Benefício 2: os dois parágrafos como um bloco só, igual à seção 2 */  
+ #beneficio-20-off .beneficio__texto + .beneficio__texto { margin-top: 0; }  
+ }  
+  
+ /* ============ CORTESIAS ============ */  
+ .cortesias {  
+ padding-block: clamp(4rem, 8vw, 6.5rem);  
+ background: var(--cor-fundo); /* claro: separa do Contato (verde) logo abaixo */  
+ color: var(--cor-texto);  
+ }  
+ .cortesias + .cortesias {  
+ padding-top: 0;  
+ }  
+ .cortesias + .cortesias .cortesias__cabecalho {  
+ padding-top: clamp(4rem, 8vw, 6.5rem);  
+ border-top: 1px solid var(--cor-linha);  
+ }  
+ .cortesias__cabecalho {  
+ display: flex;  
+ align-items: center;  
+ gap: 1.25rem;  
+ margin-bottom: 2.75rem;  
+ }  
+ .cortesias__selo {  
+ flex: none;  
+ display: grid;  
+ place-items: center;  
+ width: 3.4rem;  
+ height: 3.4rem;  
+ border: 1px solid var(--cor-oliva);  
+ border-radius: 50%;  
+ font-family: var(--fonte-destaque);  
+ font-style: italic;  
+ font-size: 1.7rem;  
+ color: var(--cor-oliva);  
+ }  
+ .cortesias__titulo {  
+ color: var(--cor-primaria);  
+ font-size: clamp(1.7rem, 4vw, 2.5rem);  
+ letter-spacing: 0.08em;  
+ text-transform: uppercase;  
+ }  
+ .cortesias__grade {  
+ list-style: none;  
+ margin: 0;  
+ padding: 0;  
+ display: flex;  
+ flex-wrap: wrap;  
+ justify-content: center;  
+ gap: 2.25rem 1rem;  
+ }  
+ .cortesia {  
+ flex: 0 0 calc((100% - 1rem) / 2);  
+ }  
+ .cortesia__imagem {  
+ aspect-ratio: 4 / 5;  
+ overflow: hidden;  
+ border-radius: var(--raio);  
+ background: var(--cor-areia-clara);  
+ }  
+ .cortesia__imagem img {  
+ width: 100%;  
+ height: 100%;  
+ object-fit: cover;  
+ transition: transform 0.6s ease;  
+ }  
+ .cortesia:hover .cortesia__imagem img { transform: scale(1.04); }  
+ .cortesia__nome {  
+ margin-top: 1rem;  
+ color: var(--cor-primaria);  
+ font-size: 1.15rem;  
+ line-height: 1.25;  
+ }  
+ .cortesia__descricao {  
+ margin-top: 0.45rem;  
+ font-size: 0.92rem;  
+ line-height: 1.55;  
+ color: var(--cor-texto-suave);  
+ }  
+ .cortesias__nota {  
+ max-width: 52rem;  
+ margin-top: 2.75rem;  
+ padding-left: 1rem;  
+ border-left: 1px solid var(--cor-oliva);  
+ font-size: 0.85rem;  
+ line-height: 1.55;  
+ color: var(--cor-texto-suave);  
+ }  
+ @media (min-width: 760px) {  
+ .cortesias__grade { gap: 3rem 1.5rem; }  
+ .cortesia { flex-basis: calc((100% - 3rem) / 3); }  
+ .cortesias--quatro .cortesia { flex-basis: calc((100% - 3rem) / 3); }  
+ }  
+ @media (min-width: 1040px) {  
+ .cortesias--quatro .cortesia { flex-basis: calc((100% - 4.5rem) / 4); }  
+ .cortesia__nome { font-size: 1.25rem; }  
+ }  
+  
+ /* ============ GALERIA �?" MOSAICO ============ */  
+ .galeria {  
+ padding-block: var(--respiro);  
+ background: var(--cor-areia-clara); /* separa da seção de condições, que vem logo abaixo com fundo claro */  
+ }  
+ .galeria__cabecalho {  
+ max-width: 56rem;  
+ margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);  
+ text-align: center;  
+ }  
+ /* Mesmo padrão do título da seção 2 (centralizado) */  
+ .galeria__titulo {  
+ margin-top: 1rem;  
+ font-size: clamp(2rem, 5vw, 3.1rem);  
+ color: var(--cor-primaria);  
+ }  
+ .galeria__texto {  
+ margin-top: 1rem;  
+ font-size: 1.1rem;  
+ color: var(--cor-texto-suave);  
+ }  
+ /* Setas circulares (também usadas nas abas de cortesias) */  
+ .galeria__botao {  
+ display: grid;  
+ place-items: center;  
+ width: 48px;  
+ height: 48px;  
+ border: 1px solid var(--cor-primaria);  
+ border-radius: 50%;  
+ background: transparent;  
+ color: var(--cor-primaria);  
+ cursor: pointer;  
+ transition: background-color 0.25s ease, color 0.25s ease;  
+ }  
+ .galeria__botao:hover { background: var(--cor-primaria); color: var(--cor-branco); }  
+ .galeria__botao svg { width: 18px; height: 18px; }  
+  
+ .mosaico {  
+ list-style: none;  
+ margin: 0;  
+ padding: 0;  
+ display: grid;  
+ grid-template-columns: repeat(2, 1fr);  
+ grid-auto-rows: 180px;  
+ grid-auto-flow: dense;  
+ gap: 10px;  
+ }  
+ .mosaico__foto { min-width: 0; }  
+ .mosaico__foto--grande { grid-column: span 2; grid-row: span 2; }  
+ .mosaico__foto--larga { grid-column: span 2; }  
+ .mosaico__foto--alta { grid-row: span 2; }  
+ .mosaico__botao {  
+ display: block;  
+ width: 100%;  
+ height: 100%;  
+ padding: 0;  
+ border: 0;  
+ border-radius: var(--raio);  
+ background: var(--cor-areia-clara);  
+ overflow: hidden;  
+ cursor: zoom-in;  
+ }  
+ .mosaico__botao img {  
+ width: 100%;  
+ height: 100%;  
+ object-fit: cover;  
+ transition: transform 0.5s ease, filter 0.5s ease;  
+ }  
+ .mosaico__botao:hover img { transform: scale(1.05); filter: brightness(1.05); }  
+ .mosaico__botao:focus-visible { outline: 2px solid var(--cor-oliva); outline-offset: 2px; }  
+ @media (min-width: 960px) {  
+ .mosaico {  
+ grid-template-columns: repeat(4, 1fr);  
+ grid-auto-rows: 220px;  
+ gap: 12px;  
+ }  
+ }  
+  
+ /* Foto ampliada: só a foto, grande, com moldura verde fina e botão de fechar */  
+ .ampliada {  
+ position: fixed;  
+ inset: 0;  
+ z-index: 200;  
+ display: flex;  
+ align-items: center;  
+ justify-content: center;  
+ padding: 4vh 3vw;  
+ background: rgba(1, 42, 31, 0.92);  
+ opacity: 0;  
+ visibility: hidden;  
+ transition: opacity 0.35s ease, visibility 0s linear 0.35s;  
+ }  
+ .ampliada.aberta { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }  
+ .ampliada__palco { display: contents; }  
+ .ampliada__palco img {  
+ max-width: 94vw;  
+ max-height: 92vh;  
+ width: auto;  
+ height: auto;  
+ border-radius: var(--raio);  
+ box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);  
+ opacity: 0;  
+ transform: scale(0.97);  
+ transition: opacity 0.35s ease, transform 0.5s ease;  
+ }  
+ .ampliada__palco img.pronta { opacity: 1; transform: none; }  
+ .ampliada .galeria__botao { border-color: var(--cor-oliva); color: var(--cor-oliva); background: rgba(1, 42, 31, 0.6); }  
+ .ampliada .galeria__botao:hover { background: var(--cor-oliva); color: var(--cor-primaria); }  
+ .ampliada__fechar { position: absolute; top: 20px; right: 24px; z-index: 1; }  
+  
+ /* ============ CONTATO ============ */  
+ .contato {  
+ padding-block: var(--respiro);  
+ background: var(--cor-primaria);  
+ color: var(--cor-branco);  
+ }  
+ .contato__grade {  
+ display: grid;  
+ gap: 3rem;  
+ align-items: start;  
+ }  
+ .contato .rotulo { color: var(--cor-oliva); }  
+ .contato__titulo {  
+ margin-top: 1rem;  
+ font-size: clamp(2rem, 4.6vw, 3rem);  
+ }  
+ .contato__texto {  
+ margin-top: 1.25rem;  
+ font-size: 1.1rem;  
+ color: rgba(246, 246, 246, 0.8);  
+ }  
+ .contato__whatsapp {  
+ display: inline-flex;  
+ align-items: center;  
+ gap: 0.6rem;  
+ margin-top: 2rem;  
+ font-size: 0.95rem;  
+ color: var(--cor-areia);  
+ text-underline-offset: 4px;  
+ }  
+ .contato__whatsapp svg { width: 20px; height: 20px; flex: none; }  
+ .contato__whatsapp:hover { color: var(--cor-branco); }  
+ .contato__endereco {  
+ display: flex;  
+ align-items: flex-start;  
+ position: relative;  
+ gap: 0.9rem;  
+ margin-top: 2.5rem;  
+ padding-top: 1.75rem;  
+ color: var(--cor-areia);  
+ text-decoration: none;  
+ }  
+ /* Linha separadora fina, no oliva, mais curta que a coluna */  
+ .contato__endereco::before {  
+ content: "";  
+ position: absolute;  
+ top: 0;  
+ left: 0;  
+ width: 75%;  
+ height: 1px;  
+ background: var(--cor-oliva);  
+ opacity: 0.6;  
+ transform: scaleY(0.5);  
+ transform-origin: top;  
+ }  
+ .contato__pin { flex: none; width: 22px; height: 22px; margin-top: 0.15rem; color: var(--cor-areia); /* mesma cor do endereço */ }  
+ .contato__endereco address { font-style: normal; }  
+ .contato__rua {  
+ display: block;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 1.25rem;  
+ line-height: 1.15;  
+ color: var(--cor-areia);  
+ transition: color 0.25s ease;  
+ }  
+ .contato__bairro {  
+ display: block;  
+ margin-top: 0.2rem;  
+ font-size: 0.85rem;  
+ letter-spacing: 0.08em;  
+ color: rgba(246, 246, 246, 0.8);  
+ }  
+ .contato__endereco:hover .contato__rua { color: var(--cor-branco); }  
+  
+ .formulario {  
+ display: grid;  
+ gap: 1.15rem;  
+ padding: clamp(1.5rem, 4vw, 2.5rem);  
+ background: var(--cor-fundo);  
+ color: var(--cor-texto);  
+ border-radius: var(--raio);  
+ }  
+ .formulario__linha { display: grid; gap: 1.15rem; }  
+ .campo { display: grid; gap: 0.4rem; }  
+ .campo label {  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.78rem;  
+ letter-spacing: 0.16em;  
+ text-transform: uppercase;  
+ color: var(--cor-texto-suave);  
+ }  
+ .campo input,  
+ .campo select,  
+ .campo textarea {  
+ width: 100%;  
+ min-height: 50px;  
+ padding: 0.8rem 0.95rem;  
+ border: 1px solid #cfc7bb;  
+ border-radius: var(--raio);  
+ background: #fff;  
+ color: var(--cor-texto);  
+ font-family: var(--fonte-texto);  
+ font-size: 1rem;  
+ line-height: 1.4;  
+ transition: border-color 0.2s ease, box-shadow 0.2s ease;  
+ }  
+ .campo select {  
+ appearance: none;  
+ background-image:  
+ linear-gradient(45deg, transparent 50%, var(--cor-primaria) 50%),  
+ linear-gradient(135deg, var(--cor-primaria) 50%, transparent 50%);  
+ background-position: right 1.35rem center, right 1rem center;  
+ background-size: 6px 6px, 6px 6px;  
+ background-repeat: no-repeat;  
+ padding-right: 2.5rem;  
+ }  
+ .campo textarea { min-height: 110px; resize: vertical; }  
+ .campo input:focus,  
+ .campo select:focus,  
+ .campo textarea:focus {  
+ outline: none;  
+ border-color: var(--cor-primaria);  
+ box-shadow: 0 0 0 3px rgba(2, 61, 45, 0.12);  
+ }  
+ .formulario .botao { width: 100%; margin-top: 0.5rem; }  
+ @media (min-width: 600px) {  
+ .formulario__linha { grid-template-columns: 1fr 1fr; }  
+ }  
+ @media (min-width: 960px) {  
+ .contato__grade { grid-template-columns: 5fr 6fr; gap: clamp(3rem, 7vw, 6rem); }  
+ .contato__intro { position: sticky; top: 3rem; }  
+ }  
+  
+ /* ============ RODAP�? ============ */  
+ .rodape {  
+ padding-block: 1.75rem;  
+ background: var(--cor-primaria-escura);  
+ color: rgba(246, 246, 246, 0.7);  
+ text-align: center;  
+ }  
+ .rodape__conteudo {  
+ display: flex;  
+ flex-direction: column;  
+ align-items: center;  
+ }  
+ .rodape__logo { width: 95px; }  
+ /* Direitos e crédito: mesma fonte, tamanho e cor (branco) */  
+ .rodape__direitos,  
+ .rodape__credito {  
+ font-family: var(--fonte-texto);  
+ font-size: 0.8rem;  
+ color: var(--cor-branco);  
+ }  
+ .rodape__direitos { margin-top: 1rem; }  
+ .rodape__credito {  
+ display: flex;  
+ align-items: center;  
+ gap: 0.85rem;  
+ margin-top: 0.75rem;  
+ letter-spacing: 0.1em;  
+ text-transform: uppercase;  
+ }  
+ .rodape__dmove { display: block; transition: opacity 0.25s ease; }  
+ .rodape__dmove:hover { opacity: 0.8; }  
+ .rodape__dmove img { width: 95px; height: auto; }  
+  
+ /* ============ BOT�fO WHATSAPP ============ */  
+ .botao-whatsapp {  
+ position: fixed;  
+ right: clamp(1rem, 3vw, 1.75rem);  
+ bottom: clamp(1rem, 3vw, 1.75rem);  
+ z-index: 50;  
+ display: grid;  
+ place-items: center;  
+ width: 60px;  
+ height: 60px;  
+ border-radius: 50%;  
+ background: var(--cor-whatsapp);  
+ color: #fff;  
+ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);  
+ transition: transform 0.25s ease;  
+ }  
+ .botao-whatsapp:hover { transform: scale(1.06); }  
+ .botao-whatsapp svg { width: 32px; height: 32px; }  
+  
+ @media (prefers-reduced-motion: reduce) {  
+ html { scroll-behavior: auto; }  
+ *, *::before, *::after { transition: none !important; }  
+ }  
+  
+ /* Entrelinha padrão (1.4) de todos os textos corridos no desktop */  
+ @media (min-width: 960px) {  
+ body,  
+ .beneficio__nota,  
+ .cortesia__descricao,  
+ .cortesias__nota {  
+ line-height: var(--entrelinha-texto);  
+ }  
+ }  
+  
+ /* ============ CORTESIAS EM ABAS (desktop) ============ */  
+ .cortesias-abas__topo { display: none; }  
+ @media (min-width: 960px) {  
+ .cortesias-abas__topo {  
+ display: block;  
+ padding-top: clamp(4rem, 8vw, 6.5rem);  
+ background: var(--cor-fundo);  
+ color: var(--cor-texto);  
+ }  
+ .cortesias-abas__cabecalho {  
+ display: flex;  
+ align-items: flex-end;  
+ justify-content: space-between;  
+ gap: 2rem;  
+ margin-bottom: 2.5rem;  
+ }  
+ .cortesias-abas__titulo {  
+ margin-top: 1rem;  
+ font-size: clamp(2.2rem, 3.4vw, 2.8rem);  
+ color: var(--cor-primaria);  
+ }  
+ .cortesias-abas__setas { display: flex; gap: 0.5rem; }  
+ .cortesias-abas__setas .galeria__botao:disabled {  
+ opacity: 0.3;  
+ cursor: default;  
+ background: transparent;  
+ color: var(--cor-primaria);  
+ }  
+ .cortesias-abas__lista {  
+ display: flex;  
+ gap: 2.75rem;  
+ border-bottom: 1px solid var(--cor-linha);  
+ }  
+ .cortesias-abas__aba {  
+ margin-bottom: -1px;  
+ padding: 0 0 1.1rem;  
+ border: 0;  
+ border-bottom: 2px solid transparent;  
+ background: none;  
+ color: var(--cor-texto-suave);  
+ opacity: 0.7;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 1.05rem;  
+ letter-spacing: 0.14em;  
+ text-transform: uppercase;  
+ cursor: pointer;  
+ transition: color 0.25s ease, border-color 0.25s ease;  
+ }  
+ .cortesias-abas__aba:hover { color: var(--cor-primaria); opacity: 1; }  
+ .cortesias-abas__aba[aria-selected="true"] {  
+ color: var(--cor-primaria);  
+ opacity: 1;  
+ border-bottom-color: var(--cor-oliva);  
+ }  
+  
+ /* Cada categoria vira um painel; só o ativo aparece */  
+ .cortesias-abas .cortesias,  
+ .cortesias-abas .cortesias + .cortesias { padding-top: 2.5rem; }  
+ .cortesias-abas .cortesias__cabecalho { display: none; }  
+ .cortesias-abas.is-abas .cortesias:not(.is-ativa) { display: none; }  
+  
+ /* Cards em uma linha só, com rolagem lateral pelas setas */  
+ .cortesias-abas .cortesias__grade {  
+ flex-wrap: nowrap;  
+ justify-content: flex-start;  
+ gap: 1.5rem;  
+ overflow-x: auto;  
+ scroll-snap-type: x mandatory;  
+ scrollbar-width: none;  
+ }  
+ .cortesias-abas .cortesias__grade::-webkit-scrollbar { display: none; }  
+ .cortesias-abas .cortesia {  
+ flex: 0 0 calc((100% - 4.5rem) / 4.25);  
+ scroll-snap-align: start;  
+ }  
+ .cortesias-abas .cortesias__nota { margin-top: 2rem; }  
+ }  
+  
+  
+ /* ============ ANIMA�?�fO DOS N�sMEROS DE DESCONTO (desktop) ============  
+ Estados iniciais só valem com a classe .anima-numeros (posta pelo JS);  
+ sem JS ou com "reduzir movimento", tudo aparece direto. */  
+ @media (min-width: 960px) {  
+ /* Hero: "Até" �?' "25%" sobe por trás da linha �?' "off" */  
+ .hero__percentual { display: inline-block; clip-path: inset(-30% -10% 0 -10%); }  
+ .hero__percentual-interno { display: inline-block; }  
+ .anima-numeros .hero__ate { animation: numero-surge 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) 0.15s both; }  
+ .anima-numeros .hero__percentual-interno { animation: numero-sobe 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) 0.35s both; }  
+ .anima-numeros .hero__off { animation: off-entra 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 1s both; }  
+  
+ /* Caixas "A condição inclui": contagem + "off" logo depois */  
+ .contador { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }  
+ .anima-numeros .inclui__principal .destaque-off { display: inline-block; opacity: 0; transform: translateY(0.25em); }  
+ .anima-numeros .inclui__principal.contado .destaque-off {  
+ opacity: 1;  
+ transform: none;  
+ transition: opacity 0.7s ease 0.85s, transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 0.85s;  
+ }  
+ @keyframes numero-sobe { from { transform: translateY(105%); } to { transform: none; } }  
+ @keyframes numero-surge { from { opacity: 0; transform: translateY(0.4em); } to { opacity: 1; transform: none; } }  
+ @keyframes off-entra { from { opacity: 0; transform: translateY(0.18em); } to { opacity: 1; transform: none; } }  
+ }  
+  
+ /* ============ HERO �?" MOBILE (abaixo de 960px) ============  
+ Mesmo esquema do desktop, com medidas fluidas pela largura da tela (o painel ocupa 100% dela). */  
+ @media (max-width: 959px) {  
+ /* Foto inteira de fundo, ocupando a altura da tela, com camada verde de 82% por cima */  
+ .hero { position: relative; min-height: 100svh; }  
+ .hero__imagem {  
+ position: absolute;  
+ inset: 0;  
+ aspect-ratio: auto;  
+ }  
+ .hero__imagem img { object-position: 50% 60%; }  
+ .hero__imagem::after {  
+ content: "";  
+ position: absolute;  
+ inset: 0;  
+ background: rgba(2, 61, 45, 0.82);  
+ pointer-events: none;  
+ }  
+ .hero__conteudo {  
+ position: relative;  
+ z-index: 1;  
+ justify-content: center;  
+ min-height: 100svh;  
+ --largura-painel: 100vw;  
+ padding: clamp(2.25rem, 9vw, 4rem) var(--margem) clamp(2.5rem, 10vw, 4.5rem);  
+ }  
+ /* Logo ~25% da largura, como no desktop; respiro proporcional até o título */  
+ .hero__logo {  
+ width: clamp(88px, 25vw, 150px);  
+ margin-bottom: clamp(16px, 5vw, 26px);  
+ }  
+ /* Entrelinha fechada do título e subtítulo colado, como no desktop */  
+ .hero__titulo-linha--menor { margin-top: -0.11em; }  
+ .hero__periodo { margin-top: 0.15em; padding-left: 0.14em; font-size: clamp(0.82rem, 3.4vw, 1.05rem); }  
+ /* "25% off" na mesma linha; "Até" acima, alinhado ao início do 25% */  
+ .hero__oferta {  
+ margin-top: clamp(1.5rem, 6vw, 2.25rem);  
+ grid-template-columns: auto auto;  
+ justify-content: center;  
+ align-items: baseline;  
+ transform: translateX(calc(var(--largura-painel) * -0.02)); /* compensa o "f" itálico */  
+ }  
+ .hero__ate {  
+ grid-column: 1 / -1;  
+ margin: 0 0 0.15em;  
+ font-size: clamp(0.85rem, calc(var(--largura-painel) * 0.0402), 1.35rem);  
+ }  
+ .hero__percentual { font-size: clamp(4.25rem, calc(var(--largura-painel) * 0.2134), 7.5rem); }  
+ .hero__off {  
+ margin: 0 0 0 0.12em;  
+ font-size: clamp(3.8rem, calc(var(--largura-painel) * 0.1908), 6.7rem);  
+ }  
+ /* Texto abaixo do 25% off todo em branco */  
+ .hero__publico { margin-top: clamp(1rem, 4vw, 1.5rem); font-size: clamp(1rem, 4.2vw, 1.15rem); color: var(--cor-branco); }  
+ /* Botão compacto, como no desktop */  
+ .hero__cta {  
+ margin-top: clamp(1.5rem, 6vw, 2rem);  
+ min-height: 44px;  
+ padding: 0.7rem 1.6rem;  
+ font-size: 0.78rem;  
+ }  
+  
+ /* Animação do hero (mesma do desktop) */  
+ .hero__percentual { display: inline-block; clip-path: inset(-30% -10% 0 -10%); }  
+ .hero__percentual-interno { display: inline-block; }  
+ .anima-hero-mobile .hero__ate { animation: numero-surge 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) 0.15s both; }  
+ .anima-hero-mobile .hero__percentual-interno { animation: numero-sobe 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) 0.35s both; }  
+ .anima-hero-mobile .hero__off { animation: off-entra 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 1s both; }  
+ @keyframes numero-sobe { from { transform: translateY(105%); } to { transform: none; } }  
+ @keyframes numero-surge { from { opacity: 0; transform: translateY(0.4em); } to { opacity: 1; transform: none; } }  
+ @keyframes off-entra { from { opacity: 0; transform: translateY(0.18em); } to { opacity: 1; transform: none; } }  
+ }  
+  
+ /* ============ GALERIA �?" MOBILE (até 560px): carrossel com foto central e bolinhas ============  
+ Mesmo comportamento da galeria de ambientes da referência; acima de 560px segue o mosaico em 2 colunas. */  
+ .mosaico-pontos { display: none; }  
+ @media (max-width: 560px) {  
+ .mosaico {  
+ --largura-foto: 80vw;  
+ display: flex;  
+ gap: 12px;  
+ margin-inline: calc(-1 * var(--margem)); /* faixa de ponta a ponta da tela */  
+ padding: 0 calc((100% + 2 * var(--margem) - var(--largura-foto)) / 2);  
+ overflow-x: auto;  
+ scroll-snap-type: x mandatory;  
+ scroll-behavior: smooth;  
+ overscroll-behavior-x: contain;  
+ scrollbar-width: none;  
+ }  
+ .mosaico::-webkit-scrollbar { display: none; }  
+ .mosaico__foto,  
+ .mosaico__foto--grande,  
+ .mosaico__foto--larga,  
+ .mosaico__foto--alta {  
+ flex: 0 0 var(--largura-foto);  
+ aspect-ratio: 3 / 2;  
+ scroll-snap-align: center;  
+ opacity: 0.4;  
+ transition: opacity 0.5s ease;  
+ }  
+ .mosaico__foto.is-ativa { opacity: 1; }  
+ /* Ordem só no carrossel: abre com foto horizontal e alterna horizontal/vertical  
+ 1 cerimônia montada (H) · 2 saída da cerimônia (V) · 3 salão com escada (H) · 4 fachada (V)  
+ 5 jardim de inverno (H) · 6 primeira dança (V) · 7 lounge (H) · 8 salão com telão (V)  
+ 9 mesa de doces (H) · 10 dança dos noivos (V) · 11 parede verde (H) · 12 brinde (V) */  
+ .mosaico__foto:nth-child(1) { order: 2; }  
+ .mosaico__foto:nth-child(2) { order: 4; }  
+ .mosaico__foto:nth-child(3) { order: 8; }  
+ .mosaico__foto:nth-child(4) { order: 1; }  
+ .mosaico__foto:nth-child(5) { order: 6; }  
+ .mosaico__foto:nth-child(6) { order: 10; }  
+ .mosaico__foto:nth-child(7) { order: 3; }  
+ .mosaico__foto:nth-child(8) { order: 5; }  
+ .mosaico__foto:nth-child(9) { order: 7; }  
+ .mosaico__foto:nth-child(10) { order: 12; }  
+ .mosaico__foto:nth-child(11) { order: 9; }  
+ .mosaico__foto:nth-child(12) { order: 11; }  
+ /* Fotos verticais: proporção real de cada foto (sem corte), mesma altura das horizontais */  
+ .mosaico__foto.mosaico__foto--vertical {  
+ flex: 0 0 auto;  
+ aspect-ratio: auto;  
+ height: calc(var(--largura-foto) * 2 / 3);  
+ }  
+ .mosaico__foto--vertical .mosaico__botao { width: auto; }  
+ .mosaico__foto--vertical .mosaico__botao img { width: auto; height: 100%; }  
+ .mosaico__botao { border-radius: 4px; }  
+ .mosaico__botao:hover img { transform: none; filter: none; }  
+ .mosaico-pontos {  
+ display: flex;  
+ justify-content: center;  
+ gap: 10px;  
+ margin-top: 24px;  
+ }  
+ .mosaico-pontos button {  
+ width: 8px;  
+ height: 8px;  
+ padding: 0;  
+ border: 1px solid var(--cor-oliva);  
+ border-radius: 50%;  
+ background: transparent;  
+ cursor: pointer;  
+ transition: background-color 0.3s ease, transform 0.3s ease;  
+ }  
+ .mosaico-pontos button[aria-current="true"] { background: var(--cor-oliva); transform: scale(1.25); }  
+ }  
+  
+ /* ============ TIPOGRAFIA �?" MOBILE (abaixo de 960px) ============  
+ Títulos um pouco menores e texto corrido em 16px (mínimo confortável), entrelinha 1.5. O hero não entra aqui. */  
+ @media (max-width: 959px) {  
+ body { font-size: 1rem; line-height: var(--entrelinha-texto); } /* 1.4, igual ao desktop */  
+ .sobre__titulo,  
+ .beneficio__titulo,  
+ .galeria__titulo,  
+ .contato__titulo { font-size: clamp(1.625rem, 7.4vw, 2.1rem); }  
+ .sobre__titulo { max-width: none; }  
+ .cortesias__titulo { font-size: clamp(1.3rem, 6.1vw, 1.7rem); }  
+ .condicoes-lista__nome { font-size: clamp(1.25rem, 5.9vw, 1.5rem); }  
+ .cortesia__nome { font-size: 1.05rem; }  
+ .sobre__texto,  
+ .beneficio__texto,  
+ .contato__texto,  
+ .inclui__lista li { font-size: 1rem; }  
+ .cortesia__descricao { font-size: 0.875rem; line-height: var(--entrelinha-texto); }  
+ .beneficio__nota,  
+ .cortesias__nota { line-height: var(--entrelinha-texto); }  
+ }  
+  
+ /* ============ CONDI�?�.ES �?" MOBILE: caixas compactas (seta no lugar de "Ver condição") ============ */  
+ @media (max-width: 959px) {  
+ /* Empilhadas também no tablet (a regra base põe 3 colunas a partir de 760px) */  
+ .condicoes-lista { margin-top: 2rem; grid-template-columns: 1fr; }  
+ .condicoes-lista__item a {  
+ display: grid;  
+ grid-template-columns: 1fr auto;  
+ align-items: center;  
+ column-gap: 0.85rem;  
+ padding: 1.1rem 1.25rem;  
+ }  
+ .condicoes-lista__numero { grid-column: 1; font-size: 0.66rem; letter-spacing: 0.22em; }  
+ /* Nomes numa linha só (tamanho igual nas três caixas) */  
+ .condicoes-lista__nome {  
+ grid-column: 1;  
+ margin-top: 0.35rem;  
+ font-size: clamp(1rem, 4.9vw, 1.35rem);  
+ white-space: nowrap;  
+ }  
+ .condicoes-lista__seta {  
+ grid-column: 2;  
+ grid-row: 1 / span 2;  
+ margin: 0;  
+ padding: 0;  
+ font-size: 0; /* esconde o texto "Ver condição", fica só a seta */  
+ }  
+ .condicoes-lista__seta::after {  
+ content: "�?'";  
+ font-size: 1.35rem;  
+ color: var(--cor-oliva);  
+ }  
+ }  
+  
+ /* ============ ANIMA�?�fO DAS CAIXAS "A CONDI�?�fO INCLUI" �?" MOBILE (igual ao desktop) ============ */  
+ @media (max-width: 959px) {  
+ .contador { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }  
+ .anima-caixas-mobile .inclui__principal .destaque-off { display: inline-block; opacity: 0; transform: translateY(0.25em); }  
+ .anima-caixas-mobile .inclui__principal.contado .destaque-off {  
+ opacity: 1;  
+ transform: none;  
+ transition: opacity 0.7s ease 0.85s, transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) 0.85s;  
+ }  
+ }  
+ /* ============ CORTESIAS �?" MOBILE: abas curtas + carrossel com bolinhas (padrão da galeria) ============ */  
+ .cortesias-pontos { display: none; }  
+ @media (max-width: 959px) {  
+ .cortesias-abas__topo {  
+ display: block;  
+ padding-top: 3rem;  
+ background: var(--cor-fundo);  
+ color: var(--cor-texto);  
+ }  
+ .cortesias-abas__cabecalho { margin-bottom: 1.5rem; }  
+ .cortesias-abas__titulo { margin-top: 0.75rem; font-size: clamp(1.625rem, 7.4vw, 2.1rem); color: var(--cor-primaria); }  
+ .cortesias-abas__setas { display: none; }  
+ .cortesias-abas__lista {  
+ display: flex;  
+ justify-content: space-between;  
+ border-bottom: 1px solid var(--cor-linha);  
+ }  
+ .cortesias-abas__aba {  
+ flex: 1;  
+ min-height: 44px;  
+ margin-bottom: -1px;  
+ padding: 0 0 0.6rem;  
+ border: 0;  
+ border-bottom: 2px solid transparent;  
+ background: none;  
+ color: var(--cor-texto-suave);  
+ opacity: 0.7;  
+ font-family: var(--fonte-titulo);  
+ font-weight: 500;  
+ font-size: 0.78rem;  
+ letter-spacing: 0.16em;  
+ text-transform: uppercase;  
+ cursor: pointer;  
+ }  
+ .cortesias-abas__aba[aria-selected="true"] { color: var(--cor-primaria); opacity: 1; border-bottom-color: var(--cor-oliva); }  
+ .aba-prefixo { display: none; }  
+ .cortesias-abas .cortesias,  
+ .cortesias-abas .cortesias + .cortesias { padding-top: 1.75rem; padding-bottom: 3rem; }  
+ .cortesias-abas .cortesias__cabecalho { display: none; }  
+ .cortesias-abas.is-abas .cortesias:not(.is-ativa) { display: none; }  
+ .cortesias-abas .cortesias__grade {  
+ --largura-card: min(72vw, 360px);  
+ flex-wrap: nowrap;  
+ justify-content: flex-start;  
+ gap: 12px;  
+ margin-inline: calc(-1 * var(--margem));  
+ padding: 0 calc((100% + 2 * var(--margem) - var(--largura-card)) / 2);  
+ overflow-x: auto;  
+ scroll-snap-type: x mandatory;  
+ scroll-behavior: smooth;  
+ overscroll-behavior-x: contain;  
+ scrollbar-width: none;  
+ }  
+ .cortesias-abas .cortesias__grade::-webkit-scrollbar { display: none; }  
+ .cortesias-abas .cortesia,  
+ .cortesias-abas .cortesias--quatro .cortesia {  
+ flex: 0 0 var(--largura-card);  
+ scroll-snap-align: center;  
+ opacity: 0.4;  
+ transition: opacity 0.5s ease;  
+ }  
+ .cortesias-abas .cortesia.is-ativa { opacity: 1; }  
+ .cortesias-abas .cortesia__imagem { aspect-ratio: 4 / 3; }  
+ .cortesias-abas .cortesias__nota { margin-top: 1.5rem; }  
+ .cortesias-pontos { display: flex; justify-content: center; gap: 10px; margin-top: 1.25rem; }  
+ .cortesias-pontos button {  
+ width: 8px; height: 8px; padding: 0;  
+ border: 1px solid var(--cor-oliva); border-radius: 50%;  
+ background: transparent; cursor: pointer;  
+ transition: background-color 0.3s ease, transform 0.3s ease;  
+ }  
+ .cortesias-pontos button[aria-current="true"] { background: var(--cor-oliva); transform: scale(1.25); }  
+ }  
+  
+ /* ============ CONTATO �?" MOBILE ============ */  
+ @media (max-width: 959px) {  
+ /* Link do WhatsApp numa linha só */  
+ .contato__whatsapp { font-size: clamp(0.72rem, 3.55vw, 0.95rem); white-space: nowrap; gap: 0.5rem; }  
+ .contato__whatsapp svg { width: 18px; height: 18px; }  
+ /* Endereço menor */  
+ .contato__endereco { gap: 0.75rem; }  
+ .contato__pin { width: 18px; height: 18px; }  
+ .contato__rua { font-size: 1.05rem; }  
+ .contato__bairro { font-size: 0.78rem; }  
+ }  
+  
+ /* ============ RODAP�? �?" MOBILE: crédito "Desenvolvido por Dmove" menor ============ */  
+ @media (max-width: 959px) {  
+ .rodape__credito { font-size: 0.7rem; gap: 0.6rem; }  
+ .rodape__dmove img { width: 75px; }  
+ }  
+ /* Formulário �?" mobile: "(não obrigatório)" menor, para o rótulo caber numa linha */  
+ @media (max-width: 959px) {  
+ .campo__opcional {  
+ font-family: var(--fonte-texto);  
+ font-weight: 400;  
+ font-size: clamp(0.62rem, 3.1vw, 0.72rem);  
+ letter-spacing: 0;  
+ text-transform: none;  
+ }  
+ }  
+ /* Celulares estreitos (até 359px): espaçamento entre letras menor para o rótulo caber numa linha */  
+ @media (max-width: 359px) {  
+ .campo label[for="detalhes_adicionais"] { letter-spacing: 0.1em; }  
+ }  
+ </style>  
+</head>  
+<body>  
+  
+ <main>  
+  
+ <!-- HERO -->  
+ <section class="hero" id="topo">  
+ <div class="hero__imagem">  
+ <img src="imagens/hero-cerimonia-jardim-de-inverno.webp" alt="Cerimônia de casamento no jardim de inverno da Casa Rofer, com corredor de flores brancas e cadeiras dos convidados" width="1535" height="1025" fetchpriority="high">  
+ </div>  
+ <div class="hero__conteudo">  
+ <img class="hero__logo" src="imagens/logo-casa-rofer-areia.png" alt="Casa Rofer" width="640" height="228">  
+ <h1 class="hero__titulo">  
+ <span class="hero__titulo-linha">Black</span>  
+ <span class="hero__titulo-linha hero__titulo-linha--menor">November</span>  
+ <span class="visualmente-oculto">Casa Rofer</span>  
+ </h1>  
+ <p class="hero__periodo">De 01 a 30 de novembro</p>  
+ <p class="hero__oferta" aria-label="Até 25% OFF">  
+ <span class="hero__ate" aria-hidden="true">Até</span>  
+ <span class="hero__percentual" aria-hidden="true"><span class="hero__percentual-interno">25%</span></span>  
+ <span class="hero__off" aria-hidden="true">OFF</span>  
+ </p>  
+ <p class="hero__publico">para <strong>casamentos em 2027</strong>.</p>  
+ <a class="botao botao--claro hero__cta" href="#contato">Solicitar contato</a>  
+ </div>  
+ </section>  
+  
+ <!-- GALERIA �?" mosaico; clique amplia a foto -->  
+ <section class="galeria" id="galeria" aria-labelledby="galeria-titulo">  
+ <div class="container">  
+ <div class="galeria__cabecalho">  
+ <span class="rotulo">Galeria</span>  
+ <h2 class="galeria__titulo" id="galeria-titulo">Celebrações que já ganharam<br class="br-desktop"> vida na Casa Rofer</h2>  
+ </div>  
+ <ul class="mosaico" aria-label="Fotos de casamentos na Casa Rofer">  
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--grande">  
+ <button class="mosaico__botao" type="button" data-legenda="Saída da cerimônia" aria-label="Ampliar foto: Saída da cerimônia">  
+ <img src="imagens/galeria-01-saida-da-cerimonia.webp" alt="Noivos comemorando a saída da cerimônia sob arco de flores, aplaudidos pelos convidados" width="933" height="1400" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--alta mosaico__foto--vertical">  
+ <button class="mosaico__botao" type="button" data-legenda="Fachada da Casa Rofer" aria-label="Ampliar foto: Fachada da Casa Rofer">  
+ <img src="imagens/galeria-05-fachada-casa-rofer.webp" alt="Fachada da Casa Rofer com jardineira de flores, letreiro e entrada principal iluminada" width="933" height="1400" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--alta mosaico__foto--vertical">  
+ <button class="mosaico__botao" type="button" data-legenda="Salão com telão e mesas postas" aria-label="Ampliar foto: Salão com telão e mesas postas">  
+ <img src="imagens/galeria-06-salao-com-telao-e-mesa-posta.webp" alt="Salão com telão exibindo foto dos noivos e mesa redonda posta com arranjo de flores" width="933" height="1400" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Cerimônia no jardim de inverno" aria-label="Ampliar foto: Cerimônia no jardim de inverno">  
+ <img src="imagens/galeria-03-cerimonia-montada-jardim-de-inverno.webp" alt="Cerimônia montada no jardim de inverno, com cadeiras de palhinha, arranjos de flores brancas e arco floral" width="1400" height="933" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--alta">  
+ <button class="mosaico__botao" type="button" data-legenda="Primeira dança na pista de LED" aria-label="Ampliar foto: Primeira dança na pista de LED">  
+ <img src="imagens/galeria-02-primeira-danca-pista-led.webp" alt="Primeira dança dos noivos na pista de LED cercada pelos convidados" width="1128" height="1394" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--alta">  
+ <button class="mosaico__botao" type="button" data-legenda="A dança dos noivos" aria-label="Ampliar foto: A dança dos noivos">  
+ <img src="imagens/galeria-04-danca-dos-noivos.webp" alt="Noivo inclinando a noiva durante a dança no salão" width="1120" height="1400" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Salão com escada" aria-label="Ampliar foto: Salão com escada">  
+ <img src="imagens/galeria-10-salao-com-escada.webp" alt="Salão com piso de madeira, escada, paredes de tijolo e mesas redondas montadas" width="1400" height="933" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Jardim de inverno" aria-label="Ampliar foto: Jardim de inverno">  
+ <img src="imagens/galeria-08-salao-jardim-de-inverno.webp" alt="Salão jardim de inverno da Casa Rofer montado para casamento" width="1400" height="933" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Lounge do salão" aria-label="Ampliar foto: Lounge do salão">  
+ <img src="imagens/galeria-11-lounge-do-salao.webp" alt="Lounge do salão com sofás, piso de madeira e iluminação quente nas cortinas" width="1400" height="933" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--grande">  
+ <button class="mosaico__botao" type="button" data-legenda="O brinde" aria-label="Ampliar foto: O brinde">  
+ <img src="imagens/galeria-07-brinde-com-convidados.webp" alt="Noivos brindando com os convidados à mesa" width="1052" height="1400" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Mesa de doces com flores" aria-label="Ampliar foto: Mesa de doces com flores">  
+ <img src="imagens/galeria-12-mesa-de-doces-com-flores.webp" alt="Mesa de doces decorada com arranjos de flores laranja e vermelhas diante da parede de pedra" width="1400" height="1000" loading="lazy">  
+ </button>  
+ </li>  
+ <li class="mosaico__foto mosaico__foto--larga">  
+ <button class="mosaico__botao" type="button" data-legenda="Salão parede verde" aria-label="Ampliar foto: Salão parede verde">  
+ <img src="imagens/galeria-09-salao-parede-verde.webp" alt="Salão com parede verde, teto de vidro e mesas montadas para o casamento" width="1400" height="933" loading="lazy">  
+ </button>  
+ </li>  
+ </ul>  
+ </div>  
+ </section>  
+  
+ <div class="ampliada" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">  
+ <button class="galeria__botao ampliada__fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>  
+ <div class="ampliada__palco"><img alt=""></div>  
+ </div>  
+  
+ <!-- SOBRE / CONDI�?�.ES -->  
+ <section class="sobre" id="condicoes">  
+ <div class="container">  
+ <span class="rotulo">Black November 2026</span>  
+ <h2 class="sobre__titulo">Escolha a condição<br class="br-desktop"><br class="br-mobile"> ideal para a sua data</h2>  
+ <p class="sobre__texto sobre__texto--abertura oculto-mobile">Três possibilidades para celebrar em 2027 com benefícios exclusivos da Black November.</p>  
+ <p class="sobre__texto oculto-mobile">De acordo com a data escolhida, você pode aproveitar descontos de até 25% OFF ou combinar a contratação com cortesias em gastronomia, bar, audiovisual e decoração.</p>  
+ <p class="sobre__texto so-mobile">Três condições exclusivas para 2027. Conforme a data, até 25% OFF ou desconto com cortesias em gastronomia, bar, audiovisual e decoração.</p>  
+  
+ <ul class="condicoes-lista">  
+ <li class="condicoes-lista__item">  
+ <a href="#beneficio-25-off">  
+ <span class="condicoes-lista__numero">Condição 01</span>  
+ <span class="condicoes-lista__nome">25% OFF para<br class="br-desktop"> datas próximas</span>  
+ <span class="condicoes-lista__seta">Ver condição �?'</span>  
+ </a>  
+ </li>  
+ <li class="condicoes-lista__item">  
+ <a href="#beneficio-20-off">  
+ <span class="condicoes-lista__numero">Condição 02</span>  
+ <span class="condicoes-lista__nome">20% OFF<br class="br-desktop"> + 4 cortesias</span>  
+ <span class="condicoes-lista__seta">Ver condição �?'</span>  
+ </a>  
+ </li>  
+ <li class="condicoes-lista__item">  
+ <a href="#beneficio-16-off">  
+ <span class="condicoes-lista__numero">Condição 03</span>  
+ <span class="condicoes-lista__nome">16% OFF<br class="br-desktop"> + 4 experiências</span>  
+ <span class="condicoes-lista__seta">Ver condição �?'</span>  
+ </a>  
+ </li>  
+ </ul>  
+ </div>  
+ </section>  
+  
+ <!-- BENEFÍCIO 1 -->  
+ <section class="beneficio beneficio--areia" id="beneficio-25-off">  
+ <div class="container beneficio__grade">  
+ <div class="beneficio__imagem">  
+ <img src="imagens/beneficio-25-off-cerimonia.webp" alt="Noivos no altar durante a cerimônia no jardim de inverno, cercados por arranjos de flores brancas e convidados" width="1400" height="933" loading="lazy">  
+ </div>  
+ <div class="beneficio__conteudo">  
+ <span class="rotulo">Condição 01</span>  
+ <h2 class="beneficio__titulo">25% OFF para datas próximas</h2>  
+ <p class="beneficio__texto">Condição especial para quem já está<br class="br-desktop"> planejando os próximos meses de 2027.<span class="oculto-desktop oculto-mobile">*</span></p>  
+  
+ <div class="inclui">  
+ <p class="inclui__titulo">A condição inclui:</p>  
+ <p class="inclui__principal"><span class="visualmente-oculto">25% OFF</span><span aria-hidden="true"><span class="contador" data-valor="25">25</span>% <span class="destaque-off">OFF</span></span></p>  
+ <ul class="inclui__lista">  
+ <li><span><span class="inclui__mais">+</span> entrada de 20%</span></li>  
+ </ul>  
+ </div>  
+  
+ <p class="beneficio__nota">*Válido para janeiro, fevereiro, março e abril de 2027, em datas que caem durante a semana, domingos e feriados, exceto sábados.</p>  
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>  
+ </div>  
+ </div>  
+ </section>  
+  
+ <!-- BENEFÍCIO 2 -->  
+ <section class="beneficio beneficio--invertido" id="beneficio-20-off">  
+ <div class="container beneficio__grade">  
+ <div class="beneficio__imagem">  
+ <img src="imagens/beneficio-20-off-entrada-dos-noivos.webp" alt="Noivos comemorando a entrada na festa, com a noiva erguendo o buquê e os convidados ao redor" width="1120" height="1400" loading="lazy">  
+ </div>  
+ <div class="beneficio__conteudo">  
+ <span class="rotulo">Condição 02</span>  
+ <h2 class="beneficio__titulo">20% OFF<br class="br-desktop"> + 4 cortesias</h2>  
+ <p class="beneficio__texto oculto-mobile">Mais benefícios para personalizar diferentes<br class="br-desktop"> momentos do casamento.</p>  
+ <p class="beneficio__texto oculto-mobile">Em meses selecionados, além de 20% OFF,<br class="br-desktop"> você escolhe 2 cortesias médias + 2 cortesias<br class="br-desktop"> pequenas, combinando experiências para a<br class="br-desktop"> recepção, pista, gastronomia e decoração.</p>  
+ <p class="beneficio__texto so-mobile">Em meses selecionados: 20% OFF<br class="br-mobile"> + 2 cortesias médias e 2 pequenas<br class="br-mobile"> para personalizar a recepção, a pista,<br class="br-mobile"> a gastronomia e a decoração.</p>  
+  
+ <div class="inclui">  
+ <p class="inclui__titulo">A condição inclui:</p>  
+ <p class="inclui__principal"><span class="visualmente-oculto">20% OFF</span><span aria-hidden="true"><span class="contador" data-valor="20">20</span>% <span class="destaque-off">OFF</span></span></p>  
+ <ul class="inclui__lista">  
+ <li><span><span class="inclui__mais">+</span> entrada de 10% no PIX</span></li>  
+ <li><span><span class="inclui__mais">+</span> 2 cortesias médias</span> <a class="inclui__link" href="#cortesias-medias">Consulte cortesias</a></li>  
+ <li><span><span class="inclui__mais">+</span> 2 cortesias pequenas</span> <a class="inclui__link" href="#cortesias-pequenas">Consulte cortesias</a></li>  
+ </ul>  
+ </div>  
+  
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>  
+ </div>  
+ </div>  
+ </section>  
+  
+ <!-- BENEFÍCIO 3 -->  
+ <section class="beneficio beneficio--areia" id="beneficio-16-off">  
+ <div class="container beneficio__grade">  
+ <div class="beneficio__imagem">  
+ <img src="imagens/beneficio-16-off-noivos-no-altar.webp" alt="Noivos abraçados diante de um arco de flores brancas e folhagens iluminado" width="1128" height="1394" loading="lazy">  
+ </div>  
+ <div class="beneficio__conteudo">  
+ <span class="rotulo">Condição 03</span>  
+ <h2 class="beneficio__titulo">16% OFF<br class="br-desktop"> + 4 experiências</h2>  
+ <p class="beneficio__texto oculto-mobile">Uma combinação que reúne gastronomia, decoração, entretenimento e experiências para os convidados.<br class="br-desktop"> Nesta condição, você recebe 1 cortesia grande<br class="br-desktop"> + 3 cortesias médias, ampliando as possibilidades<br class="br-desktop"> para diferentes momentos da festa.</p>  
+ <p class="beneficio__texto so-mobile">16% OFF + 1 cortesia grande e 3 médias, reunindo gastronomia, decoração, entretenimento e experiências para<br class="br-mobile-360"> os convidados.</p>  
+  
+ <div class="inclui">  
+ <p class="inclui__titulo">A condição inclui:</p>  
+ <p class="inclui__principal"><span class="visualmente-oculto">16% OFF</span><span aria-hidden="true"><span class="contador" data-valor="16">16</span>% <span class="destaque-off">OFF</span></span></p>  
+ <ul class="inclui__lista">  
+ <li><span><span class="inclui__mais">+</span> 1 cortesia grande</span> <a class="inclui__link" href="#cortesias-grandes">Consulte cortesias</a></li>  
+ <li><span><span class="inclui__mais">+</span> 3 cortesias médias</span> <a class="inclui__link" href="#cortesias-medias">Consulte cortesias</a></li>  
+ </ul>  
+ </div>  
+  
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>  
+ </div>  
+ </div>  
+ </section>  
+  
+ <!-- CORTESIAS �?" no desktop vira abas (G / M / P); no mobile as 3 seções ficam empilhadas -->  
+ <div class="cortesias-abas" id="cortesias">  
+ <div class="cortesias-abas__topo">  
+ <div class="container">  
+ <div class="cortesias-abas__cabecalho">  
+ <div>  
+ <span class="rotulo">Personalize sua condição</span>  
+ <h2 class="cortesias-abas__titulo">Conheça as cortesias</h2>  
+ </div>  
+ <div class="cortesias-abas__setas">  
+ <button class="galeria__botao" type="button" data-cortesias="anterior" aria-label="Cortesias anteriores">  
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>  
+ </button>  
+ <button class="galeria__botao" type="button" data-cortesias="proxima" aria-label="Próximas cortesias">  
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>  
+ </button>  
+ </div>  
+ </div>  
+ <div class="cortesias-abas__lista" role="tablist" aria-label="Categorias de cortesias">  
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-grandes" aria-controls="cortesias-grandes" aria-selected="true"><span class="aba-prefixo">Cortesias </span>grandes</button>  
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-medias" aria-controls="cortesias-medias" aria-selected="false"><span class="aba-prefixo">Cortesias </span>médias</button>  
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-pequenas" aria-controls="cortesias-pequenas" aria-selected="false"><span class="aba-prefixo">Cortesias </span>pequenas</button>  
+ </div>  
+ </div>  
+ </div>  
+  
+ <!-- CORTESIAS GRANDES -->  
+ <section class="cortesias" id="cortesias-grandes">  
+ <div class="container">  
+ <div class="cortesias__cabecalho">  
+ <span class="cortesias__selo" aria-hidden="true">G</span>  
+ <h2 class="cortesias__titulo">Cortesia grande</h2>  
+ </div>  
+ <ul class="cortesias__grade">  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-g-ilha-de-massas.webp" alt="Rechaud de prata com massa servida na ilha de massas" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Ilha de massas</h3>  
+ <p class="cortesia__descricao">Uma estação gastronômica para compor o serviço durante a festa.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-g-ilha-gastronomica.webp" alt="Mesa da ilha gastronômica com frutas, doces e torre de profiteroles" width="749" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Ilha Gastronômica</h3>  
+ <p class="cortesia__descricao">Uma estação dedicada a ampliar as opções gastronômicas disponíveis durante a celebração.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-g-estacao-sobremesas-sorvete.webp" alt="Sobremesa com sorvete e casquinha servida sobre gelo seco ao ar livre" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Estação de sobremesas com sorvete</h3>  
+ <p class="cortesia__descricao">Uma experiência doce para complementar o menu.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-g-adicional-de-peixe.webp" alt="Salmão finalizado com ervas e frutas cítricas" width="749" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Adicional de peixe no cardápio</h3>  
+ <p class="cortesia__descricao">Mais uma opção para enriquecer<br class="br-largo"> a composição gastronômica.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-g-upgrade-decoracao-encanto.webp" alt="Mesa do bolo com arranjos de flores rosas e parede de folhagens" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Upgrade de decoração Essence para Encanto</h3>  
+ <p class="cortesia__descricao">Uma evolução na proposta decorativa da celebração.</p>  
+ </li>  
+ </ul>  
+ </div>  
+ </section>  
+  
+ <!-- CORTESIAS M�?DIAS -->  
+ <section class="cortesias cortesias--quatro" id="cortesias-medias">  
+ <div class="container">  
+ <div class="cortesias__cabecalho">  
+ <span class="cortesias__selo" aria-hidden="true">M</span>  
+ <h2 class="cortesias__titulo">Cortesias médias</h2>  
+ </div>  
+ <ul class="cortesias__grade">  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-m-pista-paris-led.webp" alt="Pista de dança iluminada com pontos de LED no salão" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Pista Paris 4x4 ou Globos de LED</h3>  
+ <p class="cortesia__descricao">Recursos audiovisuais para valorizar a pista e criar uma atmosfera marcante durante a festa.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-m-welcome-reception.webp" alt="Bartender preparando drinks no bar da recepção dos convidados" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Welcome Reception</h3>  
+ <p class="cortesia__descricao">Uma recepção com duração de 1h30 para acompanhar a chegada dos convidados.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-m-cheeseburger-na-balada.webp" alt="Mini cheeseburgers expostos em estante de madeira" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Cheeseburger na balada</h3>  
+ <p class="cortesia__descricao">Uma opção gastronômica para acompanhar a celebração durante<br class="br-largo"> a madrugada.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-m-jantar-para-o-casal.webp" alt="Casal brindando com taças de vinho tinto em restaurante" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Jantar para o casal</h3>  
+ <p class="cortesia__descricao">Uma experiência gastronômica cortesia para os noivos em um<br class="br-largo"> dos restaurantes da Casa Rofer.</p>  
+ </li>  
+ </ul>  
+ <p class="cortesias__nota">A composição de cortesias deve ser feita de forma que a Pista Paris 4x4 e os Globos de LED<br class="br-desktop"> na pista não estejam no mesmo contrato. O cliente deve escolher apenas 1 dessas, nunca as 2.</p>  
+ </div>  
+ </section>  
+  
+ <!-- CORTESIAS PEQUENAS -->  
+ <section class="cortesias cortesias--quatro" id="cortesias-pequenas">  
+ <div class="container">  
+ <div class="cortesias__cabecalho">  
+ <span class="cortesias__selo" aria-hidden="true">P</span>  
+ <h2 class="cortesias__titulo">Cortesias pequenas</h2>  
+ </div>  
+ <ul class="cortesias__grade">  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-shot-na-pista.webp" alt="Convidados brindando com shots na pista de dança" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Shot na pista</h3>  
+ <p class="cortesia__descricao">Duas passadas de shots podem entrar na programação da festa.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-brigadeiro-na-balada.webp" alt="Travessa de brigadeiros entre arranjos de flores" width="1000" height="667" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Brigadeiro na balada</h3>  
+ <p class="cortesia__descricao">Um doce para acompanhar os momentos mais descontraídos<br class="br-largo"> da noite.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-buque-da-noiva.webp" alt="Noiva segurando buquê de rosas brancas e rosadas com eucalipto" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Buquê da noiva</h3>  
+ <p class="cortesia__descricao">Flores para compor a celebração<br class="br-largo"> da noiva.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-lustres-na-decoracao.webp" alt="Lustres de palha acesos diante de parede de folhagens" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Lustres na decoração</h3>  
+ <p class="cortesia__descricao">Elementos de iluminação que complementam a ambientação.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-sobremesa-no-menu.webp" alt="Sobremesas em taças com frutas vermelhas e merengue" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">+1 sobremesa no menu</h3>  
+ <p class="cortesia__descricao">Mais uma opção para enriquecer<br class="br-largo"> a experiência gastronômica.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-milk-shake-volante.webp" alt="Milk shake de chocolate com chantilly servido no balcão" width="667" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Milk shake volante</h3>  
+ <p class="cortesia__descricao">Uma atração gastronômica<br class="br-largo"> servida durante a festa.</p>  
+ </li>  
+ <li class="cortesia">  
+ <div class="cortesia__imagem">  
+ <img src="imagens/cortesia-p-torre-de-espumante.webp" alt="Espumante sendo servido em torre de taças" width="751" height="1000" loading="lazy">  
+ </div>  
+ <h3 class="cortesia__nome">Torre de espumante</h3>  
+ <p class="cortesia__descricao">Um elemento que une apresentação e celebração em um dos momentos da festa.</p>  
+ </li>  
+ </ul>  
+ </div>  
+ </section>  
+  
+ </div>  
+  
+ <!-- CONTATO -->  
+ <section class="contato" id="contato">  
+ <div class="container contato__grade">  
+ <div class="contato__intro">  
+ <span class="rotulo"><span class="oculto-mobile">Black November</span><span class="so-mobile-inline">Contato</span></span>  
+ <h2 class="contato__titulo">Vamos criar uma celebração única para a sua história?</h2>  
+ <p class="contato__texto">Preencha o formulário e receba<br class="br-mobile"> as condições<br class="br-desktop"> disponíveis para<br class="br-mobile"> o seu casamento.</p>  
+ <a class="contato__whatsapp" href="https://wa.me/5511000000000?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Black%20November%20e%20quero%20saber%20as%20condi%C3%A7%C3%B5es%20para%20o%20meu%20casamento." target="_blank" rel="noopener">  
+ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/></svg>  
+ Prefere conversar? Fale conosco pelo WhatsApp  
+ </a>  
+  
+ <a class="contato__endereco" href="https://www.google.com/maps/search/?api=1\&amp;query=R.%20Baltazar%20Fernandes%2C%2054%20-%20Brooklin%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004583-020" target="_blank" rel="noopener" aria-label="Ver no Google Maps: R. Baltazar Fernandes, 54 - Brooklin, São Paulo - SP, 04583-020">  
+ <svg class="contato__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>  
+ <address>  
+ <span class="contato__rua">R. Baltazar Fernandes, 54</span>  
+ <span class="contato__bairro">Brooklin, São Paulo · 04583-020</span>  
+ </address>  
+ </a>  
+ </div>  
+  
+ <!-- Formulário no padrão Dmove: envio é conectado pela Dmove na implementação -->  
+ <form class="formulario" id="formulario-contato" method="post">  
+ <div class="campo">  
+ <label for="nome">Nome</label>  
+ <input type="text" id="nome" name="nome" autocomplete="name" required>  
+ </div>  
+ <div class="formulario__linha">  
+ <div class="campo">  
+ <label for="telefone">Telefone</label>  
+ <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" required>  
+ </div>  
+ <div class="campo">  
+ <label for="email">E-mail</label>  
+ <input type="email" id="email" name="email" autocomplete="email" required>  
+ </div>  
+ </div>  
+ <div class="campo">  
+ <label for="tipo_evento">Tipo de evento</label>  
+ <select id="tipo_evento" name="tipo_evento" required>  
+ <option value="Casamento" selected>Casamento</option>  
+ <option value="Evento corporativo">Evento corporativo</option>  
+ <option value="Debutante">Debutante</option>  
+ <option value="Aniversário">Aniversário</option>  
+ <option value="Formatura">Formatura</option>  
+ <option value="Confraternização / Fim de ano">Confraternização / Fim de ano</option>  
+ <option value="Outro">Outro</option>  
+ </select>  
+ </div>  
+ <div class="formulario__linha">  
+ <div class="campo">  
+ <label for="data_evento">Data do evento</label>  
+ <input type="date" id="data_evento" name="data_evento" min="2027-01-01" required>  
+ </div>  
+ <div class="campo">  
+ <label for="convidados">Número de convidados</label>  
+ <input type="number" id="convidados" name="convidados" min="1" step="1" inputmode="numeric" required>  
+ </div>  
+ </div>  
+ <div class="campo">  
+ <label for="detalhes_adicionais">Detalhes do evento <span class="campo__opcional">(não obrigatório)</span></label>  
+ <textarea id="detalhes_adicionais" name="detalhes_adicionais" rows="3"></textarea>  
+ </div>  
+ <button class="botao botao--primario" type="submit">Solicitar orçamento</button>  
+ </form>  
+ </div>  
+ </section>  
+  
+ </main>  
+  
+ <footer class="rodape">  
+ <div class="container rodape__conteudo">  
+ <img class="rodape__logo" src="imagens/logo-casa-rofer-areia.png" alt="Casa Rofer" width="640" height="228" loading="lazy">  
+ <p class="rodape__direitos">© 2026 Casa Rofer · São Paulo. Direitos reservados.</p>  
+ <p class="rodape__credito">Desenvolvido por <a class="rodape__dmove" href="https://dmove.com.br" target="_blank" rel="noopener noreferrer"><img src="imagens/logo-dmove.webp" alt="Dmove" width="600" height="134" loading="lazy"></a></p>  
+ </div>  
+ </footer>  
+  
+ <!-- Botão flutuante de WhatsApp �?" TROCAR o número (5511000000000) pelo WhatsApp oficial da Casa Rofer -->  
+ <a class="botao-whatsapp" href="https://wa.me/5511000000000?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20da%20Black%20November%20e%20quero%20saber%20as%20condi%C3%A7%C3%B5es%20para%20o%20meu%20casamento." target="_blank" rel="noopener" aria-label="Fale com a Casa Rofer pelo WhatsApp">  
+ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/></svg>  
+ </a>  
+  
+ <script>  
+ /* Galeria em mosaico: clique amplia a foto; Esc ou clique fora fecham; setas do teclado passam a foto */  
+ (function () {  
+ var botoes = [].slice.call(document.querySelectorAll('.mosaico__botao'));  
+ var caixa = document.querySelector('.ampliada');  
+ if (!botoes.length || !caixa) return;  
+ var img = caixa.querySelector('.ampliada__palco img');  
+ var fechar = caixa.querySelector('.ampliada__fechar');  
+ var atual = 0, origem = null;  
+  
+ function mostrar(i) {  
+ atual = (i + botoes.length) % botoes.length;  
+ var fonte = botoes[atual].querySelector('img');  
+ img.classList.remove('pronta');  
+ setTimeout(function () {  
+ img.onload = function () { img.classList.add('pronta'); };  
+ img.src = fonte.currentSrc || fonte.src;  
+ img.alt = fonte.alt;  
+ if (img.complete) img.classList.add('pronta');  
+ }, caixa.classList.contains('aberta') ? 200 : 0);  
+ }  
+ function abrir(i) {  
+ origem = botoes[i]; /* volta o foco para a foto clicada ao fechar */  
+ mostrar(i);  
+ caixa.classList.add('aberta');  
+ caixa.setAttribute('aria-hidden', 'false');  
+ document.body.style.overflow = 'hidden';  
+ fechar.focus();  
+ }  
+ function fecharCaixa() {  
+ caixa.classList.remove('aberta');  
+ caixa.setAttribute('aria-hidden', 'true');  
+ document.body.style.overflow = '';  
+ if (origem) origem.focus();  
+ }  
+  
+ botoes.forEach(function (b, i) { b.addEventListener('click', function () { abrir(i); }); });  
+ fechar.addEventListener('click', fecharCaixa);  
+ caixa.addEventListener('click', function (e) {  
+ if (e.target === caixa) fecharCaixa();  
+ });  
+ document.addEventListener('keydown', function (e) {  
+ if (!caixa.classList.contains('aberta')) return;  
+ if (e.key === 'Escape') fecharCaixa();  
+ if (e.key === 'ArrowRight') mostrar(atual + 1);  
+ if (e.key === 'ArrowLeft') mostrar(atual - 1);  
+ });  
+ })();  
+  
+ /* Cortesias em abas (desktop e mobile): troca de categoria, setas e links "Consulte cortesias" */  
+ (function () {  
+ var raiz = document.querySelector('.cortesias-abas');  
+ if (!raiz) return;  
+ var abasAtivas = window.matchMedia('all'); /* abas valem em todas as larguras */  
+ var abas = [].slice.call(raiz.querySelectorAll('[role="tab"]'));  
+ var paineis = abas.map(function (aba) { return document.getElementById(aba.getAttribute('aria-controls')); });  
+ var setaAnterior = raiz.querySelector('[data-cortesias="anterior"]');  
+ var setaProxima = raiz.querySelector('[data-cortesias="proxima"]');  
+  
+ function trilhoAtivo() {  
+ var painel = raiz.querySelector('.cortesias.is-ativa');  
+ return painel ? painel.querySelector('.cortesias__grade') : null;  
+ }  
+  
+ function atualizarSetas() {  
+ var trilho = trilhoAtivo();  
+ if (!trilho) return;  
+ setaAnterior.disabled = trilho.scrollLeft <= 2;  
+ setaProxima.disabled = trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 2;  
+ }  
+  
+ function ativar(id) {  
+ abas.forEach(function (aba, i) {  
+ var ativa = aba.getAttribute('aria-controls') === id;  
+ aba.setAttribute('aria-selected', ativa ? 'true' : 'false');  
+ aba.tabIndex = ativa ? 0 : -1;  
+ paineis[i].classList.toggle('is-ativa', ativa);  
+ });  
+ var trilho = trilhoAtivo();  
+ if (trilho) trilho.scrollLeft = 0;  
+ atualizarSetas();  
+ }  
+  
+ function aplicarPapeis() {  
+ paineis.forEach(function (painel, i) {  
+ if (abasAtivas.matches) {  
+ painel.setAttribute('role', 'tabpanel');  
+ painel.setAttribute('aria-labelledby', abas[i].id);  
+ } else {  
+ painel.removeAttribute('role');  
+ painel.removeAttribute('aria-labelledby');  
+ }  
+ });  
+ atualizarSetas();  
+ }  
+  
+ abas.forEach(function (aba, i) {  
+ aba.addEventListener('click', function () { ativar(aba.getAttribute('aria-controls')); });  
+ aba.addEventListener('keydown', function (e) {  
+ if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;  
+ var proxima = abas[(i + (e.key === 'ArrowRight' ? 1 : abas.length - 1)) % abas.length];  
+ proxima.focus();  
+ ativar(proxima.getAttribute('aria-controls'));  
+ });  
+ });  
+  
+ [setaAnterior, setaProxima].forEach(function (seta) {  
+ seta.addEventListener('click', function () {  
+ var trilho = trilhoAtivo();  
+ if (!trilho) return;  
+ var card = trilho.querySelector('.cortesia');  
+ var passo = card ? card.getBoundingClientRect().width + 24 : trilho.clientWidth * 0.8;  
+ trilho.scrollBy({ left: seta === setaProxima ? passo : -passo, behavior: 'smooth' });  
+ });  
+ });  
+  
+ paineis.forEach(function (painel) {  
+ painel.querySelector('.cortesias__grade').addEventListener('scroll', atualizarSetas, { passive: true });  
+ });  
+  
+ /* Links "Consulte cortesias": abrem a aba certa */  
+ document.querySelectorAll('a[href^="#cortesias-"]').forEach(function (link) {  
+ link.addEventListener('click', function (e) {  
+ if (!abasAtivas.matches) return;  
+ var id = link.getAttribute('href').slice(1);  
+ if (paineis.indexOf(document.getElementById(id)) === -1) return;  
+ e.preventDefault();  
+ ativar(id);  
+ raiz.scrollIntoView({ behavior: 'smooth', block: 'start' });  
+ });  
+ });  
+  
+ raiz.classList.add('is-abas');  
+ var inicial = location.hash.slice(1);  
+ ativar(paineis.some(function (p) { return p.id === inicial; }) ? inicial : paineis[0].id);  
+ aplicarPapeis();  
+ abasAtivas.addEventListener('change', aplicarPapeis);  
+ window.addEventListener('resize', atualizarSetas);  
+ })();  
+  
+ /* Animação dos números de desconto: hero ao carregar; caixas ao entrar na tela (uma vez) */  
+ (function () {  
+ var desktop = window.matchMedia('(min-width: 960px)');  
+ var reduzir = window.matchMedia('(prefers-reduced-motion: reduce)');  
+ if (reduzir.matches || !('IntersectionObserver' in window)) return;  
+ /* Mobile: classes próprias (hero + caixas); desktop: classe original */  
+ if (desktop.matches) document.documentElement.classList.add('anima-numeros');  
+ else document.documentElement.classList.add('anima-hero-mobile', 'anima-caixas-mobile');  
+  
+ var DURACAO = 1200;  
+ function suave(t) { return 1 - Math.pow(1 - t, 3); } /* desacelera no final */  
+  
+ function contar(caixa) {  
+ var el = caixa.querySelector('.contador');  
+ var final = parseInt(el.getAttribute('data-valor'), 10);  
+ var inicio = null;  
+ function quadro(agora) {  
+ if (inicio === null) inicio = agora;  
+ var t = Math.min(1, (agora - inicio) / DURACAO);  
+ el.textContent = Math.round(final * suave(t));  
+ if (t < 1) requestAnimationFrame(quadro);  
+ }  
+ el.textContent = '0';  
+ caixa.classList.add('contado');  
+ requestAnimationFrame(quadro);  
+ }  
+  
+ var observador = new IntersectionObserver(function (entradas) {  
+ entradas.forEach(function (e) {  
+ if (!e.isIntersecting) return;  
+ contar(e.target);  
+ observador.unobserve(e.target);  
+ });  
+ }, { threshold: 0.6 });  
+ document.querySelectorAll('.inclui__principal').forEach(function (caixa) {  
+ var el = caixa.querySelector('.contador');  
+ el.style.minWidth = el.getBoundingClientRect().width + 'px'; /* reserva a largura do valor final */  
+ el.textContent = '0';  
+ observador.observe(caixa);  
+ });  
+ })();  
+  
+ /* Galeria no mobile (até 560px): carrossel �?" foto central ativa, bolinhas, toque na lateral centraliza */  
+ (function () {  
+ var trilho = document.querySelector('.mosaico');  
+ if (!trilho) return;  
+ var originais = [].slice.call(trilho.children);  
+ var fotos = originais.slice();  
+ /* Ordem visual do carrossel (propriedade CSS order); fora do carrossel, ordem do HTML */  
+ function ordenar() {  
+ fotos = originais.slice().sort(function (a, b) {  
+ return (parseInt(getComputedStyle(a).order, 10) || 0) - (parseInt(getComputedStyle(b).order, 10) || 0)  
+ || originais.indexOf(a) - originais.indexOf(b);  
+ });  
+ }  
+ ordenar();  
+ var pontos = document.createElement('div');  
+ pontos.className = 'mosaico-pontos';  
+ pontos.setAttribute('aria-label', 'Escolher foto da galeria');  
+ var botoes = fotos.map(function (foto, i) {  
+ var b = document.createElement('button');  
+ b.type = 'button';  
+ b.setAttribute('aria-label', 'Ir para a foto ' + (i + 1));  
+ b.addEventListener('click', function () { centralizar(i); });  
+ pontos.appendChild(b);  
+ return b;  
+ });  
+ trilho.after(pontos);  
+ var ativa = 0;  
+  
+ function emCarrossel() { return getComputedStyle(trilho).display === 'flex'; }  
+ function centralizar(i) {  
+ i = Math.max(0, Math.min(fotos.length - 1, i));  
+ var f = fotos[i];  
+ trilho.scrollTo({ left: f.offsetLeft - (trilho.clientWidth - f.offsetWidth) / 2 });  
+ }  
+ /* Espaço inicial/final do trilho = o necessário para centralizar a 1ª e a última foto (larguras variam) */  
+ function ajustarEspacos() {  
+ if (!emCarrossel()) { trilho.style.paddingLeft = ''; trilho.style.paddingRight = ''; return; }  
+ var tela = trilho.getBoundingClientRect().width;  
+ trilho.style.paddingLeft = Math.max(0, (tela - fotos[0].getBoundingClientRect().width) / 2) + 'px';  
+ trilho.style.paddingRight = Math.max(0, (tela - fotos[fotos.length - 1].getBoundingClientRect().width) / 2) + 'px';  
+ }  
+ function marcarAtiva() {  
+ if (!emCarrossel()) { fotos.forEach(function (f) { f.classList.remove('is-ativa'); }); return; }  
+ var centro = trilho.scrollLeft + trilho.clientWidth / 2;  
+ var menor = Infinity;  
+ fotos.forEach(function (f, i) {  
+ var d = Math.abs(f.offsetLeft + f.offsetWidth / 2 - centro);  
+ if (d < menor) { menor = d; ativa = i; }  
+ });  
+ fotos.forEach(function (f, i) { f.classList.toggle('is-ativa', i === ativa); });  
+ botoes.forEach(function (b, i) {  
+ if (i === ativa) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');  
+ });  
+ }  
+  
+ /* Toque numa foto lateral: só traz para o centro (a central abre ampliada) */  
+ trilho.addEventListener('click', function (e) {  
+ if (!emCarrossel()) return;  
+ var i = fotos.indexOf(e.target.closest('.mosaico__foto'));  
+ if (i !== -1 && i !== ativa) { e.stopPropagation(); e.preventDefault(); centralizar(i); }  
+ }, true);  
+  
+ var quadro;  
+ trilho.addEventListener('scroll', function () { cancelAnimationFrame(quadro); quadro = requestAnimationFrame(marcarAtiva); }, { passive: true });  
+ window.addEventListener('resize', function () { ordenar(); ajustarEspacos(); marcarAtiva(); });  
+ ajustarEspacos();  
+ marcarAtiva();  
+ })();  
+ /* Cortesias no mobile: carrossel dos cards em cada aba (mesmo comportamento da galeria) */  
+ (function () {  
+ var mobile = window.matchMedia('(max-width: 959px)');  
+ var carrosseis = [].slice.call(document.querySelectorAll('.cortesias-abas .cortesias__grade')).map(function (trilho) {  
+ var itens = [].slice.call(trilho.children);  
+ var pontos = document.createElement('div');  
+ pontos.className = 'cortesias-pontos';  
+ var botoes = itens.map(function (item, i) {  
+ var b = document.createElement('button');  
+ b.type = 'button';  
+ b.setAttribute('aria-label', 'Ir para a cortesia ' + (i + 1));  
+ b.addEventListener('click', function () { centralizar(i); });  
+ pontos.appendChild(b);  
+ return b;  
+ });  
+ trilho.after(pontos);  
+ var ativa = 0;  
+ function centralizar(i) { var f = itens[i]; trilho.scrollTo({ left: f.offsetLeft - (trilho.clientWidth - f.offsetWidth) / 2 }); }  
+ function marcar() {  
+ if (!mobile.matches) { itens.forEach(function (f) { f.classList.remove('is-ativa'); }); return; }  
+ var centro = trilho.scrollLeft + trilho.clientWidth / 2, menor = Infinity;  
+ itens.forEach(function (f, i) { var d = Math.abs(f.offsetLeft + f.offsetWidth / 2 - centro); if (d < menor) { menor = d; ativa = i; } });  
+ itens.forEach(function (f, i) { f.classList.toggle('is-ativa', i === ativa); });  
+ botoes.forEach(function (b, i) { if (i === ativa) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });  
+ }  
+ trilho.addEventListener('click', function (e) {  
+ if (!mobile.matches) return;  
+ var i = itens.indexOf(e.target.closest('.cortesia'));  
+ if (i !== -1 && i !== ativa) { e.preventDefault(); centralizar(i); }  
+ });  
+ var q; trilho.addEventListener('scroll', function () { cancelAnimationFrame(q); q = requestAnimationFrame(marcar); }, { passive: true });  
+ return marcar;  
+ });  
+ function atualizar() { carrosseis.forEach(function (m) { m(); }); }  
+ document.querySelectorAll('.cortesias-abas__aba, a[href^="#cortesias-"]').forEach(function (el) {  
+ el.addEventListener('click', function () { setTimeout(atualizar, 0); });  
+ });  
+ window.addEventListener('resize', atualizar);  
+ atualizar();  
+ })();  
+ </script>  
+</body>  
+</html>  
