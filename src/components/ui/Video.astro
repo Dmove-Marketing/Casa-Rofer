@@ -14,6 +14,8 @@ interface Props {
   duration?: string;
   /** Mostra controles nativos após play (padrão: true) */
   controls?: boolean;
+  /** Toca sozinho, sem som e em loop, quando aparece na tela; pausa ao sair (padrão: false) */
+  autoplay?: boolean;
   class?: string;
 }
 
@@ -25,6 +27,7 @@ const {
   uploadDate,
   duration,
   controls = true,
+  autoplay = false,
   class: className,
 } = Astro.props;
 
@@ -59,6 +62,9 @@ const schema = {
     preload="none"
     playsinline
     controls={controls}
+    muted={autoplay}
+    loop={autoplay}
+    data-autoplay={autoplay ? '' : undefined}
     data-src={src}
     aria-label={title}
   >
@@ -93,9 +99,27 @@ const schema = {
     }
   };
 
+  const startPlayback = () => {
+    btn.style.display = 'none';
+    poster.style.display = 'none';
+  };
+
+  // Autoplay: sem som (exigência dos navegadores), toca enquanto estiver na tela
+  if (video.hasAttribute('data-autoplay')) {
+    video.muted = true;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        load();
+        video.play().then(startPlayback).catch(() => {});
+      } else if (!video.paused) {
+        video.pause();
+      }
+    }, { threshold: 0.35 });
+    observer.observe(wrap);
+  }
   // Pré-carrega ao aproximar da viewport apenas no desktop; no mobile o
   // download só começa quando o usuário toca no play (economia de dados/velocidade)
-  if (window.matchMedia('(min-width: 768px)').matches) {
+  else if (window.matchMedia('(min-width: 768px)').matches) {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) { load(); observer.disconnect(); }
     }, { rootMargin: '200px' });
@@ -105,8 +129,7 @@ const schema = {
   btn.addEventListener('click', () => {
     load();
     video.play();
-    btn.style.display = 'none';
-    poster.style.display = 'none';
+    startPlayback();
   });
 
   video.addEventListener('pause', () => { btn.style.display = ''; });

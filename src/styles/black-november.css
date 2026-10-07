@@ -279,6 +279,7 @@
  .hero__publico {  
  margin-top: 1.75rem;  
  font-size: 1.15rem;  
+ line-height: 1.3;  
  color: var(--cor-areia);  
  }  
  .hero__publico strong { font-weight: 400; color: var(--cor-branco); }  
@@ -612,6 +613,40 @@
  .cortesia__nome { font-size: 1.25rem; }  
  }  
   
+ /* ============ CONHEÇA A CASA ROFER — texto + vídeo ============ */
+.conheca {
+padding-block: var(--respiro);
+background: var(--cor-fundo);
+}
+.conheca__grade {
+display: grid;
+gap: 2.5rem;
+align-items: center;
+}
+.conheca__titulo {
+font-size: clamp(2rem, 5vw, 3.1rem);
+color: var(--cor-primaria);
+}
+.conheca__texto {
+margin-top: 1.25rem;
+font-size: 1.1rem;
+color: var(--cor-texto-suave);
+}
+.conheca__video {
+overflow: hidden;
+border-radius: var(--raio);
+}
+/* Mobile: título e texto centralizados */
+@media (max-width: 899px) {
+.conheca__texto-bloco { text-align: center; }
+}
+@media (min-width: 900px) {
+.conheca__grade {
+grid-template-columns: 5fr 7fr;
+gap: clamp(3rem, 6vw, 5.5rem);
+}
+}
+
  /* ============ GALERIA — MOSAICO ============ */  
  .galeria {  
  padding-block: var(--respiro);  
@@ -1245,6 +1280,7 @@
  .sobre__titulo,  
  .beneficio__titulo,  
  .galeria__titulo,  
+ .conheca__titulo,  
  .contato__titulo { font-size: clamp(1.625rem, 7.4vw, 2.1rem); }  
  .sobre__titulo { max-width: none; }  
  .cortesias__titulo { font-size: clamp(1.3rem, 6.1vw, 1.7rem); }  
@@ -1253,6 +1289,7 @@
  .sobre__texto,  
  .beneficio__texto,  
  .contato__texto,  
+ .conheca__texto,  
  .inclui__lista li { font-size: 1rem; }  
  .cortesia__descricao { font-size: 0.875rem; line-height: var(--entrelinha-texto); }  
  .beneficio__nota,  
@@ -1452,3 +1489,10 @@ white-space: nowrap;
 #beneficio-20-off .beneficio__imagem img,
 #beneficio-16-off .beneficio__imagem img { object-position: center 35%; }
 }
+
+/* ============ SUBTÍTULOS (textos abaixo dos títulos): entrelinha mais justa ============ */
+.sobre__texto,
+.beneficio__texto,
+.conheca__texto,
+.galeria__texto,
+.contato__texto { line-height: 1.3; }

@@ -3,6 +3,7 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import Img from '../components/ui/Img.astro';
+import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
 import '../styles/black-november.css';
 ---
@@ -33,11 +34,25 @@ import '../styles/black-november.css';
  <span class="hero__percentual" aria-hidden="true"><span class="hero__percentual-interno">25%</span></span>  
  <span class="hero__off" aria-hidden="true">OFF</span>  
  </p>  
- <p class="hero__publico">para <strong>casamentos em 2027</strong>.</p>  
+ <p class="hero__publico">para realizar seu casamento em<br class="br-mobile"> um dos espaços mais&nbsp;sofisticados<br class="br-mobile"> de São&nbsp;Paulo em&nbsp;2027.</p>  
  <a class="botao botao--claro hero__cta" href="#contato">Solicitar contato</a>  
  </div>  
  </section>  
   
+ <!-- CONHEÇA A CASA ROFER — texto + vídeo -->
+ <section class="conheca" id="conheca" aria-labelledby="conheca-titulo">
+ <div class="container conheca__grade">
+ <div class="conheca__texto-bloco">
+ <h2 class="conheca__titulo" id="conheca-titulo">Conheça a Casa Rofer</h2>
+ <p class="conheca__texto">No coração do Brooklin,<br class="br-mobile"> a Casa Rofer reúne<br class="br-desktop"> arquitetura<br class="br-mobile"> marcante, sofisticação e uma<br class="br-desktop"> atmosfera<br class="br-mobile"> única para grandes celebrações.<br> Um espaço contemporâneo e versátil,<br> pensado para receber casamentos e<br> eventos que pedem uma experiência<br> à altura da ocasião.</p>
+ </div>
+ <div class="conheca__video">
+ <!-- Vídeo hospedado no próprio site (public/videos); URL absoluta para o JSON-LD do Google -->
+ <Video src={new URL('/videos/conheca-casa-rofer.mp4', Astro.url).href} poster={new URL('/videos/conheca-casa-rofer-capa.webp', Astro.url).href} title="Conheça a Casa Rofer" description="Conheça a Casa Rofer, espaço sofisticado para casamentos e eventos no Brooklin, São Paulo." uploadDate="2026-10-07" duration="PT1M48S" autoplay />
+ </div>
+ </div>
+ </section>
+
  <!-- GALERIA — mosaico; clique amplia a foto -->  
  <section class="galeria" id="galeria" aria-labelledby="galeria-titulo">  
  <div class="container">  
@@ -409,7 +424,7 @@ import '../styles/black-november.css';
  <section class="contato" id="contato">  
  <div class="container contato__grade">  
  <div class="contato__intro">  
- <span class="rotulo"><span class="oculto-mobile">Black November</span><span class="so-mobile-inline">Contato</span></span>  
+ <span class="rotulo">Contato</span>  
  <h2 class="contato__titulo">Vamos criar uma celebração única para a sua história?</h2>  
  <p class="contato__texto">Preencha o formulário e receba<br class="br-mobile"> as condições<br class="br-desktop"> disponíveis para<br class="br-mobile"> o seu casamento.</p>  
  <button type="button" class="contato__whatsapp" onclick="event.stopPropagation(); document.getElementById('wa-toggle')?.click()">
