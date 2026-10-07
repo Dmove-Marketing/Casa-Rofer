@@ -1,0 +1,439 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import Img from '../components/ui/Img.astro';
+import Video from '../components/ui/Video.astro';
+import LeadForm from '../components/forms/LeadForm.astro';
+import '../styles/black-november.css';
+---
+
+<Base
+  title="Black November Casa Rofer | Até 25% OFF para debutantes em 2027"
+  description="Black November Casa Rofer: de 01 a 30 de novembro, até 25% OFF ou cortesias em gastronomia, audiovisual e decoração para festas de 15 anos em 2027 no Brooklin, São Paulo."
+  ogImage="https://media.dmove.com.br/clients/casa-rofer/photos/hero-valsa-com-o-pai-pista-led.webp"
+  canonical="https://eventos.casarofer.com.br/debutantes-black-november/"
+>
+<main>
+
+ <!-- HERO -->
+ <section class="hero" id="topo">
+ <div class="hero__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-valsa-com-o-pai-pista-led.webp" alt="Debutante valsa com o pai na pista de LED da Casa Rofer, no Brooklin, São Paulo" width={1536} height={1024} priority />
+ </div>
+ <div class="hero__conteudo">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-casa-rofer-areia.webp" alt="Casa Rofer" width={640} height={228} class="hero__logo" />
+ <h1 class="hero__titulo">
+ <span class="hero__titulo-linha">Black</span>
+ <span class="hero__titulo-linha hero__titulo-linha--menor">November</span>
+ <span class="visualmente-oculto">Casa Rofer</span>
+ </h1>
+ <p class="hero__periodo">De 01 a 30 de novembro</p>
+ <p class="hero__oferta" aria-label="Até 25% OFF">
+ <span class="hero__ate" aria-hidden="true">Até</span>
+ <span class="hero__percentual" aria-hidden="true"><span class="hero__percentual-interno">25%</span></span>
+ <span class="hero__off" aria-hidden="true">OFF</span>
+ </p>
+ <p class="hero__publico">para celebrar seus 15 anos em<br class="br-mobile"> um dos espaços mais&nbsp;sofisticados<br class="br-mobile"> de São&nbsp;Paulo em&nbsp;2027.</p>
+ <a class="botao botao--claro hero__cta" href="#contato">Solicitar contato</a>
+ </div>
+ </section>
+
+ <!-- CONHEÇA A CASA ROFER — texto + vídeo -->
+ <section class="conheca" id="conheca" aria-labelledby="conheca-titulo">
+ <div class="container conheca__grade">
+ <div class="conheca__texto-bloco">
+ <h2 class="conheca__titulo" id="conheca-titulo">Conheça a Casa Rofer</h2>
+ <p class="conheca__texto">No coração do Brooklin,<br class="br-mobile"> a Casa Rofer reúne<br class="br-desktop"> arquitetura<br class="br-mobile"> marcante, sofisticação e uma<br class="br-desktop"> atmosfera<br class="br-mobile"> única para celebrar os 15 anos.<br> Um espaço contemporâneo e versátil,<br> pensado para receber festas que<br class="br-desktop"> transformam essa data em uma<br class="br-desktop"> celebração inesquecível.</p>
+ </div>
+ <div class="conheca__video">
+ <Video src={new URL('/videos/conheca-casa-rofer.mp4', Astro.url).href} poster={new URL('/videos/conheca-casa-rofer-capa.webp', Astro.url).href} title="Conheça a Casa Rofer" description="Conheça a Casa Rofer, espaço sofisticado para festas de debutante e eventos no Brooklin, São Paulo." uploadDate="2026-10-07" duration="PT1M48S" autoplay />
+ </div>
+ </div>
+ </section>
+
+ <!-- GALERIA — mosaico; clique amplia a foto -->
+ <section class="galeria" id="galeria" aria-labelledby="galeria-titulo">
+ <div class="container">
+ <div class="galeria__cabecalho">
+ <h2 class="galeria__titulo" id="galeria-titulo">Celebrações que já<br class="br-desktop"> ganharam vida na Casa Rofer</h2>
+ </div>
+ <ul class="mosaico" aria-label="Fotos de festas de debutante na Casa Rofer">
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--grande">
+ <button class="mosaico__botao" type="button" data-legenda="Debutante no lounge" aria-label="Ampliar foto: Debutante no lounge">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-01-debutante-no-lounge.webp" alt="Debutante posando elegante no lounge da Casa Rofer" width={933} height={1400} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--alta mosaico__foto--vertical">
+ <button class="mosaico__botao" type="button" data-legenda="Debutante na escada" aria-label="Ampliar foto: Debutante na escada">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-04-debutante-na-escada.webp" alt="Debutante posando na escada do salão da Casa Rofer" width={933} height={1400} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--alta mosaico__foto--vertical">
+ <button class="mosaico__botao" type="button" data-legenda="Fachada da Casa Rofer" aria-label="Ampliar foto: Fachada da Casa Rofer">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-05-fachada-casa-rofer.webp" alt="Fachada da Casa Rofer com jardineira de flores e entrada principal iluminada" width={933} height={1400} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Tambores na pista" aria-label="Ampliar foto: Tambores na pista">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-02-tambores-na-pista.webp" alt="Performance de tambores na pista de LED durante a festa de debutante" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--vertical mosaico__foto--alta">
+ <button class="mosaico__botao" type="button" data-legenda="Doces com flores" aria-label="Ampliar foto: Doces com flores">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-06-doces-com-flores.webp" alt="Mesa de doces decorada com arranjos de flores" width={933} height={1400} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Maquiagem da debutante" aria-label="Ampliar foto: Maquiagem da debutante">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-07-maquiagem-da-debutante.webp" alt="Debutante sendo maquiada antes da festa" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Dança com as amigas" aria-label="Ampliar foto: Dança com as amigas">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-03-danca-com-as-amigas.webp" alt="Debutante dançando com as amigas na pista da Casa Rofer" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Salão com mesas postas" aria-label="Ampliar foto: Salão com mesas postas">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-08-salao-com-mesas-postas.webp" alt="Salão da Casa Rofer com mesas redondas postas para festa de debutante" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Corte do bolo" aria-label="Ampliar foto: Corte do bolo">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-09-corte-do-bolo.webp" alt="Debutante cortando o bolo durante a festa na Casa Rofer" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Salão com pista de LED" aria-label="Ampliar foto: Salão com pista de LED">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-10-salao-com-pista-led.webp" alt="Salão com pista de LED iluminada e convidados durante a festa de debutante" width={1400} height={933} />
+ </button>
+ </li>
+ <li class="mosaico__foto mosaico__foto--larga">
+ <button class="mosaico__botao" type="button" data-legenda="Bar com bartenders" aria-label="Ampliar foto: Bar com bartenders">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-11-bar-com-bartenders.webp" alt="Bartenders preparando drinks no bar durante a festa de debutante" width={1400} height={933} />
+ </button>
+ </li>
+ </ul>
+ </div>
+ </section>
+
+ <div class="ampliada" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
+ <button class="galeria__botao ampliada__fechar" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+ <div class="ampliada__palco"><Img src="placeholder.jpg" alt="" /></div>
+ </div>
+
+ <!-- SOBRE / CONDIÇÕES -->
+ <section class="sobre" id="condicoes">
+ <div class="container">
+ <span class="rotulo">Black November 2026</span>
+ <h2 class="sobre__titulo">Escolha a condição<br class="br-desktop"><br class="br-mobile"> ideal para a sua data</h2>
+ <p class="sobre__texto sobre__texto--abertura oculto-mobile">Três possibilidades para celebrar seus 15 anos em 2027 com benefícios exclusivos da Black November.</p>
+ <p class="sobre__texto oculto-mobile">De acordo com a data escolhida, você pode aproveitar descontos de até 25% OFF ou combinar a contratação com cortesias em gastronomia, entretenimento, audiovisual e decoração.</p>
+ <p class="sobre__texto so-mobile">Três condições exclusivas para 2027. Conforme a data, até 25% OFF ou desconto com cortesias em gastronomia, entretenimento, audiovisual e decoração.</p>
+
+ <ul class="condicoes-lista">
+ <li class="condicoes-lista__item">
+ <a href="#beneficio-25-off">
+ <span class="condicoes-lista__numero">Condição 01</span>
+ <span class="condicoes-lista__nome">25% OFF para<br class="br-desktop"> datas próximas</span>
+ <span class="condicoes-lista__seta">Ver condição →</span>
+ </a>
+ </li>
+ <li class="condicoes-lista__item">
+ <a href="#beneficio-20-off">
+ <span class="condicoes-lista__numero">Condição 02</span>
+ <span class="condicoes-lista__nome">20% OFF<br class="br-desktop"> + 4 cortesias</span>
+ <span class="condicoes-lista__seta">Ver condição →</span>
+ </a>
+ </li>
+ <li class="condicoes-lista__item">
+ <a href="#beneficio-16-off">
+ <span class="condicoes-lista__numero">Condição 03</span>
+ <span class="condicoes-lista__nome">16% OFF<br class="br-desktop"> + 4 experiências</span>
+ <span class="condicoes-lista__seta">Ver condição →</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+ </section>
+
+ <!-- BENEFÍCIO 1 -->
+ <section class="beneficio beneficio--areia" id="beneficio-25-off">
+ <div class="container beneficio__grade">
+ <div class="beneficio__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/beneficio-25-off-debutante-na-pista.webp" alt="Debutante com vestido branco dançando na pista de LED da Casa Rofer" width={933} height={1400} />
+ </div>
+ <div class="beneficio__conteudo">
+ <span class="rotulo">Condição 01</span>
+ <h2 class="beneficio__titulo">25% OFF para datas próximas</h2>
+ <p class="beneficio__texto">Condição especial para quem já está<br class="br-desktop"> planejando os próximos meses de 2027.<span class="oculto-desktop oculto-mobile">*</span></p>
+
+ <div class="inclui">
+ <p class="inclui__titulo">A condição inclui:</p>
+ <p class="inclui__principal"><span class="visualmente-oculto">25% OFF</span><span aria-hidden="true"><span class="contador" data-valor="25">25</span>% <span class="destaque-off">OFF</span></span></p>
+ <ul class="inclui__lista">
+ <li><span><span class="inclui__mais">+</span> entrada de 20%</span></li>
+ </ul>
+ </div>
+
+ <p class="beneficio__nota">*Válido para janeiro, fevereiro, março e abril de 2027, em datas que caem durante a semana, domingos e feriados, exceto sábados.</p>
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>
+ </div>
+ </div>
+ </section>
+
+ <!-- BENEFÍCIO 2 -->
+ <section class="beneficio beneficio--invertido" id="beneficio-20-off">
+ <div class="container beneficio__grade">
+ <div class="beneficio__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/beneficio-20-off-debutante-com-plumas.webp" alt="Debutante com plumas em traje de festa na Casa Rofer" width={933} height={1400} />
+ </div>
+ <div class="beneficio__conteudo">
+ <span class="rotulo">Condição 02</span>
+ <h2 class="beneficio__titulo">20% OFF<br class="br-desktop"> + 4 cortesias</h2>
+ <p class="beneficio__texto oculto-mobile">Mais benefícios para personalizar diferentes<br class="br-desktop"> momentos da sua festa.</p>
+ <p class="beneficio__texto oculto-mobile">Em meses selecionados, além de 20% OFF,<br class="br-desktop"> você escolhe 2 cortesias médias + 2 cortesias<br class="br-desktop"> pequenas, combinando experiências para a<br class="br-desktop"> recepção, pista, gastronomia e decoração.</p>
+ <p class="beneficio__texto so-mobile">Em meses selecionados: 20% OFF<br class="br-mobile"> + 2 cortesias médias e 2 pequenas<br class="br-mobile"> para personalizar a recepção, a pista,<br class="br-mobile"> a gastronomia e a decoração.</p>
+
+ <div class="inclui">
+ <p class="inclui__titulo">A condição inclui:</p>
+ <p class="inclui__principal"><span class="visualmente-oculto">20% OFF</span><span aria-hidden="true"><span class="contador" data-valor="20">20</span>% <span class="destaque-off">OFF</span></span></p>
+ <ul class="inclui__lista">
+ <li><span><span class="inclui__mais">+</span> entrada de 10% no PIX</span></li>
+ <li><span><span class="inclui__mais">+</span> 2 cortesias médias</span> <a class="inclui__link" href="#cortesias-medias">Consulte cortesias</a></li>
+ <li><span><span class="inclui__mais">+</span> 2 cortesias pequenas</span> <a class="inclui__link" href="#cortesias-pequenas">Consulte cortesias</a></li>
+ </ul>
+ </div>
+
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>
+ </div>
+ </div>
+ </section>
+
+ <!-- BENEFÍCIO 3 -->
+ <section class="beneficio beneficio--areia" id="beneficio-16-off">
+ <div class="container beneficio__grade">
+ <div class="beneficio__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/beneficio-16-off-debutante-mesa-de-flores.webp" alt="Debutante diante de mesa com arranjo de flores na Casa Rofer" width={933} height={1400} />
+ </div>
+ <div class="beneficio__conteudo">
+ <span class="rotulo">Condição 03</span>
+ <h2 class="beneficio__titulo">16% OFF<br class="br-desktop"> + 4 experiências</h2>
+ <p class="beneficio__texto oculto-mobile">Uma combinação que reúne gastronomia, decoração, entretenimento e experiências para os convidados.<br class="br-desktop"> Nesta condição, você recebe 1 cortesia grande<br class="br-desktop"> + 3 cortesias médias, ampliando as possibilidades<br class="br-desktop"> para diferentes momentos da festa.</p>
+ <p class="beneficio__texto so-mobile">16% OFF + 1 cortesia grande e<br class="br-mobile"> 3&nbsp;médias, reunindo gastronomia, decoração, entretenimento e experiências para<br class="br-mobile-360"> os convidados.</p>
+
+ <div class="inclui">
+ <p class="inclui__titulo">A condição inclui:</p>
+ <p class="inclui__principal"><span class="visualmente-oculto">16% OFF</span><span aria-hidden="true"><span class="contador" data-valor="16">16</span>% <span class="destaque-off">OFF</span></span></p>
+ <ul class="inclui__lista">
+ <li><span><span class="inclui__mais">+</span> 1 cortesia grande</span> <a class="inclui__link" href="#cortesias-grandes">Consulte cortesias</a></li>
+ <li><span><span class="inclui__mais">+</span> 3 cortesias médias</span> <a class="inclui__link" href="#cortesias-medias">Consulte cortesias</a></li>
+ </ul>
+ </div>
+
+ <a class="botao botao--primario beneficio__cta" href="#contato">Consulte datas disponíveis</a>
+ </div>
+ </div>
+ </section>
+
+ <!-- CORTESIAS — no desktop vira abas (G / M / P); no mobile as 3 seções ficam empilhadas -->
+ <div class="cortesias-abas" id="cortesias">
+ <div class="cortesias-abas__topo">
+ <div class="container">
+ <div class="cortesias-abas__cabecalho">
+ <div>
+ <span class="rotulo">Personalize sua condição</span>
+ <h2 class="cortesias-abas__titulo">Conheça as cortesias</h2>
+ </div>
+ <div class="cortesias-abas__setas">
+ <button class="galeria__botao" type="button" data-cortesias="anterior" aria-label="Cortesias anteriores">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+ </button>
+ <button class="galeria__botao" type="button" data-cortesias="proxima" aria-label="Próximas cortesias">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+ </button>
+ </div>
+ </div>
+ <div class="cortesias-abas__lista" role="tablist" aria-label="Categorias de cortesias">
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-grandes" aria-controls="cortesias-grandes" aria-selected="true"><span class="aba-prefixo">Cortesias </span>grandes</button>
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-medias" aria-controls="cortesias-medias" aria-selected="false"><span class="aba-prefixo">Cortesias </span>médias</button>
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-pequenas" aria-controls="cortesias-pequenas" aria-selected="false"><span class="aba-prefixo">Cortesias </span>pequenas</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- CORTESIAS GRANDES -->
+ <section class="cortesias" id="cortesias-grandes">
+ <div class="container">
+ <div class="cortesias__cabecalho">
+ <span class="cortesias__selo" aria-hidden="true">G</span>
+ <h2 class="cortesias__titulo">Cortesia grande</h2>
+ </div>
+ <ul class="cortesias__grade">
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-g-ilha-de-massas.webp" alt="Rechaud de prata com massa servida na ilha de massas" width={1000} height={667} />
+ </div>
+ <h3 class="cortesia__nome">Ilha de massas</h3>
+ <p class="cortesia__descricao">Uma estação gastronômica para compor o serviço durante a festa.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-g-ilha-gastronomica.webp" alt="Mesa da ilha gastronômica com frutas, doces e torre de profiteroles" width={749} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">Ilha Gastronômica</h3>
+ <p class="cortesia__descricao">Uma estação dedicada a ampliar as opções gastronômicas disponíveis durante a celebração.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-g-estacao-sobremesas-sorvete.webp" alt="Sobremesa com sorvete e casquinha servida sobre gelo seco ao ar livre" width={667} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">Estação de sobremesas com sorvete</h3>
+ <p class="cortesia__descricao">Uma experiência doce para complementar o menu.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-g-adicional-de-peixe.webp" alt="Salmão finalizado com ervas e frutas cítricas" width={749} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">Adicional de peixe no cardápio</h3>
+ <p class="cortesia__descricao">Mais uma opção para enriquecer<br class="br-largo"> a composição gastronômica.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-g-upgrade-decoracao-encanto-15-anos.webp" alt="Decoração Encanto para festas de 15 anos na Casa Rofer" width={1000} height={667} />
+ </div>
+ <h3 class="cortesia__nome">Upgrade de decoração Essence para Encanto</h3>
+ <p class="cortesia__descricao">Uma evolução na proposta decorativa da celebração.</p>
+ </li>
+ </ul>
+ </div>
+ </section>
+
+ <!-- CORTESIAS MÉDIAS -->
+ <section class="cortesias" id="cortesias-medias">
+ <div class="container">
+ <div class="cortesias__cabecalho">
+ <span class="cortesias__selo" aria-hidden="true">M</span>
+ <h2 class="cortesias__titulo">Cortesias médias</h2>
+ </div>
+ <ul class="cortesias__grade">
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-m-pista-paris-led-palco.webp" alt="Pista Paris 4x4 com LED e palco iluminado durante a festa de debutante" width={1000} height={667} />
+ </div>
+ <h3 class="cortesia__nome">Pista Paris 4x4 ou Globos de LED</h3>
+ <p class="cortesia__descricao">Recursos audiovisuais para valorizar a pista e criar uma atmosfera marcante durante a festa.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-m-cheeseburger-na-balada.webp" alt="Mini cheeseburgers expostos em estante de madeira" width={1000} height={667} />
+ </div>
+ <h3 class="cortesia__nome">Cheeseburger na balada</h3>
+ <p class="cortesia__descricao">Uma opção gastronômica para acompanhar a celebração durante<br class="br-largo"> a madrugada.</p>
+ </li>
+ </ul>
+ <p class="cortesias__nota">A composição de cortesias deve ser feita de&nbsp;forma que a Pista Paris 4x4 e os Globos de&nbsp;LED<br class="br-desktop"> na pista não estejam no mesmo contrato. O cliente deve escolher apenas 1&nbsp;dessas, nunca as&nbsp;2.</p>
+ </div>
+ </section>
+
+ <!-- CORTESIAS PEQUENAS -->
+ <section class="cortesias cortesias--quatro" id="cortesias-pequenas">
+ <div class="container">
+ <div class="cortesias__cabecalho">
+ <span class="cortesias__selo" aria-hidden="true">P</span>
+ <h2 class="cortesias__titulo">Cortesias pequenas</h2>
+ </div>
+ <ul class="cortesias__grade">
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-p-brigadeiro-na-balada.webp" alt="Travessa de brigadeiros entre arranjos de flores" width={1000} height={667} />
+ </div>
+ <h3 class="cortesia__nome">Brigadeiro na balada</h3>
+ <p class="cortesia__descricao">Um doce para acompanhar os momentos mais descontraídos<br class="br-largo"> da noite.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-p-lustres-na-decoracao.webp" alt="Lustres de palha acesos diante de parede de folhagens" width={667} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">Lustres na decoração</h3>
+ <p class="cortesia__descricao">Elementos de iluminação que complementam a ambientação.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-p-sobremesa-no-menu.webp" alt="Sobremesas em taças com frutas vermelhas e merengue" width={667} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">+1 sobremesa no menu</h3>
+ <p class="cortesia__descricao">Mais uma opção para enriquecer<br class="br-largo"> a experiência gastronômica.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/cortesia-p-milk-shake-volante.webp" alt="Milk shake de chocolate com chantilly servido no balcão" width={667} height={1000} />
+ </div>
+ <h3 class="cortesia__nome">Milk shake volante</h3>
+ <p class="cortesia__descricao">Uma atração gastronômica<br class="br-largo"> servida durante a festa.</p>
+ </li>
+ </ul>
+ </div>
+ </section>
+
+ </div>
+
+ <!-- CONTATO -->
+ <section class="contato" id="contato">
+ <div class="container contato__grade">
+ <div class="contato__intro">
+ <span class="rotulo">Contato</span>
+ <h2 class="contato__titulo">Vamos criar uma celebração à altura dos seus 15 anos?</h2>
+ <p class="contato__texto">Preencha o formulário e receba<br class="br-mobile"> as condições<br class="br-desktop"> disponíveis para<br class="br-mobile"> sua noite de debutante.</p>
+ <button type="button" class="contato__whatsapp" onclick="event.stopPropagation(); document.getElementById('wa-toggle')?.click()">
+ <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"/></svg>
+ <span>Prefere conversar?<br> Fale conosco pelo WhatsApp</span>
+ </button>
+
+ <div class="contato__endereco">
+ <svg class="contato__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+ <address>
+ <span class="contato__rua">R. Baltazar Fernandes, 54</span>
+ <span class="contato__bairro">Brooklin, São Paulo · 04583-020</span>
+ </address>
+ </div>
+ </div>
+
+ <div class="contato__formulario">
+ <LeadForm
+   formId="lead-form"
+   project={config.project_slug}
+   submitUrl={config.forms['lead-form'].webhooks[0]}
+   redirectUrl={config.forms['lead-form'].redirect_on_success}
+   submitText="Solicitar orçamento"
+   honeypot
+   fields={[
+     { name: 'nome', label: 'Nome completo', type: 'text', placeholder: 'Seu nome', required: true },
+     { type: 'row', fields: [
+       { name: 'telefone', label: 'WhatsApp', type: 'tel', placeholder: '(11) 99999-9999', required: true },
+       { name: 'email', label: 'E-mail', type: 'email', placeholder: 'seu@email.com', required: true },
+     ]},
+     { type: 'row', fields: [
+       { name: 'data_evento', label: 'Data do evento', type: 'text', placeholder: 'DD/MM/AAAA', required: false, datepicker: true },
+       { name: 'convidados', label: 'Número de convidados', type: 'number', placeholder: 'Ex: 150', required: false },
+     ]},
+   ]}
+ />
+ </div>
+ </div>
+ </section>
+
+</main>
+
+<footer class="rodape">
+ <div class="container rodape__conteudo">
+ <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-casa-rofer-areia.webp" alt="Casa Rofer" width={640} height={228} class="rodape__logo" />
+ <p class="rodape__direitos">© 2026 Casa Rofer · São Paulo. Direitos reservados.</p>
+ <p class="rodape__credito">Desenvolvido por <a class="rodape__dmove" href="https://dmove.com.br" target="_blank" rel="noopener noreferrer"><Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-dmove.webp" alt="Dmove" width={600} height={134} /></a></p>
+ </div>
+</footer>
+
+</Base>
+<script>
+  import '../scripts/black-november.js';
+</script>
