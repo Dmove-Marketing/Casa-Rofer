@@ -1099,10 +1099,18 @@ gap: clamp(3rem, 6vw, 5.5rem);
  flex: 0 0 calc((100% - 4.5rem) / 4.25);  
  scroll-snap-align: start;  
  }  
- .cortesias-abas .cortesias__nota { margin-top: 2rem; }  
- }  
-  
-  
+ .cortesias-abas .cortesias__nota { margin-top: 2rem; }
+ /* Corporativo: só 4 cortesias, todas visíveis lado a lado (sem setas) */
+ .cortesias-abas--unica .cortesia { flex: 0 0 calc((100% - 4.5rem) / 4); }
+ }
+ /* Corporativo: sem abas, título mais próximo das fotos */
+ .cortesias-abas--unica .cortesias-abas__cabecalho { margin-bottom: 0; }
+ .cortesias-abas--unica .cortesias { padding-top: 2rem; }
+ @media (max-width: 959px) {
+ .cortesias-abas--unica .cortesias { padding-top: 1.25rem; }
+ }
+
+
  /* ============ ANIMAÇÃO DOS NÚMEROS DE DESCONTO (desktop) ============  
  Estados iniciais só valem com a classe .anima-numeros (posta pelo JS);  
  sem JS ou com "reduzir movimento", tudo aparece direto. */  
