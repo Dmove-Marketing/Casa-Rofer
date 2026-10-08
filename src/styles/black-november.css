@@ -1504,3 +1504,8 @@ white-space: nowrap;
 .conheca__texto,
 .galeria__texto,
 .contato__texto { line-height: 1.3; }
+
+/* Hero (casamento): subtítulo numa linha só no desktop */
+@media (min-width: 960px) {
+.hero__publico--uma-linha { white-space: nowrap; font-size: min(1.15rem, calc(var(--largura-painel) * 0.033)); }
+}
