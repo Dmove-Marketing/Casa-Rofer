@@ -1724,3 +1724,74 @@ text-align: center;
 }
 /* Palavra composta que não pode quebrar no hífen (ex.: "pré-wedding") */
 .sem-quebra { white-space: nowrap; }
+
+/* Conheça (corporativo): quebras manuais no desktop; fonte acompanha a coluna em notebooks menores */
+@media (min-width: 960px) {
+.conheca__texto--quebras { text-wrap: wrap; font-size: min(1.1rem, 1.52vw); }
+}
+/* Título da seção Black November com linhas equilibradas (corporativo) */
+.sobre__titulo--equilibrado { text-wrap: balance; }
+@media (min-width: 960px) { .sobre__titulo--equilibrado { max-width: 28ch; } }
+/* Condições (corporativo): linhas manuais mais longas; fonte acompanha a coluna em notebooks menores */
+@media (min-width: 960px) {
+.beneficio__texto--longo { font-size: min(1.1rem, 1.5vw); }
+}
+
+/* ============ CLIENTES (corporativo): faixa de logos rolando sozinha ============ */
+.clientes {
+padding-block: clamp(3.5rem, 7vw, 6rem);
+background: var(--cor-areia-clara);
+text-align: center;
+overflow: hidden;
+}
+.clientes__titulo {
+margin-top: 1rem;
+font-size: clamp(1.625rem, 4vw, 2.6rem);
+color: var(--cor-primaria);
+text-wrap: balance;
+}
+.clientes__faixa {
+margin-top: clamp(2.25rem, 5vw, 3.5rem);
+/* some suavemente nas bordas */
+-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.clientes__trilho {
+display: flex;
+align-items: center;
+gap: clamp(2.75rem, 5vw, 4.5rem);
+width: max-content;
+margin: 0;
+padding: 0;
+list-style: none;
+animation: clientes-rolar 45s linear infinite;
+}
+.clientes__faixa:hover .clientes__trilho { animation-play-state: paused; }
+.clientes__logo { flex: none; display: flex; align-items: center; }
+.clientes__logo img { display: block; max-width: none; height: auto; }
+/* a lista vem duplicada: andar metade (+ meio espaço) volta ao ponto de partida sem "pulo" */
+@keyframes clientes-rolar {
+to { transform: translateX(calc(-50% - clamp(2.75rem, 5vw, 4.5rem) / 2)); }
+}
+@media (max-width: 959px) {
+.clientes__logo img { zoom: 0.68; }
+.clientes__trilho { gap: 2.25rem; animation-duration: 32s; }
+@keyframes clientes-rolar { to { transform: translateX(calc(-50% - 1.125rem)); } }
+}
+@media (prefers-reduced-motion: reduce) {
+.clientes__trilho { animation: none; flex-wrap: wrap; justify-content: center; width: auto; row-gap: 2rem; }
+.clientes__logo[aria-hidden="true"] { display: none; }
+.clientes__faixa { -webkit-mask-image: none; mask-image: none; }
+}
+/* Ícones (corporativo): 4 itens — uma linha de 4 no desktop, 2 x 2 no celular */
+@media (min-width: 960px) {
+.experiencia__lista--quatro { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 48rem; }
+}
+@media (min-width: 560px) and (max-width: 959px) {
+.experiencia__lista--quatro { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* Cortesias com 3 abas (corporativo): no celular as abas ficam em 3 colunas */
+@media (max-width: 959px) {
+.cortesias-abas--tres .cortesias-abas__lista { grid-template-columns: repeat(3, 1fr); column-gap: 0.5rem; }
+.cortesias-abas--tres .cortesias-abas__aba { font-size: clamp(0.6rem, 2.7vw, 0.72rem); letter-spacing: 0.08em; }
+}
