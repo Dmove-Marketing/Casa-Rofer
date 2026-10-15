@@ -1795,3 +1795,31 @@ to { transform: translateX(calc(-50% - clamp(2.75rem, 5vw, 4.5rem) / 2)); }
 .cortesias-abas--tres .cortesias-abas__lista { grid-template-columns: repeat(3, 1fr); column-gap: 0.5rem; }
 .cortesias-abas--tres .cortesias-abas__aba { font-size: clamp(0.6rem, 2.7vw, 0.72rem); letter-spacing: 0.08em; }
 }
+
+/* Galeria (debutante, 12 fotos): ordem do carrossel no celular alternando horizontal/vertical
+   1 dança (H) · 2 debutante com o bolo (V) · 3 tambores (H) · 4 parabéns com a família (H) · 5 escada (V) · 6 entre flores (H)
+   7 maquiagem (H) · 8 fachada (V) · 9 salão com LED (H) · 10 mesas postas (H) · 11 doces (V) · 12 bar (H) */
+@media (max-width: 560px) {
+.mosaico--debutante .mosaico__foto:nth-child(1) { order: 2; }
+.mosaico--debutante .mosaico__foto:nth-child(2) { order: 3; }
+.mosaico--debutante .mosaico__foto:nth-child(3) { order: 5; }
+.mosaico--debutante .mosaico__foto:nth-child(4) { order: 7; }
+.mosaico--debutante .mosaico__foto:nth-child(5) { order: 1; }
+.mosaico--debutante .mosaico__foto:nth-child(6) { order: 10; }
+.mosaico--debutante .mosaico__foto:nth-child(7) { order: 6; }
+.mosaico--debutante .mosaico__foto:nth-child(8) { order: 8; }
+.mosaico--debutante .mosaico__foto:nth-child(9) { order: 11; }
+.mosaico--debutante .mosaico__foto:nth-child(10) { order: 4; }
+.mosaico--debutante .mosaico__foto:nth-child(11) { order: 9; }
+.mosaico--debutante .mosaico__foto:nth-child(12) { order: 12; }
+}
+
+/* Hero (debutante) no celular: recorte centralizado na debutante valsando com o pai */
+@media (max-width: 959px) {
+.hero--debutante .hero__imagem img { object-position: 64% 60%; }
+}
+
+/* Condição 03 (debutante) no celular: foto desce um pouco para mostrar a tiara com respiro */
+@media (max-width: 959px) {
+#beneficio-16-off.beneficio--debutante .beneficio__imagem img { object-position: center 22%; }
+}
