@@ -1823,3 +1823,15 @@ to { transform: translateX(calc(-50% - clamp(2.75rem, 5vw, 4.5rem) / 2)); }
 @media (max-width: 959px) {
 #beneficio-16-off.beneficio--debutante .beneficio__imagem img { object-position: center 22%; }
 }
+
+/* Seção de ícones: aviso sobre os brindes em fonte menor + CTA (3 LPs) */
+.experiencia__aviso {
+max-width: 36rem;
+margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+font-size: 0.85rem;
+line-height: 1.5;
+text-align: center;
+text-wrap: balance;
+opacity: 0.8;
+}
+.experiencia__cta { margin-top: 1.75rem; }

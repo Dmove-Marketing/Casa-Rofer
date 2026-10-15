@@ -226,6 +226,8 @@ import '../styles/black-november.css';
  <li class="experiencia__item" style="--i:2"><span class="experiencia__icone"><svg class="experiencia__svg" viewBox="-3 -3 102 102" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="exp-anel"><circle class="exp-traco" cx="48" cy="48" r="46" pathLength="1"/><circle class="exp-traco exp-anel-interno" cx="48" cy="48" r="40.5" pathLength="1"/><path class="exp-losango" d="M48 -0.6l2.6 2.6-2.6 2.6-2.6-2.6z"/></g><g class="exp-desenho"><g class="exp-ajuste" transform="translate(48 48) scale(0.843) translate(-46.50 -48.50)" style="--traco: 1.36"><circle class="exp-traco" pathLength="1" cx="48" cy="48" r="14"/><circle class="exp-traco" pathLength="1" cx="48" cy="48" r="9.5"/><path class="exp-traco" pathLength="1" d="M27 31v10a3.5 3.5 0 0 0 7 0V31"/><path class="exp-traco" pathLength="1" d="M30.5 31v35"/><path class="exp-traco" pathLength="1" d="M66 31c-3.5 2.5-5 8-5 13 0 3 1.5 4 5 4V66"/></g></g></svg></span><span class="experiencia__nome">Gastronomia</span></li>
  <li class="experiencia__item" style="--i:3"><span class="experiencia__icone"><svg class="experiencia__svg" viewBox="-3 -3 102 102" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="exp-anel"><circle class="exp-traco" cx="48" cy="48" r="46" pathLength="1"/><circle class="exp-traco exp-anel-interno" cx="48" cy="48" r="40.5" pathLength="1"/><path class="exp-losango" d="M48 -0.6l2.6 2.6-2.6 2.6-2.6-2.6z"/></g><g class="exp-desenho"><g class="exp-ajuste" transform="translate(48 48) scale(0.790) translate(-47.75 -47.75)" style="--traco: 1.46"><circle class="exp-traco" pathLength="1" cx="46" cy="50" r="16"/><path class="exp-traco" pathLength="1" d="M46 37v2.5"/><path class="exp-traco" pathLength="1" d="M59 50h-2.5"/><path class="exp-traco" pathLength="1" d="M46 63v-2.5"/><path class="exp-traco" pathLength="1" d="M33 50h2.5"/><path class="exp-traco" pathLength="1" d="M46 50v-8.5"/><path class="exp-traco" pathLength="1" d="M46 50l6.5 4"/><circle class="exp-traco" pathLength="1" cx="46" cy="50" r="1"/><circle class="exp-traco" pathLength="1" cx="62" cy="32" r="7"/><path class="exp-traco" pathLength="1" d="M62 28.5v7"/><path class="exp-traco" pathLength="1" d="M58.5 32h7"/></g></g></svg></span><span class="experiencia__nome">Hora adicional<br> de celebração</span></li>
  </ul>
+ <p class="experiencia__aviso">Os brindes serão concedidos após o fechamento e o pagamento do contrato.<br class="br-desktop"> Para conhecer as condições de cortesia, entre em contato com nossos&nbsp;consultores.</p>
+ <a class="botao botao--claro experiencia__cta" href="#contato">Agende sua visita</a>
  </div>
  </section>
 
@@ -244,20 +246,41 @@ import '../styles/black-november.css';
  </div>
  </div>
  <div class="cortesias-abas__lista" role="tablist" aria-label="Categorias de cortesias">
- <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-momentos" aria-controls="cortesias-momentos" aria-selected="true">Momentos marcantes</button>
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-toques" aria-controls="cortesias-toques" aria-selected="true">Toques exclusivos</button>
  <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-experiencias" aria-controls="cortesias-experiencias" aria-selected="false">Experiências extraordinárias</button>
- <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-toques" aria-controls="cortesias-toques" aria-selected="false">Toques exclusivos</button>
+ <button class="cortesias-abas__aba" type="button" role="tab" id="aba-cortesias-momentos" aria-controls="cortesias-momentos" aria-selected="false">Momentos marcantes</button>
  </div>
  </div>
  </div>
 
- <!-- MOMENTOS MARCANTES -->
- <section class="cortesias" id="cortesias-momentos">
+ <!-- TOQUES EXCLUSIVOS -->
+ <section class="cortesias" id="cortesias-toques">
  <div class="container">
  <div class="cortesias__cabecalho">
- <h2 class="cortesias__titulo">Momentos marcantes</h2>
+ <h2 class="cortesias__titulo">Toques exclusivos</h2>
  </div>
  <ul class="cortesias__grade">
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="cortesias/upgrade-bar-importado.webp" alt="Garrafas de destilados importados no bar" width={800} />
+ </div>
+ <h3 class="cortesia__nome">Upgrade do bar nacional para importado</h3>
+ <p class="cortesia__descricao">Uma evolução na seleção de bebidas para os&nbsp;convidados.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="cortesias/ilha-de-massas.webp" alt="Massa servida em rechaud de prata" width={800} />
+ </div>
+ <h3 class="cortesia__nome">Ilha de massas</h3>
+ <p class="cortesia__descricao">Uma estação gastronômica disponível por 2 horas para compor o serviço durante a&nbsp;festa.</p>
+ </li>
+ <li class="cortesia">
+ <div class="cortesia__imagem">
+ <Img src="cortesias/welcome-reception.webp" alt="Bartender preparando drinks na recepção dos convidados" width={800} />
+ </div>
+ <h3 class="cortesia__nome">Welcome Reception</h3>
+ <p class="cortesia__descricao">Recepção de 1h para acompanhar a chegada dos&nbsp;convidados.</p>
+ </li>
  <li class="cortesia">
  <div class="cortesia__imagem">
  <Img src="cortesias/sobremesa-no-menu.webp" alt="Sobremesas em taças com frutas vermelhas" width={800} />
@@ -266,6 +289,7 @@ import '../styles/black-november.css';
  <p class="cortesia__descricao">Mais uma opção para enriquecer a experiência&nbsp;gastronômica.</p>
  </li>
  </ul>
+ <p class="cortesias__nota cortesias__nota--escolha">Escolher duas opções</p>
  </div>
  </section>
 
@@ -316,34 +340,13 @@ import '../styles/black-november.css';
  </div>
  </section>
 
- <!-- TOQUES EXCLUSIVOS -->
- <section class="cortesias" id="cortesias-toques">
+ <!-- MOMENTOS MARCANTES -->
+ <section class="cortesias" id="cortesias-momentos">
  <div class="container">
  <div class="cortesias__cabecalho">
- <h2 class="cortesias__titulo">Toques exclusivos</h2>
+ <h2 class="cortesias__titulo">Momentos marcantes</h2>
  </div>
  <ul class="cortesias__grade">
- <li class="cortesia">
- <div class="cortesia__imagem">
- <Img src="cortesias/upgrade-bar-importado.webp" alt="Garrafas de destilados importados no bar" width={800} />
- </div>
- <h3 class="cortesia__nome">Upgrade do bar nacional para importado</h3>
- <p class="cortesia__descricao">Uma evolução na seleção de bebidas para os&nbsp;convidados.</p>
- </li>
- <li class="cortesia">
- <div class="cortesia__imagem">
- <Img src="cortesias/ilha-de-massas.webp" alt="Massa servida em rechaud de prata" width={800} />
- </div>
- <h3 class="cortesia__nome">Ilha de massas</h3>
- <p class="cortesia__descricao">Uma estação gastronômica disponível por 2 horas para compor o serviço durante a&nbsp;festa.</p>
- </li>
- <li class="cortesia">
- <div class="cortesia__imagem">
- <Img src="cortesias/welcome-reception.webp" alt="Bartender preparando drinks na recepção dos convidados" width={800} />
- </div>
- <h3 class="cortesia__nome">Welcome Reception</h3>
- <p class="cortesia__descricao">Recepção de 1h para acompanhar a chegada dos&nbsp;convidados.</p>
- </li>
  <li class="cortesia">
  <div class="cortesia__imagem">
  <Img src="cortesias/sobremesa-no-menu.webp" alt="Sobremesas em taças com frutas vermelhas" width={800} />
@@ -352,7 +355,6 @@ import '../styles/black-november.css';
  <p class="cortesia__descricao">Mais uma opção para enriquecer a experiência&nbsp;gastronômica.</p>
  </li>
  </ul>
- <p class="cortesias__nota cortesias__nota--escolha">Escolher duas opções</p>
  </div>
  </section>
 
