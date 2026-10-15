@@ -1505,7 +1505,222 @@ white-space: nowrap;
 .galeria__texto,
 .contato__texto { line-height: 1.3; }
 
-/* Hero (casamento): subtítulo numa linha só no desktop */
-@media (min-width: 960px) {
-.hero__publico--uma-linha { white-space: nowrap; font-size: min(1.15rem, calc(var(--largura-painel) * 0.033)); }
+/* ============ HERO SEM "ATÉ 25% OFF" (casamento): "Black November" + data viram o título ============ */
+/* Mobile: título maior e conteúdo centralizado na altura */
+@media (max-width: 959px) {
+.hero--titulo .hero__conteudo { justify-content: center; }
+.hero--titulo .hero__titulo { font-size: clamp(2.6rem, 14vw, 4.6rem); }
+.hero--titulo .hero__periodo { font-size: clamp(0.82rem, 3.9vw, 1.25rem); }
+.hero--titulo .hero__publico { margin-top: clamp(1.5rem, 6vw, 2.25rem); max-width: 30rem; }
 }
+/* Desktop: tudo centralizado na altura do painel; título proporcional ao painel verde */
+@media (min-width: 960px) {
+.hero--titulo .hero__conteudo { justify-content: center; padding-top: 3.5rem; }
+.hero--titulo .hero__titulo { font-size: calc(var(--largura-painel) * 0.14); }
+.hero--titulo .hero__periodo { font-size: calc(var(--largura-painel) * 0.0392); }
+.hero--titulo .hero__publico { margin-top: calc(var(--largura-painel) * 0.06); font-size: clamp(1rem, calc(var(--largura-painel) * 0.034), 1.2rem); }
+}
+/* Linhas do subtítulo com tamanhos parecidos em qualquer largura */
+.hero--titulo .hero__publico { text-wrap: balance; }
+/* Texto longo da seção "Conheça": quebras mais equilibradas, sem palavra solta */
+.conheca__texto { text-wrap: pretty; }
+
+/* ============ SEÇÃO BLACK NOVEMBER (casamento): texto da campanha + aviso em fonte menor, sem as caixas ============ */
+.sobre__texto--campanha { text-wrap: pretty; }
+@media (min-width: 960px) { .sobre__texto--campanha { text-wrap: balance; } }
+.sobre__aviso {
+max-width: 44rem;
+margin: 1.5rem auto 0;
+font-size: 0.85rem;
+line-height: 1.4;
+color: var(--cor-texto-suave);
+opacity: 0.85;
+text-wrap: balance;
+}
+@media (max-width: 959px) {
+.sobre__aviso { margin-top: 1.25rem; font-size: 0.8rem; }
+}
+
+/* ============ CONDIÇÕES 01/02/03 (casamento): sem a caixa "A condição inclui"; texto + aviso em fonte menor ============ */
+.beneficio__titulo { text-wrap: balance; }
+.beneficio__texto--campanha { text-wrap: pretty; }
+.beneficio__aviso {
+margin-top: 1.25rem;
+font-size: 0.85rem;
+line-height: 1.4;
+color: var(--cor-texto-suave);
+opacity: 0.85;
+text-wrap: balance;
+}
+@media (max-width: 959px) {
+.beneficio__aviso { margin-top: 1rem; font-size: 0.8rem; }
+}
+/* Títulos das condições (casamento): um pouco menores no desktop e proporcionais à coluna,
+   para "Personalize a celebração" caber numa linha de 1024px a telas grandes */
+@media (min-width: 960px) {
+.beneficio__titulo--compacto { font-size: min(2.7rem, 3.6vw); }
+}
+/* Textos das condições (casamento): no desktop as quebras são manuais; a fonte acompanha
+   a coluna em notebooks menores para a linha mais longa não quebrar sozinha */
+@media (min-width: 960px) {
+.beneficio__texto--campanha { text-wrap: wrap; font-size: min(1.1rem, 1.62vw); }
+}
+
+/* ============ EXPERIÊNCIA (casamento): título, texto e 6 ícones de cortesias ============ */
+.experiencia {
+padding-block: var(--respiro);
+background: var(--cor-primaria);
+color: var(--cor-branco);
+text-align: center;
+}
+.experiencia__titulo {
+font-size: clamp(2rem, 5vw, 3.1rem);
+color: var(--cor-branco);
+text-wrap: balance;
+}
+.experiencia__texto {
+max-width: 40rem;
+margin: 1.25rem auto 0;
+font-size: 1.125rem;
+line-height: 1.3;
+color: rgba(246, 246, 246, 0.8);
+text-wrap: balance;
+}
+.experiencia__lista {
+list-style: none;
+margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+padding: 0;
+display: grid;
+grid-template-columns: repeat(6, minmax(0, 1fr));
+gap: 2rem 1.5rem;
+max-width: 68rem;
+}
+.experiencia__item {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+}
+.experiencia__nome {
+max-width: none;
+font-family: var(--fonte-titulo);
+font-weight: 500;
+font-size: 0.8rem;
+letter-spacing: 0.16em;
+line-height: 1.35;
+text-transform: uppercase;
+color: var(--cor-areia);
+text-wrap: balance;
+}
+/* Tablet e celular: 3 colunas x 2 linhas */
+@media (max-width: 959px) {
+.experiencia__texto { font-size: 1rem; }
+.experiencia__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 0.75rem; }
+.experiencia__nome { font-size: clamp(0.62rem, 2.9vw, 0.75rem); letter-spacing: 0.1em; }
+}
+/* Celular: 2 colunas x 3 linhas, para "Hora adicional / de celebração" caber em 2 linhas */
+@media (max-width: 559px) {
+.experiencia__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; max-width: 22rem; }
+.experiencia__nome { font-size: 0.72rem; letter-spacing: 0.12em; }
+}
+
+/* Ícones premium: anel duplo com losango + desenho em traço fino */
+.experiencia__icone { display: block; width: clamp(96px, 9vw, 124px); color: var(--cor-areia); }
+.experiencia__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.experiencia__svg .exp-desenho .exp-traco { stroke-width: var(--traco, 1.15); }
+.exp-anel .exp-traco { stroke: var(--cor-oliva); stroke-width: 0.8; }
+.exp-anel .exp-anel-interno { stroke: rgba(199, 187, 167, 0.35); stroke-width: 0.6; }
+.exp-losango { fill: var(--cor-oliva); stroke: none; transform-box: fill-box; transform-origin: center; }
+.exp-anel { transform-origin: 48px 48px; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.1, 1); }
+.exp-desenho { transform-origin: 48px 48px; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.1, 1); }
+@media (hover: hover) {
+.experiencia__item:hover .exp-anel { transform: rotate(45deg); }
+.experiencia__item:hover .exp-desenho { transform: scale(1.06); }
+}
+@media (max-width: 559px) {
+.experiencia__icone { width: clamp(88px, 26vw, 108px); }
+}
+
+/* Animação (só com JS e sem "reduzir movimento"): cada ícone se desenha como uma assinatura —
+   primeiro o anel, depois o traço do ícone, por fim o losango e o nome; um após o outro */
+.anima-experiencia .exp-traco { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; } /* opacity: esconde as pontas arredondadas antes do desenho */
+.anima-experiencia .exp-losango { opacity: 0; transform: scale(0) rotate(-90deg); }
+.anima-experiencia .experiencia__nome { opacity: 0; letter-spacing: 0.42em; filter: blur(3px); }
+.anima-experiencia.is-desenhada .exp-anel .exp-traco {
+stroke-dashoffset: 0; opacity: 1;
+transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1) calc(var(--i) * 0.16s), opacity 0.01s linear calc(var(--i) * 0.16s);
+}
+.anima-experiencia.is-desenhada .exp-anel .exp-anel-interno { opacity: 1; }
+.anima-experiencia.is-desenhada .exp-desenho .exp-traco {
+stroke-dashoffset: 0; opacity: 1;
+transition: stroke-dashoffset 1.6s cubic-bezier(0.45, 0, 0.2, 1) calc(var(--i) * 0.16s + 0.55s), opacity 0.01s linear calc(var(--i) * 0.16s + 0.55s);
+}
+.anima-experiencia.is-desenhada .exp-losango {
+opacity: 1; transform: none;
+transition: opacity 0.4s ease calc(var(--i) * 0.16s + 1.3s), transform 0.7s cubic-bezier(0.2, 0.7, 0.1, 1.4) calc(var(--i) * 0.16s + 1.3s);
+}
+.anima-experiencia.is-desenhada .experiencia__nome {
+opacity: 1; letter-spacing: 0.16em; filter: none;
+transition: opacity 0.9s ease calc(var(--i) * 0.16s + 1.1s), letter-spacing 1.2s cubic-bezier(0.2, 0.7, 0.1, 1) calc(var(--i) * 0.16s + 1.1s), filter 0.9s ease calc(var(--i) * 0.16s + 1.1s);
+}
+@media (max-width: 959px) {
+.anima-experiencia.is-desenhada .experiencia__nome { letter-spacing: 0.1em; }
+}
+@media (max-width: 559px) {
+.anima-experiencia.is-desenhada .experiencia__nome { letter-spacing: 0.12em; }
+}
+.experiencia .rotulo { color: var(--cor-oliva); }
+.experiencia__titulo { margin-top: 1rem; }
+
+/* ============ CORTESIAS (casamento): 4 categorias em abas ============ */
+.cortesias-abas--quatro .cortesia__nome,
+.cortesias-abas--quatro .cortesia__descricao { text-wrap: pretty; }
+/* "Escolher duas opções": fonte menor, logo abaixo dos cards */
+.cortesias-abas--quatro .cortesias__nota--escolha {
+font-family: var(--fonte-titulo);
+font-weight: 500;
+font-size: 0.78rem;
+letter-spacing: 0.16em;
+text-transform: uppercase;
+color: var(--cor-primaria);
+}
+@media (min-width: 960px) {
+/* 4 abas cabem numa linha: fonte e espaçamento um pouco menores que as 3 abas antigas */
+.cortesias-abas--quatro .cortesias-abas__lista { gap: clamp(1.25rem, 2.4vw, 2.5rem); }
+.cortesias-abas--quatro .cortesias-abas__aba { font-size: clamp(0.78rem, 1.05vw, 0.95rem); letter-spacing: 0.12em; white-space: nowrap; }
+}
+/* Mobile: as 4 abas numa grade 2 x 2, cada uma com o nome inteiro */
+@media (max-width: 959px) {
+.cortesias-abas--quatro .cortesias-abas__lista {
+display: grid;
+grid-template-columns: 1fr 1fr;
+column-gap: 1rem;
+border-bottom: 0;
+}
+.cortesias-abas--quatro .cortesias-abas__aba {
+display: flex;
+align-items: flex-end;
+justify-content: center;
+min-height: 48px;
+padding: 0.5rem 0.25rem 0.6rem;
+border-bottom: 1px solid var(--cor-linha);
+font-size: clamp(0.62rem, 2.9vw, 0.74rem);
+letter-spacing: 0.1em;
+line-height: 1.3;
+text-align: center;
+}
+.cortesias-abas--quatro .cortesias-abas__aba[aria-selected="true"] { border-bottom: 2px solid var(--cor-oliva); }
+.cortesias-abas--quatro .cortesias__nota--escolha { font-size: 0.7rem; text-align: center; border-left: 0; padding-left: 0; }
+}
+@media (min-width: 960px) {
+/* Categoria com só 4 cortesias: os 4 cards ocupam a largura toda (sem o "pedaço" do 5º) */
+.cortesias-abas--quatro .cortesias__grade:has(> .cortesia:nth-child(4):last-child) .cortesia { flex-basis: calc((100% - 4.5rem) / 4); }
+}
+/* Celulares estreitos (até 359px): card um pouco mais largo e descrição 13px,
+   para as quebras definidas (ex.: torre de espumante) caberem como no 360–430px */
+@media (max-width: 359px) {
+.cortesias-abas--quatro .cortesias__grade { --largura-card: 80vw; }
+.cortesias-abas--quatro .cortesia__descricao { font-size: 0.8125rem; }
+}
+/* Palavra composta que não pode quebrar no hífen (ex.: "pré-wedding") */
+.sem-quebra { white-space: nowrap; }
