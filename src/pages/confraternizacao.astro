@@ -1,0 +1,714 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import Img from '../components/ui/Img.astro';
+import Video from '../components/ui/Video.astro';
+import LeadForm from '../components/forms/LeadForm.astro';
+import { tipoEventoOptions } from '../scripts/lead-payload';
+import '../styles/eventos-corporativos.css';
+import '../styles/confraternizacao.css';
+
+const CDN = 'https://media.dmove.com.br/clients/casa-rofer/photos/';
+const CDN_V = 'https://media.dmove.com.br/clients/casa-rofer/videos/';
+
+const gastronomiaImages = [
+  `${CDN}carrossel-gastronomia_corporativo06_resultado.webp`,
+  `${CDN}carrossel-gastronomia_corporativo05_resultado.webp`,
+  `${CDN}carrossel-gastronomia_corporativo04_resultado.webp`,
+  `${CDN}carrossel-gastronomia_corporativo03_resultado.webp`,
+  `${CDN}carrossel-gastronomia_corporativo02_resultado.webp`,
+  `${CDN}carrossel-gastronomia_corporativo01_resultado.webp`,
+];
+
+const partnerLogos = [
+  { src: `${CDN}alcon-logo_resultado.webp`,                         alt: 'Logo Alcon',               w: 963, h: 291, scale: .774 },
+  { src: `${CDN}logo-johnson-johnson-512_resultado.webp`,           alt: 'Logo Johnson & Johnson',   w: 470, h: 100, scale: .920 },
+  { src: `${CDN}logo-ibm-512_resultado.webp`,                       alt: 'Logo IBM',                 w: 468, h: 198, scale: .727 },
+  { src: `${CDN}logo-gree-512_resultado.webp`,                      alt: 'Logo Gree',                w: 468, h: 106, scale: .813 },
+  { src: `${CDN}logo-claro-512_resultado.webp`,                     alt: 'Logo Claro',               w: 469, h: 469, scale: .520 },
+  { src: `${CDN}logo-caixa-economica-federal-512_resultado.webp`,   alt: 'Logo Caixa',               w: 469, h: 121, scale: .796 },
+  { src: `${CDN}logo-peugeot-512_resultado.webp`,                   alt: 'Logo Peugeot',             w: 468, h: 336, scale: .650 },
+  { src: `${CDN}caras-logo-png_seeklogo-26088_resultado.webp`,      alt: 'Logo Caras',               w: 512, h: 276, scale: .692 },
+  { src: `${CDN}inovafood-logo-1-YrDqgXro7Gu40wen_resultado.webp`, alt: 'Logo Inova Food Summit',   w: 472, h: 315, scale: .660 },
+  { src: `${CDN}logo-abc-ocre_resultado.webp`,                      alt: 'Logo Banco ABC Brasil',    w: 512, h: 512, scale: .520 },
+  { src: `${CDN}mercer-logo-blue_resultado.webp`,                   alt: 'Logo Mercer',              w: 512, h: 164, scale: .766 },
+  { src: `${CDN}1_pCM0rg8f5jpSTdgE2baz7A_resultado.webp`,          alt: 'Logo Nestlé',              w: 508, h: 512, scale: .540 },
+  { src: `${CDN}Shark-Tank-Emblem_resultado.webp`,                  alt: 'Logo Shark Tank Brasil',   w: 512, h: 117, scale: .812 },
+  { src: `${CDN}camicado-512_resultado.webp`,                       alt: 'Logo Camicado',            w: 469, h: 119, scale: .798 },
+];
+
+const galleryImages = [
+  { src: `${CDN}galeria-plateia-palestra-palco.webp`,       alt: 'Plateia acompanhando apresentação no palco do salão, com iluminação azul' },
+  { src: `${CDN}galeria-convidados-mesas-bistro.webp`,      alt: 'Convidados conversando em mesas bistrô durante evento corporativo no salão' },
+  { src: `${CDN}galeria-coquetel-salao-banners.webp`,       alt: 'Coquetel corporativo no salão com banners suspensos e escada ao fundo' },
+  { src: `${CDN}galeria-foto-equipe-salao.webp`,            alt: 'Equipe reunida para foto em grupo durante evento na Casa Rofer' },
+  { src: `${CDN}galeria-salao-buffet-convidados.webp`,      alt: 'Salão cheio de convidados com buffet montado na lateral' },
+  { src: `${CDN}galeria-jantar-parede-verde-telao.webp`,    alt: 'Jantar de confraternização com parede verde, mesas postas e telão' },
+  { src: `${CDN}galeria-convidados-iluminacao-azul.webp`,   alt: 'Convidados reunidos no salão com iluminação azul e banners suspensos' },
+  { src: `${CDN}galeria-equipe-estandes.webp`,              alt: 'Equipe posando diante de estandes de expositores em evento corporativo' },
+  { src: `${CDN}galeria-foto-participantes-summit.webp`,    alt: 'Participantes comemorando em foto de grupo diante do painel do evento' },
+  { src: `${CDN}galeria-networking-jardim-de-inverno.webp`, alt: 'Networking no salão jardim de inverno, com cobertura de vidro e parede verde' },
+  { src: `${CDN}galeria-jardim-de-inverno-mesas-altas.webp`,alt: 'Salão jardim de inverno com mesas altas, convidados e parede verde' },
+  { src: `${CDN}galeria-coquetel-noturno-jardim.webp`,      alt: 'Coquetel noturno no salão jardim de inverno com convidados' },
+];
+
+const testimonials = [
+  {
+    quote: '"Fui na confraternização da firma, pessoal da casa extremamente educado, espaço nota 10000, estava um calor danado, mas lá dentro estava fresquinho."',
+    author: 'Ingrid V.',
+  },
+  {
+    quote: '"Atendimento top, comida sensacional, espaço lindo. Já fiz eventos em vários espaços em SP e esse marcou a história da nossa empresa. Muito obrigado equipe Rofer por tudo! Super recomendo!"',
+    author: 'Innove Digital Marketing',
+  },
+  {
+    quote: '"Casa para eventos corporativos ou sociais no tamanho certo. Ótima estrutura, gastronomia excelente do buffet Rofer além de contar com a Gama AV no audiovisual. Recomendo uma visita."',
+    author: 'Edu L.',
+  },
+  {
+    quote: '"Estive na Casa Rofer para um evento e fiquei impressionada com a beleza e versatilidade do espaço! A gastronomia apresentada é perfeita, tudo impecável e de muito bom gosto! Os colaboradores simpáticos e atenciosos."',
+    author: 'Denise P.',
+  },
+  {
+    quote: '"Local agradável, espaço bem arejado, boa comida. Bom para eventos corporativos."',
+    author: 'Valdecir C.',
+  },
+];
+
+const dpainItems = [
+  { img: `${CDN}soluca-360_corporativo_resultado.webp`,       alt: 'Solução 360º',   label: 'Solução 360º',   cls: 'dc-solucao360', ativo: true },
+  { img: `${CDN}gastronomia_corporativo_resultado.webp`,      alt: 'Gastronomia',    label: 'Gastronomia',    cls: 'dc-gastronomia' },
+  { img: `${CDN}coquetelaria_corporativo_resultado.webp`,     alt: 'Coquetelaria',   label: 'Coquetelaria',   cls: 'dc-coquetelaria' },
+  { img: `${CDN}ambientacao_corporativo_resultado.webp`,      alt: 'Ambientação',    label: 'Ambientação',    cls: 'dc-ambientacao' },
+  { img: `${CDN}tecnologia_corporativo_resultado.webp`,       alt: 'Tecnologia',     label: 'Tecnologia',     cls: 'dc-tecnologia' },
+  { img: `${CDN}mobiliario_corporativo_resultado.webp`,       alt: 'Mobiliário',     label: 'Mobiliário',     cls: 'dc-mobiliario' },
+  { img: `${CDN}decoracao_corporativo_resultado.webp`,        alt: 'Decoração',      label: 'Decoração',      cls: 'dc-decoracao' },
+  { img: `${CDN}sonorizacao_corporativo_resultado.webp`,      alt: 'Sonorização/DJ', label: 'Sonorização/DJ', cls: 'dc-sonorizacao' },
+];
+
+const eventTypes = [
+  { name: 'Convenções',              icon: '<path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/>' },
+  { name: 'Lançamentos de produtos', icon: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>' },
+  { name: 'Treinamentos',            icon: '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>' },
+  { name: 'Premiações',              icon: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>' },
+  { name: 'Confraternizações',       icon: '<path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/>' },
+  { name: 'Eventos de relacionamento',icon: '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>' },
+  { name: 'Workshops',               icon: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>' },
+  { name: 'Eventos institucionais',  icon: '<path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M12 2l8 5H4z"/>' },
+];
+---
+
+<Base
+  title="Espaço para Confraternizações Corporativas em São Paulo | Casa Rofer"
+  description="Espaço para confraternizações corporativas em São Paulo: dois ambientes para até 250 convidados no Brooklin. Fim de ano, premiações e celebrações com excelência."
+  ogImage={`${CDN}og-casa-rofer.jpg`}
+  canonical="https://eventos.casarofer.com.br/eventos-corporativos-confraternizacoes/"
+  whatsAppShowEmpresaField
+  whatsAppMessage={"Olá! Tenho interesse em realizar uma confraternização corporativa na Casa Rofer.\n"}
+>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <Img
+      src={`${CDN}hero-confraternizacao-lounge.webp`}
+      alt="Confraternização de empresa no salão da Casa Rofer, com convidados no lounge e nas mesas bistrô, no Brooklin, São Paulo"
+      priority
+    />
+  </div>
+  <Img src={`${CDN}logo-white.webp`} alt="Casa Rofer" class="hero-logo" width={190} sizes="190px" />
+  <div class="hero-inner">
+    <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
+    <div class="hero-divider reveal in d1"></div>
+    <h1 class="reveal in d2">Confraternizações<br class="br-mobile"> de fim de ano<br> com excelência<br class="br-mobile"> em cada&nbsp;detalhe</h1>
+    <div class="hero-cta reveal in d3">
+      <a href="#contato" class="btn white">Solicite orçamento</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== AUTORIDADE ===== -->
+<section class="authority">
+  <div class="autoridade reveal">
+    <div class="autoridade__item">
+      <span class="autoridade__num">2</span>
+      <span class="autoridade__leg">ambientes integrados</span>
+    </div>
+    <span class="autoridade__sep" aria-hidden="true"></span>
+    <div class="autoridade__item">
+      <span class="autoridade__num"><small>até </small>250</span>
+      <span class="autoridade__leg">convidados</span>
+    </div>
+    <span class="autoridade__sep" aria-hidden="true"></span>
+    <div class="autoridade__item">
+      <span class="autoridade__num">1.300<small>m²</small></span>
+      <span class="autoridade__leg">de área útil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUÇÃO 360° ===== -->
+<section id="solucao-360" class="pad" style="background:#FFFFFF">
+  <div class="solucao-wrap">
+    <div class="solucao-split">
+      <div class="solucao-text solucao-text--esquerda reveal">
+        <p class="eyebrow">Solução 360°</p>
+        <h2 class="section-title">Soluções <span class="accent">360º</span></h2>
+        <p class="so-desk">Na Casa Rofer, cada evento é construído de forma integrada,<br class="br-largo"> reunindo estrutura, gastronomia, ambientação e operação<br class="br-largo"> em uma única&nbsp;solução.</p>
+        <p class="so-desk">Mais do que oferecer diferentes serviços, atuamos em cocriação com nossos clientes, alinhando estética, funcionalidade e identidade em cada projeto. Uma equipe especializada acompanha todas as etapas, do planejamento à execução, garantindo que cada detalhe esteja conectado ao propósito do&nbsp;evento.</p>
+        <p class="so-desk">Um espaço com estrutura completa para transformar ideias em eventos únicos, com excelência em cada&nbsp;etapa.</p>
+        <p class="so-mob">Na Casa Rofer, estrutura, gastronomia, ambientação e operação se integram em uma única solução. Nossa equipe cria cada projeto junto com você e acompanha todas as etapas, do planejamento à execução, com excelência em cada&nbsp;detalhe.</p>
+      </div>
+
+      <div class="video-frame solucao-video reveal d1">
+        <Video
+          src={`${CDN_V}video-solucao_corporativo_(1).webm`}
+          poster={`${CDN}capa-video_corporativos_resultado.webp`}
+          title="Casa Rofer | Solução 360° para Eventos Corporativos"
+          description="Conheça a solução 360° da Casa Rofer para eventos corporativos no Brooklin, São Paulo."
+          uploadDate="2026-08-06"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIAIS (DPAIN) ===== -->
+<section id="diferenciais" class="pad" style="background:#F3F0EA">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Diferenciais</p>
+    <h2 class="section-title center reveal d1" style="max-width:35ch">Tudo o que seu <br class="br-mobile">evento precisa.<br><span class="accent">Em um só lugar.</span></h2>
+  </div>
+  <div class="wrap" style="max-width:1600px">
+    <div class="dpain reveal">
+      {dpainItems.map((item) => (
+        <button
+          class={`dpain__item${item.ativo ? ' is-ativo' : ''}`}
+          type="button"
+          aria-pressed={item.ativo ? 'true' : 'false'}
+        >
+          <img src={item.img} alt={item.alt} width="1200" loading="lazy" class={item.cls} decoding="async" />
+          <span class="dpain__nome">{item.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESSO: JORNADA ===== -->
+<section id="processo" class="processo-colagem">
+  <div class="pc">
+    <div class="pc__fotos reveal">
+      <figure class="pc__f1">
+        <img src={`${CDN}jornada-atendimento-consultivo.webp`} alt="Consultor da Casa Rofer em reunião com clientes à mesa, planejando o evento" width="1200" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="pc__f2">
+        <img src={`${CDN}operacao-integrada_corporativo-v2_resultado.webp`} alt="Operação integrada corporativa na Casa Rofer" width="1200" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+    <div class="pc__linha">
+      <div class="pc__item reveal">
+        <p class="pc__tag">Atendimento consultivo</p>
+        <h3 class="pc__titulo">Um planejamento alinhado aos seus objetivos</h3>
+        <p class="pc__texto">Cada projeto é desenvolvido de acordo com os objetivos da empresa. Nossa equipe acompanha todas as etapas para garantir organização, previsibilidade e tranquilidade durante toda a jornada.</p>
+      </div>
+      <div class="pc__item reveal d1">
+        <p class="pc__tag">Operação integrada</p>
+        <h3 class="pc__titulo">Execução impecável em cada detalhe</h3>
+        <p class="pc__texto">Com um único parceiro coordenando todos os serviços, eliminamos retrabalhos, facilitamos a comunicação entre fornecedores e garantimos uma execução muito mais eficiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESPAÇOS ===== -->
+<section id="espacos" class="pad" style="background:#F3F0EA">
+  <div class="wrap">
+    <div class="center" style="max-width:1100px;margin-inline:auto">
+      <p class="eyebrow reveal">Os Espaços</p>
+      <h2 class="section-title center reveal d1" style="max-width:40ch"><span class="accent">Dois ambientes versáteis</span> para<br class="br-desktop"> celebrar as&nbsp;conquistas da sua&nbsp;equipe</h2>
+    </div>
+    <div class="espacos-lado">
+      <article class="espaco reveal">
+        <figure class="espaco__foto">
+          <img src={`${CDN}salao_michelangelo.webp`} alt="Salão Michelângelo, espaço para eventos corporativos" width="1200" loading="lazy" decoding="async" />
+        </figure>
+        <p class="espaco__tag">Salão 01</p>
+        <h3 class="espaco__nome">Salão Michelângelo</h3>
+        <p class="espaco__texto">Digno da imponência de grandes eventos, surpreende<br class="br-desktop"> com toda a flexibilidade, estrutura, conforto, elegância<br class="br-desktop"> e&nbsp;inovação.</p>
+        <a class="espaco__cta" href="#contato">Agende uma visita <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="espaco reveal d1">
+        <figure class="espaco__foto">
+          <img src={`${CDN}salao-da-vinci_corporativo03_resultado.webp`} alt="Salão Leonardo da Vinci, espaço para eventos corporativos" width="1200" loading="lazy" decoding="async" />
+        </figure>
+        <p class="espaco__tag">Salão 02</p>
+        <h3 class="espaco__nome">Salão Leonardo da Vinci</h3>
+        <p class="espaco__texto">Completamente banhado em luz natural, se destaca pela capacidade de&nbsp;conexão com a natureza estando sempre<br class="br-desktop"> à&nbsp;espera do&nbsp;raiar do sol ou do brilho das&nbsp;estrelas.</p>
+        <a class="espaco__cta" href="#contato">Agende uma visita <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIPOS DE EVENTOS ===== -->
+<section id="tipos-eventos" class="pad" style="background:#FFFFFF">
+  <div class="wrap">
+    <div class="center" style="max-width:820px;margin-inline:auto">
+      <p class="eyebrow reveal">Eventos</p>
+      <h2 class="section-title center reveal d1" style="max-width:35ch">Soluções<br class="br-mobile"> para cada<br class="br-desktop"> momento<br class="br-mobile"> da <span class="accent">sua&nbsp;empresa</span></h2>
+    </div>
+    <div class="events-grid">
+      {eventTypes.map((ev, i) => (
+        <div class="event-card reveal" style={`transition-delay: ${(i * 0.05).toFixed(2)}s`}>
+          <div class="event-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="event-icon" aria-hidden="true" set:html={ev.icon} />
+          </div>
+          <h3>{ev.name}</h3>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ===== GASTRONOMIA ===== -->
+<section id="gastronomia" class="pad" style="background:#F3F0EA">
+  <div class="wrap">
+    <p class="eyebrow reveal center">Buffet Rofer</p>
+  </div>
+  <div class="gastro-wrap" style="margin-top:52px">
+    <div class="carousel reveal gastro-carousel" id="gastronomy-carousel">
+      <button class="car-btn prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <div class="car-track gastro-track">
+        {gastronomiaImages.map((src) => (
+          <div class="slide"><img src={src} alt="Gastronomia Corporativa Rofer" width="1200" loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+      <button class="car-btn next" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARCEIROS ===== -->
+<section class="partners-section" style="background:#FFFFFF">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Parceiros</p>
+    <h2 class="section-title center reveal d1" style="margin-bottom:20px;max-width:none;text-wrap:balance">Empresas<br class="br-mobile"> que <span class="accent">confiaram</span><br> <span class="accent">seus eventos</span><br class="br-mobile"> à Casa&nbsp;Rofer</h2>
+  </div>
+  <div class="wrap partners-carousel-wrap reveal d2" style="max-width:960px">
+    <div class="partners-viewport">
+      <div class="partners-track">
+        {[...partnerLogos, ...partnerLogos].map((p) => (
+          <div class="partners-logo-item">
+            <img src={p.src} alt={p.alt} width={p.w} height={p.h} style={`width:${(p.scale*100).toFixed(1)}%;height:auto;max-height:100%;object-fit:contain`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPOIMENTOS ===== -->
+<section class="feedbacks pad">
+  <div class="fb-bg" data-parallax="0.18">
+    <img src={`${CDN}galeria_corporativo03_resultado.webp`} alt="Depoimentos corporativos na Casa Rofer" width="1200" loading="lazy" decoding="async" />
+  </div>
+  <div class="wrap fb-inner">
+    <p class="eyebrow center reveal" style="color:var(--sand)">Depoimentos</p>
+    <h2 class="section-title center reveal d1" style="color:#fff;margin-inline:auto;max-width:48ch;margin-bottom:24px;text-wrap:balance">A diferença está nos mínimos&nbsp;detalhes</h2>
+    <p class="fb-text center reveal d2">Histórias reais de quem viveu momentos corporativos de sucesso conosco.</p>
+    <div class="fb-carousel-container reveal d2" style="margin-top:50px">
+      <div class="carousel fb-carousel" id="feedback-carousel">
+        <button class="car-btn prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div class="car-track fb-track">
+          {testimonials.map((t) => (
+            <div class="fb-card slide">
+              <div class="fb-card-stars">★★★★★</div>
+              <p class="fb-card-quote">{t.quote}</p>
+              <div class="fb-card-author">
+                <strong>{t.author}</strong>
+                <span>Avaliação no Google</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <button class="car-btn next" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIA ===== -->
+<section id="galeria" class="pad">
+  <div class="wrap center">
+    <p class="eyebrow reveal">Galeria</p>
+    <h2 class="section-title center reveal d1" style="max-width:none;text-wrap:balance">Projetos que refletem<br class="br-desktop"> <span class="accent">excelência</span> em cada&nbsp;detalhe</h2>
+  </div>
+  <div class="wrap" style="max-width:1600px">
+    <div class="gal-carousel-wrapper">
+      <button class="car-btn prev gal-car-btn" aria-label="Anterior" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"></path></svg>
+      </button>
+      <div class="gal-grid reveal" id="gal">
+        {galleryImages.map((img) => (
+          <div class="figure">
+            <img src={img.src} alt={img.alt} width="1600" height="1067" loading="lazy" decoding="async" />
+          </div>
+        ))}
+      </div>
+      <button class="car-btn next gal-car-btn" aria-label="Próximo" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato" class="form-sec pad" style="background:var(--bg-soft)">
+  <div class="wrap form-card">
+    <div class="center">
+      <p class="eyebrow reveal">Contato</p>
+      <h2 class="section-title center reveal d1" style="max-width:none;text-wrap:balance">Vamos celebrar as conquistas<br class="br-desktop"> da <span class="accent">sua equipe</span> na Casa&nbsp;Rofer?</h2>
+      <p class="lead center reveal d2 so-desk-ct" style="margin-top:20px">Preencha o formulário e receba um atendimento personalizado para conhecer nosso espaço, esclarecer dúvidas e solicitar um orçamento.</p>
+      <p class="lead center reveal d2 so-mob-ct" style="margin-top:14px">Receba um atendimento personalizado.</p>
+      <p class="contato-endereco reveal d2">
+        <a href="https://maps.app.goo.gl/JMRcfftpV82zpQBS7" target="_blank" rel="noopener" aria-label="Ver endereço da Casa Rofer no Google Maps">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>R. Baltazar Fernandes, 54 · Brooklin,&nbsp;São&nbsp;Paulo</span>
+        </a>
+      </p>
+    </div>
+    <LeadForm
+      formId="lead-form"
+      project={config.project_slug}
+      submitUrl={config.forms['lead-form'].webhooks[0]}
+      redirectUrl={config.forms['lead-form'].redirect_on_success}
+      submitText="Solicitar Orçamento"
+      successTitle="Solicitação recebida"
+      successText={"Recebemos seu pedido.\nEm breve entraremos em contato pelo WhatsApp ou e-mail."}
+      fields={[
+        { name: 'empresa', type: 'text', label: 'Nome da empresa', required: true, full: true },
+        { type: 'row', fields: [
+          { name: 'nome',     type: 'text',  label: 'Nome',     required: true },
+          { name: 'telefone', type: 'text',  label: 'Telefone', required: true },
+        ]},
+        { type: 'row', fields: [
+          { name: 'email',       type: 'email',  label: 'E-mail',          required: true },
+          { name: 'tipo_evento', type: 'select', label: 'Tipo de evento',   required: true,
+            options: [
+              { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+              ...tipoEventoOptions,
+            ]
+          },
+        ]},
+        { type: 'row', fields: [
+          { name: 'data_evento', type: 'text',   label: 'Data do evento',       required: true, datepicker: true },
+          { name: 'convidados',  type: 'number', label: 'Número de convidados', required: true },
+        ]},
+        { name: 'detalhes_adicionais', type: 'textarea', label: 'Detalhes adicionais', required: false, hint: 'não obrigatório', full: true },
+      ]}
+    />
+  </div>
+</section>
+
+<!-- ===== LOCALIZAÇÃO ===== -->
+<section id="localizacao" class="pad">
+  <div class="wrap">
+    <div class="center" style="max-width:760px;margin-inline:auto">
+      <p class="eyebrow reveal">Localização</p>
+      <h2 class="section-title center reveal d1" style="max-width:36ch"><span class="accent">Um endereço estratégico</span> <br>para receber sua empresa <br>com excelência</h2>
+      <p class="lead center reveal d2" style="margin-top:20px">R. Baltazar Fernandes, 54, Brooklin, São Paulo, SP, 04583-020</p>
+    </div>
+    <a
+      class="loc-map reveal d1"
+      style="max-width:1000px;margin:52px auto 0"
+      href="https://maps.app.goo.gl/JMRcfftpV82zpQBS7"
+      target="_blank"
+      rel="noopener"
+      aria-label="Ver localização no Google Maps"
+    >
+      <Img src={`${CDN}localizacao_resultado.webp`} alt="Mapa de localização da Casa Rofer" width={1000} />
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bar">
+      <span>© 2026 Casa Rofer · R. Baltazar Fernandes, 54, Brooklin, São Paulo. Todos os direitos reservados. · <a href="/politica-de-privacidade/" style="color:inherit;text-decoration:underline">Política de Privacidade</a></span>
+      <Img src={`${CDN}logo-white.webp`} alt="Casa Rofer" class="foot-logo" width={130} sizes="130px" />
+      <span style="display:inline-flex;align-items:center;gap:4px">Desenvolvido por <a href="https://www.dmove.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center"><img src={`${CDN}Logotipo-dmove.webp`} alt="Dmove" width="62" height="26" loading="lazy" style="height:26px;width:auto;opacity:0.95" /></a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import '../scripts/index.js';
+</script>
+
+<script>
+  function initInfiniteGastroCarousel() {
+    const carousel = document.getElementById('gastronomy-carousel');
+    if (!carousel) return;
+    const track = carousel.querySelector('.gastro-track');
+    if (!track || track.querySelector('.clone')) return;
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    const slides = [...track.querySelectorAll('.slide')];
+    if (slides.length === 0) return;
+    const numVisible = 3;
+    const clonesBefore = slides.slice(-numVisible).map(s => s.cloneNode(true));
+    const clonesAfter  = slides.slice(0, numVisible).map(s => s.cloneNode(true));
+    clonesBefore.forEach(c => { c.classList.add('clone'); track.insertBefore(c, track.firstChild); });
+    clonesAfter.forEach(c  => { c.classList.add('clone'); track.appendChild(c); });
+    let currentIndex = numVisible;
+    function getStep() {
+      const s = track.querySelector('.slide');
+      const gap = parseFloat(window.getComputedStyle(track).gap) || 16;
+      return s ? s.offsetWidth + gap : 0;
+    }
+    function scrollTo(index, smooth = true) {
+      currentIndex = index;
+      track.scrollTo({ left: getStep() * currentIndex, behavior: smooth ? 'smooth' : 'auto' });
+    }
+    setTimeout(() => scrollTo(numVisible, false), 100);
+    let adj = false;
+    track.addEventListener('scroll', () => {
+      if (adj) return;
+      const step = getStep();
+      if (!step) return;
+      const total = track.querySelectorAll('.slide').length;
+      const cur = Math.round(track.scrollLeft / step);
+      if (cur >= total - numVisible) {
+        adj = true; currentIndex = numVisible;
+        track.scrollTo({ left: step * currentIndex, behavior: 'auto' });
+        setTimeout(() => { adj = false; }, 60);
+      } else if (cur <= 0) {
+        adj = true; currentIndex = total - numVisible * 2;
+        track.scrollTo({ left: step * currentIndex, behavior: 'auto' });
+        setTimeout(() => { adj = false; }, 60);
+      }
+    });
+    function next() { const s = getStep(); if (!s) return; scrollTo(Math.round(track.scrollLeft / s) + 1); }
+    function prev() { const s = getStep(); if (!s) return; scrollTo(Math.round(track.scrollLeft / s) - 1); }
+    let timer = null;
+    function start() { stop(); timer = setInterval(next, 3500); }
+    function stop()  { if (timer) clearInterval(timer); }
+    start();
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('touchstart', stop, { passive: true });
+    nextBtn?.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); next(); start(); });
+    prevBtn?.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); prev(); start(); });
+  }
+
+  function initGalleryCarousel() {
+    const wrapper = document.querySelector('.gal-carousel-wrapper');
+    if (!wrapper) return;
+    const track   = wrapper.querySelector('#gal');
+    const prevBtn = wrapper.querySelector('.gal-car-btn.prev');
+    const nextBtn = wrapper.querySelector('.gal-car-btn.next');
+    if (!track || !prevBtn || !nextBtn) return;
+    const step = () => { const f = track.querySelector('.figure'); return f ? f.offsetWidth + 16 : track.clientWidth * 0.8; };
+    prevBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); track.scrollBy({ left:  step(), behavior: 'smooth' }); });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { initInfiniteGastroCarousel(); initGalleryCarousel(); });
+  initInfiniteGastroCarousel();
+  initGalleryCarousel();
+</script>
+
+<script>
+  (function () {
+    var p = document.querySelector('.dpain');
+    if (!p) return;
+    var itens = [].slice.call(p.querySelectorAll('.dpain__item'));
+    function ativar(el) {
+      itens.forEach(function (i) {
+        var a = i === el;
+        i.classList.toggle('is-ativo', a);
+        i.setAttribute('aria-pressed', a ? 'true' : 'false');
+      });
+    }
+    var hover = window.matchMedia('(hover: hover) and (min-width: 769px)');
+    itens.forEach(function (i) {
+      i.addEventListener('click',      function () { ativar(i); });
+      i.addEventListener('focus',      function () { ativar(i); });
+      i.addEventListener('mouseenter', function () { if (hover.matches) ativar(i); });
+    });
+  })();
+</script>
+
+</Base>
+
+<style>
+  /* ── Gastro Carousel: 3 colunas desktop ── */
+  .gastro-wrap { width: 70%; margin-inline: auto; }
+  .gastro-track { gap: 16px; }
+  .gastro-track .slide {
+    flex: 0 0 calc((100% - 32px) / 3);
+    width: calc((100% - 32px) / 3);
+    min-width: 0;
+    aspect-ratio: 4/3;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  @media (max-width: 1024px) {
+    .gastro-track .slide {
+      flex: 0 0 calc((100% - 16px) / 2);
+      width: calc((100% - 16px) / 2);
+    }
+  }
+  @media (max-width: 760px) {
+    .gastro-track .slide { flex: 0 0 100%; width: 100%; }
+  }
+
+  /* ── Grid de Tipos de Eventos ── */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 54px;
+  }
+  .event-card {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1), border-color 0.4s;
+  }
+  .event-card:hover { transform: translateY(-6px); border-color: var(--sand); }
+  .event-icon-wrapper {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+  }
+  .event-icon { width: 24px; height: 24px; }
+  .event-card h3 {
+    font-family: 'Aktiv Grotesk', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--title); letter-spacing: 0.01em;
+  }
+
+  /* ── Parceiros ── */
+  .partners-section {
+    padding: 80px 0; text-align: center;
+    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .partners-carousel-wrap { margin-top: 30px; position: relative; }
+  .partners-viewport { overflow: hidden; width: 100%; position: relative; }
+  .partners-track {
+    display: flex; gap: 20px;
+    animation: scrollPartnerLogos 30s linear infinite;
+    will-change: transform;
+  }
+  .partners-track:hover { animation-play-state: paused; }
+  .partners-logo-item {
+    flex: 0 0 calc((100% - 60px) / 4);
+    aspect-ratio: 1 / 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .partners-logo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .partners-logo-item:hover img { transform: scale(1.08); }
+  @keyframes scrollPartnerLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-14 * (100% + 20px) / 4)); }
+  }
+  @media (max-width: 760px) {
+    .partners-track { gap: 12px; animation-duration: 25s; }
+    .partners-logo-item { flex: 0 0 calc((100% - 12px) / 2); padding: 12px; aspect-ratio: 3 / 2; }
+    .partners-logo-item img { object-fit: contain; }
+    @keyframes scrollPartnerLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-14 * (100% + 12px) / 2)); }
+    }
+  }
+  @media (max-width: 480px) {
+    .partners-track { gap: 8px; }
+    .partners-logo-item { flex: 0 0 calc((100% - 8px) / 2); padding: 8px; aspect-ratio: 3 / 2; }
+    @keyframes scrollPartnerLogos {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-14 * (100% + 8px) / 2)); }
+    }
+  }
+
+  /* ── Galeria 3 colunas ── */
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 60px;
+  }
+  .gal-grid .figure {
+    overflow: hidden; cursor: pointer;
+    position: relative; border-radius: 2px;
+    aspect-ratio: 4 / 3;
+  }
+  .gal-grid .figure :global(img) {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    transition: transform 1.4s cubic-bezier(.16,1,.3,1);
+  }
+  .gal-grid .figure:hover :global(img) { transform: scale(1.06); }
+  .gal-grid .figure::after {
+    content: "+"; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 2rem; font-family: 'Aktiv Grotesk';
+    background: rgba(26,23,20,0); opacity: 0;
+    transition: .4s; pointer-events: none;
+  }
+  .gal-grid .figure:hover::after { background: rgba(26,23,20,.32); opacity: 1; }
+
+  @media (max-width: 1024px) {
+    .events-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .events-grid { grid-template-columns: 1fr; }
+    .gal-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px !important;
+      padding-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .gal-grid::-webkit-scrollbar { display: none; }
+    .gal-grid .figure {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      scroll-snap-align: center !important;
+      scroll-snap-stop: always !important;
+      aspect-ratio: 4 / 3 !important;
+      border-radius: 4px;
+    }
+  }
+
+  /* ── Gallery carousel buttons mobile ── */
+  .gal-car-btn { display: none; }
+  @media (max-width: 760px) {
+    .gal-carousel-wrapper { position: relative; }
+    .gal-car-btn {
+      display: flex; width: 38px; height: 38px;
+      opacity: .85; background: rgba(255,255,255,.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+    .gal-car-btn.prev { left: 8px; }
+    .gal-car-btn.next { right: 8px; }
+  }
+</style>
