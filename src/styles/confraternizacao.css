@@ -480,9 +480,11 @@ h1,h2,h3,.section-title,.hero h1 { font-weight: 700; }
   #feedback-carousel .car-btn.next { right: 22px !important; }
   #feedback-carousel .car-btn svg { width: 15px; height: 15px; }
   .foot-bar .foot-logo { order: -1; }
-  .foot-bar > span:first-child { white-space: nowrap; font-size: clamp(.66rem, 3.2vw, .82rem); }
+  .foot-bar > span:first-child { white-space: normal; font-size: .74rem; line-height: 1.5; text-wrap: balance; }
   footer { padding-top: 28px !important; padding-bottom: 24px !important; }
-  .foot-bar { gap: 12px !important; }
+  footer .wrap { padding-inline: 20px; box-sizing: border-box; }
+  .foot-bar { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
+  .foot-bar > * { max-width: 100%; }
   .foot-logo { width: 104px !important; }
   #espacos .section-title { text-wrap: balance; }
 }
