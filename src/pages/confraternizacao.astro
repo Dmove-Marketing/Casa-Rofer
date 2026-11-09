@@ -18,6 +18,25 @@ const gastronomiaImages = [
   `${CDN}carrossel-gastronomia_corporativo03_resultado.webp`,
   `${CDN}carrossel-gastronomia_corporativo02_resultado.webp`,
   `${CDN}carrossel-gastronomia_corporativo01_resultado.webp`,
+  `${CDN}ensaio-debutante-sophia-15-anos-mateus-josan1114.webp`,
+  `${CDN}Copia_de_Foto_1215.webp`,
+];
+
+const chefs = [
+  {
+    nome: 'Ronaldo Akamine',
+    img: `${CDN}casa-rofer-chef-ronaldo-akamine.webp`,
+    alt: 'Chef Ronaldo Akamine finalizando um prato com azeite no buffet',
+    pos: '62% 20%',
+    texto: 'O Rofer Gastronomia está sob o comando de Ronaldo Akamine, chef executivo e sócio fundador. Empreendedor e gestor de negócios na área de alimentação, Ronaldo dedicou os últimos 35 anos de sua vida à arte de encantar com a gastronomia.',
+  },
+  {
+    nome: 'João Akamine',
+    img: `${CDN}casa-rofer-chef-joao-akamine.webp`,
+    alt: 'Chef João Akamine montando uma mesa de frios e pães em evento ao ar livre',
+    pos: '75% 30%',
+    texto: 'João Akamine cresceu entre os bastidores da alta gastronomia, acompanhando de perto o trabalho do pai, Ronaldo Akamine. Desde pequeno, desenvolveu um olhar apurado para cada detalhe e uma paixão genuína pela arte de servir. Formado em gastronomia, João une tradição e inovação, sempre com foco em resultados e excelência. Seu compromisso vai além da cozinha – é sobre transformar eventos em experiências memoráveis.',
+  },
 ];
 
 const partnerLogos = [
@@ -50,6 +69,9 @@ const galleryImages = [
   { src: `${CDN}galeria-networking-jardim-de-inverno.webp`, alt: 'Networking no salão jardim de inverno, com cobertura de vidro e parede verde' },
   { src: `${CDN}galeria-jardim-de-inverno-mesas-altas.webp`,alt: 'Salão jardim de inverno com mesas altas, convidados e parede verde' },
   { src: `${CDN}galeria-coquetel-noturno-jardim.webp`,      alt: 'Coquetel noturno no salão jardim de inverno com convidados' },
+  { src: `${CDN}IMG_5476.JPG.webp`,                         alt: 'Evento corporativo na Casa Rofer' },
+  { src: `${CDN}g7summit-2026-casarofer-sp-1000.webp`,      alt: 'G7 Summit 2026 na Casa Rofer, em São Paulo' },
+  { src: `${CDN}g7summit-2026-casarofer-sp-1023.webp`,      alt: 'Convidados do G7 Summit 2026 na Casa Rofer' },
 ];
 
 const testimonials = [
@@ -271,10 +293,29 @@ const eventTypes = [
   </div>
 </section>
 
+<!-- ===== BUFFET ROFER ===== -->
+<section id="buffet-rofer" class="buffet-rofer">
+  <div class="wrap">
+    <p class="eyebrow reveal">Buffet Rofer</p>
+    <h2 class="buffet__titulo reveal d1">Com mais de três décadas de tradição, o Buffet&nbsp;Rofer se estabeleceu como um ícone em criar experiências gastronômicas&nbsp;inesquecíveis.</h2>
+    <div class="buffet__chefs">
+      {chefs.map((chef, i) => (
+        <article class={`chef reveal${i ? ' d1' : ''}`}>
+          <figure class="chef__foto">
+            <img src={chef.img} alt={chef.alt} width="750" height="526" loading="lazy" decoding="async" style={`object-position:${chef.pos}`} />
+          </figure>
+          <p class="chef__tag">{chef.nome}</p>
+          <p class="chef__texto">{chef.texto}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 <!-- ===== GASTRONOMIA ===== -->
 <section id="gastronomia" class="pad" style="background:#F3F0EA">
   <div class="wrap">
-    <p class="eyebrow reveal center">Buffet Rofer</p>
+    <p class="eyebrow reveal center">Gastronomia</p>
   </div>
   <div class="gastro-wrap" style="margin-top:52px">
     <div class="carousel reveal gastro-carousel" id="gastronomy-carousel">

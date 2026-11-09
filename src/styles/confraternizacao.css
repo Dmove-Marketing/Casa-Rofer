@@ -440,6 +440,78 @@ h1,h2,h3,.section-title,.hero h1 { font-weight: 700; }
 .contato-endereco a:hover { color: #a8925f; }
 .contato-endereco svg { flex: none; color: #a8925f; }
 
+/* ===== BUFFET ROFER: tradição + chefs ===== */
+.buffet-rofer {
+  background: #023d2d;
+  padding: clamp(70px, 8vw, 120px) 0;
+}
+.buffet-rofer .eyebrow { color: #c9b98f; }
+.buffet__titulo {
+  font-family: 'Aktiv Grotesk', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+  max-width: 34ch;
+  margin: 18px auto 0;
+}
+.buffet__chefs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 64px);
+  max-width: 1100px;
+  margin: clamp(44px, 5vw, 72px) auto 0;
+}
+.chef__foto {
+  margin: 0 0 26px;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: 0 24px 60px rgba(0,0,0,.3);
+}
+.chef__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s cubic-bezier(.16,1,.3,1);
+}
+.chef:hover .chef__foto img { transform: scale(1.04); }
+.chef__tag {
+  font-family: "Optima", 'Aktiv Grotesk', sans-serif;
+  font-weight: 500;
+  color: #c9b98f;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  font-size: .76rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+.chef__tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #a8925f;
+  transform: rotate(45deg);
+  flex: none;
+}
+.chef__texto {
+  font-family: 'Aktiv Grotesk', sans-serif;
+  font-weight: 400;
+  color: rgba(255,255,255,.82);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+@media (max-width: 760px) {
+  .buffet__chefs { grid-template-columns: 1fr; gap: 44px; width: 100%; }
+  .buffet-rofer .wrap { width: 90%; }
+}
+
 /* Quebra só em telas largas */
 .br-largo { display: none; }
 @media (min-width: 1200px) { .br-largo { display: inline; } }
