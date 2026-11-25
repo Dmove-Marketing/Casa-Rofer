@@ -1,0 +1,54 @@
+/* Campanha sazonal Kick-off 2027 (faixa + bloco). Remover junto com os componentes em março/2027. */
+
+/* ===== FAIXA ===== */
+.ko-bar{
+  position:relative;z-index:5;display:flex;align-items:center;justify-content:center;gap:14px 22px;flex-wrap:wrap;
+  padding:11px var(--gut);background:#12100e;color:#fff;text-align:center;
+  font-family:'Aktiv Grotesk',sans-serif;font-size:.82rem;line-height:1.3;
+  border-bottom:1px solid rgba(173,162,143,.35);transition:background .3s;
+}
+.ko-bar:hover{background:#1d1a16}
+.ko-bar-tag{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand)}
+.ko-bar-text{color:rgba(255,255,255,.92)}
+.ko-bar-cta{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--sand);padding-bottom:2px;white-space:nowrap}
+@media(max-width:640px){
+  .ko-bar{gap:4px 14px;padding-block:9px;font-size:.78rem}
+  .ko-bar-long{display:none}
+}
+
+/* ===== BLOCO ===== */
+.ko{background:var(--bg-soft);scroll-margin-top:0}
+.ko-grid{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:clamp(36px,6vw,96px)}
+.ko .section-title{max-width:16ch}
+.ko .lead{margin-top:20px;max-width:46ch}
+
+.ko-formatos{list-style:none;margin-top:34px;border-top:1px solid var(--line)}
+.ko-formatos li{display:grid;grid-template-columns:minmax(0,15rem) 1fr;gap:6px 24px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ko-formatos strong{font-weight:400;color:var(--title);font-size:1.02rem}
+.ko-formatos span{color:var(--ink-soft);font-size:.95rem}
+
+.ko-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.ko-cta .btn{padding:16px 34px}
+.ko-cta .btn.ghost{padding:15px 30px}
+
+.ko-media{position:relative;padding-bottom:clamp(40px,6vw,84px)}
+.ko-foto{overflow:hidden;border-radius:3px}
+.ko-foto img{width:100%;height:100%;object-fit:cover}
+.ko-foto-plenaria{aspect-ratio:5/4;margin-left:clamp(0px,4vw,56px)}
+.ko-foto-coquetel{position:absolute;left:0;bottom:0;width:42%;aspect-ratio:1/1;border:6px solid var(--bg-soft);box-shadow:0 18px 40px rgba(26,23,20,.16)}
+
+.ko-incluso{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-top:clamp(40px,6vw,72px);padding-top:26px;border-top:1px solid var(--line)}
+.ko-incluso li{padding:8px 18px;border:1px solid var(--sand);border-radius:40px;font-size:.88rem;color:var(--title);background:rgba(255,255,255,.55)}
+.ko-incluso .ko-incluso-label{border:0;background:none;padding:0 10px 0 0;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--sand)}
+
+@media(max-width:900px){
+  .ko-grid{grid-template-columns:1fr}
+  .ko-media{order:-1}
+  .ko-foto-plenaria{margin-left:14%}
+  .ko .section-title{max-width:none}
+}
+@media(max-width:560px){
+  .ko-formatos li{grid-template-columns:1fr;gap:2px}
+  .ko-cta .btn{width:100%;text-align:center}
+  .ko-incluso .ko-incluso-label{flex:0 0 100%}
+}

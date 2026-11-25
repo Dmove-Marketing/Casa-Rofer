@@ -1,0 +1,76 @@
+---
+// Bloco temporário "Kick-off 2027" (01/12/2026 a 28/02/2027).
+// Estratégia: Cérebro > Clientes/Casa Rofer/Performance/Estratégia por funil/Kick-offs e aberturas de ano 2027.md
+import Img from '../ui/Img.astro';
+import { kickoff2027, campanhaNoAr, expiraEm } from '../../data/campanhas';
+import '../../styles/kickoff-2027.css';
+
+const noAr = campanhaNoAr(kickoff2027);
+
+const formatos = [
+  { nome: 'Kick-off e abertura de ano', desc: 'Plenária para a equipe inteira, com palco e telão.' },
+  { nome: 'Convenção de vendas', desc: 'O dia inteiro no mesmo endereço, do coffee ao encerramento.' },
+  { nome: 'Reunião estratégica', desc: 'Luz natural e um ambiente fora da sala de sempre.' },
+  { nome: 'Lançamento de produto', desc: 'Cenografia e tecnologia para apresentar a novidade.' },
+];
+
+const incluso = ['Plenária', 'Coffee break', 'Almoço', 'Coquetel de encerramento', 'Tecnologia e mobiliário'];
+---
+{noAr && (
+  <section id="kick-off-2027" class="ko pad" data-campanha="kickoff-2027" data-expira={expiraEm(kickoff2027)}>
+    <div class="wrap ko-grid">
+      <div class="ko-text">
+        <p class="eyebrow reveal">Abertura de ano · Janeiro a março</p>
+        <h2 class="section-title reveal d1">Kick-off 2027<br><span class="accent">a 1 km da Berrini</span></h2>
+        <p class="lead reveal d2">Plenária, coffee, almoço e coquetel em ambientes integrados, com gastronomia própria. Datas de janeiro a março.</p>
+
+        <ul class="ko-formatos reveal d2">
+          {formatos.map((f) => (
+            <li>
+              <strong>{f.nome}</strong>
+              <span>{f.desc}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="ko-cta reveal d3">
+          <a class="btn" href="#contato" data-cta="kickoff-reserve">Reserve sua data</a>
+          <a class="btn ghost" href="#contato" data-cta="kickoff-visita">Agende uma visita técnica</a>
+        </div>
+      </div>
+
+      <div class="ko-media reveal d1">
+        <div class="ko-foto ko-foto-plenaria">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria_nova_corporativos02_resultado.webp"
+            alt="Salão da Casa Rofer montado em formato plenária, com palco e telão"
+            width={760}
+            sizes="(max-width:900px) calc(100vw - 48px), 620px"
+          />
+        </div>
+        <div class="ko-foto ko-foto-coquetel">
+          <Img
+            src="https://media.dmove.com.br/clients/casa-rofer/photos/galeria-atualizada_corporativos13.webp"
+            alt="Coquetel corporativo na Casa Rofer"
+            width={400}
+            sizes="(max-width:900px) 46vw, 300px"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <ul class="ko-incluso reveal">
+        <li class="ko-incluso-label">Tudo em um só lugar</li>
+        {incluso.map((i) => <li>{i}</li>)}
+      </ul>
+    </div>
+  </section>
+)}
+
+<script is:inline>
+  // Passado o último dia da campanha, remove faixa e bloco mesmo sem nova publicação.
+  document.querySelectorAll('[data-campanha][data-expira]').forEach(function (el) {
+    if (Date.now() > Number(el.dataset.expira)) el.remove();
+  });
+</script>

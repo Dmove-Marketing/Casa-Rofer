@@ -1,0 +1,19 @@
+---
+// Faixa temporária no topo da página: leva ao bloco #kick-off-2027.
+import { kickoff2027, campanhaNoAr, expiraEm } from '../../data/campanhas';
+import '../../styles/kickoff-2027.css';
+
+interface Props {
+  /** Destino do clique. Na própria página corporativa é só a âncora. */
+  href?: string;
+}
+const { href = '#kick-off-2027' } = Astro.props;
+const noAr = campanhaNoAr(kickoff2027);
+---
+{noAr && (
+  <a class="ko-bar" href={href} data-campanha="kickoff-2027" data-expira={expiraEm(kickoff2027)}>
+    <span class="ko-bar-tag">Kick-off 2027</span>
+    <span class="ko-bar-text">Datas de janeiro a março <span class="ko-bar-long">para abrir o ano da sua empresa</span></span>
+    <span class="ko-bar-cta">Reserve sua data <span aria-hidden="true">→</span></span>
+  </a>
+)}

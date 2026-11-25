@@ -5,6 +5,8 @@ import Img from '../components/ui/Img.astro';
 import Video from '../components/ui/Video.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
 import { tipoEventoOptions } from '../scripts/lead-payload';
+import KickoffBar from '../components/campanhas/KickoffBar.astro';
+import KickoffBlock from '../components/campanhas/KickoffBlock.astro';
 import '../styles/eventos-corporativos.css';
 
 
@@ -87,6 +89,11 @@ const testimonials = [
     role: 'Coordenadora de DHO'
   }
 ];
+
+// Bloco sazonal Kick-off 2027: por enquanto só aparece na página de aprovação
+// (/eventos-corporativos-kick-off/). Depois do OK do cliente, trocar o padrão
+// para true e apagar a página de aprovação.
+const { kickoff = false } = Astro.props;
 ---
 
 <Base
@@ -95,7 +102,11 @@ const testimonials = [
   ogImage="/images/og-index.jpg"
   canonical="https://eventos.casarofer.com.br/eventos-corporativos/"
   whatsAppShowEmpresaField
+  noIndex={kickoff}
 >
+<!-- ===== CAMPANHA SAZONAL: faixa Kick-off 2027 (até 28/02/2027) ===== -->
+{kickoff && <KickoffBar />}
+
 <!-- ===== HERO ===== -->
 <header class="hero" id="top">
   <div class="hero-bg">
@@ -122,6 +133,9 @@ const testimonials = [
     <div class="stat reveal d2"><b>1.300m² de área útil</b></div>
   </div>
 </section>
+
+<!-- ===== CAMPANHA SAZONAL: bloco Kick-off 2027 (até 28/02/2027) ===== -->
+{kickoff && <KickoffBlock />}
 
 <!-- ===== SOLUÇÃO 360° ===== -->
 <section id="solucao-360" class="pad" style="background:#FFFFFF">
