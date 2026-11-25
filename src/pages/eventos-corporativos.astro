@@ -109,9 +109,17 @@ const { kickoff = false } = Astro.props;
 
 <!-- ===== HERO ===== -->
 <header class="hero" id="top">
-  <div class="hero-bg">
-    <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero_corporativo_resultado.webp" alt="Espaço para eventos corporativos na Casa Rofer, Brooklin, São Paulo" priority />
-  </div>
+  {kickoff ? (
+    /* Em aprovação: duas fotos novas alternando. Para ficar com uma só, deixe um único <Img>. */
+    <div class="hero-bg hero-rot" data-hero-rot>
+      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-mesas.webp" alt="Salão da Casa Rofer montado com mesas e lounge para evento corporativo, Brooklin, São Paulo" class="is-on" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" priority />
+      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-coquetel.webp" alt="Salão da Casa Rofer montado para coquetel, com telão de LED e mesa de buffet" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" defer />
+    </div>
+  ) : (
+    <div class="hero-bg">
+      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero_corporativo_resultado.webp" alt="Espaço para eventos corporativos na Casa Rofer, Brooklin, São Paulo" priority />
+    </div>
+  )}
   <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" class="hero-logo" width={190} sizes="190px" />
   <div class="hero-inner">
     <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>
@@ -983,5 +991,35 @@ const { kickoff = false } = Astro.props;
   initGalleryCarousel();
 </script>
 
+<!-- Hero com fotos alternando: só age se existir [data-hero-rot] -->
+<script is:inline>
+(function () {
+  var box = document.querySelector('[data-hero-rot]');
+  if (!box) return;
+  var imgs = box.querySelectorAll('img');
+  if (imgs.length < 2) return;
+  var i = 0;
+  function carregar(img) {
+    if (!img.dataset.src) return;
+    if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+    img.removeAttribute('data-srcset');
+  }
+  function trocar() {
+    var prox = imgs[(i + 1) % imgs.length];
+    if (!prox.complete || !prox.naturalWidth) return;
+    imgs[i].classList.remove('is-on');
+    prox.classList.add('is-on');
+    i = (i + 1) % imgs.length;
+  }
+  function iniciar() {
+    for (var k = 1; k < imgs.length; k++) carregar(imgs[k]);
+    setInterval(trocar, 6000);
+  }
+  if (document.readyState === 'complete') iniciar();
+  else window.addEventListener('load', iniciar);
+})();
+</script>
 </Base>
 
