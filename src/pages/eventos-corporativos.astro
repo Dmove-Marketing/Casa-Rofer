@@ -7,6 +7,7 @@ import LeadForm from '../components/forms/LeadForm.astro';
 import { tipoEventoOptions } from '../scripts/lead-payload';
 import KickoffBar from '../components/campanhas/KickoffBar.astro';
 import KickoffBlock from '../components/campanhas/KickoffBlock.astro';
+import { kickoff2027, campanhaNoAr } from '../data/campanhas';
 import '../styles/eventos-corporativos.css';
 
 
@@ -90,10 +91,9 @@ const testimonials = [
   }
 ];
 
-// Bloco sazonal Kick-off 2027: por enquanto só aparece na página de aprovação
-// (/eventos-corporativos-kick-off/). Depois do OK do cliente, trocar o padrão
-// para true e apagar a página de aprovação.
-const { kickoff = false } = Astro.props;
+// Campanha sazonal Kick-off 2027: faixa e bloco aparecem enquanto a campanha
+// estiver no ar (data final em src/data/campanhas.ts).
+const kickoff = campanhaNoAr(kickoff2027);
 ---
 
 <Base
@@ -102,24 +102,17 @@ const { kickoff = false } = Astro.props;
   ogImage="/images/og-index.jpg"
   canonical="https://eventos.casarofer.com.br/eventos-corporativos/"
   whatsAppShowEmpresaField
-  noIndex={kickoff}
 >
 <!-- ===== CAMPANHA SAZONAL: faixa Kick-off 2027 (até 28/02/2027) ===== -->
 {kickoff && <KickoffBar />}
 
 <!-- ===== HERO ===== -->
 <header class="hero" id="top">
-  {kickoff ? (
-    /* Em aprovação: duas fotos novas alternando. Para ficar com uma só, deixe um único <Img>. */
-    <div class="hero-bg hero-rot" data-hero-rot>
-      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-mesas.webp" alt="Salão da Casa Rofer montado com mesas e lounge para evento corporativo, Brooklin, São Paulo" class="is-on" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" priority />
-      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-coquetel.webp" alt="Salão da Casa Rofer montado para coquetel, com telão de LED e mesa de buffet" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" defer />
-    </div>
-  ) : (
-    <div class="hero-bg">
-      <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero_corporativo_resultado.webp" alt="Espaço para eventos corporativos na Casa Rofer, Brooklin, São Paulo" priority />
-    </div>
-  )}
+  <!-- Duas fotos alternando. Para ficar com uma só, deixe um único <Img>. -->
+  <div class="hero-bg hero-rot" data-hero-rot>
+    <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-mesas.webp" alt="Salão da Casa Rofer montado com mesas e lounge para evento corporativo, Brooklin, São Paulo" class="is-on" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" priority />
+    <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/hero-corporativo-salao-coquetel.webp" alt="Salão da Casa Rofer montado para coquetel, com telão de LED e mesa de buffet" sizes="(max-aspect-ratio: 3/2) 167vh, 100vw" defer />
+  </div>
   <Img src="https://media.dmove.com.br/clients/casa-rofer/photos/logo-white.webp" alt="Casa Rofer" class="hero-logo" width={190} sizes="190px" />
   <div class="hero-inner">
     <p class="hero-sub reveal in">Brooklin&nbsp; · &nbsp;São Paulo</p>

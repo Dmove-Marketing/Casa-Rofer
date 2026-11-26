@@ -5,6 +5,8 @@ export default defineConfig({
   output: 'static',
   redirects: {
     '/': '/casamentos',
+    // link de aprovação enviado ao cliente (nov/2026): agora é a página principal
+    '/eventos-corporativos-kick-off': '/eventos-corporativos',
   },
   prefetch: true,
   build: {
